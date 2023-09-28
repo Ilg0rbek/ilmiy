@@ -25,15 +25,15 @@ function Header() {
           {active === "navbar" ? <FaAlignJustify /> : <BsXLg />}
         </div>
       </header>
-      <nav class={`navbar-expand-lg ${active}`}>
+      <nav className={`navbar-expand-lg ${active}`}>
         <ul className="menu_ul nav_item">
           <li>
             <Link to="/">bosh sahifa </Link>
           </li>
         </ul>
-        <div class="dropdown nav_item">
+        <div className="dropdown nav_item">
           <a
-            class="  dropdown-toggle"
+            className="  dropdown-toggle"
             href="#"
             role="button"
             data-bs-toggle="dropdown"
@@ -41,10 +41,10 @@ function Header() {
           >
             doktorantura
           </a>
-          <ul class="dropdown-menu">
+          <ul className="dropdown-menu">
             <li>
               <a
-                class="dropdown-item"
+                className="dropdown-item"
                 href="https://phd.mininnovation.uz/regulation"
                 target="_blank"
               >
@@ -53,7 +53,7 @@ function Header() {
             </li>
             <li>
               <a
-                class="dropdown-item"
+                className="dropdown-item"
                 href="https://phd.mininnovation.uz/required-docs"
                 target="_blank"
               >
@@ -61,23 +61,23 @@ function Header() {
               </a>
             </li>
             <li>
-              <a class="dropdown-item" href={Kvota} target="_blank">
+              <a className="dropdown-item" href={Kvota} target="_blank">
                 Kvota 2024
               </a>
             </li>
             <li>
-              <a class="dropdown-item" href="#">
+              <a className="dropdown-item" href="#">
                 Doktorantura yo'nalishlari
               </a>
             </li>
             <li>
-              <a class="dropdown-item" href="#">
+              <a className="dropdown-item" href="#">
                 Doktorantlar
               </a>
             </li>
             <li>
               <a
-                class="dropdown-item"
+                className="dropdown-item"
                 href="http://minimum.adu.uz/"
                 target="_blank"
               >
@@ -87,9 +87,9 @@ function Header() {
           </ul>
         </div>
 
-        <div class="dropdown">
+        <div className="dropdown">
           <a
-            class="  dropdown-toggle"
+            className="  dropdown-toggle"
             href="#"
             role="button"
             data-bs-toggle="dropdown"
@@ -97,60 +97,60 @@ function Header() {
           >
             Ilmiy kengashlar
           </a>
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <li>
-              <a class="dropdown-item" href="#">
+              <a className="dropdown-item" href="#">
                 Ilmiy daraja beruvchi kengash &raquo;
               </a>
-              <ul class="dropdown-menu dropdown-submenu">
+              <ul className="dropdown-menu dropdown-submenu">
                 <li>
-                  <a class="dropdown-item" href="#">
+                  <a className="dropdown-item" href="#">
                     "Tovarlar kimyosi" va "Xalq tabobati"
                   </a>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="#">
+                  <a className="dropdown-item" href="#">
                     O'zbekiston tarixi
                   </a>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="#">
+                  <a className="dropdown-item" href="#">
                     Menejment
                   </a>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="#">
+                  <a className="dropdown-item" href="#">
                     O'zbek tili
                   </a>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="#">
+                  <a className="dropdown-item" href="#">
                     O'zbek adabiyoti
                   </a>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="#">
+                  <a className="dropdown-item" href="#">
                     Ijtimoiy falsafa
                   </a>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="#">
+                  <a className="dropdown-item" href="#">
                     Biologiya fanlari bo'yicha
                   </a>
                 </li>
               </ul>
             </li>
             <li>
-              <a class="dropdown-item" href="#">
+              <a className="dropdown-item" href="#">
                 Ilmiy texnik kengash
               </a>
             </li>
           </ul>
         </div>
 
-        <div class="dropdown nav_item">
+        <div className="dropdown nav_item">
           <a
-            class="  dropdown-toggle"
+            className="  dropdown-toggle"
             href="#"
             role="button"
             data-bs-toggle="dropdown"
@@ -158,22 +158,22 @@ function Header() {
           >
             ilmiy loyihalar
           </a>
-          <ul class="dropdown-menu ">
+          <ul className="dropdown-menu ">
             <li>
-              <a class="dropdown-item" href="#">
+              <a className="dropdown-item" href="#">
                 Davlat grandi
               </a>
             </li>
             <li>
-              <a class="dropdown-item" href="#">
+              <a className="dropdown-item" href="#">
                 Univesitet grandi
               </a>
             </li>
           </ul>
         </div>
-        <div class="dropdown nav_item">
+        <div className="dropdown nav_item">
           <a
-            class="  dropdown-toggle"
+            className="  dropdown-toggle"
             href="#"
             role="button"
             data-bs-toggle="dropdown"
@@ -181,22 +181,22 @@ function Header() {
           >
             intellektual mulk obyektlari
           </a>
-          <ul class="dropdown-menu">
+          <ul className="dropdown-menu">
             <li>
-              <a class="dropdown-item" href="#">
+              <a className="dropdown-item" href="#">
                 Patentlar
               </a>
             </li>
             <li>
-              <a class="dropdown-item" href="#">
+              <a className="dropdown-item" href="#">
                 Guvohnomalar
               </a>
             </li>
           </ul>
         </div>
-        <div class="dropdown nav_item">
+        <div className="dropdown nav_item">
           <a
-            class="  dropdown-toggle"
+            className="  dropdown-toggle"
             href="#"
             role="button"
             data-bs-toggle="dropdown"
@@ -204,40 +204,40 @@ function Header() {
           >
             jurnallar
           </a>
-          <ul class="dropdown-menu">
+          <ul className="dropdown-menu">
             <li>
-              <a class="dropdown-item" href="#">
+              <a className="dropdown-item" href="#">
                 Fizika-matematika tadqiqotlari
               </a>
             </li>
             <li>
-              <a class="dropdown-item" href="#">
+              <a className="dropdown-item" href="#">
                 {" "}
                 Gumanitar tadqiqotlar
               </a>
             </li>
             <li>
-              <a class="dropdown-item" href="#">
+              <a className="dropdown-item" href="#">
                 Pedagogik tadqiqotlar.{" "}
               </a>
             </li>
             <li>
-              <a class="dropdown-item" href="#">
+              <a className="dropdown-item" href="#">
                 {" "}
                 Kimyo tadqiqotlari.
               </a>
             </li>
             <li>
-              <a class="dropdown-item" href="#">
+              <a className="dropdown-item" href="#">
                 {" "}
                 Biologik tadqiqotlar.
               </a>
             </li>
           </ul>
         </div>
-        <div class="dropdown nav_item">
+        <div className="dropdown nav_item">
           <a
-            class="  dropdown-toggle"
+            className="  dropdown-toggle"
             href="#"
             role="button"
             data-bs-toggle="dropdown"
@@ -245,14 +245,14 @@ function Header() {
           >
             iqtidorli talaba
           </a>
-          <ul class="dropdown-menu">
+          <ul className="dropdown-menu">
             <li>
-              <a class="dropdown-item" href="#">
+              <a className="dropdown-item" href="#">
                 fan to'garaklari
               </a>
             </li>
             <li>
-              <Link class="dropdown-item" to={"/stipendiants"}>
+              <Link className="dropdown-item" to={"/stipendiants"}>
                 stipendiatlar
               </Link>
             </li>
