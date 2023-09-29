@@ -13,7 +13,9 @@ const Login = () => {
         <div className="txtb">
           <input type="password" placeholder="Password" />
         </div>
-        <Link to={"/admin"}>
+        <Link style={{
+          textDecoration:"none"
+        }} to={"/admin"}>
           <input type="submit" value="Kirish" className="logbtn" />
         </Link>
       </form>

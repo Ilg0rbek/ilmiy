@@ -7,7 +7,7 @@ import {
   MenuUnfoldOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu, Button, theme } from "antd";
-import { Link, Route, Routes } from "react-router-dom";
+import { Link, NavLink, Route, Routes } from "react-router-dom";
 import Students from "../students";
 const { Header, Sider, Content } = Layout;
 
@@ -22,7 +22,7 @@ const Admin = () => {
       key: "1",
       icon: <UsergroupAddOutlined />,
       label: "Stipendiantlar",
-      path: "/admin/student",
+      path: "/admin/stipendiants",
     },
     {
       key: "2",
@@ -34,7 +34,7 @@ const Admin = () => {
       key: "3",
       icon: <UserOutlined />,
       label: "Profile",
-      path: "/admin/user",
+      path: "/admin/profile",
     },
   ];
 
@@ -51,7 +51,15 @@ const Admin = () => {
             fontSize: "24px",
           }}
         >
-          {!collapsed ? " Ilmiy admin panel" : "ADU"}
+          <NavLink
+            style={{
+              textDecoration: "none",
+              color:"white  "
+            }}
+            to={"/admin"}
+          >
+            {!collapsed ? " Ilmiy admin panel" : "ADU"}
+          </NavLink>
         </div>
         <Menu
           theme="dark"
@@ -105,8 +113,8 @@ const Admin = () => {
         >
           <Routes>
             <Route path="/settings" element={"Hello settings"} />
-            <Route path="/student" element={<Students />  } />
-            <Route path="/user" element={"Hello user"} />
+            <Route path="/stipendiants" element={<Students />} />
+            <Route path="/profile" element={"Hello user"} />
           </Routes>
         </Content>
       </Layout>
