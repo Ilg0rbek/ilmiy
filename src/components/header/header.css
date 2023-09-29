@@ -1,224 +1,223 @@
+@import url("https://fonts.googleapis.com/css2?family=Croissant+One&display=swap");
+.btn {
+  border-style: none !important;
+}
+.dropdown-menu .dropdown-submenu {
+  display: none;
+  left: 100%;
+  top: -7px;
+}
+.dropdown-menu .dropdown-submenu-left {
+  right: 100%;
+  left: auto;
+}
+.dropdown-menu > li:hover > .dropdown-submenu {
+  display: block;
+}
+main {
+  position: fixed;
+  width: 100%;
+}
+header {
+  display: flex;
+  height: auto;
+  align-items: center;
+  padding: 15px 0;
+  background: #f2f4f6;
+  margin: 0;
+  padding: 0 50px;
+  justify-content: space-between;
+}
 
-  .btn {
-    border-style: none !important;
-  }
-  .dropdown-menu .dropdown-submenu {
-    display: none;
-    left: 100%;
-    top: -7px;
-  }
-  .dropdown-menu .dropdown-submenu-left {
-    right: 100%;
-    left: auto;
-  }
-  .dropdown-menu > li:hover > .dropdown-submenu {
-    display: block;
-  }
-  main {
-    position: fixed;
-    width: 100%;
-  }
+.logo {
+  display: flex;
+  height: 100px;
+  display: flex;
+  align-items: center;
+}
+.logo h2 {
+  padding: 0 5px;
+  text-transform: capitalize;
+  font-size: 25px;
+}
+
+.img_div {
+  width: 100px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("https://www.adu.uz/s/files/images/logoadu_wide.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.btn_menu {
+  font-size: 25px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+.navbar {
+  height: auto;
+  display: flex;
+  align-items: center;
+  background-color: #1f3c88;
+  padding: 10px 250px !important;
+  width: 100%;
+  justify-content: space-between !important;
+}
+.menu_ul {
+  margin: 0;
+  padding: 0;
+}
+.menu_ul li {
+  list-style: none;
+  padding: 5px 0;
+}
+
+.menu_ul li a {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #ffff;
+  font-size: 16px;
+  font-weight: 500;
+}
+.dropdown a {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #ffff;
+  background: none;
+  border: none;
+  font-size: 16px;
+  font-weight: 500;
+}
+.dropdown a:hover {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #ffff !important;
+  background: none;
+  border: none;
+}
+.dropdown ul {
+  background-color: #1f3c88;
+  border-radius: 0px !important;
+  border: none;
+  padding-bottom: 0;
+  padding: 8px 10px 0 10px;
+}
+.dropdown-toggle {
+  color: #fff !important;
+}
+.dropdown ul li a {
+  color: #ffff;
+  border-bottom: 1px solid #102558;
+  transition: 0.2s ease;
+}
+.dropdown ul li a:hover {
+  color: rgb(176, 179, 182) !important ;
+  border-bottom: 1px solid #102558;
+  transition: 0.2s ease;
+}
+@media (max-width: 1700px) {
   header {
-    display: flex;
-    height: auto;
-    align-items: center;
-    padding: 15px 0;
-    background: #f2f4f6;
-    margin: 0;
-    padding: 0 50px;
-    justify-content: space-between;
+    padding: 0 180px;
   }
-  
-  .logo {
-    display: flex;
-    height: 100px;
-    display: flex;
-    align-items: center;
+  .navbar {
+    padding: 10px 180px !important;
   }
-  .logo h2 {
-    padding: 0 5px;
-    text-transform: capitalize;
-    font-size: 25px;
+}
+@media (max-width: 1560px) {
+  header {
+    padding: 0 150px;
   }
-  
-  .img_div {
-    width: 100px;
-    height: 80px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-image: url('https://www.adu.uz/s/files/images/logoadu_wide.png');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+  .navbar {
+    padding: 10px 150px !important;
+  }
+  .menu_ul li a {
+    font-size: 14px;
+  }
+  .dropdown a {
+    font-size: 14px;
+  }
+}
+@media (max-width: 1382px) {
+  header {
+    padding: 0 120px;
+  }
+  .navbar {
+    padding: 10px 120px !important;
+  }
+  .menu_ul li a {
+    font-size: 12px;
+  }
+  .dropdown a {
+    font-size: 12px;
+  }
+}
+@media (max-width: 1177px) {
+  header {
+    padding: 0 80px;
+  }
+  .navbar {
+    padding: 10px 80px !important;
+  }
+  .menu_ul li a {
+    font-size: 12px;
+  }
+  .dropdown a {
+    font-size: 12px;
+  }
+}
+@media (max-width: 1177px) {
+  header {
+    padding: 0 10px;
+  }
+  .navbar {
+    padding: 10px !important;
+  }
+  .menu_ul li a {
+    font-size: 12px;
+  }
+  .dropdown a {
+    font-size: 12px;
+  }
+}
+@media (max-width: 992px) {
+  header {
+    padding: 0 20px;
   }
   .btn_menu {
+    cursor: pointer;
     font-size: 25px;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    display: none;
   }
+
   .navbar {
-    height: auto;
-    display: flex;
-    align-items: center;
-    background-color: #1f3c88;
-    padding: 10px 250px !important;
+    opacity: 0;
     width: 100%;
-    justify-content: space-between !important;
+    background-color: #1f3c88;
+    flex-direction: column;
+    text-align: center;
+    padding: 0 !important;
+    line-height: 30px;
+    padding: 20px !important;
   }
-  .menu_ul {
-    margin: 0;
-    padding: 0;
+
+  .dropdown-menu ul li a {
+    text-align: center;
   }
-  .menu_ul li {
-    list-style: none;
-    padding: 5px 0;
-  }
-  
-  .menu_ul li a {
-    text-decoration: none;
-    text-transform: uppercase;
-    color: #ffff;
-    font-size: 16px;
-    font-weight: 500;
-  }
-  .dropdown a {
-    text-decoration: none;
-    text-transform: uppercase;
-    color: #ffff;
-    background: none;
-    border: none;
-    font-size: 16px;
-    font-weight: 500;
-  }
-  .dropdown a:hover {
-    text-decoration: none;
-    text-transform: uppercase;
-    color: #ffff !important;
-    background: none;
-    border: none;
+  .navbar_active {
+    height: auto;
+    opacity: 1;
+    z-index: 1;
   }
   .dropdown ul {
-    background-color: #1f3c88;
-    border-radius: 0px !important;
-    border: none;
-    padding-bottom: 0;
-    padding: 8px 10px 0 10px;
+    border: 1px solid #153075;
   }
-  .dropdown-toggle {
-    color: #fff !important;
-  }
-  .dropdown ul li a {
-    color: #ffff;
-    border-bottom: 1px solid #102558;
-    transition: 0.2s ease;
-  }
-  .dropdown ul li a:hover {
-    color: rgb(176, 179, 182) !important ;
-    border-bottom: 1px solid #102558;
-    transition: 0.2s ease;
-  }
-  @media (max-width: 1700px) {
-    header {
-      padding: 0 180px;
-    }
-    .navbar {
-      padding: 10px 180px !important;
-    }
-  }
-  @media (max-width: 1560px) {
-    header {
-      padding: 0 150px;
-    }
-    .navbar {
-      padding: 10px 150px !important;
-    }
-    .menu_ul li a {
-      font-size: 14px;
-    }
-    .dropdown a {
-      font-size: 14px;
-    }
-  }
-  @media (max-width: 1382px) {
-    header {
-      padding: 0 120px;
-    }
-    .navbar {
-      padding: 10px 120px !important;
-    }
-    .menu_ul li a {
-      font-size: 12px;
-    }
-    .dropdown a {
-      font-size: 12px;
-    }
-  }
-  @media (max-width: 1177px) {
-    header {
-      padding: 0 80px;
-    }
-    .navbar {
-      padding: 10px 80px !important;
-    }
-    .menu_ul li a {
-      font-size: 12px;
-    }
-    .dropdown a {
-      font-size: 12px;
-    }
-  }
-  @media (max-width: 1177px) {
-    header {
-      padding: 0 10px;
-    }
-    .navbar {
-      padding: 10px !important;
-    }
-    .menu_ul li a {
-      font-size: 12px;
-    }
-    .dropdown a {
-      font-size: 12px;
-    }
-  }
-  @media (max-width: 992px) {
-    header {
-      padding: 0 20px;
-    }
-    .btn_menu {
-      cursor: pointer;
-      font-size: 25px;
-      height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-  
-    .navbar {
-      opacity: 0;
-      width: 100%;
-      background-color: #1f3c88;
-      flex-direction: column;
-      text-align: center;
-      padding: 0 !important;
-      line-height: 30px;
-      padding: 20px !important;
-    }
-  
-    .dropdown-menu ul li a {
-      text-align: center;
-    }
-    .navbar_active {
-      height: auto;
-      opacity: 1;
-      z-index: 1;
-    }
-    .dropdown ul {
-      border: 1px solid #153075;
-    }
-  }
-  
+}

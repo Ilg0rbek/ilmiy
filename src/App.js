@@ -4,7 +4,7 @@ import Home from "./components/pages/home";
 import Stipendiants from "./components/pages/stipendiants";
 import GrandPage from "./components/pages/stipendiants/grands";
 import Login from "./admin/login";
-import AdminGrand from "./admin/admingrand";
+import Admin from "./admin/admin";
 
 function App() {
   const { pathname } = useLocation();
@@ -31,8 +31,8 @@ function App() {
       ) : (
         <>
           <Routes>
-            <Route exact path="/admin" element={<Login />} />
-            <Route path="/admin/grands" element={<AdminGrand />} />
+            <Route exact path="/admin/login" element={<Login />} />
+            <Route exact path="/admin/profile" element={<Admin />} />
             <Route
               path="*"
               element={
