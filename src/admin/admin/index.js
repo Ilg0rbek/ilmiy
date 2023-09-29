@@ -7,7 +7,8 @@ import {
   MenuUnfoldOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu, Button, theme } from "antd";
-import { Route, Routes, Link } from "react-router-dom";
+import { Link, Route, Routes } from "react-router-dom";
+import Students from "../students";
 const { Header, Sider, Content } = Layout;
 
 const Admin = () => {
@@ -33,7 +34,7 @@ const Admin = () => {
       key: "3",
       icon: <UserOutlined />,
       label: "Profile",
-      path: "/admin/profile",
+      path: "/admin/user",
     },
   ];
 
@@ -102,7 +103,11 @@ const Admin = () => {
             background: colorBgContainer,
           }}
         >
-          Hello evrebody
+          <Routes>
+            <Route path="/settings" element={"Hello settings"} />
+            <Route path="/student" element={<Students />  } />
+            <Route path="/user" element={"Hello user"} />
+          </Routes>
         </Content>
       </Layout>
     </Layout>
