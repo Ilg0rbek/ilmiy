@@ -39,8 +39,8 @@ const Admin = () => {
   ];
 
   return (
-    <Layout>
-      <Sider trigger={null} collapsible collapsed={collapsed} width={"17%"}>
+    <Layout style={{ width: "100%" }}>
+      <Sider trigger={null} collapsible collapsed={collapsed} width={"20%"}>
         <div
           className="demo-logo-vertical"
           style={{
@@ -54,7 +54,7 @@ const Admin = () => {
           <NavLink
             style={{
               textDecoration: "none",
-              color:"white  "
+              color: "white  ",
             }}
             to={"/admin"}
           >
@@ -84,12 +84,14 @@ const Admin = () => {
       <Layout
         style={{
           height: "100vh",
+          width: "80%",
         }}
       >
         <Header
           style={{
             padding: 0,
             background: colorBgContainer,
+            width: "100%",
           }}
         >
           <Button
@@ -107,8 +109,9 @@ const Admin = () => {
           style={{
             margin: "84px 16px",
             padding: 24,
-            minHeight: 280,
+            height: "85vh",
             background: colorBgContainer,
+            width: `${!collapsed ? "78%" : "92%"}`,
           }}
         >
           <Routes>
