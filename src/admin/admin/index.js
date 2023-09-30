@@ -8,7 +8,7 @@ import {
 } from "@ant-design/icons";
 import { Layout, Menu, Button, theme } from "antd";
 import { Link, NavLink, Route, Routes } from "react-router-dom";
-import Students from "../students";
+import Students from "../year";
 const { Header, Sider, Content } = Layout;
 
 const Admin = () => {

@@ -1,4 +1,4 @@
-import { Modal, Form, Input, Row, Col } from "antd";
+import { Modal, Form, DatePicker, Input, Row, Col } from "antd";
 import React from "react";
 
 const Modals = ({ isModalOpen, setIsModalOpen }) => {
@@ -6,17 +6,18 @@ const Modals = ({ isModalOpen, setIsModalOpen }) => {
     setIsModalOpen(false);
   };
 
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
+  const { RangePicker } = DatePicker;
 
   return (
     <div>
       <Modal
-        title="Stipendiat talaba qo'shish"
+        title="O'quv yilini qo'shish"
         open={isModalOpen}
         onOk={handleOk}
-        onCancel={handleCancel}
+        okText={"Saqlash"}
+        closable={false}
+        width={800}
+        cancelButtonProps={{ style: { display: "none" } }}
       >
         <Form layout="vertical">
           <Row
@@ -25,22 +26,27 @@ const Modals = ({ isModalOpen, setIsModalOpen }) => {
             }}
           >
             <Col span={11}>
-              <Form.Item label="Ismi">
+              <RangePicker
+                style={{
+                  width: "100% !important",
+                }}
+                width={"100%"}
+                size="large"
+                picker="year"
+              />
+            </Col>
+            <Col span={11}>
+              <Form.Item name="note" label="Note" rules={[{ required: true }]}>
                 <Input size="large" />
               </Form.Item>
             </Col>
             <Col span={11}>
-              <Form.Item label="Familyasi">
+              <Form.Item name="note" label="Note" rules={[{ required: true }]}>
                 <Input size="large" />
               </Form.Item>
             </Col>
             <Col span={11}>
-              <Form.Item label="Ismi">
-                <Input size="large" />
-              </Form.Item>
-            </Col>
-            <Col span={11}>
-              <Form.Item label="Familyasi">
+              <Form.Item name="note" label="Note" rules={[{ required: true }]}>
                 <Input size="large" />
               </Form.Item>
             </Col>

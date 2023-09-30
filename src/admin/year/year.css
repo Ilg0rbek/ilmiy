@@ -1,0 +1,19 @@
+.addNewYear {
+    font-size: 22px;
+    font-weight: 600;
+    padding: 12px 30px;
+    width: 100%;
+    background-color: aliceblue;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-between;
+    user-select: none;
+    transition: all 0.8s;
+    margin-bottom: 15px;
+    text-decoration: none;
+}
+
+.addNewYear:hover {
+    cursor: pointer;
+    box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+}
