@@ -46,22 +46,22 @@ const Modals = ({ isModalOpen, setIsModalOpen }) => {
             {dataValue && (
               <>
                 <Col span={11}>
-                  <Form.Item name="note" label="Stipendiya nomi">
+                  <Form.Item name="grand-one" label="Stipendiya nomi">
                     <Input autoComplete={"off"} size="large" />
                   </Form.Item>
                 </Col>
                 <Col span={11}>
-                  <Form.Item name="note" label="Stipendiya nomi">
+                  <Form.Item name="grand-two" label="Stipendiya nomi">
                     <Input autoComplete={"off"} size="large" />
                   </Form.Item>
                 </Col>
                 <Col span={11}>
-                  <Form.Item name="note" label="Stipendiya nomi">
+                  <Form.Item name="grand-three" label="Stipendiya nomi">
                     <Input autoComplete={"off"} size="large" />
                   </Form.Item>
                 </Col>{" "}
                 <Col span={11}>
-                  <Form.Item name="note" label="Stipendiya nomi">
+                  <Form.Item name="grand-four" label="Stipendiya nomi">
                     <Input autoComplete={"off"} size="large" />
                   </Form.Item>
                 </Col>

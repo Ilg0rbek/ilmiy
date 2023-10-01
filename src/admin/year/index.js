@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Modals from "../modal";
 import { PlusOutlined } from "@ant-design/icons";
 import "./year.css";
-import { Link } from "react-router-dom";
 
 const Students = () => {
   const showModal = () => {
@@ -14,7 +13,7 @@ const Students = () => {
   return (
     <div>
       <Modals isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
-      <div className="addNewYear" onClick={showModal}>
+      <div className="addNewYear" onClick={showModal} >
         Yangi o'quv yili hamda stipendiyalar turini qo'shish <PlusOutlined />
       </div>
     </div>
