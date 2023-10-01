@@ -1,12 +1,16 @@
-import { Modal, Form, DatePicker, Input, Row, Col } from "antd";
-import React from "react";
+import { Modal, Form, DatePicker, Row, Col, Input } from "antd";
+import React, { useState } from "react";
 
 const Modals = ({ isModalOpen, setIsModalOpen }) => {
+  const [dataValue, setDataValue] = useState();
+
+  const handleChange = (e) => {
+    setDataValue(e);
+  };
+
   const handleOk = () => {
     setIsModalOpen(false);
   };
-
-  const { RangePicker } = DatePicker;
 
   return (
     <div>
@@ -16,40 +20,53 @@ const Modals = ({ isModalOpen, setIsModalOpen }) => {
         onOk={handleOk}
         okText={"Saqlash"}
         closable={false}
-        width={800}
         cancelButtonProps={{ style: { display: "none" } }}
+        width={800}
       >
         <Form layout="vertical">
           <Row
             style={{
               justifyContent: "space-around",
+              alignItems: "center",
             }}
+            id="row"
           >
-            <Col span={11}>
-              <RangePicker
-                style={{
-                  width: "100% !important",
-                }}
-                width={"100%"}
-                size="large"
-                picker="year"
-              />
-            </Col>
-            <Col span={11}>
-              <Form.Item name="note" label="Note" rules={[{ required: true }]}>
-                <Input size="large" />
+            <Col span={23}>
+              <Form.Item name="year" label="O'quv yilini kiriting">
+                <DatePicker.RangePicker
+                  style={{
+                    width: "100%",
+                  }}
+                  size="large"
+                  picker="year"
+                  onChange={handleChange}
+                />
               </Form.Item>
             </Col>
-            <Col span={11}>
-              <Form.Item name="note" label="Note" rules={[{ required: true }]}>
-                <Input size="large" />
-              </Form.Item>
-            </Col>
-            <Col span={11}>
-              <Form.Item name="note" label="Note" rules={[{ required: true }]}>
-                <Input size="large" />
-              </Form.Item>
-            </Col>
+            {dataValue && (
+              <>
+                <Col span={11}>
+                  <Form.Item name="note" label="Stipendiya nomi">
+                    <Input autoComplete={"off"} size="large" />
+                  </Form.Item>
+                </Col>
+                <Col span={11}>
+                  <Form.Item name="note" label="Stipendiya nomi">
+                    <Input autoComplete={"off"} size="large" />
+                  </Form.Item>
+                </Col>
+                <Col span={11}>
+                  <Form.Item name="note" label="Stipendiya nomi">
+                    <Input autoComplete={"off"} size="large" />
+                  </Form.Item>
+                </Col>{" "}
+                <Col span={11}>
+                  <Form.Item name="note" label="Stipendiya nomi">
+                    <Input autoComplete={"off"} size="large" />
+                  </Form.Item>
+                </Col>
+              </>
+            )}
           </Row>
         </Form>
       </Modal>
