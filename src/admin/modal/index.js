@@ -19,8 +19,9 @@ const Modals = ({ isModalOpen, setIsModalOpen }) => {
         open={isModalOpen}
         onOk={handleOk}
         okText={"Saqlash"}
+        cancelText={"Yopish"}
         closable={false}
-        cancelButtonProps={{ style: { display: "none" } }}
+        onCancel={handleOk}
         width={800}
       >
         <Form layout="vertical">

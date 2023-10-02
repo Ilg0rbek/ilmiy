@@ -1,10 +1,8 @@
 .addNewYear {
-    font-size: 22px;
-    font-weight: 600;
-    padding: 12px 30px;
+    padding: 13px 30px;
     width: 100%;
-    background-color: aliceblue;
-    border-radius: 15px;
+    background-color: #f4f4f4f4;
+    border-radius: 7px;
     display: flex;
     justify-content: space-between;
     user-select: none;
