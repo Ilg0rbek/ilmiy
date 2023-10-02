@@ -1,6 +1,7 @@
 import { DeleteOutlined, EditOutlined, PlusOutlined } from "@ant-design/icons";
 import { Table } from "antd";
-import React from "react";
+import React, { useState } from "react";
+import StudentModal from "../modal/studets.modal";
 
 const Students = () => {
   const columns = [
@@ -42,9 +43,16 @@ const Students = () => {
     },
   ];
 
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <div>
-      <div className="addNewYear">
+      <StudentModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
+      <div className="addNewYear" onClick={showModal}>
         Stipendiyaga ega talaba qo'shish
         <PlusOutlined />
       </div>

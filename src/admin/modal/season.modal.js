@@ -30,7 +30,6 @@ const SeasonModal = ({ isModalOpen, setIsModalOpen }) => {
               justifyContent: "space-around",
               alignItems: "center",
             }}
-            id="row"
           >
             <Col span={23}>
               <Form.Item name="year" label="O'quv yilini kiriting">
