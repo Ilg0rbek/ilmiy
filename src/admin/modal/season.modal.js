@@ -1,7 +1,7 @@
 import { Modal, Form, DatePicker, Row, Col, Input } from "antd";
 import React, { useState } from "react";
 
-const Modals = ({ isModalOpen, setIsModalOpen }) => {
+const SeasonModal = ({ isModalOpen, setIsModalOpen }) => {
   const [dataValue, setDataValue] = useState();
 
   const handleChange = (e) => {
@@ -75,4 +75,4 @@ const Modals = ({ isModalOpen, setIsModalOpen }) => {
   );
 };
 
-export default Modals;
+export default SeasonModal;

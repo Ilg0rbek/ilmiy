@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Modals from "../modal";
+import SeasonModal from "../modal/season.modal";
 import {
   DeleteOutlined,
   EditOutlined,
@@ -10,7 +10,7 @@ import "./year.css";
 import { Collapse, List } from "antd";
 import { Link } from "react-router-dom";
 
-const Students = () => {
+const Season = () => {
   const showModal = () => {
     setIsModalOpen(true);
   };
@@ -26,7 +26,7 @@ const Students = () => {
 
   return (
     <div>
-      <Modals  isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
+      <SeasonModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
       <div className="addNewYear" onClick={showModal}>
         Yangi o'quv yili hamda stipendiyalar turini qo'shish <PlusOutlined />
       </div>
@@ -56,6 +56,7 @@ const Students = () => {
               renderItem={(item, idx) => (
                 <List.Item>
                   <Link
+                    to={"/admin/stipendiants/user-list"}
                     style={{
                       textDecoration: "none",
                       color: "black",
@@ -95,4 +96,4 @@ const Students = () => {
   );
 };
 
-export default Students;
+export default Season;

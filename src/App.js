@@ -17,7 +17,9 @@ function App() {
         <Route exact path="/grands" element={<GrandPage />} />
         <Route exact path="/admin/login" element={<Login />} />
         <Route path="admin" element={<Admin />}>
-          <Route path="stipendiants" />
+          <Route path="stipendiants">
+            <Route path="user-list" />
+          </Route>
           <Route path="settings" />
           <Route path="profile" />
         </Route>

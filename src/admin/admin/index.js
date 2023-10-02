@@ -8,7 +8,8 @@ import {
 } from "@ant-design/icons";
 import { Layout, Menu, Button, theme } from "antd";
 import { Link, NavLink, Route, Routes } from "react-router-dom";
-import Students from "../year";
+import Season from "../season";
+import Students from "../students";
 const { Header, Sider, Content } = Layout;
 
 const Admin = () => {
@@ -116,8 +117,9 @@ const Admin = () => {
         >
           <Routes>
             <Route path="/settings" element={"Hello settings"} />
-            <Route path="/stipendiants" element={<Students />} />
+            <Route path="/stipendiants" element={<Season />} />
             <Route path="/profile" element={"Hello user"} />
+            <Route path="/stipendiants/user-list" element={<Students />} />
           </Routes>
         </Content>
       </Layout>
