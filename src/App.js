@@ -8,6 +8,7 @@ import Admin from "./admin/admin";
 
 function App() {
   const { pathname } = useLocation();
+
   return (
     <>
       {pathname.slice(1, 6) !== "admin" && <Header />}
