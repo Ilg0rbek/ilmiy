@@ -1,8 +1,6 @@
-.home{
-    width: 100%;
-    height: 100vh;
-    background-image: url("https://nsp.gov.uz/static/img/carousel/5.jpg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+.home {
+  width: 100%;
+  padding-top: 152px;
+  position: absolute;
+  z-index: -12;
 }

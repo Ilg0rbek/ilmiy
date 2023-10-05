@@ -5,6 +5,7 @@ import {
   UserOutlined,
   SettingOutlined,
   MenuUnfoldOutlined,
+  FormOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu, Button, theme } from "antd";
 import { Link, NavLink, Route, Routes } from "react-router-dom";
@@ -27,12 +28,18 @@ const Admin = () => {
     },
     {
       key: "2",
+      icon: <FormOutlined />,
+      label: "Yangiliklar",
+      path: "/admin/news",
+    },
+    {
+      key: "3",
       icon: <SettingOutlined />,
       label: "Sozlanmalar",
       path: "/admin/settings",
     },
     {
-      key: "3",
+      key: "4",
       icon: <UserOutlined />,
       label: "Profile",
       path: "/admin/profile",
