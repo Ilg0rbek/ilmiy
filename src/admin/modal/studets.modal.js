@@ -2,8 +2,15 @@ import { Modal, Form, Row, Col, Input } from "antd";
 import React from "react";
 
 const StudentModal = ({ setIsModalOpen, isModalOpen }) => {
+  const [form] = Form.useForm();
+
   const handleOk = () => {
     setIsModalOpen(false);
+  };
+
+  const handleSubmit = (values) => {
+    console.log(values);
+    form.resetFields();
   };
 
   return (
@@ -11,14 +18,19 @@ const StudentModal = ({ setIsModalOpen, isModalOpen }) => {
       <Modal
         title="Talaba qo'shish"
         open={isModalOpen}
-        onOk={handleOk}
+        onOk={form.submit}
         okText={"Saqlash"}
-        cancelText={"Yopish"}
+        cancelText={"Bekor qilish"}
         closable={false}
         onCancel={handleOk}
         width={800}
       >
-        <Form layout="vertical">
+        <Form
+          layout="vertical"
+          form={form}
+          onFinish={handleSubmit}
+          initialValues={{ remember: true }}
+        >
           <Row
             style={{
               justifyContent: "space-around",
@@ -40,7 +52,7 @@ const StudentModal = ({ setIsModalOpen, isModalOpen }) => {
               </Form.Item>
             </Col>
             <Col span={11}>
-              <Form.Item name="course" label="Kursi">
+              <Form.Item name="desc" label="Kursi">
                 <Input.TextArea
                   maxLength={300}
                   style={{

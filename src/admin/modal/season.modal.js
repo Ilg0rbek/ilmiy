@@ -4,6 +4,8 @@ import React, { useState } from "react";
 const SeasonModal = ({ isModalOpen, setIsModalOpen }) => {
   const [dataValue, setDataValue] = useState();
 
+  const [form] = Form.useForm();
+
   const handleChange = (e) => {
     setDataValue(e);
   };
@@ -12,19 +14,30 @@ const SeasonModal = ({ isModalOpen, setIsModalOpen }) => {
     setIsModalOpen(false);
   };
 
+  const handleSubmit = (values) => {
+    console.log(values);
+    form.resetFields();
+
+  };
+
   return (
     <div>
       <Modal
         title="O'quv yilini qo'shish"
         open={isModalOpen}
-        onOk={handleOk}
+        onOk={form.submit}
         okText={"Saqlash"}
-        cancelText={"Yopish"}
+        cancelText={"Bekor qilish"}
         closable={false}
         onCancel={handleOk}
         width={800}
       >
-        <Form layout="vertical">
+        <Form
+          layout="vertical"
+          form={form}
+          onFinish={handleSubmit}
+          initialValues={{ remember: true }}
+        >
           <Row
             style={{
               justifyContent: "space-around",
