@@ -7,6 +7,7 @@ import Kvota from "../../assets/kvota.pdf";
 
 function Header() {
   const [active, setActive] = useState("navbar");
+
   const navToggle = () => {
     active === "navbar"
       ? setActive("navbar  navbar_active")

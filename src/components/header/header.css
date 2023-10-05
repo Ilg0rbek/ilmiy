@@ -5,7 +5,7 @@
 .dropdown-menu .dropdown-submenu {
   display: none;
   left: 100%;
-  top: -7px;
+  top: 15px;
 }
 .dropdown-menu .dropdown-submenu-left {
   right: 100%;
