@@ -9,7 +9,7 @@ const initialState = {
 
 export const getAllStudenData = createAsyncThunk("/student", async () => {
   try {
-    const res = await axiosConfig.get("/student");
+    const res = await axiosConfig.get("/students");
     return res;
   } catch (error) {
     console.log(error.message);
@@ -19,17 +19,20 @@ export const getAllStudenData = createAsyncThunk("/student", async () => {
 export const studentSlice = createSlice({
   name: "student-slice",
   initialState,
-  extraReducers: {
+  extraReducers: (builder) => {
     //get all student data
-    [getAllStudenData.pending]: (state) => {
-      state.isLoading = true;
-    },
-    [getAllStudenData.rejected]: (state) => {
-      state.isError = true;
-    },
-    [getAllStudenData.fulfilled]: (state, action) => {
-      state.data = action.payload;
-    },
+    builder
+      .addCase(getAllStudenData.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getAllStudenData.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isError = false;
+        state.data = action.payload;
+      })
+      .addCase(getAllStudenData.rejected, (state, action) => {
+        state.isError = true;
+      });
   },
 });
 

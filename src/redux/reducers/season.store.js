@@ -38,19 +38,23 @@ export const updataSeason = createAsyncThunk(
 export const seasonSlice = createSlice({
   name: "season",
   initialState,
-  extraReducers: {
+  extraReducers: (builder) => {
     //get all season data
-    [getAllSeason.pending]: (state) => {
-      state.isLoading = true;
-    },
-    [getAllSeason.rejected]: (state) => {
-      state.isError = true;
-    },
-    [getAllSeason.fulfilled]: (state, action) => {
-      state.isLoading = false;
-      state.isError = false;
-      state.data = action.payload;
-    },
+    builder
+      .addCase(getAllSeason.pending, (state) => {
+        state.isLoading = true;
+        console.log(state.isLoading);
+      })
+      .addCase(getAllSeason.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isError = false;
+        state.data = action.payload;
+        console.log(state.data);
+      })
+      .addCase(getAllSeason.rejected, (state, action) => {
+        state.isError = true;
+        console.log(state.isError);
+      });
   },
 });
 
