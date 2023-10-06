@@ -8,25 +8,25 @@ function Home() {
     {
       id: 1,
       title:
-        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. ",
+        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. ",
       src: "https://api.mentalaba.uz/assets/files/logo/9b93ba4e-948e-4bc5-b553-df4e6661865a.jpg",
     },
     {
       id: 4,
       title:
-        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. ",
+        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. ",
       src: "https://telegra.ph/file/538bbbd81518fb9dafe50.jpg",
     },
     {
       id: 2,
       title:
-        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. ",
+        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. ",
       src: "https://api.mentalaba.uz/assets/files/logo/9b93ba4e-948e-4bc5-b553-df4e6661865a.jpg",
     },
     {
       id: 3,
       title:
-        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. ",
+        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. ",
       src: "https://telegra.ph/file/538bbbd81518fb9dafe50.jpg",
     },
   ];
@@ -47,20 +47,27 @@ function Home() {
               }}
             >
               <div
+              className="ttttt"
                 style={{
                   position: "absolute",
-                  top: "180px",
+                  top: "100px",
                   left: "100px",
+                  // backdropFilter: "blur(20px)",
+                  
+                  padding: "20px",
+                  borderRadius: "10px",
                 }}
               >
-                <p 
+                <p
                   style={{
-                    fontSize:"18px",
-                    fontWeight:"500",
-                    width:"500px",
-                    color:'white'
+                    fontSize: "18px",
+                    fontWeight: "500",
+                    width: "700px",
+                    
                   }}
-                >{v.title}</p>
+                >
+                  {v.title}
+                </p>
                 <Link className="btn btn-warning">Batafsil</Link>
               </div>
             </div>

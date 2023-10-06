@@ -2,5 +2,15 @@
   width: 100%;
   padding-top: 152px;
   position: absolute;
-  z-index: -12;
+  z-index: -2;
+}
+.ttttt{
+  background-color: rgba(0, 0, 0, .5) !important;
+  color: #ffff !important;
+
+}
+.ttttt p{
+  color: rgb(240, 246, 252);
+  text-shadow: 3px 3px 4px #000;
+  font-family: sans-serif;
 }
