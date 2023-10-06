@@ -16,6 +16,22 @@ export const getAllStudenData = createAsyncThunk("/student", async () => {
   }
 });
 
+export const deleteStudent = createAsyncThunk("/delete", async (id) => {
+  try {
+    return await axiosConfig.delete(`/students/delete/${id}`);
+  } catch (error) {
+    console.log(error.message);
+  }
+});
+
+export const updateStudent = createAsyncThunk("/update", async (id, data) => {
+  try {
+    return axiosConfig.put(`/students/delete/${id}`, data);
+  } catch (error) {
+    console.log(error.message);
+  }
+});
+
 export const studentSlice = createSlice({
   name: "student-slice",
   initialState,
