@@ -1,79 +1,77 @@
 import React from "react";
-import "./home.css";
-import { Carousel } from "antd";
-import { Link } from "react-router-dom";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, EffectCoverflow } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/effect-coverflow";
 
 function Home() {
-  const data = [
-    {
-      id: 1,
-      title:
-        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. ",
-      src: "https://api.mentalaba.uz/assets/files/logo/9b93ba4e-948e-4bc5-b553-df4e6661865a.jpg",
-    },
-    {
-      id: 4,
-      title:
-        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. ",
-      src: "https://telegra.ph/file/538bbbd81518fb9dafe50.jpg",
-    },
-    {
-      id: 2,
-      title:
-        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. ",
-      src: "https://api.mentalaba.uz/assets/files/logo/9b93ba4e-948e-4bc5-b553-df4e6661865a.jpg",
-    },
-    {
-      id: 3,
-      title:
-        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. ",
-      src: "https://telegra.ph/file/538bbbd81518fb9dafe50.jpg",
-    },
-  ];
-
   return (
     <div className="home">
-      <Carousel autoplay effect="fade">
-        {data?.map((v) => (
-          <div key={v.id}>
-            <div
-              style={{
-                height: "610px",
-                backgroundImage: "url(" + v.src + ")",
-                objectFit: "cover",
-                backgroundPosition: "center",
-                backgroundRepeat: "no-repeat",
-                backgroundSize: "100%",
-              }}
-            >
-              <div
-              className="ttttt"
-                style={{
-                  position: "absolute",
-                  top: "100px",
-                  left: "100px",
-                  // backdropFilter: "blur(20px)",
-                  
-                  padding: "20px",
-                  borderRadius: "10px",
-                }}
-              >
-                <p
-                  style={{
-                    fontSize: "18px",
-                    fontWeight: "500",
-                    width: "700px",
-                    
-                  }}
-                >
-                  {v.title}
-                </p>
-                <Link className="btn btn-warning">Batafsil</Link>
-              </div>
-            </div>
-          </div>
-        ))}
-      </Carousel>
+      <Swiper
+        className="swiper-wrapper"
+        style={{
+          paddingTop: "200px",
+          width: "60%",
+        }}
+        effect={"coverflow"}
+        grabCursor={true}
+        centeredSlides={true}
+        loop={true}
+        slidesPerView={"auto"}
+        coverflowEffect={{
+          rotate: 0,
+          stretch: 0,
+          depth: 100,
+          modifier: 8,
+          slideShadows: true,
+        }}
+        pagination={true}
+        modules={[EffectCoverflow, Pagination]}
+        breakpoints={{
+          640: {
+            slidesPerView: 2,
+          },
+          768: {
+            slidesPerView: 1,
+          },
+          1024: {
+            slidesPerView: 2,
+          },
+          1560: {
+            slidesPerView: 3,
+          },
+        }}
+      >
+        <SwiperSlide>
+          <img
+            src="https://swiperjs.com/demos/images/nature-5.jpg"
+            width={"100%"}
+            height={"450px"}
+          />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img
+            src="https://swiperjs.com/demos/images/nature-6.jpg"
+            width={"100%"}
+            height={"450px"}
+          />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img
+            src="https://swiperjs.com/demos/images/nature-7.jpg"
+            width={"100%"}
+            height={"450px"}
+          />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img
+            src="https://swiperjs.com/demos/images/nature-8.jpg"
+            width={"100%"}
+            height={"450px"}
+          />
+        </SwiperSlide>
+      </Swiper>
     </div>
   );
 }
