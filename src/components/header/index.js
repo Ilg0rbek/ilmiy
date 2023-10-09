@@ -4,6 +4,7 @@ import { FaAlignJustify } from "react-icons/fa";
 import { BsXLg } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import Kvota from "../../assets/kvota.pdf";
+import Doktarant from "../../assets/doktarantura.pdf"
 
 function Header() {
   const [active, setActive] = useState("navbar");
@@ -67,7 +68,7 @@ function Header() {
               </a>
             </li>
             <li>
-              <a className="dropdown-item" href="#">
+              <a className="dropdown-item" href={Doktarant} target="_blank">
                 Doktorantura yo'nalishlari
               </a>
             </li>

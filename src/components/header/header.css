@@ -1,11 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Croissant+One&display=swap");
-.btn {
-  border-style: none !important;
+.dropdown-menu li {
+  position: relative;
 }
 .dropdown-menu .dropdown-submenu {
   display: none;
+  position: absolute;
   left: 100%;
-  top: 15px;
+  top: -7px;
 }
 .dropdown-menu .dropdown-submenu-left {
   right: 100%;
@@ -17,6 +18,7 @@
 main {
   position: fixed;
   width: 100%;
+  z-index: 1000;
 }
 header {
   display: flex;
