@@ -15,9 +15,9 @@ const GrandPage = () => {
       key: "familya",
     },
     {
-      title: "Kursi",
-      dataIndex: "kurs",
-      key: "kurs",
+      title: "Guruhi",
+      dataIndex: "guruh",
+      key: "guruh",
     },
   ];
   const data = [
@@ -25,7 +25,7 @@ const GrandPage = () => {
       key: 1,
       ism: "Abdumalikov",
       familya: "Ilg'robek",
-      kurs: "4 - kurs",
+      guruh: "4 - kurs",
       description:
         "My name is Abdumalikov Ilg'orbek, I am 23 years old, living in New York No. 1 Lake Park.",
     },

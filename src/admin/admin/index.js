@@ -11,6 +11,7 @@ import { Layout, Menu, Button, theme } from "antd";
 import { Link, NavLink, Route, Routes } from "react-router-dom";
 import Season from "../season";
 import Students from "../students";
+import News from "../news";
 const { Header, Sider, Content } = Layout;
 
 const Admin = () => {
@@ -127,6 +128,7 @@ const Admin = () => {
             <Route path="/stipendiants" element={<Season />} />
             <Route path="/profile" element={"Hello user"} />
             <Route path="/stipendiants/user-list" element={<Students />} />
+            <Route path="/news" element={<News />} />
           </Routes>
         </Content>
       </Layout>

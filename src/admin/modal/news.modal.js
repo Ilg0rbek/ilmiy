@@ -1,8 +1,15 @@
-import { Modal, Form, Row, Col, Input } from "antd";
-import React from "react";
+import { Modal, Form, Button, message, Upload, Row, Col, Input } from "antd";
+import React, { useState } from "react";
+import { UploadOutlined } from "@ant-design/icons";
 
-const StudentModal = ({ setIsModalOpen, isModalOpen }) => {
+const NewsModal = ({ isModalOpen, setIsModalOpen }) => {
+  const [dataValue, setDataValue] = useState();
+
   const [form] = Form.useForm();
+
+  const handleChange = (e) => {
+    setDataValue(e);
+  };
 
   const handleOk = () => {
     setIsModalOpen(false);
@@ -16,7 +23,7 @@ const StudentModal = ({ setIsModalOpen, isModalOpen }) => {
   return (
     <div>
       <Modal
-        title="Talaba qo'shish"
+        title="Yangilik qo'shish"
         open={isModalOpen}
         onOk={form.submit}
         okText={"Saqlash"}
@@ -37,29 +44,40 @@ const StudentModal = ({ setIsModalOpen, isModalOpen }) => {
             }}
           >
             <Col span={11}>
-              <Form.Item name="name" label="Ism">
+              <Form.Item name="grand-one" label="Yangilik haqida qisqacha">
                 <Input autoComplete={"off"} size="large" />
               </Form.Item>
             </Col>
             <Col span={11}>
-              <Form.Item name="lastname" label="Familya">
-                <Input autoComplete={"off"} size="large" />
+              <Form.Item name="grand-one" label="Rasm yuklash">
+                <div
+                  style={{
+                    border: "1px solid #d9d9d9",
+                    borderRadius: "10px",
+                  }}
+                >
+                  <Upload>
+                    <Button
+                      style={{
+                        border: "none",
+                        }}
+                      size="large"
+                      icon={<UploadOutlined />}
+                    >
+                      Rasm yuklash
+                    </Button>
+                  </Upload>
+                </div>
               </Form.Item>
             </Col>
-            <Col span={11}>
-              <Form.Item name="course" label="Guruhi  ">
-                <Input autoComplete={"off"} size="large" />
-              </Form.Item>
-            </Col>
-            <Col span={11}>
-              <Form.Item name="desc" label="Talaba haqida">
+            <Col span={23}>
+              <Form.Item name="desc" label="Yangilik haqida batafsil">
                 <Input.TextArea
                   maxLength={300}
                   style={{
                     height: 120,
                     marginBottom: 24,
                   }}
-                  placeholder="Talaba haqida"
                 />
               </Form.Item>
             </Col>
@@ -70,4 +88,4 @@ const StudentModal = ({ setIsModalOpen, isModalOpen }) => {
   );
 };
 
-export default StudentModal;
+export default NewsModal;

@@ -23,6 +23,7 @@ function App() {
           </Route>
           <Route path="settings" />
           <Route path="profile" />
+          <Route path="news" />
         </Route>
         <Route
           path="*"
