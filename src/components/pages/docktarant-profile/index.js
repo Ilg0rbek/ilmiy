@@ -1,9 +1,12 @@
-    import React from 'react'
-    
-    const StudentProlie = () => {
-      return (
-        <div>StudentProlie</div>
-      )
-    }
-    
-    export default StudentProlie
+import React from "react";
+import "./profile.css";
+
+const StudentProlie = () => {
+  return (
+    <div>
+      <div></div>
+    </div>
+  );
+};
+
+export default StudentProlie;

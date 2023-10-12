@@ -6,6 +6,7 @@ import GrandPage from "./components/pages/stipendiants/grands";
 import Login from "./constants/login";
 import Admin from "./admin/admin";
 import Doktarants from "./components/pages/doktarants";
+import StudentProlie from "./components/pages/docktarant-profile";
 
 function App() {
   const { pathname } = useLocation();
@@ -20,7 +21,7 @@ function App() {
         <Route exact path="/grands" element={<GrandPage />} />
         <Route exact path="/admin/login" element={<Login />} />
         <Route exact path="/doktarants/login" element={<Doktarants />} />
-        <Route exact path="/doktarants/profile" element={"hello"} />
+        <Route exact path="/doktarants/profile" element={<StudentProlie/>} />
         <Route path="admin" element={<Admin />}>
           <Route path="stipendiants">
             <Route path="user-list" />
