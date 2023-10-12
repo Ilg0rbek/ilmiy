@@ -44,13 +44,13 @@ const Season = () => {
             backgroundColor: "#f4f4f4f4",
             width: "100%",
           }}
-          expandIcon={() => <OrderedListOutlined />}
+           expandIcon={() => <OrderedListOutlined />}
         >
           <Collapse.Panel
             header="2022 / 2023 yilgi stipendiat talabalar"
             key="1"
           >
-            <List
+            <List 
               size="large"
               dataSource={data}
               renderItem={(item, idx) => (

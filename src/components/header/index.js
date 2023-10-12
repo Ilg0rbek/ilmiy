@@ -4,7 +4,8 @@ import { FaAlignJustify } from "react-icons/fa";
 import { BsXLg } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import Kvota from "../../assets/kvota.pdf";
-import Doktarant from "../../assets/doktarantura.pdf"
+import Doktarant from "../../assets/doktarantura.pdf";
+import Texnik from "../../assets/kengash.pdf";
 
 function Header() {
   const [active, setActive] = useState("navbar");
@@ -144,8 +145,20 @@ function Header() {
             </li>
             <li>
               <a className="dropdown-item" href="#">
-                Ilmiy texnik kengash
+                Ilmiy texnik kengash &raquo;
               </a>
+              <ul className="dropdown-menu dropdown-submenu">
+                <li>
+                  <a className="dropdown-item" href="#">
+                    Ilmiy texnik kengash azo'lari
+                  </a>
+                </li>
+                <li>
+                  <a className="dropdown-item" href={Texnik} target="_blank">
+                    Ilmiy texnik kengash azo'lari
+                  </a>
+                </li>
+              </ul>
             </li>
           </ul>
         </div>
@@ -163,12 +176,12 @@ function Header() {
           <ul className="dropdown-menu ">
             <li>
               <a className="dropdown-item" href="#">
-                Davlat grandi
+                Davlat granti
               </a>
             </li>
             <li>
               <a className="dropdown-item" href="#">
-                Univesitet grandi
+                Univesitet granti
               </a>
             </li>
           </ul>
