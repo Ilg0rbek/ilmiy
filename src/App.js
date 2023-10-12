@@ -3,20 +3,24 @@ import Header from "./components/header";
 import Home from "./components/pages/home";
 import Stipendiants from "./components/pages/stipendiants";
 import GrandPage from "./components/pages/stipendiants/grands";
-import Login from "./admin/login";
+import Login from "./constants/login";
 import Admin from "./admin/admin";
+import Doktarants from "./components/pages/doktarants";
 
 function App() {
   const { pathname } = useLocation();
-
+  console.log(pathname.slice(1, 6));
   return (
     <>
-      {pathname.slice(1, 6) !== "admin" && <Header />}
+      {(pathname.slice(1, 6) !== "admin" &&
+        pathname.slice(1, 6) !== "dokta") && <Header />}
       <Routes>
         <Route exact path="/main" element={<Home />} />
         <Route exact path="/stipendiants" element={<Stipendiants />} />
         <Route exact path="/grands" element={<GrandPage />} />
         <Route exact path="/admin/login" element={<Login />} />
+        <Route exact path="/doktarants/login" element={<Doktarants />} />
+        <Route exact path="/doktarants/profile" element={"hello"} />
         <Route path="admin" element={<Admin />}>
           <Route path="stipendiants">
             <Route path="user-list" />
