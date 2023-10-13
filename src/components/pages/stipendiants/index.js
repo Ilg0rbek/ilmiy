@@ -13,7 +13,7 @@ const Stipendiants = () => {
   ];
 
   return (
-    <div className="container">
+    <div className="containers container">
       <Collapse
         style={{
           userSelect: "none",
