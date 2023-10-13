@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import "./profile.css";
 import { Button, Form, Input, Progress, Tooltip, Upload } from "antd";
 import { UploadOutlined, MessageOutlined } from "@ant-design/icons";
 import { red, green } from "@ant-design/colors";
 
 const StudentProlie = () => {
+  const [edit, setEdit] = useState(true);
+  const [userProfileData, setUserProfileData] = useState({
+    fullName: "",
+    email: "",
+    phoneNumber: "",
+    addPhoneNumber: "",
+    adress: "",
+  });
+
   return (
     <div>
       <div className="container mt-3  ">
@@ -15,19 +24,21 @@ const StudentProlie = () => {
                 <div className="card-body">
                   <div className="d-flex flex-column align-items-center text-center">
                     <img
-                      src="https://bootdey.com/img/Content/avatar/avatar7.png"
+                      src="https://www.pngall.com/wp-content/uploads/5/User-Profile-PNG.png "
                       alt="Admin"
                       className="rounded-circle"
                       width="150"
                     />
                     <div className="mt-3">
                       <h4>Abdumalikov I</h4>
-                      <p className="text-secondary mb-1">Doktarantura talabasi</p>
+                      <p className="text-secondary mb-1">
+                        Doktarantura talabasi
+                      </p>
                       <p className="text-muted font-size-sm">
                         Oltinko'l tumani , Andijon viloyati
                       </p>
-                      {/* <button className="btn btn-primary">Follow</button>
-                      <button className="btn btn-outline-primary ms-1">Message</button> */}
+                      {/* <button className="btn btn-">Follow</button>
+                      <button className="btn btn-outline- ms-1">Message</button> */}
                     </div>
                   </div>
                 </div>
@@ -52,7 +63,11 @@ const StudentProlie = () => {
                       <h6 className="mb-0">Ism familya</h6>
                     </div>
                     <div className="col-sm-9 text-secondary">
-                      Abdumalikov Ilg'orbek
+                      {edit ? (
+                        "Abdumalikov Ilgorbek"
+                      ) : (
+                        <Input placeholder="Full name" />
+                      )}
                     </div>
                   </div>
                   <hr />
@@ -61,7 +76,11 @@ const StudentProlie = () => {
                       <h6 className="mb-0">Email</h6>
                     </div>
                     <div className="col-sm-9 text-secondary">
-                      Abdumalikov@gamil.al
+                      {edit ? (
+                        "Abdumalikov@gamil.com"
+                      ) : (
+                        <Input type="email" placeholder="Gmail" />
+                      )}
                     </div>
                   </div>
                   <hr />
@@ -69,14 +88,18 @@ const StudentProlie = () => {
                     <div className="col-sm-3">
                       <h6 className="mb-0">Tel nomer</h6>
                     </div>
-                    <div className="col-sm-9 text-secondary">(239) 816-9029</div>
+                    <div className="col-sm-9 text-secondary">
+                      {edit ? "(239) 816-9029" : <Input placeholder="+998 " />}
+                    </div>
                   </div>
                   <hr />
                   <div className="row">
                     <div className="col-sm-3">
                       <h6 className="mb-0">Qo'shimcha nomer</h6>
                     </div>
-                    <div className="col-sm-9 text-secondary">(320) 380-4539</div>
+                    <div className="col-sm-9 text-secondary">
+                      {edit ? "(320) 380-4539" : <Input placeholder="+998 " />}
+                    </div>
                   </div>
                   <hr />
                   <div className="row">
@@ -84,13 +107,24 @@ const StudentProlie = () => {
                       <h6 className="mb-0">Manzil</h6>
                     </div>
                     <div className="col-sm-9 text-secondary">
-                      Oltinkol tumani, Andijon viloyati
+                      {edit ? (
+                        " Oltinkol tumani, Andijon viloyati"
+                      ) : (
+                        <Input placeholder="Manzil " />
+                      )}
                     </div>
                   </div>
                   <hr />
                   <div className="row">
                     <div className="col-sm-12">
-                      <Button type="dashed" secondary>Tahrirlash</Button>
+                      <Button type="primary" ghost onClick={() => setEdit(!edit)}>
+                        {edit ? "Tahrirlash" : "Bekor qilish"}
+                      </Button>
+                      {!edit && (
+                        <Button type="primary" danger ghost className="ms-3" >
+                          Saqlash
+                        </Button>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -186,6 +220,7 @@ const StudentProlie = () => {
                           </Button>
                         </Upload>
                       </div>
+                      <Button type="primary" ghost>Yuklash</Button>
                     </div>
                   </div>
                 </div>
@@ -197,15 +232,15 @@ const StudentProlie = () => {
                       </h6>
                       <Form>
                         <Form.Item>
-                          <Input placeholder="Eski parolni kiriting"/>
+                          <Input placeholder="Eski parolni kiriting" />
                         </Form.Item>
                         <Form.Item>
-                          <Input placeholder="Yangi parolni kiriting"/>
+                          <Input placeholder="Yangi parolni kiriting" />
                         </Form.Item>
                         <Form.Item>
-                          <Input placeholder="Yangi parolni qayta kiriting"/>
+                          <Input placeholder="Yangi parolni qayta kiriting" />
                         </Form.Item>
-                        <Button danger type="dashed">Yangilash</Button>
+                        <Button type="primary" ghost>Yangilash</Button>
                       </Form>
                     </div>
                   </div>

@@ -21,7 +21,7 @@ export const deleteSeason = createAsyncThunk("/delete-season", async (id) => {
     return await axiosConfig.delete(`/season/delete/${id}`);
   } catch (error) {
     console.log(error.message);
-  }
+  } 
 });
 
 export const updataSeason = createAsyncThunk(
@@ -34,6 +34,7 @@ export const updataSeason = createAsyncThunk(
     }
   }
 );
+
 
 export const seasonSlice = createSlice({
   name: "season",
@@ -51,7 +52,7 @@ export const seasonSlice = createSlice({
         state.data = action.payload;
         console.log(state.data);
       })
-      .addCase(getAllSeason.rejected, (state, action) => {
+      .addCase(getAllSeason.rejected, (state) => {
         state.isError = true;
         console.log(state.isError);
       });

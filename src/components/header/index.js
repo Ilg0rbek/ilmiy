@@ -150,12 +150,12 @@ function Header() {
               <ul className="dropdown-menu dropdown-submenu">
                 <li>
                   <a className="dropdown-item" href="#">
-                    Ilmiy texnik kengash azo'lari
+                    Ilmiy texnik kengash nizomi
                   </a>
                 </li>
                 <li>
                   <a className="dropdown-item" href={Texnik} target="_blank">
-                    Ilmiy texnik kengash azo'lari
+                    Ilmiy texnik kengash tarkibi
                   </a>
                 </li>
               </ul>
