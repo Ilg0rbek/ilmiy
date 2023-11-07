@@ -18,7 +18,7 @@ export const getAllNews = createAsyncThunk("news", async () => {
 
 export const addNews = createAsyncThunk("add/news", async (data) => {
   try {
-    return await axiosConfig.post("/news", data);
+                                                 
   } catch (error) {
     console.log(error.message);
   }
