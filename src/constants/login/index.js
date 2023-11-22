@@ -1,16 +1,35 @@
 import React from "react";
 import "./login.css";
 import { Button, Form, Input } from "antd";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, Link } from "react-router-dom";
+import { login } from "../../redux/reducers/auth.store";
+import { useEffect } from "react";
 
 const Login = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { data } = useSelector((state) => state.auth.data);
+
+
   const onFinish = (values) => {
-    console.log("Success:", values);
+    dispatch(login(values));
+   
   };
+
+  useEffect(() => {
+    if(data?.role == "admin") {
+      navigate(`/admin`);
+    }
+    else if(data?.role == "student"){
+      navigate("/doktarants/profile")
+    }
+  }, [data]);
 
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
-
+  console.log("state", data);
   return (
     <div className="login-page">
       <div className="login-box">
@@ -24,21 +43,22 @@ const Login = () => {
           name="login-form"
           initialValues={{ remember: true }}
           onFinish={onFinish}
-          onFinishFailed={onFinishFailed}
-        >
+          onFinishFailed={onFinishFailed}>
           <p className="form-title">Welcome to</p>
           <p>Login to the Dashboard</p>
           <Form.Item
             name="username"
-            rules={[{ required: true, message: "Please input your username!" }]}
-          >
+            rules={[
+              { required: true, message: "Please input your username!" },
+            ]}>
             <Input placeholder="Username" />
           </Form.Item>
 
           <Form.Item
             name="password"
-            rules={[{ required: true, message: "Please input your password!" }]}
-          >
+            rules={[
+              { required: true, message: "Please input your password!" },
+            ]}>
             <Input.Password placeholder="Password" />
           </Form.Item>
 
@@ -46,8 +66,7 @@ const Login = () => {
             <Button
               type="primary"
               htmlType="submit"
-              className="login-form-button"
-            >
+              className="login-form-button">
               LOGIN
             </Button>
           </Form.Item>

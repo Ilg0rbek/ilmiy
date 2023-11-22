@@ -1,0 +1,182 @@
+.footer_main {
+    padding: 30px 0;
+    background-color: #1f3c88;
+}
+
+.footer_logo_text_main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    align-items: center;
+}
+
+.footer_logo img {
+    width: 100px;
+}
+
+.footer_logo_title {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    color: #fff;
+}
+
+.bottom-contacts-address-text {
+    height: 100%;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.bottom-contacts-address-text p {
+    margin: 0;
+}
+
+.iframe_style {
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.social_wrap {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    min-height: 100% !important;
+}
+
+.social {
+    display: flex;
+    justify-content: center;
+    height: 100px;
+    align-items: center;
+}
+
+.social a {
+    height: auto;
+    text-decoration: none;
+    display: flex;
+    padding: 5px;
+    height: auto;
+}
+
+.social_icon {
+    background-color: #3e6d99;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    padding: 5px;
+    font-size: 25px;
+    color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon_color {
+    color: #ffff;
+}
+
+.social_text {
+    color: #fff;
+    border: 1px solid rgb(5, 5, 5);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+}
+
+.text_universitet {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: end !important;
+    height: calc(100% - 100px);
+    width: 100%;
+}
+
+.text_universitet p {
+    color: #fff;
+}
+
+.col_style2 {
+    border-left: 2px solid #fff;
+}
+
+.col_style3 {
+    border-left: 2px solid #fff;
+    border-right: 2px solid #fff;
+}
+
+@media (max-width: 1075px) {
+    .bottom-contacts-address-text p {
+        font-size: 15px;
+    }
+
+    .col_style1 {
+        padding: 5px !important;
+    }
+
+    .col_style2 {
+        padding: 5px !important;
+    }
+
+    .col_style3 {
+        padding: 5px !important;
+    }
+
+    .col_style4 {
+        padding: 5px !important;
+    }
+}
+
+@media (max-width: 991px) {
+    .col_style3 {
+        border-left: 2px solid #fff;
+        border-right: none;
+    }
+
+    .text_universitet {
+        padding-top: 5px;
+        border-top: 1px solid;
+    }
+}
+
+@media (max-width: 767px) {
+    .col_style1 {
+        border-left: none;
+        border-right: none;
+        padding: 15px !important;
+    }
+
+    .col_style2 {
+        border-left: none;
+        border-right: none;
+        padding: 15px !important;
+    }
+
+    .col_style3 {
+        border-left: none;
+        padding: 5px 15px !important;
+    }
+
+    .col_style4 {
+        border-left: none;
+        border-right: none;
+        padding: 15px !important;
+    }
+
+    .text_universitet {
+        padding-top: 5px;
+        border-top: 1px solid;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer_logo img {
+        width: 80px;
+    }
+}

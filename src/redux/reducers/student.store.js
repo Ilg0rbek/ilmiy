@@ -48,7 +48,7 @@ export const studentSlice = createSlice({
       })
       .addCase(getAllStudenData.rejected, (state, action) => {
         state.isError = true;
-      });
+      })
   },
 });
 

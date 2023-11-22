@@ -74,7 +74,7 @@ function Header() {
               </a>
             </li>
             <li>
-              <Link className="dropdown-item" to={"/doktarants/login"}>
+              <Link className="dropdown-item" to={"/login"}>
                 Doktorantlar
               </Link>
             </li>

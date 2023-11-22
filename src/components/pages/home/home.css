@@ -2,8 +2,8 @@
 .home {
   width: 100%;
   padding-top: 152px;
-  position: absolute;
-  z-index: -2;
+  /* position: absolute;
+  z-index: -2; */
 }
 .swiperSlide {
   color: "#fff";

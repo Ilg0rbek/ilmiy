@@ -15,6 +15,15 @@ const NewsModal = ({ isModalOpen, setIsModalOpen }) => {
     setIsModalOpen(false);
   };
 
+  // file validate
+  const beforeUpload = (file) => {
+    console.log(file);
+    const isPNG = file.type === "image/png";
+    if (!isPNG) {
+      message.error(`${file.name} is not a png file`);
+    }
+  };
+
   const handleSubmit = (values) => {
     console.log(values);
     form.resetFields();
@@ -30,19 +39,16 @@ const NewsModal = ({ isModalOpen, setIsModalOpen }) => {
         cancelText={"Bekor qilish"}
         closable={false}
         onCancel={handleOk}
-        width={800}
-      >
+        width={800}>
         <Form
           layout="vertical"
           form={form}
           onFinish={handleSubmit}
-          initialValues={{ remember: true }}
-        >
+          initialValues={{ remember: true }}>
           <Row
             style={{
               justifyContent: "space-around",
-            }}
-          >
+            }}>
             <Col span={11}>
               <Form.Item name="grand-one" label="Yangilik haqida qisqacha">
                 <Input autoComplete={"off"} size="large" />
@@ -54,16 +60,14 @@ const NewsModal = ({ isModalOpen, setIsModalOpen }) => {
                   style={{
                     border: "1px solid #d9d9d9",
                     borderRadius: "10px",
-                  }}
-                >
-                  <Upload>
-                    <Button
+                  }}>
+                  <Upload >
+                    <Button {...beforeUpload}
                       style={{
                         border: "none",
-                        }}
+                      }}
                       size="large"
-                      icon={<UploadOutlined />}
-                    >
+                      icon={<UploadOutlined />}>
                       Rasm yuklash
                     </Button>
                   </Upload>

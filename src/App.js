@@ -5,22 +5,23 @@ import Stipendiants from "./components/pages/stipendiants";
 import GrandPage from "./components/pages/stipendiants/grands";
 import Login from "./constants/login";
 import Admin from "./admin/admin";
-import Doktarants from "./components/pages/doktarants";
 import StudentProlie from "./components/pages/docktarant-profile";
+import Footer  from "./components/pages/footer/footer";
+import "./app.css"
 
 function App() {
   const { pathname } = useLocation();
   console.log(pathname.slice(1, 6));
   return (
-    <>
+    <div className="warpper">
       {(pathname.slice(1, 6) !== "admin" &&
-        pathname.slice(1, 6) !== "dokta") && <Header />}
-      <Routes>
+        pathname.slice(1, 6) !== "dokta" &&  pathname.slice(1, 7) !== "login") && <Header />}
+    <div className="main_contentt">
+    <Routes>
         <Route exact path="/main" element={<Home />} />
         <Route exact path="/stipendiants" element={<Stipendiants />} />
         <Route exact path="/grands" element={<GrandPage />} />
-        <Route exact path="/admin/login" element={<Login />} />
-        <Route exact path="/doktarants/login" element={<Doktarants />} />
+        <Route exact path="/login" element={<Login />} />
         <Route exact path="/doktarants/profile" element={<StudentProlie/>} />
         <Route path="admin" element={<Admin />}>
           <Route path="stipendiants">
@@ -40,7 +41,11 @@ function App() {
         />
         <Route path="/" element={<Navigate to={"/main"} />} />
       </Routes>
-    </>
+    </div>
+      {(pathname.slice(1, 6) !== "admin" &&
+        pathname.slice(1, 6) !== "dokta" &&  pathname.slice(1, 7) !== "login") &&   <Footer/>}
+
+    </div>
   );
 }
 

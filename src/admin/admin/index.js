@@ -35,16 +35,23 @@ const Admin = () => {
     },
     {
       key: "3",
+      icon:<UsergroupAddOutlined />,
+      label: "Doktorantlar",
+      path: "/admin/profile",
+    },
+    {
+      key: "4",
       icon: <SettingOutlined />,
       label: "Sozlanmalar",
       path: "/admin/settings",
     },
     {
-      key: "4",
+      key: "5",
       icon: <UserOutlined />,
       label: "Profile",
       path: "/admin/profile",
     },
+   
   ];
 
   return (
@@ -58,13 +65,16 @@ const Admin = () => {
             fontWeight: "bold",
             fontFamily: "Croissant One",
             fontSize: "24px",
+
           }}
         >
           <NavLink
             style={{
               textDecoration: "none",
-              color: "white  ",
-            }}
+              color: "white",
+              width:"100%",
+              }} 
+             
             to={"/admin"}
           >
             {!collapsed ? " Ilmiy admin panel" : "ADU"}

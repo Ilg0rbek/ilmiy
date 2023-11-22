@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./profile.css";
 import { Button, Form, Input, Progress, Tooltip, Upload } from "antd";
 import { UploadOutlined, MessageOutlined } from "@ant-design/icons";
 import { red, green } from "@ant-design/colors";
+import { useDispatch, useSelector } from "react-redux";
+import { updateStudent } from "../../../redux/reducers/student.store";
 
 const StudentProlie = () => {
   const [edit, setEdit] = useState(true);
@@ -13,6 +15,15 @@ const StudentProlie = () => {
     addPhoneNumber: "",
     adress: "",
   });
+
+  const dispatch = useDispatch()
+  const state = useSelector(state => state.student)
+
+  const hendleUpdate = () =>{
+        dispatch(updateStudent(userProfileData))
+  }
+
+  useEffect(()=>{},[state.loading])
 
   return (
     <div>
