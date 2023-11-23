@@ -128,7 +128,7 @@ const Admin = () => {
           style={{
             margin: "84px 16px",
             padding: 24,
-            height: "85vh",
+            minHeight: "85vh",
             background: colorBgContainer,
             width: `${!collapsed ? "78%" : "92%"}`,
           }}
