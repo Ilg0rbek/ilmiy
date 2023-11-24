@@ -1,36 +1,60 @@
 import React, { useState } from "react";
-import { PlusOutlined } from "@ant-design/icons";
+import { PlusOutlined, StarFilled } from "@ant-design/icons";
 import NewsModal from "../modal/news.modal";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { deleteData, getAllNews } from "../../redux/reducers/news.store";
+import {
+  deleteData,
+  editData,
+  getAllNews,
+  showData,
+} from "../../redux/reducers/news.store";
 // import Item from "antd/es/list/Item";
 import { FaRegTrashCan } from "react-icons/fa6";
 import { message } from "antd";
+import DeleteModal from "../modal/deleteModal";
+import Swal from "sweetalert2/dist/sweetalert2.js";
+import "sweetalert2/src/sweetalert2.scss";
+import { MdOutlineEdit } from "react-icons/md";
 
 const News = () => {
   const dispatch = useDispatch();
-  const [testData, setTestData] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen1, setIsModalOpen1] = useState(false);
   const stateNews = useSelector((state) => state.news.getData);
+ 
+  const [deleteId, setDeleteId] = useState();
+  const [showId, setShowId] = useState();
+
+
+ 
+  useEffect(() => {
+    dispatch(getAllNews());
+  }, []);
 
   useEffect(() => {
     dispatch(getAllNews());
-  }, [isModalOpen]);
+  }, [isModalOpen, isModalOpen1]);
 
-  console.log(stateNews);
   const showModal = () => {
     setIsModalOpen(true);
   };
-
-  const handleDeleteData = (id) => {
-    dispatch(deleteData(id));
-    message.success(`${id}`);
-    dispatch(getAllNews());
+  const showModal1 = () => {
+    setIsModalOpen1(true);
   };
+
+
+
+
+  const edittData = (id) => {
+    setShowId(id)
+    dispatch(showData(id))
+    setIsModalOpen(true);
+  };
+
   return (
     <div>
-      <NewsModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
+      <NewsModal showId={showId} isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
       <div className="addNewYear" onClick={showModal}>
         Ilmiy bo'limdagi yangiliklarni qo'shish <PlusOutlined />
       </div>
@@ -39,8 +63,8 @@ const News = () => {
         <table class="table align-middle">
           <thead>
             <tr>
-              <th>№</th>
-              <th>Img</th>
+              <th style={{ maxWidth: "2px" }}>№</th>
+              <th style={{ maxWidth: "2px" }}>Img</th>
               <th>Sarlavha</th>
               <th>Izoh</th>
               <th>Action</th>
@@ -49,7 +73,7 @@ const News = () => {
           <tbody>
             {stateNews?.map((item, index) => {
               return (
-                <tr>
+                <tr key={index}>
                   <td>{index + 1}</td>
                   <td>
                     <img
@@ -61,14 +85,33 @@ const News = () => {
                   </td>
                   <td>{item.title}</td>
                   <td>{item.desc}</td>
-                  <td onClick={() => handleDeleteData(item._id)}>
-                    <FaRegTrashCan />
+                  <td className="p-2">
+                  <span className="p-2"
+                      onClick={() => {
+                        edittData(item._id);
+                      }}>
+                       <MdOutlineEdit />
+                    </span>
+                    <span className="p-2"
+                      onClick={() => {
+                        setDeleteId(item._id);
+                        showModal1();
+                      }}>
+                        <FaRegTrashCan />
+                     
+                    </span>
+                   
                   </td>
                 </tr>
               );
             })}
           </tbody>
         </table>
+        <DeleteModal
+          setIsModalOpen1={setIsModalOpen1}
+          isModalOpen1={isModalOpen1}
+          deleteId={deleteId}
+        />
       </div>
     </div>
   );

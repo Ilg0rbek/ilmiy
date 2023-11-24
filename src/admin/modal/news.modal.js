@@ -2,28 +2,43 @@ import { Modal, Form, Button, message, Upload, Row, Col, Input } from "antd";
 import React, { useState } from "react";
 import { UploadOutlined } from "@ant-design/icons";
 import { useDispatch, useSelector } from "react-redux";
-import useSelection from "antd/es/table/hooks/useSelection";
-import { addNews } from "../../redux/reducers/news.store";
+import { addNews, showData } from "../../redux/reducers/news.store";
+import { useEffect } from "react";
 
-const NewsModal = ({ isModalOpen, setIsModalOpen }) => {
+const NewsModal = ({ isModalOpen, setIsModalOpen,showId }) => {
   const [file, setFile] = useState();
+  const [title, setTitle] = useState()
+  const [desc, setDesc] = useState()
+  const statePut = useSelector((state) => state.news.showStateData.data);
   const dispatch = useDispatch();
 
   const getPoostMessege = useSelector((state) => state.news.postData);
+  useEffect(()=>{
+    if (showData !== undefined) {
+      dispatch(showData())
+    }
+  },[])
 
-  console.log(getPoostMessege);
+  useEffect(()=>{
+    dispatch(showData())
+    // setTitle(statePut.title)
+    // setDesc(statePut.desc)
+  },[])
+
+  // console.log(statePut.title);
+  // console.log(statePut.desc);
+ 
 
   const [form] = Form.useForm();
 
   const handleOk = () => {
     setIsModalOpen(false);
   };
-  // console.log(file);
 
   const formData = new FormData();
 
-  // "data", { ...values, img: file }
   const handleSubmit = (values) => {
+
     formData.append("img", file);
     formData.append("title", values.title);
     formData.append("desc", values.desc);
@@ -32,7 +47,7 @@ const NewsModal = ({ isModalOpen, setIsModalOpen }) => {
     setIsModalOpen(false)
     form.resetFields();
   };
-
+console.log("title", title);
   return (
     <div>
       <Modal
@@ -56,7 +71,8 @@ const NewsModal = ({ isModalOpen, setIsModalOpen }) => {
             <Col span={11}>
               <Form.Item
                 name="title"
-                label="Yangilik haqida qisqacha"
+                label={title}
+                value={title}
                 rules={[
                   {
                     required: true,
@@ -69,7 +85,7 @@ const NewsModal = ({ isModalOpen, setIsModalOpen }) => {
                         : Promise.reject(new Error("No spaces allowed")),
                   },
                 ]}>
-                <Input autoComplete={"off"} size="large" />
+                <Input value={title} autoComplete={"off"} size="large" />
               </Form.Item>
             </Col>
             <Col span={11}>

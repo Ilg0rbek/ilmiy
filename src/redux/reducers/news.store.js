@@ -4,7 +4,9 @@ import axiosConfig from "../baseUrl";
 const initialState = {
   getData: [],
   postData: [],
-  dataDelete:[],
+  dataDelete: [],
+  showStateData: [],
+  putData: [],
   isLoading: false,
   isError: false,
 };
@@ -39,6 +41,37 @@ export const deleteData = createAsyncThunk(
     try {
       const res = await axiosConfig.delete(`/news/delete/${id}`);
       return res;
+    } catch (error) {
+      if (!error.response) {
+        throw error;
+      }
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
+// EDIT DATA
+export const editData = createAsyncThunk(
+  "add/edit",
+  async (id, { rejectWithValue }) => {
+    try {
+      const res = await axiosConfig.put(`/news/update/${id}`);
+      return res;
+    } catch (error) {
+      if (!error.response) {
+        throw error;
+      }
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
+export const showData = createAsyncThunk(
+  "add/show",
+  async (id, { rejectWithValue }) => {
+    try {
+        const res = await  axiosConfig.get(`/news/${id}`);
+        return res;
     } catch (error) {
       if (!error.response) {
         throw error;
@@ -89,6 +122,31 @@ const newsSlice = createSlice({
         state.dataDelete = action.payload;
       })
       .addCase(deleteData.rejected, (state) => {
+        state.isError = true;
+      })
+
+      //Method @PUT
+      // put data
+      .addCase(editData.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(editData.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.putData = action.payload;
+      })
+      .addCase(editData.rejected, (state) => {
+        state.isError = true;
+      })
+      //Method @GET show
+      // show data
+      .addCase(showData.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(showData.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.showStateData = action.payload;
+      })
+      .addCase(showData.rejected, (state) => {
         state.isError = true;
       });
   },
