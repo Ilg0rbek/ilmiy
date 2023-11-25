@@ -11,7 +11,7 @@ import "./app.css"
 
 function App() {
   const { pathname } = useLocation();
-  console.log(pathname.slice(1, 6));
+  // console.log(pathname.slice(1, 6));
   return (
     <div className="warpper">
       {(pathname.slice(1, 6) !== "admin" &&

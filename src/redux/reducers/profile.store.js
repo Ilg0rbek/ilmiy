@@ -16,7 +16,7 @@ export const getAllStudenData = createAsyncThunk("/student", async () => {
   }
 });
 
-export const deleteStudent = createAsyncThunk("/delete", async (id) => {
+export const deleteProfile = createAsyncThunk("/delete", async (id) => {
   try {
     return await axiosConfig.delete(`/students/delete/${id}`);
   } catch (error) {
@@ -24,7 +24,8 @@ export const deleteStudent = createAsyncThunk("/delete", async (id) => {
   }
 });
 
-export const updateStudent = createAsyncThunk("/update", async (id, data) => {
+export const updateProfile = createAsyncThunk("/update", async (id, data) => {
+  console.log(id);
   try {
     return axiosConfig.put(`/students/delete/${id}`, data);
   } catch (error) {
@@ -32,8 +33,19 @@ export const updateStudent = createAsyncThunk("/update", async (id, data) => {
   }
 });
 
-export const studentSlice = createSlice({
-  name: "student-slice",
+export const postProfile = createAsyncThunk("/post", async (data) => {
+  console.log(data);
+  try {
+    const res = await axiosConfig.post(`/profile`, data);
+    console.log(res);
+    return res
+  } catch (error) {
+    console.log(error.message);
+  }
+});
+
+export const profileSlice = createSlice({
+  name: "profile-slice",
   initialState,
   extraReducers: (builder) => {
     //get all student data
@@ -52,4 +64,4 @@ export const studentSlice = createSlice({
   },
 });
 
-export default studentSlice.reducer;
+export default profileSlice.reducer;

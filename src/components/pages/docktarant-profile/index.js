@@ -4,26 +4,37 @@ import { Button, Form, Input, Progress, Tooltip, Upload } from "antd";
 import { UploadOutlined, MessageOutlined } from "@ant-design/icons";
 import { red, green } from "@ant-design/colors";
 import { useDispatch, useSelector } from "react-redux";
-import { updateStudent } from "../../../redux/reducers/student.store";
+import { postProfile, updateProfile } from "../../../redux/reducers/profile.store";
 
 const StudentProlie = () => {
   const [edit, setEdit] = useState(true);
   const [userProfileData, setUserProfileData] = useState({
     fullName: "",
     email: "",
-    phoneNumber: "",
-    addPhoneNumber: "",
+    firstNumber: "",
+    seccondNumber: "",
     adress: "",
   });
 
   const dispatch = useDispatch()
-  const state = useSelector(state => state.student)
+  const state = useSelector(state => state.profile)
 
+
+  const handleChange = (e) => {
+    setUserProfileData(() => {
+      return {
+        ...userProfileData,
+        [e.target.name]: e.target.value,
+      };
+    });
+  };
   const hendleUpdate = () =>{
-        dispatch(updateStudent(userProfileData))
+        dispatch(postProfile(userProfileData))
   }
 
   useEffect(()=>{},[state.loading])
+
+  // console.log(userProfileData);
 
   return (
     <div>
@@ -75,9 +86,9 @@ const StudentProlie = () => {
                     </div>
                     <div className="col-sm-9 text-secondary">
                       {edit ? (
-                        "Abdumalikov Ilgorbek"
+                        <Input disabled value={"Abduraxmonov Samandar"} placeholder="Full name" />
                       ) : (
-                        <Input placeholder="Full name" />
+                        <Input name="fullName" onChange={handleChange} placeholder="Full name" />
                       )}
                     </div>
                   </div>
@@ -88,9 +99,9 @@ const StudentProlie = () => {
                     </div>
                     <div className="col-sm-9 text-secondary">
                       {edit ? (
-                        "Abdumalikov@gamil.com"
+                        <Input disabled value={"samandarab200212@gmail.com"} type="email" placeholder="Gmail" />
                       ) : (
-                        <Input type="email" placeholder="Gmail" />
+                        <Input name="email" onChange={handleChange} type="email" placeholder="Gmail" />
                       )}
                     </div>
                   </div>
@@ -100,7 +111,7 @@ const StudentProlie = () => {
                       <h6 className="mb-0">Tel nomer</h6>
                     </div>
                     <div className="col-sm-9 text-secondary">
-                      {edit ? "(239) 816-9029" : <Input placeholder="+998 " />}
+                      {edit ? <Input disabled value={"+998933263623"} placeholder="+998 " /> : <Input name="firstNumber" onChange={handleChange} placeholder="+998 " />}
                     </div>
                   </div>
                   <hr />
@@ -109,7 +120,7 @@ const StudentProlie = () => {
                       <h6 className="mb-0">Qo'shimcha nomer</h6>
                     </div>
                     <div className="col-sm-9 text-secondary">
-                      {edit ? "(320) 380-4539" : <Input placeholder="+998 " />}
+                      {edit ? <Input  disabled value={"+998933263623"} placeholder="+998 " /> : <Input name="seccondNumber" onChange={handleChange} placeholder="+998 " />}
                     </div>
                   </div>
                   <hr />
@@ -119,9 +130,9 @@ const StudentProlie = () => {
                     </div>
                     <div className="col-sm-9 text-secondary">
                       {edit ? (
-                        " Oltinkol tumani, Andijon viloyati"
+                        <Input  disabled value={"Andijon viloyati"} placeholder="Manzil " />
                       ) : (
-                        <Input placeholder="Manzil " />
+                        <Input name="adress" onChange={handleChange} placeholder="Manzil " />
                       )}
                     </div>
                   </div>
@@ -129,10 +140,10 @@ const StudentProlie = () => {
                   <div className="row">
                     <div className="col-sm-12">
                       <Button type="primary" ghost onClick={() => setEdit(!edit)}>
-                        {edit ? "Tahrirlash" : "Bekor qilish"}
+                        {edit ? "Qo'shish" : "Bekor qilish"}
                       </Button>
                       {!edit && (
-                        <Button type="primary" danger ghost className="ms-3" >
+                        <Button onClick={hendleUpdate} type="primary" danger ghost className="ms-3" >
                           Saqlash
                         </Button>
                       )}
