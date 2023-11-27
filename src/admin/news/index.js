@@ -22,12 +22,11 @@ const News = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalOpen1, setIsModalOpen1] = useState(false);
   const stateNews = useSelector((state) => state.news.getData);
- 
+  const statePut = useSelector((state) => state?.news?.showStateData?.data);
+
   const [deleteId, setDeleteId] = useState();
   const [showId, setShowId] = useState();
 
-
- 
   useEffect(() => {
     dispatch(getAllNews());
   }, []);
@@ -43,18 +42,20 @@ const News = () => {
     setIsModalOpen1(true);
   };
 
-
-
-
   const edittData = (id) => {
-    setShowId(id)
-    dispatch(showData(id))
+    setShowId(id);
+    dispatch(showData(id));
     setIsModalOpen(true);
   };
 
   return (
     <div>
-      <NewsModal showId={showId} isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
+      <NewsModal
+        showId={showId}
+        isModalOpen={isModalOpen}
+        setIsModalOpen={setIsModalOpen}
+        statePut={statePut}
+      />
       <div className="addNewYear" onClick={showModal}>
         Ilmiy bo'limdagi yangiliklarni qo'shish <PlusOutlined />
       </div>
@@ -86,21 +87,21 @@ const News = () => {
                   <td>{item.title}</td>
                   <td>{item.desc}</td>
                   <td className="p-2">
-                  <span className="p-2"
+                    <span
+                      className="p-2"
                       onClick={() => {
                         edittData(item._id);
                       }}>
-                       <MdOutlineEdit />
+                      <MdOutlineEdit />
                     </span>
-                    <span className="p-2"
+                    <span
+                      className="p-2"
                       onClick={() => {
                         setDeleteId(item._id);
                         showModal1();
                       }}>
-                        <FaRegTrashCan />
-                     
+                      <FaRegTrashCan />
                     </span>
-                   
                   </td>
                 </tr>
               );

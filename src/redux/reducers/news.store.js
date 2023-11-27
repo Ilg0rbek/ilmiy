@@ -53,9 +53,9 @@ export const deleteData = createAsyncThunk(
 // EDIT DATA
 export const editData = createAsyncThunk(
   "add/edit",
-  async (id, { rejectWithValue }) => {
+  async (id, values, { rejectWithValue }) => {
     try {
-      const res = await axiosConfig.put(`/news/update/${id}`);
+      const res = await axiosConfig.put(`/news/update/${id}`,values);
       return res;
     } catch (error) {
       if (!error.response) {
@@ -133,6 +133,7 @@ const newsSlice = createSlice({
       .addCase(editData.fulfilled, (state, action) => {
         state.isLoading = false;
         state.putData = action.payload;
+        console.log(action.payload);
       })
       .addCase(editData.rejected, (state) => {
         state.isError = true;
