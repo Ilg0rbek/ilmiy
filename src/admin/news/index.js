@@ -3,18 +3,9 @@ import { PlusOutlined, StarFilled } from "@ant-design/icons";
 import NewsModal from "../modal/news.modal";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import {
-  deleteData,
-  editData,
-  getAllNews,
-  showData,
-} from "../../redux/reducers/news.store";
-// import Item from "antd/es/list/Item";
+import { getAllNews, showData } from "../../redux/reducers/news.store";
 import { FaRegTrashCan } from "react-icons/fa6";
-import { message } from "antd";
 import DeleteModal from "../modal/deleteModal";
-import Swal from "sweetalert2/dist/sweetalert2.js";
-import "sweetalert2/src/sweetalert2.scss";
 import { MdOutlineEdit } from "react-icons/md";
 
 const News = () => {
@@ -91,7 +82,8 @@ const News = () => {
                       className="p-2"
                       onClick={() => {
                         edittData(item._id);
-                      }}>
+                      }}
+                    >
                       <MdOutlineEdit />
                     </span>
                     <span
@@ -99,7 +91,8 @@ const News = () => {
                       onClick={() => {
                         setDeleteId(item._id);
                         showModal1();
-                      }}>
+                      }}
+                    >
                       <FaRegTrashCan />
                     </span>
                   </td>
