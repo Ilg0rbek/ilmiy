@@ -8,6 +8,7 @@ import StudentProlie from "./components/pages/docktarant-profile";
 import "./app.css";
 import Layout from "./layouts/Layout";
 import React from "react";
+import PrivateRoute from "./layouts/PrivateRoute";
 
 function App() {
   return (
@@ -44,24 +45,28 @@ function App() {
         element={
           <Layout hideFooter={false} hideHeader={false}>
             <Login />
-          </Layout> 
-        }
-      ></Route>
-      <Route exact path="/doktarants/profile" element={<StudentProlie />} />
-      <Route
-        path="admin"
-        element={
-          <Layout hideFooter={false} hideHeader={false}>
-            <Admin />
           </Layout>
         }
-      >
-        <Route path="stipendiants">
-          <Route path="user-list" />
+      ></Route>
+      <Route element={<PrivateRoute />}>
+        <Route exact path="/doktarants/profile" element={<StudentProlie />} />
+      </Route>
+      <Route element={<PrivateRoute />}>
+        <Route
+          path="admin"
+          element={
+            <Layout hideFooter={false} hideHeader={false}>
+              <Admin />
+            </Layout>
+          }
+        >
+          <Route path="stipendiants">
+            <Route path="user-list" />
+          </Route>
+          <Route path="settings" />
+          <Route path="profile" />
+          <Route path="news" />
         </Route>
-        <Route path="settings" />
-        <Route path="profile" />
-        <Route path="news" />
       </Route>
       <Route
         path="*"
