@@ -3,14 +3,16 @@ import axiosConfig from "../baseUrl";
 
 const initialState = {
   data: [],
+  getStudentdata:[],
   isLoading: false,
   isError: false,
 };
 
 export const getAllStudenData = createAsyncThunk("/student", async () => {
   try {
-    const res = await axiosConfig.get("/students");
-    return res;
+    const res = await axiosConfig.get("/profile");
+    console.log(res.data);
+    return res.data;
   } catch (error) {
     console.log(error.message);
   }
@@ -56,7 +58,7 @@ export const profileSlice = createSlice({
       .addCase(getAllStudenData.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isError = false;
-        state.data = action.payload;
+        state.getStudentdata = action.payload;
       })
       .addCase(getAllStudenData.rejected, (state, action) => {
         state.isError = true;

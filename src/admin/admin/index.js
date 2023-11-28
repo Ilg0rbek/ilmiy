@@ -12,6 +12,7 @@ import { Link, NavLink, Route, Routes } from "react-router-dom";
 import Season from "../season";
 import Students from "../students";
 import News from "../news";
+import Doctorant from "../doctoront/doctorant";
 const { Header, Sider, Content } = Layout;
 
 const Admin = () => {
@@ -37,7 +38,7 @@ const Admin = () => {
       key: "3",
       icon:<UsergroupAddOutlined />,
       label: "Doktorantlar",
-      path: "/admin/profile",
+      path: "/admin/doctorantlist",
     },
     {
       key: "4",
@@ -51,6 +52,12 @@ const Admin = () => {
       label: "Profile",
       path: "/admin/profile",
     },
+    // {
+    //   key: "6",
+    //   icon: <UserOutlined />,
+    //   label: "Doktorantlar",
+    //   path: "/admin/profile",
+    // },
    
   ];
 
@@ -136,7 +143,7 @@ const Admin = () => {
           <Routes>
             <Route path="/settings" element={"Hello settings"} />
             <Route path="/stipendiants" element={<Season />} />
-            <Route path="/profile" element={"Hello user"} />
+            <Route path="/doctorantlist" element={<Doctorant/>} />
             <Route path="/stipendiants/user-list" element={<Students />} />
             <Route path="/news" element={<News />} />
           </Routes>

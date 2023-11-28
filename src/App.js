@@ -53,7 +53,7 @@ function App() {
       </Route>
       <Route element={<PrivateRoute />}>
         <Route
-          path="admin"
+          path="admin/*"
           element={
             <Layout hideFooter={false} hideHeader={false}>
               <Admin />
@@ -66,6 +66,7 @@ function App() {
           <Route path="settings" />
           <Route path="profile" />
           <Route path="news" />
+          <Route path="doctorantlist" />
         </Route>
       </Route>
       <Route
@@ -76,7 +77,7 @@ function App() {
           </h1>
         }
       />
-      <Route path="/" element={<Navigate to={"/main"} />} />
+      <Route path="/*" element={<Navigate to={"/main"} />} />
     </Routes>
   );
 }

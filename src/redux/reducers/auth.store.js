@@ -10,11 +10,18 @@ const initialState = {
 export const login = createAsyncThunk('login', async (values)=>{
   try {
     const res = await axiosConfig.post("/auth/login", values)
+    // console.log(res.data.data.role);
+    sessionStorage.setItem("user", res.data.data.role)
     return res.data
+
   } catch (error) {
     console.log(error.message); 
   }
 })
+
+let name = "Bilmasam"
+
+
 
 
 const authSlice = createSlice({

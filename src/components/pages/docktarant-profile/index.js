@@ -19,7 +19,6 @@ const StudentProlie = () => {
   const dispatch = useDispatch()
   const state = useSelector(state => state.profile)
 
-
   const handleChange = (e) => {
     setUserProfileData(() => {
       return {
@@ -49,10 +48,6 @@ const StudentProlie = () => {
     formData.append("article", article)
     formData.append("thesis", thesis)
     formData.append("userId", "")
-    // console.log("allFile",formData.get("plan"));
-    // console.log("allFile",formData.get("program"));
-    // console.log("allFile",formData.get("article"));
-    // console.log("allFile",formData.get("thesis"));
   }
 
 
