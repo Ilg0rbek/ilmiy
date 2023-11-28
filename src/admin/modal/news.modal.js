@@ -40,6 +40,7 @@ const NewsModal = ({ isModalOpen, setIsModalOpen,showId }) => {
   const handleSubmit = (values) => {
 
     formData.append("img", file);
+    console.log(formData.get("img"));
     formData.append("title", values.title);
     formData.append("desc", values.desc);
     dispatch(addNews(formData));

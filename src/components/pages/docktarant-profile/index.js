@@ -36,6 +36,26 @@ const StudentProlie = () => {
 
   // console.log(userProfileData);
 
+  const formData = new FormData()
+
+  const [plan, setPlan] = useState("")
+  const [program, setProgram] = useState("")
+  const [article, setArticle] = useState("")
+  const [thesis, setThesis] = useState("")
+
+  const addAllFile = () =>{
+    formData.append("plan", plan)
+    formData.append("program", program)
+    formData.append("article", article)
+    formData.append("thesis", thesis)
+    formData.append("userId", "")
+    // console.log("allFile",formData.get("plan"));
+    // console.log("allFile",formData.get("program"));
+    // console.log("allFile",formData.get("article"));
+    // console.log("allFile",formData.get("thesis"));
+  }
+
+
   return (
     <div>
       <div className="container mt-3  ">
@@ -173,12 +193,20 @@ const StudentProlie = () => {
                           borderRadius: "10px",
                         }}
                       >
-                        <Upload>
+                        <Upload
+                        beforeUpload={(file) => {
+                          setPlan(file)
+                          return false;
+                        }}
+                        accept=".docx, doc, zip, pdf"
+                        maxCount={1}
+                        >
                           <Button
                             size="meduim"
                             style={{
                               border: "none",
                             }}
+                            
                             icon={<UploadOutlined />}
                           >
                             Shaxsiy rejani yuklash
@@ -192,7 +220,14 @@ const StudentProlie = () => {
                           borderRadius: "10px",
                         }}
                       >
-                        <Upload>
+                        <Upload
+                         beforeUpload={(file) => {
+                          setProgram(file)
+                          return false;
+                        }}
+                        accept=".docx, doc, zip, pdf"
+                        maxCount={1}
+                        >
                           <Button
                             size="meduim"
                             style={{
@@ -211,7 +246,13 @@ const StudentProlie = () => {
                           borderRadius: "10px",
                         }}
                       >
-                        <Upload>
+                        <Upload
+                        beforeUpload={(file) => {
+                          setArticle(file)
+                          return false;
+                        }}
+                        accept=".docx, doc, zip, pdf"
+                        >
                           <Button
                             size="meduim"
                             style={{
@@ -230,7 +271,13 @@ const StudentProlie = () => {
                           borderRadius: "10px",
                         }}
                       >
-                        <Upload>
+                        <Upload
+                        beforeUpload={(file) => {
+                          setThesis(file)
+                          return false;
+                        }}
+                        accept=".docx, doc, zip, pdf"
+                        >
                           <Button
                             size="meduim"
                             style={{
@@ -242,7 +289,7 @@ const StudentProlie = () => {
                           </Button>
                         </Upload>
                       </div>
-                      <Button type="primary" ghost>Yuklash</Button>
+                      <Button onClick={addAllFile} type="primary" ghost>Yuklash</Button>
                     </div>
                   </div>
                 </div>
