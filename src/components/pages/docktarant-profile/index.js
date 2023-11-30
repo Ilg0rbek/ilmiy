@@ -27,13 +27,17 @@ const StudentProlie = () => {
       };
     });
   };
+  const allData = {
+    id:sessionStorage.getItem("userId"),
+    userProfileData
+  }
   const hendleUpdate = () =>{
-        dispatch(postProfile(userProfileData))
+        dispatch(updateProfile(allData))
   }
 
   useEffect(()=>{},[state.loading])
 
-  // console.log(userProfileData);
+  console.log(userProfileData);
 
   const formData = new FormData()
 

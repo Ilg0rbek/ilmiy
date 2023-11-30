@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axiosConfig from "../baseUrl";
 
 
+
 const initialState = {
     data:[],
     isLoading:false,
@@ -10,11 +11,13 @@ const initialState = {
 export const login = createAsyncThunk('login', async (values)=>{
   try {
     const res = await axiosConfig.post("/auth/login", values)
-    // console.log(res.data.data.role);
     sessionStorage.setItem("user", res.data.data.role)
+    sessionStorage.setItem("userId", res.data.data._id)
+    console.log(res);
     return res.data
 
   } catch (error) {
+
     console.log(error.message); 
   }
 })

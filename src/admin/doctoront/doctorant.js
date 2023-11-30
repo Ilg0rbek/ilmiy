@@ -1,22 +1,27 @@
 import React, { useRef, useState } from 'react';
-import { SearchOutlined } from '@ant-design/icons';
+import { SearchOutlined ,PlusOutlined} from '@ant-design/icons';
 import Highlighter from 'react-highlight-words';
-import { Button, Input, Space, Table } from 'antd';
+import { Button, Input, Space, Table, message } from 'antd';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllStudenData } from '../../redux/reducers/profile.store';
+import { deleteProfile, getAllStudenData } from '../../redux/reducers/profile.store';
+import DeleteModal from './AddModal';
 
 const Doctorant = () =>{
 
     const data = useSelector((state)=>state.profile.getStudentdata)
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const dispatch = useDispatch()
     // const student = useSelector((state)=>state.profile.getStudentdata)
 
     useEffect(()=>{
         dispatch(getAllStudenData())
-        // setData(student)
-        // console.log(student);
+    },[isModalOpen])
+    
+    useEffect(()=>{
+      dispatch(getAllStudenData())
     },[])
+
     const [searchText, setSearchText] = useState('');
   const [searchedColumn, setSearchedColumn] = useState('');
   const searchInput = useRef(null);
@@ -129,7 +134,9 @@ const Doctorant = () =>{
   });
 
   const deleteStudent = (data) =>{
-    console.log(data);
+    dispatch(deleteProfile(data))
+    message.success("Talaba o'chirildi")
+    dispatch(getAllStudenData())
   }
 
   const columns = [
@@ -146,6 +153,13 @@ const Doctorant = () =>{
       key: 'email',
       width: '20%',
       ...getColumnSearchProps('email'),
+    },
+    {
+      title: "Foydalanuvchi nomi",
+      dataIndex: 'username',
+      key: 'username',
+      width: '20%',
+      ...getColumnSearchProps('username'),
     },
     {
       title: 'Telefon nomer',
@@ -168,11 +182,11 @@ const Doctorant = () =>{
         dataIndex: 'cartItem',
         key: 'cartItem',
         width: '20%',
-        render: (row) => (
+        render: (text,row) => (
             <a
               style={{ color: 'red' }}
               onClick={() => {
-                console.log(row._id);
+                deleteStudent(row._id)
               }}
             >
               Remove
@@ -180,9 +194,22 @@ const Doctorant = () =>{
           ),
     },
   ];
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
 
-
-  return <Table columns={columns} dataSource={data} />;
+  return (
+    <div>
+      <div className="addNewYear" onClick={showModal}>
+        Doktorantlarni qo'shish <PlusOutlined />
+      </div>
+      <DeleteModal
+      isModalOpen={isModalOpen}
+      setIsModalOpen={setIsModalOpen}
+      />
+      <Table rowKey={( record ) => record._id} columns={columns} dataSource={data} />
+    </div>
+  );
 }
 
 export default Doctorant; 

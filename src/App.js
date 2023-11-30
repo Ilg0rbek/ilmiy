@@ -77,7 +77,7 @@ function App() {
           </h1>
         }
       />
-      <Route path="/*" element={<Navigate to={"/main"} />} />
+      <Route path="/" element={<Navigate to={"/main"} />} />
     </Routes>
   );
 }
