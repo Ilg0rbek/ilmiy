@@ -1,77 +1,47 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./home.css";
 import { Carousel } from "antd";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllNews } from "../../../redux/reducers/news.store";
 
-const Home = () => (
-  <div className="home">
+const Home = () => {
+
+  const coruselNews = useSelector((state)=>state.news.getData)
+  const dispatch = useDispatch()
+
+  useEffect(()=>{
+    dispatch(getAllNews())
+  },[])
+
+  console.log(coruselNews);
+
+  return(
+    <div className="home">
     <Carousel autoplay>
-      <div>
+      {
+        coruselNews && coruselNews.map((item,index)=>(
+          <div>
         <div
           className="swiperSlide"
           style={{
             backgroundImage:
-              "url(https://adu.uz/rasmlar/news/2021/photo_2023-04-06_16-39-37.jpg)",
+              `url(http://localhost:8080/${item.image})`,
           }}
         >
           <div>
             <div className="title">
-              Andijon davlat universitetida yoshlar bilan birgalikda semenar
-              bo'lib o'tdi
+              {item.title}
               <br />
               <div className="btn btn-primary mt-5 ">Ko'proq bilish</div>
             </div>
           </div>
         </div>
       </div>
-      <div>
-        <div
-          className="swiperSlide"
-          style={{
-            backgroundImage:
-              "url(https://adu.uz/rasmlar/news/2021/photo_2023-02-04_17-24-36.jpg)",
-          }}
-        >
-          <div className="title">
-            Andijon davlat universitetida Andijon hokimi yoshlar bilan uchrashuv
-            o'tkazdi
-            <br />
-            <div className="btn btn-primary mt-5 ">Ko'proq bilish</div>
-          </div>
-        </div>
-      </div>
-      <div>
-        <div
-          className="swiperSlide"
-          style={{
-            backgroundImage:
-              "url(https://adu.uz/rasmlar/news/2021/photo_2023-04-06_16-39-37.jpg)",
-          }}
-        >
-          <div className="title">
-            Andijon davlat universitetida yoshlar bilan birgalikda semenar
-            bo'lib o'tdi
-            <br />
-            <div className="btn btn-primary mt-5 ">Ko'proq bilish</div>
-          </div>
-        </div>
-      </div>
-      <div>
-        <div
-          className="swiperSlide"
-          style={{
-            backgroundImage:
-              "url(https://adu.uz/rasmlar/news/2021/photo_2023-02-04_17-24-36.jpg)",
-          }}
-        >
-          <div className="title">
-            Andijon davlat universitetida Andijon hokimi yoshlar bilan uchrashuv
-            o'tkazdi
-            <br />
-            <div className="btn btn-primary mt-5 ">Ko'proq bilish</div>
-          </div>
-        </div>
-      </div>
+     
+        ))
+      }
     </Carousel>
   </div>
-);
+  )
+};
 export default Home;

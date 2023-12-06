@@ -10,6 +10,7 @@ const initialState = {
 };
 
 export const getAllStudenData = createAsyncThunk("/student", async () => {
+  console.log("Hello get all");
   try {
     const res = await axiosConfig.get("/auth/users");
     console.log(res.data);
@@ -38,7 +39,7 @@ export const updateProfile = createAsyncThunk("/update", async (data) => {
 });
 
 export const postProfile = createAsyncThunk("/post", async (data) => {
-  // console.log();
+  console.log("Hello post");
   try {
     const res = await axiosConfig.post(`/auth/register`, data);
     console.log("mana",res);
@@ -60,6 +61,7 @@ export const profileSlice = createSlice({
       .addCase(getAllStudenData.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isError = false;
+        console.log("salom saqlandai");
         state.getStudentdata = action.payload;
       })
       .addCase(getAllStudenData.rejected, (state, action) => {

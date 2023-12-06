@@ -1,6 +1,9 @@
 .containers {
-  padding-top: 180px;
-  margin: auto !important;
+  padding-top: 180px !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center !important;
+  /* margin: auto !important; */
 }
 .yeartitle {
   margin: 20px;
