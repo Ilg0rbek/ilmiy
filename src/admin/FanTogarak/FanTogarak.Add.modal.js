@@ -2,7 +2,7 @@ import { Modal, Form, DatePicker, Row, Col, Input } from "antd";
 import React, { useState } from "react";
 import axiosConfig from "../../redux/baseUrl";
 
-const SeasonModal = ({ isModalOpen, setIsModalOpen }) => {
+const FanTogarrakAdd = ({ isModalOpen, setIsModalOpen }) => {
 
   const [form] = Form.useForm();
 
@@ -22,11 +22,11 @@ const SeasonModal = ({ isModalOpen, setIsModalOpen }) => {
   };
 
   const handleSubmit = (e) => {
-    axiosConfig.post("/season",{start,end,child:[]}).then(res=>{
-      console.log("res",{start,end});
+    axiosConfig.post("/science",{start,end,child:[]}).then(res=>{
+      console.log("res",res);
       setStartYear("")
       setEndYear("")
-      sessionStorage.setItem("yearId", res.data._id)
+      sessionStorage.setItem("science", res.data._id)
       setIsModalOpen(false);
     }).catch(err=>{
       console.log("err",err);
@@ -37,7 +37,7 @@ const SeasonModal = ({ isModalOpen, setIsModalOpen }) => {
   return (
     <div>
       <Modal
-        title="O'quv yilini qo'shish"
+        title="Fan to'garak yilini qo'shish"
         open={isModalOpen}
         onOk={form.submit}
         okText={"Saqlash"}
@@ -49,7 +49,7 @@ const SeasonModal = ({ isModalOpen, setIsModalOpen }) => {
         <Form layout="vertical" form={form} onFinish={(a,b)=>handleSubmit(b)} initialValues={{ remember: true }}>
           <Row style={{justifyContent: "space-around", alignItems: "center", }}>
             <Col span={23}>
-              <Form.Item name="year" label="O'quv yilini kiriting">
+              <Form.Item name="year" label="Fan to'garak yilini kiriting">
                 <DatePicker.RangePicker
                   style={{ width: "100%",}}
                   size="large"
@@ -65,4 +65,4 @@ const SeasonModal = ({ isModalOpen, setIsModalOpen }) => {
   );
 };
 
-export default SeasonModal;
+export default FanTogarrakAdd;

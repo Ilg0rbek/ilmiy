@@ -3,9 +3,9 @@ import { Card } from 'antd';
 import { Link } from "react-router-dom";
 const { Meta } = Card;
 
-const PresidentStipendiant = () => {
-    return (
-        <div className="containers container">
+const DepartmenName = () =>{
+    return(
+        <div className="containers">
             <Link style={{
                     width: 240,
                 }} className="shadow" to={`/stipendiants/${sessionStorage.getItem('routesHref')}/${1}`}>
@@ -16,11 +16,11 @@ const PresidentStipendiant = () => {
                 }}
                 cover={<img alt="example" src="https://adu.uz/rasmlar/news/2021/main_photo-2023-04-26_11-02-10-Zulunova_Gulruxbonu_bobirmirzo_qizi_html_88fa3d5ad328259.jpg" />}
             >
-                <Meta title="Europe Street beat" description="www.instagram.com" />
+                <Meta title="Bu yerda kafedralar ro'yhati" description="www.instagram.com" />
             </Card>
             </Link>
         </div>
     )
 }
 
-export default PresidentStipendiant
+export default DepartmenName;

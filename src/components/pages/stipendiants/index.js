@@ -42,15 +42,15 @@ const Stipendiants = () => {
             size="large"
             dataSource={Routes20212022}
             renderItem={(item, idx) => (
-              <List.Item>
+              <List.Item onClick={()=>sessionStorage.setItem("routesHref",item.title)}>
                 <Link
-                  to={item.name}
+                  to={item.title}
                   style={{
                     textDecoration: "none",
                     color: "black",
                   }}
                 >
-                  {idx + 1}. <div onClick={()=>sessionStorage.setItem("routesHref",item.name)}>{item.title}</div>
+                  {idx + 1}. <span >{item.title}</span>
                 </Link>
               </List.Item>
             )}

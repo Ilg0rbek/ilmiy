@@ -29,6 +29,7 @@ export const deleteProfile = createAsyncThunk("/delete", async (id) => {
 });
 
 export const updateProfile = createAsyncThunk("/update", async (data) => {
+  console.log("update");
   try {
     const res = axiosConfig.put(`/auth/user/${data.id}`, data.userProfileData);
     console.log(res);
@@ -72,6 +73,7 @@ export const profileSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(postProfile.fulfilled, (state, action) => {
+        console.log("Ma'lumot qo'shildi",action.payload);
         state.isLoading = false;
         state.isError = false;
         state.getText = action.payload.data;

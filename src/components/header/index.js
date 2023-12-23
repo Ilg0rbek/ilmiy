@@ -188,7 +188,7 @@ function Header() {
         </div>
         <div className="dropdown nav_item">
           <a
-            className="  dropdown-toggle"
+            className="dropdown-toggle"
             href="#"
             role="button"
             data-bs-toggle="dropdown"
@@ -197,11 +197,13 @@ function Header() {
             intellektual mulk obyektlari
           </a>
           <ul className="dropdown-menu">
-            <li>
-              <a className="dropdown-item" href="#">
-                Patentlar
-              </a>
-            </li>
+            <Link>
+              <li>
+                <a className="dropdown-item">
+                  Patentlar
+                </a>
+              </li>
+            </Link>
             <li>
               <a className="dropdown-item" href="#">
                 Guvohnomalar
@@ -227,24 +229,21 @@ function Header() {
             </li>
             <li>
               <a className="dropdown-item" href="#">
-                {" "}
                 Gumanitar tadqiqotlar
               </a>
             </li>
             <li>
               <a className="dropdown-item" href="#">
-                Pedagogik tadqiqotlar.{" "}
+                Pedagogik tadqiqotlar.
               </a>
             </li>
             <li>
               <a className="dropdown-item" href="#">
-                {" "}
                 Kimyo tadqiqotlari.
               </a>
             </li>
             <li>
               <a className="dropdown-item" href="#">
-                {" "}
                 Biologik tadqiqotlar.
               </a>
             </li>
@@ -262,9 +261,9 @@ function Header() {
           </a>
           <ul className="dropdown-menu">
             <li>
-              <a className="dropdown-item" href="#">
+              <Link className="dropdown-item" to="/patents">
                 fan to'garaklari
-              </a>
+              </Link>
             </li>
             <li>
               <Link className="dropdown-item" to={"/stipendiants"}>

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./index.css"
 import {
   MenuFoldOutlined,
   UsergroupAddOutlined,
@@ -6,6 +7,7 @@ import {
   SettingOutlined,
   MenuUnfoldOutlined,
   FormOutlined,
+  SnippetsOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu, Button, theme } from "antd";
 import { Link, NavLink, Route, Routes } from "react-router-dom";
@@ -13,6 +15,10 @@ import Season from "../season";
 import Students from "../students";
 import News from "../news";
 import Doctorant from "../doctoront/doctorant";
+import StipendAll from "../season/StipendAll";
+import StipendDetail from "../season/StipendDetail";
+import FanTogarak from "../FanTogarak/FanTogarak";
+
 const { Header, Sider, Content } = Layout;
 
 const Admin = () => {
@@ -27,6 +33,12 @@ const Admin = () => {
       icon: <UsergroupAddOutlined />,
       label: "Stipendiantlar",
       path: "/admin/stipendiants",
+    },
+    {
+      key: "6",
+      icon: <SnippetsOutlined />,
+      label: "Fan to'garaklar",
+      path: "/admin/cources",
     },
     {
       key: "2",
@@ -62,7 +74,7 @@ const Admin = () => {
   ];
 
   return (
-    <Layout style={{ width: "100%" }}>
+    <Layout  style={{ width: "100%" }}>
       <Sider trigger={null} collapsible collapsed={collapsed} width={"20%"}>
         <div
           className="demo-logo-vertical"
@@ -109,7 +121,7 @@ const Admin = () => {
       </Sider>
       <Layout
         style={{
-          height: "100vh",
+          minHeight: "100vh",
           width: "80%",
         }}
       >
@@ -132,21 +144,25 @@ const Admin = () => {
           />
         </Header>
         <Content
+        // mode={"vertical"}
           style={{
             margin: "84px 16px",
             padding: 24,
-            minHeight: "85vh",
+            // minHeight: "85vh",
             background: colorBgContainer,
             width: `${!collapsed ? "78%" : "92%"}`,
-          }}
-        >
+            // overflow:"initial"
+          }} >
           <Routes>
             <Route path="/settings" element={"Hello settings"} />
             <Route path="/stipendiants" element={<Season />} />
+            <Route path="/cources" element={<FanTogarak />} />
             <Route path="/doctorantlist" element={<Doctorant/>} />
             <Route path="/stipendiants/user-list" element={<Students />} />
             <Route path="/news" element={<News />} />
-          </Routes>
+            <Route path="/stipendiants/all-stipends" element={<StipendAll/>} />
+            <Route path="/stipendiants/all-stipends/:id" element={<StipendDetail/>} />
+          </Routes>  
         </Content>
       </Layout>
     </Layout>

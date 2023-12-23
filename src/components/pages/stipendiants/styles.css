@@ -4,6 +4,12 @@
   flex-direction: column;
   justify-content: center !important;
   /* margin: auto !important; */
+  height: 82vh;
+  overflow-y: scroll !important;
+}
+
+.containers::-webkit-scrollbar {
+  display: none;
 }
 .yeartitle {
   margin: 20px;

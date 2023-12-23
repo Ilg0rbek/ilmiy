@@ -1,28 +1,39 @@
 import React, { useRef, useState } from 'react';
-import { SearchOutlined ,PlusOutlined} from '@ant-design/icons';
+import { SearchOutlined ,PlusOutlined,DeleteOutlined,EyeOutlined} from '@ant-design/icons';
 import Highlighter from 'react-highlight-words';
 import { Button, Input, Space, Table, message } from 'antd';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteProfile, getAllStudenData } from '../../redux/reducers/profile.store';
-import DeleteModal from './AddModal';
+import DeleteModal from '../modal/deleteModal';
+import axiosConfig from '../../redux/baseUrl';
+import AddStipend from './AddStipend.modal';
+import { useNavigate } from 'react-router-dom';
+import "../admin/index.css"
 
-const Doctorant = () =>{
+const StipendAll = () => {
 
-    const data = useSelector((state)=>state.profile.getStudentdata)
+    const [data, setData] = useState([])
     const [isModalOpen, setIsModalOpen] = useState(false);
     const dispatch = useDispatch()
     // const student = useSelector((state)=>state.profile.getStudentdata)
-
-    useEffect(()=>{
-        dispatch(getAllStudenData())
-    },[isModalOpen])
+    let season = sessionStorage.getItem("yearId")
+    let stipend = sessionStorage.getItem("stipendNameId")
+    const getAllStipend = () =>{
+      axiosConfig.post("/students",{season,stipend}).then(res=>{
+        console.log("mana res",res.data);
+        setData(res.data)
+      }).catch(err=>{
+        console.log(err);
+      })
+    }
     
     useEffect(()=>{
-      dispatch(getAllStudenData())
-    },[])
+      getAllStipend()
+    },[isModalOpen])
 
     const [searchText, setSearchText] = useState('');
+    const navigate = useNavigate()
   const [searchedColumn, setSearchedColumn] = useState('');
   const searchInput = useRef(null);
   const handleSearch = (selectedKeys, confirm, dataIndex) => {
@@ -139,57 +150,36 @@ const Doctorant = () =>{
     dispatch(getAllStudenData())
   }
 
+//   {
+//     title: "Image",
+//     dataIndex: "ImageURL",  // this is the value that is parsed from the DB / server side
+//     render: theImageURL => <img alt={theImageURL} src={theImageURL} />  // 'theImageURL' is the variable you must declare in order the render the URL
+// }
   const columns = [
     {
-      title: 'FIO',
-      dataIndex: 'fullName',
-      key: 'fullName',
+      title: 'Rasm',
+      key: 'image',
+      dataIndex: "image",  // this is the value that is parsed from the DB / server side
       width: '30%',
-      ...getColumnSearchProps('fullName'),
+      render: image => <img style={{width:"120px",height:"100px"}} alt={"asas"} src={`http://localhost:8080/${image}`} />
     },
     {
-      title: "Po'chta",
-      dataIndex: 'email',
-      key: 'email',
+      title: "F.I.O",
+      dataIndex: 'fullname',
+      key: 'fullname',
       width: '20%',
-      ...getColumnSearchProps('email'),
+      ...getColumnSearchProps('fullname'),
     },
     {
-      title: "Foydalanuvchi nomi",
-      dataIndex: 'username',
-      key: 'username',
-      width: '20%',
-      ...getColumnSearchProps('username'),
-    },
-    {
-      title: 'Telefon nomer',
-      dataIndex: 'firstNumber',
-      key: 'firstNumber',
-      width: '20%',
-      ...getColumnSearchProps('firstNumber'),
-    //   sorter: (a, b) => a.address.length - b.address.length,
-    //   sortDirections: ['descend', 'ascend'],
-    },
-    {
-        title: "Qo'shimcha raqam",
-        dataIndex: 'seccondNumber',
-        key: 'seccondNumber',
-        width: '20%',
-        ...getColumnSearchProps('seccondNumber'),
-      },
-    {
-        title: "cartItem",
+        title: "Action",
         dataIndex: 'cartItem',
         key: 'cartItem',
         width: '20%',
         render: (text,row) => (
             <a
-              style={{ color: 'red' }}
-              onClick={() => {
-                deleteStudent(row._id)
-              }}
-            >
-              Remove
+              style={{display:"flex",justifyContent:"space-between",width:"50px"}} >
+              <EyeOutlined onClick={()=>navigate(`/admin/stipendiants/all-stipends/${row._id}`)}/>
+              <DeleteOutlined onClick={() => {deleteStudent(row._id)}} style={{color:"red"}}/>
             </a>
           ),
     },
@@ -198,15 +188,19 @@ const Doctorant = () =>{
     setIsModalOpen(true);
   };
 
-  return (
-    <div>
-      <div className="addNewYear" onClick={showModal}>
-        Doktorantlarni qo'shish <PlusOutlined />
-      </div>
-      <DeleteModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}/>
-      <Table rowKey={( record ) => record._id} columns={columns} dataSource={data} />
-    </div>
-  );
+
+
+    return (
+        <div>
+            <div className="addNewYear" onClick={showModal}>
+                Stipendiantlarni qo'shish <PlusOutlined />
+            </div>
+           <AddStipend isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}/>
+           <div className='table'>
+            <Table rowKey={(record) => record._id} columns={columns} dataSource={data} />
+           </div>
+        </div>
+    )
 }
 
-export default Doctorant; 
+export default StipendAll;
