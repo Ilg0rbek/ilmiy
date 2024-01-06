@@ -10,8 +10,9 @@ import { useEffect } from "react";
 import {Accordion} from "react-bootstrap"
 import FanTogarrakAdd from "./FanTogarak.Add.modal";
 import FanTogarakFakultetNomiAdd from "./FanTogarakFakultetNomiAdd";
+import FanTogarakNameModal from "./FanTogarakNameModal";
 
-const FanTogarak = () =>{
+const FanTogarakKafedra = () =>{
 
     const [isModalOpen2, setIsModalOpen2] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -30,20 +31,21 @@ const FanTogarak = () =>{
     const navigate = useNavigate()
   
     const deleteYear = (id) =>{
-      axiosConfig.delete(`/science/${id}`).then(res=>{
+      axiosConfig.delete(`/faculty/${id}`).then(res=>{
         // console.log(res);
         getAllSeasen()
       }).catch(err=>{
         console.log(err);
       })
     }
+    let FacultyId = sessionStorage.getItem("FacultyId")
   
     const getAllSeasen = () => {
-      axiosConfig.get(`/science`).then(res => {
-        console.log("year",res.data);
+      axiosConfig.get(`/faculty/${FacultyId}`).then(res => {
+        console.log("fakultet",res.data);
         setYearData(res.data)
       }).catch(err => {
-        console.log(err);
+        console.log("fakultet",err.response);
       })
     }
   
@@ -63,21 +65,22 @@ const FanTogarak = () =>{
 
     return(
         <div>
-        <div className="addNewYear" onClick={showModal}>
-          Yangi o'quv yili hamda fakultet nomini qo'shish <PlusOutlined />
+        <div className="addNewYear" onClick={showModal2}>
+          Kafedra hamda to'garak nomini kiritish <PlusOutlined />
         </div>
-        <FanTogarrakAdd isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}/>
         <FanTogarakFakultetNomiAdd yearId={yearId} isModalOpen2={isModalOpen2} setIsModalOpen2={setIsModalOpen2}/>
+
+        <FanTogarakNameModal yearId={yearId} isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}/>
         <Accordion defaultActiveKey="0">
         {
           yearData?.map((item,index)=>(
             <Accordion.Item onClick={()=>sessionStorage.setItem("yearId", item._id)} eventKey={index}>
           <Accordion.Header>
             <div style={{width:"100%",display:"flex",justifyContent:"space-between",padding:"0 20px 0 0"}}>
-              <div>{item.start + "/" + item.end + " yilgi fan to'garaklar"}</div>
+              <div>{item.title} </div>
               <div >
             <PlusOutlined
-              onClick={()=>{setYearId(item._id);showModal2()}}
+              onClick={()=>{setYearId(item._id);showModal(item._id);sessionStorage.setItem("kafedraId",item._id)}}
               style={{
                 marginRight: "10px",
                 cursor: "pointer",
@@ -102,7 +105,7 @@ const FanTogarak = () =>{
             </Accordion.Header>
           <Accordion.Body>
           <h6>{item.child?.map((item,index)=>(
-            <div key={index} style={{cursor:"pointer"}} onClick={()=>{sessionStorage.setItem("FacultyId",item.id);navigate("/admin/cources/kafedra")}}>{index+1}.{" "+item.title} <hr /></div>
+            <div key={index} style={{cursor:"pointer"}} onClick={()=>{sessionStorage.setItem("togarakId",item.id);navigate("/admin/cources/kafedra/togarak")}}>{index+1}.{" "+item.title} <hr /></div>
             ))}</h6>
           </Accordion.Body>
         </Accordion.Item>
@@ -113,4 +116,4 @@ const FanTogarak = () =>{
     )
 }
 
-export default FanTogarak;
+export default FanTogarakKafedra;

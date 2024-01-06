@@ -18,6 +18,8 @@ import Doctorant from "../doctoront/doctorant";
 import StipendAll from "../season/StipendAll";
 import StipendDetail from "../season/StipendDetail";
 import FanTogarak from "../FanTogarak/FanTogarak";
+import FanTogarakKafedra from "../FanTogarak/FanTogarakKafedra";
+import TogarakDetail from "../FanTogarak/TogarakDetail";
 
 const { Header, Sider, Content } = Layout;
 
@@ -162,6 +164,8 @@ const Admin = () => {
             <Route path="/news" element={<News />} />
             <Route path="/stipendiants/all-stipends" element={<StipendAll/>} />
             <Route path="/stipendiants/all-stipends/:id" element={<StipendDetail/>} />
+            <Route path="/cources/kafedra" element={<FanTogarakKafedra/>} />
+            <Route path="/cources/kafedra/togarak" element={<TogarakDetail/>} />
           </Routes>  
         </Content>
       </Layout>

@@ -2,7 +2,7 @@ import { Modal, Form, DatePicker, Row, Col, Input } from "antd";
 import React, { useState } from "react";
 import axiosConfig from "../../redux/baseUrl";
 
-const FantogarakNameAdd = ({ isModalOpen2, setIsModalOpen2, yearId }) => {
+const FanTogarakNameModal = ({ isModalOpen, setIsModalOpen, yearId }) => {
 
   const [form] = Form.useForm();
 
@@ -14,19 +14,22 @@ const FantogarakNameAdd = ({ isModalOpen2, setIsModalOpen2, yearId }) => {
   // console.log(startYear, endYear);
 
   const handleOk = () => {
-    setIsModalOpen2(false);
+    setIsModalOpen(false);
   };
 
- 
+  let kafedraId = sessionStorage.getItem("kafedraId")
+  let yearId1 = sessionStorage.getItem("yearId")
 
   const handleSubmit = (e) => {
+    console.log("e.title");
     setStipendiaName(e.title)
     // console.log(stipendiaName);
-    axiosConfig.put(`/season/update/${yearId}`,{title:e.title}).then(res=>{
-      console.log({title:e.title});
-      setIsModalOpen2(false);
+    axiosConfig.patch(`/faculty/${kafedraId}`,{title:e.title}).then(res=>{
+      // console.log({title:e.title});
+
+      setIsModalOpen(false);
     }).catch(err=>{
-      console.log(err);
+      console.log(err.response);
     })
     form.resetFields();
   };
@@ -37,7 +40,7 @@ const FantogarakNameAdd = ({ isModalOpen2, setIsModalOpen2, yearId }) => {
     <div>
       <Modal
         title="To'garak nomini qo'shish"
-        open={isModalOpen2}
+        open={isModalOpen}
         onOk={form.submit}
         okText={"Saqlash"}
         cancelText={"Bekor qilish"}
@@ -59,4 +62,4 @@ const FantogarakNameAdd = ({ isModalOpen2, setIsModalOpen2, yearId }) => {
   );
 };
 
-export default FantogarakNameAdd;
+export default FanTogarakNameModal;

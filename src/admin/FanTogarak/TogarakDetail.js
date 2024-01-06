@@ -3,15 +3,16 @@ import axiosConfig from "../../redux/baseUrl";
 import { useParams } from "react-router-dom";
 import { SearchOutlined ,PlusOutlined,DeleteOutlined,EyeOutlined} from '@ant-design/icons';
 import StipendYutuqModal from "../modal/Stipend.yutuq.modal";
+import TogarakDetailadd from "./TogarakDetail.add";
 
-const StipendDetail = () =>{
+const TogarakDetail = () =>{
     const {id} = useParams()
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [detailData, setDetailData] = useState()
 
   const getDeteil = () =>{
     axiosConfig.get(`/students/${id}`).then(res=>{
-        console.log(res.data);
+        // console.log(res.data);
         setDetailData(res.data)
     }).catch(err=>{
         console.log(err);
@@ -30,9 +31,9 @@ const StipendDetail = () =>{
     return(
         <div className="table container mb-4">
             <div className="addNewYear" onClick={showModal}>
-                Stipendiantlarni yutuqlarini qo'shish <PlusOutlined />
+            To'garak amaliyotini qo'shish <PlusOutlined />
             </div>
-            <StipendYutuqModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}/>
+            <TogarakDetailadd isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}/>
         <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
             <div style={{ border: "none" }} className="card shadow">
                 <img style={{width:"500px",height:"400px"}} src={`http://localhost:8080/${detailData && detailData.image}`} alt="" />
@@ -57,4 +58,4 @@ const StipendDetail = () =>{
     )
 }
 
-export default StipendDetail;
+export default TogarakDetail;
