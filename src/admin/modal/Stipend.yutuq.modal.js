@@ -48,7 +48,7 @@ const StipendYutuqModal = ({ isModalOpen, setIsModalOpen, yearId }) => {
 
     return (
         <Modal
-            title="O'quv yilini qo'shish"
+            title="Stipendiant yutuqlarini qo'shish"
             open={isModalOpen}
             onOk={form.submit}
             okText={"Saqlash"}
@@ -60,7 +60,7 @@ const StipendYutuqModal = ({ isModalOpen, setIsModalOpen, yearId }) => {
             <Form layout="vertical" form={form} onFinish={(a, b) => handleSubmit(a)} initialValues={{ remember: true }}>
                 <Row style={{ justifyContent: "space-around", alignItems: "center", }}>
                 <Col span={23}>
-            <Form.Item name="image" label="Talaba rasmini yuklang" rules={[ { required: true, message: "Talaba rasmini yuklang", }, ]}>
+            <Form.Item name="image" label="Rasm yuklang" rules={[ { required: true, message: "Rasm yuklang", }, ]}>
                 <div>
                   <Upload maxCount={1} accept=".png, .jpeg, .jpg" showUploadList={true}
                     beforeUpload={(file) => {

@@ -1,12 +1,15 @@
-import React from "react";
+import React, {useState} from "react";
 import "./styles.css";
+import {Accordion} from "react-bootstrap"
+import {DeleteOutlined,OrderedListOutlined, PlusOutlined,} from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import { Collapse, List } from "antd";
-import { OrderedListOutlined } from "@ant-design/icons";
 import Routes20212022 from "./StipendiantsRoutes";
 
 
 const Stipendiants = () => {
+
+
   const data20222023 = [
     "Prezident stipendiyasi",
     "Navoiy nomli davlat stipendiyasi",
@@ -21,14 +24,10 @@ const Stipendiants = () => {
     "Zahiriddin Muhammad Bobur stipendiyasi"
   ];
 
-  // const uquvYili = [
-  //   {}
-  // ]
-
 
   return (
-    <div className="containers container">
-      <Collapse
+    <div style={{marginTop:"200px"}} className="container">
+     <Collapse
         style={{
           userSelect: "none",
           border: "none",

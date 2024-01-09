@@ -8,6 +8,7 @@ import {
   MenuUnfoldOutlined,
   FormOutlined,
   SnippetsOutlined,
+  CreditCardOutlined
 } from "@ant-design/icons";
 import { Layout, Menu, Button, theme } from "antd";
 import { Link, NavLink, Route, Routes } from "react-router-dom";
@@ -20,6 +21,7 @@ import StipendDetail from "../season/StipendDetail";
 import FanTogarak from "../FanTogarak/FanTogarak";
 import FanTogarakKafedra from "../FanTogarak/FanTogarakKafedra";
 import TogarakDetail from "../FanTogarak/TogarakDetail";
+import AdminPatent from "../AdminPatents/AdminPatetnt";
 
 const { Header, Sider, Content } = Layout;
 
@@ -37,7 +39,7 @@ const Admin = () => {
       path: "/admin/stipendiants",
     },
     {
-      key: "6",
+      key: "7",
       icon: <SnippetsOutlined />,
       label: "Fan to'garaklar",
       path: "/admin/cources",
@@ -56,12 +58,18 @@ const Admin = () => {
     },
     {
       key: "4",
+      icon:<CreditCardOutlined />,
+      label: "Patentlar",
+      path: "/admin/patents-admin",
+    },
+    {
+      key: "5",
       icon: <SettingOutlined />,
       label: "Sozlanmalar",
       path: "/admin/settings",
     },
     {
-      key: "5",
+      key: "6",
       icon: <UserOutlined />,
       label: "Profile",
       path: "/admin/profile",
@@ -166,6 +174,7 @@ const Admin = () => {
             <Route path="/stipendiants/all-stipends/:id" element={<StipendDetail/>} />
             <Route path="/cources/kafedra" element={<FanTogarakKafedra/>} />
             <Route path="/cources/kafedra/togarak" element={<TogarakDetail/>} />
+            <Route path="/patents-admin" element={<AdminPatent />} />
           </Routes>  
         </Content>
       </Layout>

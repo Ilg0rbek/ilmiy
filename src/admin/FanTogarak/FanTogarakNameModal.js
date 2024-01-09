@@ -2,7 +2,7 @@ import { Modal, Form, DatePicker, Row, Col, Input } from "antd";
 import React, { useState } from "react";
 import axiosConfig from "../../redux/baseUrl";
 
-const FanTogarakNameModal = ({ isModalOpen, setIsModalOpen, yearId }) => {
+const FanTogarakNameModal = ({ isModalOpen2, setIsModalOpen2, yearId }) => {
 
   const [form] = Form.useForm();
 
@@ -14,7 +14,7 @@ const FanTogarakNameModal = ({ isModalOpen, setIsModalOpen, yearId }) => {
   // console.log(startYear, endYear);
 
   const handleOk = () => {
-    setIsModalOpen(false);
+    setIsModalOpen2(false);
   };
 
   let kafedraId = sessionStorage.getItem("kafedraId")
@@ -27,7 +27,7 @@ const FanTogarakNameModal = ({ isModalOpen, setIsModalOpen, yearId }) => {
     axiosConfig.patch(`/faculty/${kafedraId}`,{title:e.title}).then(res=>{
       // console.log({title:e.title});
 
-      setIsModalOpen(false);
+      setIsModalOpen2(false);
     }).catch(err=>{
       console.log(err.response);
     })
@@ -40,7 +40,7 @@ const FanTogarakNameModal = ({ isModalOpen, setIsModalOpen, yearId }) => {
     <div>
       <Modal
         title="To'garak nomini qo'shish"
-        open={isModalOpen}
+        open={isModalOpen2}
         onOk={form.submit}
         okText={"Saqlash"}
         cancelText={"Bekor qilish"}

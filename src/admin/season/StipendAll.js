@@ -16,7 +16,7 @@ const StipendAll = () => {
     const [data, setData] = useState([])
     const [isModalOpen, setIsModalOpen] = useState(false);
     const dispatch = useDispatch()
-    // const student = useSelector((state)=>state.profile.getStudentdata)
+
     let season = sessionStorage.getItem("yearId")
     let stipend = sessionStorage.getItem("stipendNameId")
     const getAllStipend = () =>{
@@ -27,6 +27,8 @@ const StipendAll = () => {
         console.log(err);
       })
     }
+
+    
     
     useEffect(()=>{
       getAllStipend()

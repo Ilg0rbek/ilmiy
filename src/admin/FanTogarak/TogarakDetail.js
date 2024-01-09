@@ -9,10 +9,11 @@ const TogarakDetail = () =>{
     const {id} = useParams()
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [detailData, setDetailData] = useState()
+    let science_id = sessionStorage.getItem("togarakId")
 
   const getDeteil = () =>{
-    axiosConfig.get(`/students/${id}`).then(res=>{
-        // console.log(res.data);
+    axiosConfig.get(`/sciences/${science_id}`).then(res=>{
+        console.log(res.data);
         setDetailData(res.data)
     }).catch(err=>{
         console.log(err);
@@ -34,22 +35,18 @@ const TogarakDetail = () =>{
             To'garak amaliyotini qo'shish <PlusOutlined />
             </div>
             <TogarakDetailadd isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}/>
-        <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
-            <div style={{ border: "none" }} className="card shadow">
-                <img style={{width:"500px",height:"400px"}} src={`http://localhost:8080/${detailData && detailData.image}`} alt="" />
-                <div className="card-body">
-                    <h4 className="text-center">{detailData && detailData.fullname}</h4>
-                </div>
-            </div>
-        </div>
         {
-            detailData?.child?.map((item, index)=>(
+            detailData?.map((item, index)=>(
         <div className="row mt-5">
+             <h4 className="text-center">{item.title}</h4>
             <div style={{display:"flex",justifyContent:"center"}} className="col-12">
                 <img src={`http://localhost:8080/${item.image}`} alt="" />
             </div>
             <div className="col-12">
                 {item.title}
+            </div>
+            <div className="col-12">
+                {item.desc}
             </div>
         </div>
             ))

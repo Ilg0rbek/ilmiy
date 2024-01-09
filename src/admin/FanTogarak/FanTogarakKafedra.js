@@ -11,17 +11,18 @@ import {Accordion} from "react-bootstrap"
 import FanTogarrakAdd from "./FanTogarak.Add.modal";
 import FanTogarakFakultetNomiAdd from "./FanTogarakFakultetNomiAdd";
 import FanTogarakNameModal from "./FanTogarakNameModal";
+import FanTogarakAddKafedra from "./FanTogarakAddKafedra";
 
 const FanTogarakKafedra = () =>{
 
     const [isModalOpen2, setIsModalOpen2] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const showModal = () => {
-      setIsModalOpen(true);
+      setIsModalOpen2(true);
     };
   
     const showModal2 = () => {
-      setIsModalOpen2(true);
+      setIsModalOpen(true);
     };
   
   
@@ -68,9 +69,9 @@ const FanTogarakKafedra = () =>{
         <div className="addNewYear" onClick={showModal2}>
           Kafedra hamda to'garak nomini kiritish <PlusOutlined />
         </div>
-        <FanTogarakFakultetNomiAdd yearId={yearId} isModalOpen2={isModalOpen2} setIsModalOpen2={setIsModalOpen2}/>
+        <FanTogarakNameModal yearId={yearId} isModalOpen2={isModalOpen2} setIsModalOpen2={setIsModalOpen2}/>
 
-        <FanTogarakNameModal yearId={yearId} isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}/>
+        <FanTogarakAddKafedra yearId={yearId} isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}/>
         <Accordion defaultActiveKey="0">
         {
           yearData?.map((item,index)=>(

@@ -2,7 +2,7 @@ import { Modal, Form, DatePicker, Row, Col, Input } from "antd";
 import React, { useState } from "react";
 import axiosConfig from "../../redux/baseUrl";
 
-const FanTogarakFakultetNomiAdd = ({ isModalOpen2, setIsModalOpen2, yearId }) => {
+const FanTogarakAddKafedra = ({ isModalOpen, setIsModalOpen, yearId }) => {
 
   const [form] = Form.useForm();
 
@@ -14,24 +14,22 @@ const FanTogarakFakultetNomiAdd = ({ isModalOpen2, setIsModalOpen2, yearId }) =>
   // console.log(startYear, endYear);
 
   const handleOk = () => {
-    setIsModalOpen2(false);
+    setIsModalOpen(false);
   };
 
   let FacultyId = sessionStorage.getItem("FacultyId")
   let yearId1 = sessionStorage.getItem("yearId")
 
-  // , science_id:`yearId1`, faculty_id:FacultyId, child:[]
-
   const handleSubmit = (e) => {
-    // console.log(e.title);
+    // console.log("e.title");
     setStipendiaName(e.title)
     // console.log(stipendiaName);
-    axiosConfig.patch(`/science/${yearId1}`,{title:e.title}).then(res=>{
+    axiosConfig.post(`/faculty`,{title:e.title, science_id:`yearId1`, faculty_id:FacultyId, child:[]}).then(res=>{
+      // console.log({title:e.title});
       console.log(res);
-
-      setIsModalOpen2(false);
+      setIsModalOpen(false);
     }).catch(err=>{
-      console.log(err);
+      console.log(err.response);
     })
     form.resetFields();
   };
@@ -41,8 +39,8 @@ const FanTogarakFakultetNomiAdd = ({ isModalOpen2, setIsModalOpen2, yearId }) =>
   return (
     <div>
       <Modal
-        title="Fakultet nomini qo'shish"
-        open={isModalOpen2}
+        title="Kafedra nomini qo'shish"
+        open={isModalOpen}
         onOk={form.submit}
         okText={"Saqlash"}
         cancelText={"Bekor qilish"}
@@ -53,8 +51,8 @@ const FanTogarakFakultetNomiAdd = ({ isModalOpen2, setIsModalOpen2, yearId }) =>
         <Form layout="vertical" form={form} onFinish={(a,b)=>handleSubmit(a)} initialValues={{ remember: true }}>
           <Row style={{justifyContent: "space-around", alignItems: "center", }}>
             <Col span={23}>
-              <Form.Item name="title" label="Fakultet nomini qo'shish">
-              <Input placeholder="Fakultet nomini qo'shish" />
+              <Form.Item name="title" label="Kafedra nomini kiriting">
+              <Input placeholder="Kafedra nomini kiriting" />
               </Form.Item>
             </Col>
           </Row>
@@ -64,4 +62,4 @@ const FanTogarakFakultetNomiAdd = ({ isModalOpen2, setIsModalOpen2, yearId }) =>
   );
 };
 
-export default FanTogarakFakultetNomiAdd;
+export default FanTogarakAddKafedra;
