@@ -1,24 +1,48 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Card } from 'antd';
 import { Link } from "react-router-dom";
+import axiosConfig from "../../../../redux/baseUrl";
 const { Meta } = Card;
 
 const PresidentStipendiant = () => {
+
+    const [data, setData] = useState([])
+    let season = sessionStorage.getItem("yearId")
+    let stipend = sessionStorage.getItem("stipendNameId")
+    const getAllStipend = () => {
+        axiosConfig.post("/students", { season, stipend }).then(res => {
+            console.log("mana res", res.data);
+            setData(res.data)
+        }).catch(err => {
+            console.log(err);
+        })
+    }
+
+
+    useEffect(() => {
+        getAllStipend()
+    }, [])
+
     return (
         <div className="containers container">
-            <Link style={{
-                    width: 240,
-                }} className="shadow" to={`/stipendiants/${sessionStorage.getItem('routesHref')}/${1}`}>
-            <Card
-                hoverable
-                style={{
-                    width: 240,
-                }}
-                cover={<img alt="example" src="https://adu.uz/rasmlar/news/2021/main_photo-2023-04-26_11-02-10-Zulunova_Gulruxbonu_bobirmirzo_qizi_html_88fa3d5ad328259.jpg" />}
-            >
-                <Meta title="Europe Street beat" description="www.instagram.com" />
-            </Card>
-            </Link>
+            {
+                data?.map((item, index) => (
+                    <Link key={index} style={{
+                        width: 240,
+                    }} className="shadow" to={`/stipendiants/students/detail/${item._id}`}>
+                        <Card
+                            hoverable
+                            style={{
+                                width: 240,
+                            }}
+                            cover={<img alt="example" src={`http://localhost:8080/${item.image}`} />}
+                        >
+                            <Meta style={{textDecoration:"none"}} title={item.fullname} />
+                        </Card>
+                    </Link>
+                ))
+            }
+
         </div>
     )
 }

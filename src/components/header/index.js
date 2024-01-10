@@ -205,9 +205,9 @@ function Header() {
               </li>
             </Link>
             <li>
-              <a className="dropdown-item" href="#">
+              <Link className="dropdown-item" to="/guvohnoma">
                 Guvohnomalar
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
@@ -261,7 +261,7 @@ function Header() {
           </a>
           <ul className="dropdown-menu">
             <li>
-              <Link className="dropdown-item" to="/patents">
+              <Link className="dropdown-item" to="/cources">
                 fan to'garaklari
               </Link>
             </li>

@@ -22,6 +22,7 @@ import FanTogarak from "../FanTogarak/FanTogarak";
 import FanTogarakKafedra from "../FanTogarak/FanTogarakKafedra";
 import TogarakDetail from "../FanTogarak/TogarakDetail";
 import AdminPatent from "../AdminPatents/AdminPatetnt";
+import PatentsList from "../AdminPatents/PatentsList";
 
 const { Header, Sider, Content } = Layout;
 
@@ -175,6 +176,7 @@ const Admin = () => {
             <Route path="/cources/kafedra" element={<FanTogarakKafedra/>} />
             <Route path="/cources/kafedra/togarak" element={<TogarakDetail/>} />
             <Route path="/patents-admin" element={<AdminPatent />} />
+            <Route path="/patents-admin/list" element={<PatentsList />} />
           </Routes>  
         </Content>
       </Layout>

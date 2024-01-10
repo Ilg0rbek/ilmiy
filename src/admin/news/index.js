@@ -51,7 +51,7 @@ const News = () => {
         Ilmiy bo'limdagi yangiliklarni qo'shish <PlusOutlined />
       </div>
 
-      <div className="table-responsive">
+      <div className="table-responsive table">
         <table class="table align-middle">
           <thead>
             <tr>
