@@ -8,7 +8,8 @@ import {
   MenuUnfoldOutlined,
   FormOutlined,
   SnippetsOutlined,
-  CreditCardOutlined
+  CreditCardOutlined,
+  PaperClipOutlined
 } from "@ant-design/icons";
 import { Layout, Menu, Button, theme } from "antd";
 import { Link, NavLink, Route, Routes } from "react-router-dom";
@@ -23,6 +24,8 @@ import FanTogarakKafedra from "../FanTogarak/FanTogarakKafedra";
 import TogarakDetail from "../FanTogarak/TogarakDetail";
 import AdminPatent from "../AdminPatents/AdminPatetnt";
 import PatentsList from "../AdminPatents/PatentsList";
+import AdminGuvohnama from "../AdminGuvohnoma/AdminGuvohnama";
+import Guvohnomalist from "../AdminGuvohnoma/Guvohnomalist";
 
 const { Header, Sider, Content } = Layout;
 
@@ -60,8 +63,14 @@ const Admin = () => {
     {
       key: "4",
       icon:<CreditCardOutlined />,
-      label: "Patentlar",
+      label: "Guvohnomalar",
       path: "/admin/patents-admin",
+    },
+    {
+      key: "8",
+      icon:<PaperClipOutlined /> ,
+      label: "patentlar",
+      path: "/admin/guvohnoma",
     },
     {
       key: "5",
@@ -69,6 +78,7 @@ const Admin = () => {
       label: "Sozlanmalar",
       path: "/admin/settings",
     },
+   
     {
       key: "6",
       icon: <UserOutlined />,
@@ -177,6 +187,8 @@ const Admin = () => {
             <Route path="/cources/kafedra/togarak" element={<TogarakDetail/>} />
             <Route path="/patents-admin" element={<AdminPatent />} />
             <Route path="/patents-admin/list" element={<PatentsList />} />
+            <Route path="/guvohnoma" element={<AdminGuvohnama />} />
+            <Route path="/guvohnoma/list" element={<Guvohnomalist />} />
           </Routes>  
         </Content>
       </Layout>

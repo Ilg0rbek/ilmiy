@@ -163,7 +163,7 @@ const StipendAll = () => {
       key: 'image',
       dataIndex: "image",  // this is the value that is parsed from the DB / server side
       width: '30%',
-      render: image => <img style={{width:"120px",height:"100px"}} alt={"asas"} src={`http://localhost:8080/${image}`} />
+      render: image => <img style={{width:"120px",height:"100px"}} alt={"asas"} src={`https://ilmiyapi.adu.uz/${image}`} />
     },
     {
       title: "F.I.O",

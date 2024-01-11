@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
-import axiosConfig from "../../redux/baseUrl";
+import axiosConfig from "../../../redux/baseUrl";
 import { useParams } from "react-router-dom";
 import { SearchOutlined ,PlusOutlined,DeleteOutlined,EyeOutlined} from '@ant-design/icons';
-import StipendYutuqModal from "../modal/Stipend.yutuq.modal";
-import TogarakDetailadd from "./TogarakDetail.add";
 
-const TogarakDetail = () =>{
+const FanTogarakDetailUser = () =>{
     const {id} = useParams()
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [detailData, setDetailData] = useState()
@@ -30,23 +28,19 @@ const TogarakDetail = () =>{
   };
 
     return(
-        <div className="table container mb-4">
-            <div className="addNewYear" onClick={showModal}>
-            To'garak amaliyotini qo'shish <PlusOutlined />
-            </div>
-            <TogarakDetailadd isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}/>
+        <div style={{marginTop:"200px"}} className="container mb-4">
         {
             detailData?.map((item, index)=>(
         <div className="row mt-5">
-             <h4 className="text-center">{item.title}</h4>
-            <div style={{display:"flex",justifyContent:"center"}} className="col-12">
+             <h4 className="text-center">{sessionStorage.getItem("togarakName")} to'garagi</h4>
+            <div  style={{display:"flex",justifyContent:"center"}} className="col-12 mt-3">
                 <img src={`https://ilmiyapi.adu.uz/${item.image}`} alt="" />
             </div>
-            <div className="col-12">
-                {item.title}
+            <div style={{marginTop:"15px"}} className="col-12">
+                <h4 style={{marginTop:"15px"}} className="text-center">{item.title}</h4>
             </div>
             <div className="col-12">
-                {item.desc}
+               <b style={{marginTop:"15px"}}>{item.desc}</b>
             </div>
         </div>
             ))
@@ -55,4 +49,4 @@ const TogarakDetail = () =>{
     )
 }
 
-export default TogarakDetail;
+export default FanTogarakDetailUser;

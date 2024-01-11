@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import axiosConfig from "../../redux/baseUrl";
 import { UploadOutlined } from "@ant-design/icons";
 
-const AddAdminPatentsYear = ({ isModalOpen, setIsModalOpen }) => {
+const AddAdminGuvohnomaYear = ({ isModalOpen, setIsModalOpen }) => {
 
     const [form] = Form.useForm();
     const [image, setImage] = useState();
@@ -28,12 +28,12 @@ const AddAdminPatentsYear = ({ isModalOpen, setIsModalOpen }) => {
     const handleSubmit = (e, b) => {
         formData.append("fullname",e.fullname)
         formData.append("library",e.library)
-        formData.append("dgu",e.dgu)
+        formData.append("guvohonmanumber",e.guvohonmanumber)
         formData.append("year",year)
-        formData.append("dgulink",image)
+        formData.append("guvohnoma",image)
         formData.append("date",date)
         // console.log( formData.get("fullname"));
-        axiosConfig.post("/patents", formData).then(res => {
+        axiosConfig.post("/guvohnoma", formData).then(res => {
             console.log("res", res);
             setYear("")
             sessionStorage.setItem("year", res.data._id)
@@ -41,13 +41,13 @@ const AddAdminPatentsYear = ({ isModalOpen, setIsModalOpen }) => {
         }).catch(err => {
             console.log("err", err);
         })
-        form.resetFields();
+        // form.resetFields();
     };
 
     return (
         <div>
             <Modal
-                title="Guvohnoma yilini qo'shish"
+                title="Patent yilini qo'shish"
                 open={isModalOpen}
                 onOk={form.submit}
                 okText={"Saqlash"}
@@ -59,7 +59,7 @@ const AddAdminPatentsYear = ({ isModalOpen, setIsModalOpen }) => {
                 <Form layout="vertical" form={form} onFinish={(a, b) => handleSubmit(a, b)} initialValues={{ remember: true }}>
                     <Row style={{ justifyContent: "space-around", alignItems: "center", }}>
                         <Col span={23}>
-                            <Form.Item name="year" label="Guvohnoma yilini qo'shish">
+                            <Form.Item name="year" label="Patent yilini qo'shish">
                                 <DatePicker style={{ width: "100%", }}
                                     size="large"
                                     picker="year"
@@ -71,8 +71,8 @@ const AddAdminPatentsYear = ({ isModalOpen, setIsModalOpen }) => {
                                 </Form.Item>
                             </div>
                             <div>
-                                <Form.Item name="library" label="Olingan guvohnomalar, malliflik huquqi bilan ximoya qilinadigon turli materillar nomi">
-                                    <Input placeholder="Olingan guvohnomalar, malliflik huquqi bilan ximoya qilinadigon turli materillar nomi" />
+                                <Form.Item name="library" label="Ihtiro, foydali model, sanoat namunasi, seleksiya yutug'i uchun patent ishlanmaning nomi">
+                                    <Input placeholder="Ihtiro, foydali model, sanoat namunasi, seleksiya yutug'i uchun patent ishlanmaning nomi" />
                                 </Form.Item>
                             </div>
                             <div>
@@ -85,11 +85,11 @@ const AddAdminPatentsYear = ({ isModalOpen, setIsModalOpen }) => {
                                 </Form.Item>
                             </div>
                             <div>
-                                <Form.Item name="dgu" label="DGU raqami">
-                                    <Input placeholder="DGU raqami" />
+                                <Form.Item name="guvohonmanumber" label="Qayd raqami">
+                                    <Input placeholder="Qayd raqami" />
                                 </Form.Item>
                             </div>
-                            <Form.Item name="image" label="Guvohnomani kiriting" rules={[{ required: true, message: "Talaba rasmini yuklang", },]}>
+                            <Form.Item name="image" label="patentni kiriting" rules={[{ required: true, message: "Talaba rasmini yuklang", },]}>
                             <div>
                                 <Upload maxCount={1} accept=".pdf, .docx, .doc" showUploadList={true}
                                     beforeUpload={(file) => {
@@ -111,4 +111,4 @@ const AddAdminPatentsYear = ({ isModalOpen, setIsModalOpen }) => {
     );
 };
 
-export default AddAdminPatentsYear;
+export default AddAdminGuvohnomaYear;

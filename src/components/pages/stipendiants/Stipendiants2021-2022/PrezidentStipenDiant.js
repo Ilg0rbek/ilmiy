@@ -35,7 +35,7 @@ const PresidentStipendiant = () => {
                             style={{
                                 width: 240,
                             }}
-                            cover={<img alt="example" src={`http://localhost:8080/${item.image}`} />}
+                            cover={<img alt="example" src={`https://ilmiyapi.adu.uz/${item.image}`} />}
                         >
                             <Meta style={{textDecoration:"none"}} title={item.fullname} />
                         </Card>

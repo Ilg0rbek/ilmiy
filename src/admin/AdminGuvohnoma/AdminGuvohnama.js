@@ -9,9 +9,9 @@ import { useEffect } from "react";
 import { Accordion } from "react-bootstrap"
 import FanTogarrakAdd from "../FanTogarak/FanTogarak.Add.modal";
 import FanTogarakFakultetNomiAdd from "../FanTogarak/FanTogarakFakultetNomiAdd";
-import AddAdminPatentsYear from "./AddAdminPatentsYear";
+import AddAdminGuvohnomaYear from "./AddAdminGuvohnomaYear";
 
-const AdminPatent = () => {
+const AdminGuvohnama = () => {
 
     const [isModalOpen2, setIsModalOpen2] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -32,7 +32,7 @@ const AdminPatent = () => {
 
 
     const getAllSeasen = () => {
-        axiosConfig.get("/patents").then(res => {
+        axiosConfig.get("/guvohnoma").then(res => {
             console.log("year", res.data);
             setYearData(res.data)
         }).catch(err => {
@@ -57,16 +57,16 @@ const AdminPatent = () => {
     return (
         <div>
             <div className="addNewYear" onClick={showModal}>
-                Guvohnomalar yilini qo'shish <PlusOutlined />
+                Patentlar yilini qo'shish <PlusOutlined />
             </div>
-            <AddAdminPatentsYear isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
+            <AddAdminGuvohnomaYear isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
             <div className="table">
                 {
                     yearData?.map((item, index) => (
                         <div className="crad">
                             {
-                                item != "" && (<div style={{ cursor: "pointer" }} onClick={() => { sessionStorage.setItem("patentId", item); navigate("/admin/patents-admin/list") }} className="card-header">
-                                    <h6>{item}-chi yilgi guvohnomalar</h6><hr />
+                                item != "" && (<div style={{ cursor: "pointer" }} onClick={() => { sessionStorage.setItem("guvohnomaId", item); navigate("/admin/guvohnoma/list") }} className="card-header">
+                                    <h6>{item}-chi yilgi patentlar</h6><hr />
                                 </div>)
                             }
                         </div>
@@ -77,4 +77,4 @@ const AdminPatent = () => {
     )
 }
 
-export default AdminPatent;
+export default AdminGuvohnama;

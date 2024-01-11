@@ -197,11 +197,9 @@ function Header() {
             intellektual mulk obyektlari
           </a>
           <ul className="dropdown-menu">
-            <Link>
-              <li>
-                <a className="dropdown-item">
+            <Link className="dropdown-item" to={"/patents"}>
+              <li>      
                   Patentlar
-                </a>
               </li>
             </Link>
             <li>

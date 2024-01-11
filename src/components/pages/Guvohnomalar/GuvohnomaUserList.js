@@ -4,10 +4,10 @@ import Highlighter from 'react-highlight-words';
 import { Button, Input, Space, Table, message } from 'antd';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteProfile, getAllStudenData } from '../../redux/reducers/profile.store';
-import axiosConfig from '../../redux/baseUrl';
+import axiosConfig from '../../../redux/baseUrl';
+import { Link } from 'react-router-dom';
 
-const PatentsList = () => {
+const GuvohnomaUserList = () => {
 
     const [data, setData] = useState()
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -17,7 +17,7 @@ const PatentsList = () => {
     let year = sessionStorage.getItem("patentId")
     const getAllPatents = () => {
         axiosConfig.post("/patents/all", {year}).then(res => {
-            // console.log("bu res",res.data);
+            console.log("bu res",res.data);
             // console.log("bu year",year);
             setData(res.data)
         }).catch(err => {
@@ -191,34 +191,18 @@ const PatentsList = () => {
             //   sorter: (a, b) => a.address.length - b.address.length,
             //   sortDirections: ['descend', 'ascend'],
         },
-        {
-            title: "O'chirish",
-            dataIndex: 'cartItem',
-            key: 'cartItem',
-            width: '20%',
-            render: (text, row) => (
-                <p
-                    style={{ color: 'red', cursor:"pointer"}}
-                    onClick={() => {
-                        deleteStudent(row._id)
-                    }}
-                >
-                    O'chirish
-                </p>
-            ),
-        },
     ];
     const showModal = () => {
         setIsModalOpen(true);
     };
 
     return (
-        <div>
-            <h4>{year}-chi yilgi guvohnomalar</h4>
+        <div className="container" style={{marginTop:"200px"}}>
+            <h4><Link style={{textDecoration:"none"}} to="/guvohnoma">{year} - yilgi guvohnomalar</Link></h4>
             <hr />
             <Table rowKey={(record) => record._id} columns={columns} dataSource={data} />
         </div>
     );
 }
 
-export default PatentsList; 
+export default GuvohnomaUserList; 

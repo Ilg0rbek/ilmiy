@@ -35,7 +35,7 @@ const StipendDetail = () =>{
             <StipendYutuqModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}/>
         <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
             <div style={{ border: "none" }} className="card shadow">
-                <img style={{width:"400px",height:"400px",borderRadius:"50%"}} src={`http://localhost:8080/${detailData && detailData.image}`} alt="" />
+                <img style={{width:"400px",height:"400px",borderRadius:"50%"}} src={`https://ilmiyapi.adu.uz/${detailData && detailData.image}`} alt="" />
                 <div className="card-body">
                     <h4 className="text-center">{detailData && detailData.fullname}</h4>
                 </div>
@@ -45,7 +45,7 @@ const StipendDetail = () =>{
             detailData?.child?.map((item, index)=>(
         <div className="row mt-5">
             <div style={{display:"flex",justifyContent:"center"}} className="col-12">
-                <img src={`http://localhost:8080/${item.image}`} alt="" />
+                <img src={`https://ilmiyapi.adu.uz/${item.image}`} alt="" />
             </div>
             <div className="col-12">
                 {item.title}

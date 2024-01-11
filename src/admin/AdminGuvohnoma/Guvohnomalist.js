@@ -7,17 +7,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import { deleteProfile, getAllStudenData } from '../../redux/reducers/profile.store';
 import axiosConfig from '../../redux/baseUrl';
 
-const PatentsList = () => {
+const Guvohnomalist = () => {
 
     const [data, setData] = useState()
     const [isModalOpen, setIsModalOpen] = useState(false);
     const dispatch = useDispatch()
 
 
-    let year = sessionStorage.getItem("patentId")
+    let year = sessionStorage.getItem("guvohnomaId")
     const getAllPatents = () => {
-        axiosConfig.post("/patents/all", {year}).then(res => {
-            // console.log("bu res",res.data);
+        axiosConfig.post("/guvohnoma/all", {year}).then(res => {
+            console.log("bu res",res.data);
             // console.log("bu year",year);
             setData(res.data)
         }).catch(err => {
@@ -143,7 +143,7 @@ const PatentsList = () => {
 
     const deleteStudent = (data) => {
         console.log(data);
-        axiosConfig.delete(`patents/${data}`).then(res=>{
+        axiosConfig.delete(`guvohnoma/${data}`).then(res=>{
             console.log(res);
             getAllPatents()
         }).catch(err=>{
@@ -161,7 +161,7 @@ const PatentsList = () => {
             width: '30%',
             ...getColumnSearchProps('fullname'),
             render: (text, row) => (
-                <a href={`https://ilmiyapi.adu.uz/${row.dgulink}`} target='_blank' 
+                <a href={`https://ilmiyapi.adu.uz/${row.guvohnoma}`} target='_blank' 
                     style={{ color: 'blue' }}
                 >
                    {row.fullname}
@@ -184,10 +184,10 @@ const PatentsList = () => {
         },
         {
             title: 'Qayd raqamlari',
-            dataIndex: 'dgu',
-            key: 'dgu',
+            dataIndex: 'guvohonmanumber',
+            key: 'guvohonmanumber',
             width: '20%',
-            ...getColumnSearchProps('dgu'),
+            ...getColumnSearchProps('guvohonmanumber'),
             //   sorter: (a, b) => a.address.length - b.address.length,
             //   sortDirections: ['descend', 'ascend'],
         },
@@ -214,11 +214,11 @@ const PatentsList = () => {
 
     return (
         <div>
-            <h4>{year}-chi yilgi guvohnomalar</h4>
+            <h4>{year}-chi yilgi patentlar</h4>
             <hr />
             <Table rowKey={(record) => record._id} columns={columns} dataSource={data} />
         </div>
     );
 }
 
-export default PatentsList; 
+export default Guvohnomalist; 

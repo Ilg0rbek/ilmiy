@@ -71,7 +71,7 @@ const News = () => {
                     <img
                       className="w-20"
                       style={{ width: "100px" }}
-                      src={`http://localhost:8080/${item.image}`}
+                      src={`https://ilmiyapi.adu.uz/${item.image}`}
                       alt=""
                     />
                   </td>

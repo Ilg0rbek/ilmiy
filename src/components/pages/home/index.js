@@ -25,7 +25,7 @@ const Home = () => {
           className="swiperSlide"
           style={{
             backgroundImage:
-              `url(http://localhost:8080/${item.image})`,
+              `url(https://ilmiyapi.adu.uz/${item.image})`,
           }}
         >
           <div>
