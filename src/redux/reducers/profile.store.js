@@ -22,7 +22,7 @@ export const getAllStudenData = createAsyncThunk("/student", async () => {
 
 export const deleteProfile = createAsyncThunk("/delete", async (id) => {
   try {
-    return await axiosConfig.delete(`/auth/delete/${id}`);
+    return await axiosConfig.delete(`/students/delete/${id}`);
   } catch (error) {
     console.log(error.message);
   }

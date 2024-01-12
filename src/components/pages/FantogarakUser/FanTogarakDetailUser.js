@@ -34,7 +34,7 @@ const FanTogarakDetailUser = () =>{
         <div className="row mt-5">
              <h4 className="text-center">{sessionStorage.getItem("togarakName")} to'garagi</h4>
             <div  style={{display:"flex",justifyContent:"center"}} className="col-12 mt-3">
-                <img src={`https://ilmiyapi.adu.uz/${item.image}`} alt="" />
+                <img className="img-fluid" src={`https://ilmiyapi.adu.uz/${item.image}`} alt="" />
             </div>
             <div style={{marginTop:"15px"}} className="col-12">
                 <h4 style={{marginTop:"15px"}} className="text-center">{item.title}</h4>

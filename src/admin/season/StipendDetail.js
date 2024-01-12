@@ -35,9 +35,14 @@ const StipendDetail = () =>{
             <StipendYutuqModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}/>
         <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
             <div style={{ border: "none" }} className="card shadow">
+                <div className="mt-3" style={{display:"flex",justifyContent:"center"}}>
                 <img style={{width:"400px",height:"400px",borderRadius:"50%"}} src={`https://ilmiyapi.adu.uz/${detailData && detailData.image}`} alt="" />
-                <div className="card-body">
-                    <h4 className="text-center">{detailData && detailData.fullname}</h4>
+                </div>
+                <div className="card-body" style={{padding:"0 15px"}}>
+                    <h4 className="text-center mt-3">{detailData && detailData.fullname}</h4>
+                </div>
+                <div>
+               <b> {detailData && detailData.desc}</b>
                 </div>
             </div>
         </div>

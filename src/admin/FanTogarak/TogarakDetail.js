@@ -30,7 +30,7 @@ const TogarakDetail = () =>{
   };
 
     return(
-        <div className="table container mb-4">
+        <div  className="container mb-4">
             <div className="addNewYear" onClick={showModal}>
             To'garak amaliyotini qo'shish <PlusOutlined />
             </div>
@@ -39,14 +39,14 @@ const TogarakDetail = () =>{
             detailData?.map((item, index)=>(
         <div className="row mt-5">
              <h4 className="text-center">{item.title}</h4>
-            <div style={{display:"flex",justifyContent:"center"}} className="col-12">
-                <img src={`https://ilmiyapi.adu.uz/${item.image}`} alt="" />
+            <div style={{display:"flex",justifyContent:"center"}} className="col-12 mt-3">
+                <img className="img-fluid" src={`https://ilmiyapi.adu.uz/${item.image}`} alt="" />
             </div>
             <div className="col-12">
-                {item.title}
+                <h4 className="mt-3">{item.title}</h4>
             </div>
             <div className="col-12">
-                {item.desc}
+                <b className="col-12">{item.desc}</b>
             </div>
         </div>
             ))
