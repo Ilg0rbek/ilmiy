@@ -148,7 +148,7 @@ const Doctorant = () =>{
       ...getColumnSearchProps('fullName'),
     },
     {
-      title: "Po'chta",
+      title: "Kursi",
       dataIndex: 'email',
       key: 'email',
       width: '20%',
@@ -171,14 +171,14 @@ const Doctorant = () =>{
     //   sortDirections: ['descend', 'ascend'],
     },
     {
-        title: "Qo'shimcha raqam",
+        title: "Yonalsihi",
         dataIndex: 'seccondNumber',
         key: 'seccondNumber',
         width: '20%',
         ...getColumnSearchProps('seccondNumber'),
       },
     {
-        title: "cartItem",
+        title: "O'chirish",
         dataIndex: 'cartItem',
         key: 'cartItem',
         width: '20%',

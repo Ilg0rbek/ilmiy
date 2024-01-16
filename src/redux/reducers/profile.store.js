@@ -29,9 +29,8 @@ export const deleteProfile = createAsyncThunk("/delete", async (id) => {
 });
 
 export const updateProfile = createAsyncThunk("/update", async (data) => {
-  console.log("update");
   try {
-    const res = axiosConfig.put(`/auth/user/${data.id}`, data.userProfileData);
+    const res = await axiosConfig.put(`/auth/user/${data.id}`, data.userProfileData);
     console.log(res);
     return res
   } catch (error) {
@@ -40,7 +39,7 @@ export const updateProfile = createAsyncThunk("/update", async (data) => {
 });
 
 export const postProfile = createAsyncThunk("/post", async (data) => {
-  console.log("Hello post");
+  console.log("Hello data", data);
   try {
     const res = await axiosConfig.post(`/auth/register`, data);
     console.log("mana",res);
