@@ -1,8 +1,7 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState,useEffect } from 'react';
 import { SearchOutlined ,PlusOutlined} from '@ant-design/icons';
 import Highlighter from 'react-highlight-words';
 import { Button, Input, Space, Table, message } from 'antd';
-import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteProfile, getAllStudenData } from '../../redux/reducers/profile.store';
 import DeleteModal from './AddModal';
