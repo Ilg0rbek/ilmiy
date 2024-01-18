@@ -1,28 +1,39 @@
-import React, { useRef, useState,useEffect } from 'react';
-import { SearchOutlined ,PlusOutlined} from '@ant-design/icons';
+import React, { useRef, useState, useEffect } from 'react';
+import { SearchOutlined, PlusOutlined } from '@ant-design/icons';
 import Highlighter from 'react-highlight-words';
 import { Button, Input, Space, Table, message } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteProfile, getAllStudenData } from '../../redux/reducers/profile.store';
 import DeleteModal from './AddModal';
 import axiosConfig from '../../redux/baseUrl';
+import * as XLSX  from 'xlsx';
+import FileSaver from "file-saver"
+const Doctorant = () => {
 
-const Doctorant = () =>{
+  const data = useSelector((state) => state.profile.getStudentdata)
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const dispatch = useDispatch()
+  
+  const fileType ="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8";
+  const fileExtension = ".xlsx";
 
-    const data = useSelector((state)=>state.profile.getStudentdata)
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const dispatch = useDispatch()
-    // const student = useSelector((state)=>state.profile.getStudentdata)
+  const exportToCSV = (data) => {
+    const ws = XLSX.utils.json_to_sheet(data);
+    const wb = { Sheets: { data: ws }, SheetNames: ["data"] };
+    const excelBuffer = XLSX.write(wb, { bookType: "xlsx", type: "array" });
+    const datas = new Blob([excelBuffer], { type: fileType });
+    FileSaver.saveAs(datas, Date.now() + fileExtension);
+  };
 
-    useEffect(()=>{
-        dispatch(getAllStudenData())
-    },[isModalOpen])
-    
-    useEffect(()=>{
-      dispatch(getAllStudenData())
-    },[])
+  useEffect(() => {
+    dispatch(getAllStudenData())
+  }, [isModalOpen])
 
-    const [searchText, setSearchText] = useState('');
+  useEffect(() => {
+    dispatch(getAllStudenData())
+  }, [])
+
+  const [searchText, setSearchText] = useState('');
   const [searchedColumn, setSearchedColumn] = useState('');
   const searchInput = useRef(null);
   const handleSearch = (selectedKeys, confirm, dataIndex) => {
@@ -133,11 +144,11 @@ const Doctorant = () =>{
       ),
   });
 
-  const deleteStudent = (data) =>{
+  const deleteStudent = (data) => {
     dispatch(deleteProfile(data))
     message.success("Talaba o'chirildi")
     dispatch(getAllStudenData())
-    window.location.reload()
+    // window.location.reload()
   }
 
   const columns = [
@@ -163,68 +174,89 @@ const Doctorant = () =>{
       ...getColumnSearchProps('username'),
     },
     {
+      title: "Foydalanuvchi paroli",
+      dataIndex: 'password',
+      key: 'password',
+      width: '20%',
+      ...getColumnSearchProps('username'),
+    },
+    {
       title: 'Telefon nomer',
       dataIndex: 'firstNumber',
       key: 'firstNumber',
       width: '15%',
       ...getColumnSearchProps('firstNumber'),
-    //   sorter: (a, b) => a.address.length - b.address.length,
-    //   sortDirections: ['descend', 'ascend'],
+      //   sorter: (a, b) => a.address.length - b.address.length,
+      //   sortDirections: ['descend', 'ascend'],
     },
     {
-        title: "Yonalsihi",
-        dataIndex: 'yunalish',
-        key: 'yunalish',
-        width: '25%',
-        ...getColumnSearchProps('yunalish'),
-      },
+      title: "Yonalsihi",
+      dataIndex: 'yunalish',
+      key: 'yunalish',
+      width: '25%',
+      ...getColumnSearchProps('yunalish'),
+    },
     {
-        title: "O'chirish",
-        dataIndex: 'cartItem',
-        key: 'cartItem',
-        width: '20%',
-        render: (text,row) => (
-            <a
-              style={{ color: 'red' }}
-              onClick={() => {
-                deleteStudent(row._id)
-              }}
-            >
-              Remove
-            </a>
-          ),
+      title: "O'chirish",
+      dataIndex: 'cartItem',
+      key: 'cartItem',
+      width: '15%',
+      render: (text, row) => (
+        <a
+          style={{ color: 'red' }}
+          onClick={() => {
+            deleteStudent(row._id)
+          }}
+        >
+          Remove
+        </a>
+      ),
     },
   ];
   const showModal = () => {
     setIsModalOpen(true);
   };
 
+   
+   
+  
+
   const [count, setCountUser] = useState("")
   const [chekin, setChekIn] = useState(false)
-  const cerateUser = () =>{
+
+  const cerateUser = () => {
     setChekIn(true)
-    axiosConfig.post(`/auth/generate-student`,{count}).then(res=>{
-      console.log(res);
+    axiosConfig.post(`/auth/generate-student`, { count }).then(res => {
+      console.log(res.data);
+      exportToCSV(res.data)
       getAllStudenData()
       window.location.reload()
-    }).catch(err=>{
+      // setChekIn(false)
+    }).catch(err => {
       console.log(err);
     })
   }
 
   return (
     <div>
-      <div style={{display:"flex",width:"50%"}} className='mb-3'>
-        {
-          chekin ? <div style={{padding:"10px"}}><h6>Foydalanuvchilar tayyorlanmoqda</h6></div> :<input onChange={(e)=>setCountUser(e.target.value)} className='form-control shadow-none' type="text" placeholder='Foydalanuvchilarni yaratish uchun kerakli raqamni kiriting' />
-        }
-        <button className='btn btn-primary text-white' onClick={cerateUser}>Yaratish</button>
+      <div style={{ display: "flex", width: "100%", justifyContent: "space-between" }} className='mb-3'>
+        <div style={{ display: "flex", width: "50%" }}>
+          {
+            chekin ? <div style={{ padding: "10px" }}><h6>Foydalanuvchilar tayyorlanmoqda..</h6></div> : <input onChange={(e) => setCountUser(e.target.value)} className='form-control shadow-none' type="text" placeholder='Foydalanuvchilarni yaratish uchun kerakli raqamni kiriting' />
+          }
+          <button className='btn btn-primary text-white' onClick={cerateUser}>Yaratish</button>
+        </div>
+        {/* <div>
+          <button onClick={exportToCSV} className='btn btn-secondary text-white'>
+          excel
+          </button>
+        </div> */}
       </div>
       <div className="addNewYear" onClick={showModal}>
         Doktorantlarni qo'shish <PlusOutlined />
       </div>
-      <DeleteModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}/>
-      <Table rowKey={( record ) => record._id} columns={columns} dataSource={data} />
+      <DeleteModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
+      <Table rowKey={(record) => record._id} columns={columns} dataSource={data} />
     </div>
   );
 }
