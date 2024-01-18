@@ -10,7 +10,6 @@ const initialState = {
 };
 
 export const getAllStudenData = createAsyncThunk("/student", async () => {
-  console.log("Hello get all");
   try {
     const res = await axiosConfig.get("/auth/users");
     console.log(res.data);
@@ -22,7 +21,8 @@ export const getAllStudenData = createAsyncThunk("/student", async () => {
 
 export const deleteProfile = createAsyncThunk("/delete", async (id) => {
   try {
-    return await axiosConfig.delete(`/students/delete/${id}`);
+    console.log("ochirildi",id);
+    return await axiosConfig.delete(`/auth/delete/${id}`);
   } catch (error) {
     console.log(error.message);
   }

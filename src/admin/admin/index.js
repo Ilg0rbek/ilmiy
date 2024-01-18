@@ -72,19 +72,19 @@ const Admin = () => {
       label: "patentlar",
       path: "/admin/guvohnoma",
     },
-    {
-      key: "5",
-      icon: <SettingOutlined />,
-      label: "Sozlanmalar",
-      path: "/admin/settings",
-    },
+    // {
+    //   key: "5",
+    //   icon: <SettingOutlined />,
+    //   label: "Sozlanmalar",
+    //   path: "/admin/settings",
+    // },
    
-    {
-      key: "6",
-      icon: <UserOutlined />,
-      label: "Profile",
-      path: "/admin/profile",
-    },
+    // {
+    //   key: "6",
+    //   icon: <UserOutlined />,
+    //   label: "Profile",
+    //   path: "/admin/profile",
+    // },
     // {
     //   key: "6",
     //   icon: <UserOutlined />,

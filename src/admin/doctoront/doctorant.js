@@ -5,6 +5,7 @@ import { Button, Input, Space, Table, message } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteProfile, getAllStudenData } from '../../redux/reducers/profile.store';
 import DeleteModal from './AddModal';
+import axiosConfig from '../../redux/baseUrl';
 
 const Doctorant = () =>{
 
@@ -136,6 +137,7 @@ const Doctorant = () =>{
     dispatch(deleteProfile(data))
     message.success("Talaba o'chirildi")
     dispatch(getAllStudenData())
+    window.location.reload()
   }
 
   const columns = [
@@ -148,10 +150,10 @@ const Doctorant = () =>{
     },
     {
       title: "Kursi",
-      dataIndex: 'email',
-      key: 'email',
-      width: '20%',
-      ...getColumnSearchProps('email'),
+      dataIndex: 'kurs',
+      key: 'kurs',
+      width: '15%',
+      ...getColumnSearchProps('kurs'),
     },
     {
       title: "Foydalanuvchi nomi",
@@ -164,17 +166,17 @@ const Doctorant = () =>{
       title: 'Telefon nomer',
       dataIndex: 'firstNumber',
       key: 'firstNumber',
-      width: '20%',
+      width: '15%',
       ...getColumnSearchProps('firstNumber'),
     //   sorter: (a, b) => a.address.length - b.address.length,
     //   sortDirections: ['descend', 'ascend'],
     },
     {
         title: "Yonalsihi",
-        dataIndex: 'seccondNumber',
-        key: 'seccondNumber',
-        width: '20%',
-        ...getColumnSearchProps('seccondNumber'),
+        dataIndex: 'yunalish',
+        key: 'yunalish',
+        width: '25%',
+        ...getColumnSearchProps('yunalish'),
       },
     {
         title: "O'chirish",
@@ -197,8 +199,27 @@ const Doctorant = () =>{
     setIsModalOpen(true);
   };
 
+  const [count, setCountUser] = useState("")
+  const [chekin, setChekIn] = useState(false)
+  const cerateUser = () =>{
+    setChekIn(true)
+    axiosConfig.post(`/auth/generate-student`,{count}).then(res=>{
+      console.log(res);
+      getAllStudenData()
+      window.location.reload()
+    }).catch(err=>{
+      console.log(err);
+    })
+  }
+
   return (
     <div>
+      <div style={{display:"flex",width:"50%"}} className='mb-3'>
+        {
+          chekin ? <div style={{padding:"10px"}}><h6>Foydalanuvchilar tayyorlanmoqda</h6></div> :<input onChange={(e)=>setCountUser(e.target.value)} className='form-control shadow-none' type="text" placeholder='Foydalanuvchilarni yaratish uchun kerakli raqamni kiriting' />
+        }
+        <button className='btn btn-primary text-white' onClick={cerateUser}>Yaratish</button>
+      </div>
       <div className="addNewYear" onClick={showModal}>
         Doktorantlarni qo'shish <PlusOutlined />
       </div>

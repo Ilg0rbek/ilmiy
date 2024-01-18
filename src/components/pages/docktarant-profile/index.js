@@ -1,15 +1,14 @@
-import React, { useRef, useState,useEffect } from 'react';
-import { SearchOutlined ,PlusOutlined} from '@ant-design/icons';
+import React, { useRef, useState, useEffect } from 'react';
+import { SearchOutlined, PlusOutlined } from '@ant-design/icons';
 import "./profile.css";
 import Highlighter from 'react-highlight-words';
-import { Button, Input, Form, Space, Table, message,Select } from 'antd';
+import { Button,  Form, Space, Table, message, Select, Upload } from 'antd';
 import { UploadOutlined, MessageOutlined } from "@ant-design/icons";
-import { red, green } from "@ant-design/colors";
-import { useDispatch, useSelector } from "react-redux";
-import { postProfile, updateProfile } from "../../../redux/reducers/profile.store";
 import axiosConfig from "../../../redux/baseUrl";
+import DeleteModal from '../../../admin/doctoront/AddModal';
 
 const StudentProlie = () => {
+
   const [edit, setEdit] = useState(true);
   const [userProfileData, setUserProfileData] = useState({
     fullName: "",
@@ -20,8 +19,6 @@ const StudentProlie = () => {
     shifr: ""
   });
 
-  const dispatch = useDispatch()
-  const state = useSelector(state => state.profile)
 
   const handleChange = (e) => {
     setUserProfileData(() => {
@@ -31,22 +28,47 @@ const StudentProlie = () => {
       };
     });
   };
-  const allData = {
-    id: sessionStorage.getItem("userId"),
-    userProfileData
-  }
+
+  let userId = sessionStorage.getItem("userId")
+
   const hendleUpdate = () => {
-    dispatch(updateProfile(allData))
+    axiosConfig.put(`/auth/user/${userId}`,userProfileData).then(res=>{
+      console.log("yangi",res);
+      getMydata()
+    }).catch(err=>{
+      console.log(err);
+    })
+  }
+  
+  let id = sessionStorage.getItem("userId")
+  const [oldPassword, setOldPassword] = useState()
+  const [password, setPassword] = useState()
+  const [confirmPassword, setConfirmPassword] = useState()
+  
+  const hendleUpdatePassword = () => {
+    axiosConfig.post(`/auth/update-password`, {oldPassword, password, confirmPassword, id}).then(res=>{
+      console.log("parol",res.data);
+      if (res.data.msg == "parol Eski parol xato kiritildi") {
+        message.success("Parolingiz muvaffaqiyatli yangilandi")
+        setOldPassword("")
+        setPassword("")
+        setConfirmPassword("")
+        getMydata()
+      }
+      else{
+        message.error(res.data)
+      }
+    }).catch(err=>{
+      console.log("parol",err);
+    })
   }
 
-  useEffect(() => { }, [state.loading])
 
 
   const formData = new FormData()
 
   const [plan, setPlan] = useState("")
   const [selectData, setSelectData] = useState([])
-  let userId = sessionStorage.getItem("userId")
 
   const addAllFile = () => {
     formData.append("document", plan)
@@ -54,7 +76,12 @@ const StudentProlie = () => {
     formData.append("owner", userId)
     // console.log(formData.get("document"));
     axiosConfig.post(`/documents`, formData).then(res => {
-      console.log(res);
+      console.log(res.status);
+      if (res.status == 201) {
+        getAllDocument()
+        setSelectData("")
+        message.success('Fayl samarali yuklandi');
+      }
     }).catch(err => {
       console.log(err);
     })
@@ -64,7 +91,7 @@ const StudentProlie = () => {
 
   const getAllDocument = () => {
     axiosConfig.get(`/documents`).then(res => {
-      console.log(res.data);
+      // console.log(res.data);
       setAllDocument(res.data)
     }).catch(err => {
       console.log(err);
@@ -76,10 +103,18 @@ const StudentProlie = () => {
   }, [])
 
   const [mydata, setMyData] = useState()
+  const getMydata = () => {
+    axiosConfig.get(`/auth/user/${userId}`).then(res => {
+      setMyData(res.data)
+      // console.log("salom",res.data);
+    }).catch(err => {
+      console.log(err);
+    })
+  }
 
-
-
-
+  useEffect(() => {
+    getMydata()
+  }, [])
 
   const [option, setOption] = useState([
     { value: 1, label: "Shaxsiy yillik reja" },
@@ -93,10 +128,6 @@ const StudentProlie = () => {
   const selectChange = (e, b) => {
     setSelectData(b)
   }
-
-
-
-  
   const [searchText, setSearchText] = useState('');
   const [searchedColumn, setSearchedColumn] = useState('');
   const searchInput = useRef(null);
@@ -117,7 +148,7 @@ const StudentProlie = () => {
         }}
         onKeyDown={(e) => e.stopPropagation()}
       >
-        <Input
+        <input  className="form-control shadow-none"
           ref={searchInput}
           placeholder={`Search ${dataIndex}`}
           value={selectedKeys[0]}
@@ -208,65 +239,63 @@ const StudentProlie = () => {
       ),
   });
 
-  const deleteStudent = (data) =>{
-    dispatch(deleteProfile(data))
-    message.success("Talaba o'chirildi")
-    dispatch(getAllStudenData())
+  const deleteStudent = (data) => {
+    axiosConfig.delete(`/documents/${data}`).then(res => {
+      if (res.status == 200) {
+        getAllDocument()
+        message.success("Fayl o'chirildi")
+      }
+    }).catch(err => {
+      console.log(err);
+    })
+    // dispatch(getAllStudenData())
   }
-  const [isModalOpen, setIsModalOpen] = useState(false);  
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const columns = [
     {
-      title: 'FIO',
-      dataIndex: 'fullName',
-      key: 'fullName',
+      title: 'Fayl nomi',
+      dataIndex: 'title',
+      key: 'title',
       width: '30%',
-      ...getColumnSearchProps('fullName'),
+      ...getColumnSearchProps('title'),
     },
     {
-      title: "Kursi",
-      dataIndex: 'email',
-      key: 'email',
+      title: "Fayl",
+      dataIndex: 'document',
+      key: 'document',
       width: '20%',
-      ...getColumnSearchProps('email'),
+      ...getColumnSearchProps('document'),
+      render: (text, row) => (
+        <a href={`https://ilmiyapi.adu.uz/api${row.document}`} target='_blank'
+          style={{ color: 'blue' }}
+        >
+          Faylni yuklash
+        </a>
+      ),
     },
     {
-      title: "Foydalanuvchi nomi",
-      dataIndex: 'username',
-      key: 'username',
+      title: "Sanasi",
+      dataIndex: 'createdAt',
+      key: 'createdAt',
       width: '20%',
-      ...getColumnSearchProps('username'),
+      render: ((text, date) => console.log("log", date)),
+      ...getColumnSearchProps('createdAt'),
     },
     {
-      title: 'Telefon nomer',
-      dataIndex: 'firstNumber',
-      key: 'firstNumber',
+      title: "O'chirish",
+      dataIndex: 'cartItem',
+      key: 'cartItem',
       width: '20%',
-      ...getColumnSearchProps('firstNumber'),
-    //   sorter: (a, b) => a.address.length - b.address.length,
-    //   sortDirections: ['descend', 'ascend'],
-    },
-    {
-        title: "Yonalsihi",
-        dataIndex: 'seccondNumber',
-        key: 'seccondNumber',
-        width: '20%',
-        ...getColumnSearchProps('seccondNumber'),
-      },
-    {
-        title: "O'chirish",
-        dataIndex: 'cartItem',
-        key: 'cartItem',
-        width: '20%',
-        render: (text,row) => (
-            <a
-              style={{ color: 'red' }}
-              onClick={() => {
-                deleteStudent(row._id)
-              }}
-            >
-              Remove
-            </a>
-          ),
+      render: (text, row) => (
+        <a
+          style={{ color: 'red' }}
+          onClick={() => {
+            deleteStudent(row._id)
+          }}
+        >
+          O'chirish
+        </a>
+      ),
     },
   ];
   const showModal = () => {
@@ -292,7 +321,8 @@ const StudentProlie = () => {
                     <div className="mt-3">
                       <h4>{mydata?.fullName}</h4>
                       <p className="text-secondary mb-1">
-                        Doktarantura talabasi
+                        {/* Doktarantura {new Date().getDate() - new Date(mydata?.createdAt).getDate() + 1} - kurs talabasi */}
+                        Doktarantura {mydata?.kurs} talabasi
                       </p>
                       <p className="text-muted font-size-sm">
                         {mydata?.adress}
@@ -324,9 +354,9 @@ const StudentProlie = () => {
                     </div>
                     <div className="col-sm-9 text-secondary">
                       {edit ? (
-                        <Input disabled value={mydata?.fullName} placeholder="Full name" />
+                        <input  className="form-control shadow-none" disabled value={mydata?.fullName} placeholder="Full name" />
                       ) : (
-                        <Input name="fullName" onChange={handleChange} placeholder="Full name" />
+                        <input  className="form-control shadow-none" name="fullName" defaultValue={mydata?.fullName} onChange={handleChange} placeholder="Full name" />
                       )}
                     </div>
                   </div>
@@ -337,9 +367,15 @@ const StudentProlie = () => {
                     </div>
                     <div className="col-sm-9 text-secondary">
                       {edit ? (
-                        <Input disabled value={mydata?.kursi} type="text" placeholder="kursi" />
+                        <input  className="form-control shadow-none" disabled value={mydata?.kurs} type="text" placeholder="kursi" />
                       ) : (
-                        <Input name="kurs" onChange={handleChange} type="text" placeholder="Kursi" />
+                        // <input  className="form-control shadow-none" name="kurs" onChange={handleChange} type="text" placeholder="Kursi" />
+                        <select name='kurs' onChange={handleChange} style={{ boxShadow: "none" }} className='form-control'>
+                          <option selected disabled>Tanlang</option>
+                          <option value="1-kusr">1-kusr</option>
+                          <option value="2-kusr">2-kusr</option>
+                          <option value="3-kusr">3-kusr</option>
+                        </select>
                       )}
                     </div>
                   </div>
@@ -349,7 +385,7 @@ const StudentProlie = () => {
                       <h6 className="mb-0">Tel nomer</h6>
                     </div>
                     <div className="col-sm-9 text-secondary">
-                      {edit ? <Input disabled value={mydata?.firstNumber} placeholder="+998 " /> : <Input name="firstNumber" onChange={handleChange} placeholder="+998 " />}
+                      {edit ? <input  className="form-control shadow-none" disabled value={mydata?.firstNumber} placeholder="+998 " /> : <input  className="form-control shadow-none" defaultValue={mydata?.firstNumber} name="firstNumber" onChange={handleChange} placeholder="+998 " />}
                     </div>
                   </div>
                   <hr />
@@ -358,7 +394,7 @@ const StudentProlie = () => {
                       <h6 className="mb-0">Yon'alishi</h6>
                     </div>
                     <div className="col-sm-9 text-secondary">
-                      {edit ? <Input disabled value={mydata?.yunalish} placeholder="Yo'nalish" /> : <Input name="yunalish" onChange={handleChange} placeholder="Yo'nalisi" />}
+                      {edit ? <input  className="form-control shadow-none" disabled value={mydata?.yunalish} placeholder="Yo'nalish" /> : <input  className="form-control shadow-none" name="yunalish" defaultValue={mydata?.yunalish} onChange={handleChange} placeholder="Yo'nalisi" />}
                     </div>
                   </div>
                   <hr />
@@ -368,9 +404,9 @@ const StudentProlie = () => {
                     </div>
                     <div className="col-sm-9 text-secondary">
                       {edit ? (
-                        <Input disabled value={mydata?.shifr} placeholder="Shifr " />
+                        <input  className="form-control shadow-none" disabled value={mydata?.shifr} placeholder="Shifr " />
                       ) : (
-                        <Input name="shifr" onChange={handleChange} placeholder="Shifri " />
+                        <input  className="form-control shadow-none" name="shifr" defaultValue={mydata?.shifr} onChange={handleChange} placeholder="Shifri " />
                       )}
                     </div>
                   </div>
@@ -381,9 +417,35 @@ const StudentProlie = () => {
                     </div>
                     <div className="col-sm-9 text-secondary">
                       {edit ? (
-                        <Input disabled value={mydata?.adress} placeholder="Manzil " />
+                        <input  className="form-control shadow-none" disabled value={mydata?.adress} placeholder="Manzil " />
                       ) : (
-                        <Input name="adress" onChange={handleChange} placeholder="Manzil " />
+                        <input  className="form-control shadow-none" name="adress" defaultValue={mydata?.adress} onChange={handleChange} placeholder="Manzil " />
+                      )}
+                    </div>
+                  </div>
+                  <hr />
+                  <div className="row">
+                    <div className="col-sm-3">
+                      <h6 className="mb-0">Foydalanuvchi nomi</h6>
+                    </div>
+                    <div className="col-sm-9 text-secondary">
+                      {edit ? (
+                        <input  className="form-control shadow-none" disabled value={mydata?.username} placeholder="Manzil " />
+                      ) : (
+                        <input  className="form-control shadow-none" name="adress" disabled value={mydata?.username}  placeholder="Manzil " />
+                      )}
+                    </div>
+                  </div>
+                  <hr />
+                  <div className="row">
+                    <div className="col-sm-3">
+                      <h6 className="mb-0">Foydalanuvchi paroli</h6>
+                    </div>
+                    <div className="col-sm-9 text-secondary">
+                      {edit ? (
+                        <input  className="form-control shadow-none" disabled value={mydata?.password} placeholder="Manzil " />
+                      ) : (
+                        <input  className="form-control shadow-none" name="adress" disabled value={mydata?.password}  placeholder="Manzil " />
                       )}
                     </div>
                   </div>
@@ -391,20 +453,20 @@ const StudentProlie = () => {
                   <div className="row">
                     <div className="col-sm-12">
                       <Button type="primary" ghost onClick={() => setEdit(!edit)}>
-                        {edit ? "Qo'shish" : "Bekor qilish"}
+                        {edit ? "Ma'lumotlarni yangilsh" : "Bekor qilish"}
                       </Button>
                       {!edit && (
-                        <Button onClick={hendleUpdate} type="primary" danger ghost className="ms-3" >
-                          Saqlash
+                        <Button onClick={()=>{hendleUpdate(); setEdit(!edit)}} type="primary" danger ghost className="ms-3" >
+                          Saqlash 
                         </Button>
                       )}
                     </div>
                   </div>
                 </div>
-
+                <hr />
                 <div className="row gutters-sm">
                   <div className="col-sm-6 mb-3">
-                    <div className="card h-100">
+                    <div className=" h-100">
                       <div className="card-body">
                         <h6 className="d-flex align-items-center  justify-content-between  mb-3">
                           Kerakli hujjatlar
@@ -439,13 +501,13 @@ const StudentProlie = () => {
                             borderRadius: "10px",
                           }}
                         >
-                          <input type="file" accept=".pdf, .docx, .doc" onChange={(e) => setPlan(e.target.files[0])} />
-                          {/* <Upload
+                          {/* <input type="file" accept=".pdf, .docx, .doc" onChange={(e) => setPlan(e.target.files[0])} /> */}
+                          <Upload
                             beforeUpload={(file) => {
                               setPlan(file)
                               return false;
                             }}
-                            accept=".docx, doc, zip, pdf"
+                            accept=".pdf, .docx, .doc"
                             maxCount={1}
                           >
                             <Button
@@ -460,7 +522,7 @@ const StudentProlie = () => {
                               {selectData != "" ?
                                 selectData.label + " yuklash" : "Yuqorida kerakli fayl turini tanlng"}
                             </Button>
-                          </Upload> */}
+                          </Upload>
                         </div>
 
                         <Button onClick={addAllFile} type="primary" ghost>Yuklash</Button>
@@ -468,22 +530,22 @@ const StudentProlie = () => {
                     </div>
                   </div>
                   <div className="col-sm-6 mb-3">
-                    <div className="card h-100">
+                    <div className=" h-100">
                       <div className="card-body">
                         <h6 className="d-flex align-items-center mb-3">
                           Foydalanuvchi parolini yangilash
                         </h6>
                         <Form>
                           <Form.Item>
-                            <Input placeholder="Eski parolni kiriting" />
+                            <input value={oldPassword} onChange={(e)=>setOldPassword(e.target.value)} className="form-control shadow-none" placeholder="Eski parolni kiriting" />
                           </Form.Item>
                           <Form.Item>
-                            <Input placeholder="Yangi parolni kiriting" />
+                            <input value={password} onChange={(e)=>setPassword(e.target.value)} className="form-control shadow-none" placeholder="Yangi parolni kiriting" />
                           </Form.Item>
                           <Form.Item>
-                            <Input placeholder="Yangi parolni qayta kiriting" />
+                            <input value={confirmPassword} onChange={(e)=>setConfirmPassword(e.target.value)} className="form-control shadow-none" placeholder="Yangi parolni qayta kiriting" />
                           </Form.Item>
-                          <Button type="primary" ghost>Yangilash</Button>
+                          <Button type="primary" onClick={hendleUpdatePassword} ghost>Yangilash</Button>
                         </Form>
                       </div>
                     </div>
@@ -498,7 +560,8 @@ const StudentProlie = () => {
         <div className="row">
           <div className="col-12">
             <DeleteModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
-            <Table rowKey={(record) => record._id} columns={columns} dataSource={data} />
+            <h2 className="text-center">Yuklangan fayillar</h2>
+            <Table rowKey={(record) => record._id} columns={columns} dataSource={allDocument} />
           </div>
         </div>
       </div>

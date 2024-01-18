@@ -12,7 +12,6 @@ const DeleteModal = ({ isModalOpen, setIsModalOpen, statePut, showId }) => {
   const dispatch = useDispatch();
 
   const messagee = useSelector((state)=>state.profile.getText)
-  console.log(messagee);
 
   useEffect(() => {
     if (showData !== undefined) {
