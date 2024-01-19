@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { SearchOutlined, PlusOutlined } from '@ant-design/icons';
+import { SearchOutlined, PlusOutlined,EyeOutlined,DeleteOutlined } from '@ant-design/icons';
 import Highlighter from 'react-highlight-words';
 import { Button, Input, Space, Table, message } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
@@ -8,6 +8,7 @@ import DeleteModal from './AddModal';
 import axiosConfig from '../../redux/baseUrl';
 import * as XLSX  from 'xlsx';
 import FileSaver from "file-saver"
+import { useNavigate } from 'react-router-dom';
 const Doctorant = () => {
 
   const data = useSelector((state) => state.profile.getStudentdata)
@@ -150,6 +151,8 @@ const Doctorant = () => {
     dispatch(getAllStudenData())
     // window.location.reload()
   }
+  
+  const navigate = useNavigate()
 
   const columns = [
     {
@@ -163,32 +166,32 @@ const Doctorant = () => {
       title: "Kursi",
       dataIndex: 'kurs',
       key: 'kurs',
-      width: '15%',
+      width: '10%',
       ...getColumnSearchProps('kurs'),
     },
     {
       title: "Foydalanuvchi nomi",
       dataIndex: 'username',
       key: 'username',
-      width: '20%',
+      width: '15%',
       ...getColumnSearchProps('username'),
     },
     {
       title: "Foydalanuvchi paroli",
       dataIndex: 'password',
       key: 'password',
-      width: '20%',
+      width: '15%',
       ...getColumnSearchProps('username'),
     },
-    {
-      title: 'Telefon nomer',
-      dataIndex: 'firstNumber',
-      key: 'firstNumber',
-      width: '15%',
-      ...getColumnSearchProps('firstNumber'),
-      //   sorter: (a, b) => a.address.length - b.address.length,
-      //   sortDirections: ['descend', 'ascend'],
-    },
+    // {
+    //   title: 'Telefon nomer',
+    //   dataIndex: 'firstNumber',
+    //   key: 'firstNumber',
+    //   width: '15%',
+    //   ...getColumnSearchProps('firstNumber'),
+    //   //   sorter: (a, b) => a.address.length - b.address.length,
+    //   //   sortDirections: ['descend', 'ascend'],
+    // },
     {
       title: "Yonalsihi",
       dataIndex: 'yunalish',
@@ -197,19 +200,17 @@ const Doctorant = () => {
       ...getColumnSearchProps('yunalish'),
     },
     {
-      title: "O'chirish",
+      title: "Amallar",
       dataIndex: 'cartItem',
       key: 'cartItem',
-      width: '15%',
+      width: '10%',
       render: (text, row) => (
-        <a
-          style={{ color: 'red' }}
-          onClick={() => {
+        <div>
+          <EyeOutlined onClick={()=>navigate(`/admin/doctorantlist/detail/${row._id}`)}/>
+          <DeleteOutlined onClick={() => {
             deleteStudent(row._id)
-          }}
-        >
-          Remove
-        </a>
+          }} style={{ color: 'red',marginLeft:"15px" }}/>
+        </div>
       ),
     },
   ];
@@ -256,7 +257,9 @@ const Doctorant = () => {
         Doktorantlarni qo'shish <PlusOutlined />
       </div>
       <DeleteModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
+      <div style={{padding:"0 0 30px 0"}} className='table mb-5'>
       <Table rowKey={(record) => record._id} columns={columns} dataSource={data} />
+      </div>
     </div>
   );
 }

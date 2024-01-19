@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { SearchOutlined, PlusOutlined } from '@ant-design/icons';
+import { SearchOutlined } from '@ant-design/icons';
 import "./profile.css";
 import Highlighter from 'react-highlight-words';
 import { Button,  Form, Space, Table, message, Select, Upload } from 'antd';
@@ -90,7 +90,7 @@ const StudentProlie = () => {
   const [allDocument, setAllDocument] = useState([])
 
   const getAllDocument = () => {
-    axiosConfig.get(`/documents`).then(res => {
+    axiosConfig.get(`/documents/${userId}`).then(res => {
       // console.log(res.data);
       setAllDocument(res.data)
     }).catch(err => {

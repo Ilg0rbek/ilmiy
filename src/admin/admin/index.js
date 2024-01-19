@@ -26,6 +26,7 @@ import AdminPatent from "../AdminPatents/AdminPatetnt";
 import PatentsList from "../AdminPatents/PatentsList";
 import AdminGuvohnama from "../AdminGuvohnoma/AdminGuvohnama";
 import Guvohnomalist from "../AdminGuvohnoma/Guvohnomalist";
+import DoctorantDetail from "../doctoront/DoctoranDetail";
 
 const { Header, Sider, Content } = Layout;
 
@@ -179,6 +180,7 @@ const Admin = () => {
             <Route path="/stipendiants" element={<Season />} />
             <Route path="/cources" element={<FanTogarak />} />
             <Route path="/doctorantlist" element={<Doctorant/>} />
+            <Route path="/doctorantlist/detail/:id" element={<DoctorantDetail/>} />
             <Route path="/stipendiants/user-list" element={<Students />} />
             <Route path="/news" element={<News />} />
             <Route path="/stipendiants/all-stipends" element={<StipendAll/>} />
