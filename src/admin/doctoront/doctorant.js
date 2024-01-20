@@ -1,12 +1,13 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { SearchOutlined, PlusOutlined,EyeOutlined,DeleteOutlined } from '@ant-design/icons';
+import { SearchOutlined, PlusOutlined, EyeOutlined, DeleteOutlined } from '@ant-design/icons';
 import Highlighter from 'react-highlight-words';
-import { Button, Input, Space, Table, message } from 'antd';
+import { Button, Input, Progress, Space, Table, Tooltip, message } from 'antd';
+import { red, green } from '@ant-design/colors';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteProfile, getAllStudenData } from '../../redux/reducers/profile.store';
 import DeleteModal from './AddModal';
 import axiosConfig from '../../redux/baseUrl';
-import * as XLSX  from 'xlsx';
+import * as XLSX from 'xlsx';
 import FileSaver from "file-saver"
 import { useNavigate } from 'react-router-dom';
 const Doctorant = () => {
@@ -14,8 +15,8 @@ const Doctorant = () => {
   const data = useSelector((state) => state.profile.getStudentdata)
   const [isModalOpen, setIsModalOpen] = useState(false);
   const dispatch = useDispatch()
-  
-  const fileType ="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8";
+
+  const fileType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8";
   const fileExtension = ".xlsx";
 
   const exportToCSV = (data) => {
@@ -151,7 +152,7 @@ const Doctorant = () => {
     dispatch(getAllStudenData())
     // window.location.reload()
   }
-  
+
   const navigate = useNavigate()
 
   const columns = [
@@ -200,16 +201,33 @@ const Doctorant = () => {
       ...getColumnSearchProps('yunalish'),
     },
     {
+      title: "Fayllar",
+      dataIndex: 'count',
+      key: 'count',
+      width: '25%',
+      render: (text, row) => (
+        <div>
+          <Tooltip title={row.kurs !== "" ? `${row.count} yuklandi / Hujjatlarni to'liq bo'lishini minimal soni ${row.kurs == '1-kurs' ? 3 : row.kurs == '2-kurs' ? 5 : 7} ta`: "Profil to'ldirilmagan"}>
+            <Progress   
+              percent={(row.kurs == '1-kurs' ? (row.count/3)*100 : row.kurs == '2-kurs' ? (row.count/5)*100 :  (row.count/7)*100) }
+              steps={4}
+              strokeColor={[red[7], red[4], green[4], green[7]]}
+            />
+          </Tooltip>
+        </div>
+      ),
+    },
+    {
       title: "Amallar",
       dataIndex: 'cartItem',
       key: 'cartItem',
       width: '10%',
       render: (text, row) => (
         <div>
-          <EyeOutlined onClick={()=>navigate(`/admin/doctorantlist/detail/${row._id}`)}/>
+          <EyeOutlined onClick={() => navigate(`/admin/doctorantlist/detail/${row._id}`)} />
           <DeleteOutlined onClick={() => {
             deleteStudent(row._id)
-          }} style={{ color: 'red',marginLeft:"15px" }}/>
+          }} style={{ color: 'red', marginLeft: "15px" }} />
         </div>
       ),
     },
@@ -218,9 +236,9 @@ const Doctorant = () => {
     setIsModalOpen(true);
   };
 
-   
-   
-  
+
+
+
 
   const [count, setCountUser] = useState("")
   const [chekin, setChekIn] = useState(false)
@@ -257,8 +275,8 @@ const Doctorant = () => {
         Doktorantlarni qo'shish <PlusOutlined />
       </div>
       <DeleteModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
-      <div style={{padding:"0 0 30px 0"}} className='table mb-5'>
-      <Table rowKey={(record) => record._id} columns={columns} dataSource={data} />
+      <div style={{ padding: "0 0 30px 0" }} className='table mb-5'>
+        <Table rowKey={(record) => record._id} columns={columns} dataSource={data} />
       </div>
     </div>
   );

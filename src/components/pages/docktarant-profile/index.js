@@ -71,20 +71,30 @@ const StudentProlie = () => {
   const [selectData, setSelectData] = useState([])
 
   const addAllFile = () => {
+    console.log("plan",plan);
+    console.log("label",selectData);
     formData.append("document", plan)
     formData.append("title", selectData.label)
     formData.append("owner", userId)
     // console.log(formData.get("document"));
-    axiosConfig.post(`/documents`, formData).then(res => {
-      console.log(res.status);
-      if (res.status == 201) {
-        getAllDocument()
-        setSelectData("")
-        message.success('Fayl samarali yuklandi');
-      }
-    }).catch(err => {
-      console.log(err);
-    })
+    if (plan == "") {
+      message.error("Kerakli fayilni yuklash uchun maydonlarni to'liq to'ldiring")
+    }
+    else if (selectData == []) {
+      message.error("Kerakli fayilni yuklash uchun maydonlarni to'liq to'ldiring")
+    }
+    else{
+      axiosConfig.post(`/documents`, formData).then(res => {
+        console.log(res.status);
+        if (res.status == 201) {
+          getAllDocument()
+          setSelectData("")
+          message.success('Fayl samarali yuklandi');
+        }
+      }).catch(err => {
+        console.log(err);
+      })
+    }
   }
 
   const [allDocument, setAllDocument] = useState([])
@@ -122,7 +132,10 @@ const StudentProlie = () => {
     { value: 3, label: "Maqolalar" },
     { value: 4, label: "Tezis" },
     { value: 5, label: "Til bilish sertifikat" },
-    { value: 6, label: "Yillik xisobot" }
+    { value: 6, label: "Yillik xisobot" },
+    { value: 7, label: "Metodologik kurs dasturi" },
+    { value: 8, label: "Ish rejasi" },
+    { value: 9, label: "Nazorat daftari" },
   ])
 
   const selectChange = (e, b) => {
@@ -239,11 +252,15 @@ const StudentProlie = () => {
       ),
   });
 
+  const [deleteFile, setDeleteFile] = useState(false)
+
   const deleteStudent = (data) => {
+    // setDeleteFile(true)
     axiosConfig.delete(`/documents/${data}`).then(res => {
       if (res.status == 200) {
         getAllDocument()
         message.success("Fayl o'chirildi")
+        // setDeleteFile(false)
       }
     }).catch(err => {
       console.log(err);
@@ -287,7 +304,10 @@ const StudentProlie = () => {
       key: 'cartItem',
       width: '20%',
       render: (text, row) => (
-        <a
+
+          // deleteFile ? "O'chirilmoqda" 
+          // : 
+          <a
           style={{ color: 'red' }}
           onClick={() => {
             deleteStudent(row._id)
@@ -372,9 +392,9 @@ const StudentProlie = () => {
                         // <input  className="form-control shadow-none" name="kurs" onChange={handleChange} type="text" placeholder="Kursi" />
                         <select name='kurs' onChange={handleChange} style={{ boxShadow: "none" }} className='form-control'>
                           <option selected disabled>Tanlang</option>
-                          <option value="1-kusr">1-kusr</option>
-                          <option value="2-kusr">2-kusr</option>
-                          <option value="3-kusr">3-kusr</option>
+                          <option value="1-kurs">1-kurs</option>
+                          <option value="2-kurs">2-kurs</option>
+                          <option value="3-kurs">3-kurs</option>
                         </select>
                       )}
                     </div>
@@ -478,6 +498,7 @@ const StudentProlie = () => {
                             />
                           </Tooltip> */}
                         </h6>
+                        
                         <Select
 
                           showSearch
