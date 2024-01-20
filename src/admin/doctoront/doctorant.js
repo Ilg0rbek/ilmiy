@@ -244,7 +244,8 @@ const Doctorant = () => {
   const [chekin, setChekIn] = useState(false)
 
   const cerateUser = () => {
-    setChekIn(true)
+    if (count !== "") {
+      setChekIn(true)
     axiosConfig.post(`/auth/generate-student`, { count }).then(res => {
       console.log(res.data);
       exportToCSV(res.data)
@@ -254,6 +255,10 @@ const Doctorant = () => {
     }).catch(err => {
       console.log(err);
     })
+    }
+    else{
+      message.error("Foydalanuvchi yaratish uchun kerakli sonni kiriting")
+    }
   }
 
   return (
@@ -263,7 +268,7 @@ const Doctorant = () => {
           {
             chekin ? <div style={{ padding: "10px" }}><h6>Foydalanuvchilar tayyorlanmoqda..</h6></div> : <input onChange={(e) => setCountUser(e.target.value)} className='form-control shadow-none' type="text" placeholder='Foydalanuvchilarni yaratish uchun kerakli raqamni kiriting' />
           }
-          <button className='btn btn-primary text-white' onClick={cerateUser}>Yaratish</button>
+          <button style={{marginLeft:"5%"}} className='btn btn-primary text-white' onClick={cerateUser}>Yaratish</button>
         </div>
         {/* <div>
           <button onClick={exportToCSV} className='btn btn-secondary text-white'>
