@@ -15,9 +15,9 @@ const NewsModal = ({ isModalOpen, setIsModalOpen, statePut, showId }) => {
     }
   }, []);
 
-  useEffect(() => {
-    dispatch(showData());
-  }, []);
+  // useEffect(() => {
+  //   dispatch(showData());
+  // }, []);
 
   const [form] = Form.useForm();
 
@@ -65,16 +65,17 @@ const NewsModal = ({ isModalOpen, setIsModalOpen, statePut, showId }) => {
           layout="vertical"
           form={form}
           onFinish={handleSubmit}
-          fields={[
-            {
-              name: ["title"],
-              value: statePut?.title,
-            },
-            {
-              name: ["desc"],
-              value: statePut?.desc,
-            },
-          ]}>
+          // fields={[
+          //   {
+          //     name: ["title"],
+          //     value: statePut?.title,
+          //   },
+          //   {
+          //     name: ["desc"],
+          //     value: statePut?.desc,
+          //   },
+          // ]}
+          >
           <Row
             style={{
               justifyContent: "space-around",
@@ -138,7 +139,6 @@ const NewsModal = ({ isModalOpen, setIsModalOpen, statePut, showId }) => {
                   },
                 ]}>
                 <Input.TextArea
-                  maxLength={300}
                   style={{
                     height: 120,
                     marginBottom: 24,

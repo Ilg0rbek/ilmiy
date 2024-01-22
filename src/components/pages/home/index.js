@@ -26,13 +26,19 @@ const Home = () => {
           style={{
             backgroundImage:
               `url(https://ilmiyapi.adu.uz/${item.image})`,
+              backgroundSize:"100%"
           }}
         >
+          
           <div>
             <div className="title">
               {item.title}
               <br />
-              <div className="btn btn-primary mt-5 ">Ko'proq bilish</div>
+              <br />
+              <br />
+              {item.desc.slice(0,250)}{item.desc.length > 50 ? '...':''}
+              <br />
+              {/* <div className="btn btn-primary mt-5 ">Ko'proq bilish</div> */}
             </div>
           </div>
         </div>

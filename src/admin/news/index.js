@@ -17,6 +17,7 @@ const News = () => {
 
   const [deleteId, setDeleteId] = useState();
   const [showId, setShowId] = useState();
+  console.log(stateNews);
 
   useEffect(() => {
     dispatch(getAllNews());
@@ -70,13 +71,13 @@ const News = () => {
                   <td>
                     <img
                       className="w-20"
-                      style={{ width: "100px" }}
+                      style={{ width: "100px"}}
                       src={`https://ilmiyapi.adu.uz/${item.image}`}
                       alt=""
                     />
                   </td>
                   <td>{item.title}</td>
-                  <td>{item.desc}</td>
+                  <td style={{width:"50%",padding:"0"}}>{item.desc}</td>
                   <td className="p-2">
                     <span
                       className="p-2"

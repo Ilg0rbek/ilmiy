@@ -225,6 +225,7 @@ const Doctorant = () => {
       render: (text, row) => (
         <div>
           <EyeOutlined onClick={() => navigate(`/admin/doctorantlist/detail/${row._id}`)} />
+
           <DeleteOutlined onClick={() => {
             deleteStudent(row._id)
           }} style={{ color: 'red', marginLeft: "15px" }} />

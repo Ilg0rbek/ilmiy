@@ -11,6 +11,8 @@ const DoctorantDetail = () => {
     let { id } = useParams()
     const [allDocument, setAllDocument] = useState([])
 
+    console.log(id);
+
     const getAllDocument = () => {
         axiosConfig.get(`/documents/${id}`).then(res => {
             // console.log(res.data);
