@@ -29,7 +29,7 @@ const Stipendiants = () => {
 
   return (
     <div style={{marginTop:"200px"}} className="container">
-    <div style={{padding:"0 30px",width:"100%",height:"100px",display:"flex",justifyContent:"center",fontSize:"30px",fontWeight:"600"}}>Stipendiantlar royxati</div>
+    <div style={{padding:"0 30px",width:"100%",height:"100px",display:"flex",justifyContent:"center",fontSize:"30px",fontWeight:"600"}}>Stipendiantlar ro'yxati</div>
    <Accordion defaultActiveKey="0">
     {
       yearData?.map((item,index)=>(

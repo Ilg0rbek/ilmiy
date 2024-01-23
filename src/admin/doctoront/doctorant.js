@@ -154,6 +154,9 @@ const Doctorant = () => {
   }
 
   const navigate = useNavigate()
+  let documentCount = 0
+
+  console.log(documentCount);
 
   const columns = [
     {
@@ -209,7 +212,8 @@ const Doctorant = () => {
         <div>
           <Tooltip title={row.kurs !== "" ? `${row.count} yuklandi / Hujjatlarni to'liq bo'lishini minimal soni ${row.kurs == '1-kurs' ? 3 : row.kurs == '2-kurs' ? 5 : 7} ta`: "Profil to'ldirilmagan"}>
             <Progress   
-              percent={(row.kurs == '1-kurs' ? (row.count/3)*100 : row.kurs == '2-kurs' ? (row.count/5)*100 :  (row.count/7)*100) }
+              percent={Math.round((row.kurs == '1-kurs' ? (((row.count['Metodologik kurs dasturi']?1:0)/3) + ((row.count['Metodologik kurs dasturi']?1:0)/3) + ((row.count['Shaxsiy yillik reja']?1:0)/3))*100 : row.kurs == '2-kurs' ? ((row.count['Metodologik kurs dasturi']?1:0)/10 + ((row.count['Metodologik kurs dasturi'] && row.count['Metodologik kurs dasturi'] > 1)? 1:0)/10 + (row.count['Shaxsiy yillik reja']?1:0)/10 + ((row.count['Shaxsiy yillik reja'] && row.count['Shaxsiy yillik reja'] > 1)? 1:0)/10 +  (row.count['Nazorat daftari']?1:0)/10 + ((row.count['Nazorat daftari'] && row.count['Nazorat daftari'] > 1)? 1:0)/10 +  (row.count['Tezis']?1:0)/5 + (row.count['Maqolalar']?1:0)/5)*100: 
+               ((row.count['Metodologik kurs dasturi']?1:0)/15 + ((row.count['Metodologik kurs dasturi'] && row.count['Metodologik kurs dasturi'] > 1)? 1:0)/15 + ((row.count['Metodologik kurs dasturi'] && row.count['Metodologik kurs dasturi'] > 2)? 1:0)/15 + (row.count['Shaxsiy yillik reja']?1:0)/15 + ((row.count['Shaxsiy yillik reja'] && row.count['Shaxsiy yillik reja'] > 1)? 1:0)/15 + ((row.count['Shaxsiy yillik reja'] && row.count['Shaxsiy yillik reja'] > 2)? 1:0)/15 + (row.count['Nazorat daftari']?1:0)/15 + ((row.count['Nazorat daftari'] && row.count['Nazorat daftari'] > 1)? 1:0)/15 + ((row.count['Nazorat daftari'] && row.count['Nazorat daftari'] > 2)? 1:0)/15 + (row.count['Tezis']?1:0)/5 + (row.count['Maqolalar']?1:0)/10 + ((row.count['Maqolalar'] && row.count['Maqolalar'] > 1)? 1:0)/10) *100)) }
               steps={4}
               strokeColor={[red[7], red[4], green[4], green[7]]}
             />

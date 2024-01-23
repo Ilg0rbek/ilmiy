@@ -128,13 +128,11 @@ const StudentProlie = () => {
 
   const [option, setOption] = useState([
     { value: 1, label: "Shaxsiy yillik reja" },
-    { value: 2, label: "Metodologik dastur" },
     { value: 3, label: "Maqolalar" },
     { value: 4, label: "Tezis" },
     { value: 5, label: "Til bilish sertifikat" },
     { value: 6, label: "Yillik xisobot" },
     { value: 7, label: "Metodologik kurs dasturi" },
-    { value: 8, label: "Ish rejasi" },
     { value: 9, label: "Nazorat daftari" },
   ])
 
