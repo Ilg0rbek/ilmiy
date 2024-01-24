@@ -211,9 +211,10 @@ const Doctorant = () => {
       render: (text, row) => (
         <div>
           <Tooltip >
-            <Progress   
-              percent={Math.round((row.kurs == '1-kurs' ? (((row.count['Metodologik kurs dasturi']?1:0)/3) + ((row.count['Metodologik kurs dasturi']?1:0)/3) + ((row.count['Shaxsiy yillik reja']?1:0)/3))*100 : row.kurs == '2-kurs' ? ((row.count['Metodologik kurs dasturi']?1:0)/10 + ((row.count['Metodologik kurs dasturi'] && row.count['Metodologik kurs dasturi'] > 1)? 1:0)/10 + (row.count['Shaxsiy yillik reja']?1:0)/10 + ((row.count['Shaxsiy yillik reja'] && row.count['Shaxsiy yillik reja'] > 1)? 1:0)/10 +  (row.count['Nazorat daftari']?1:0)/10 + ((row.count['Nazorat daftari'] && row.count['Nazorat daftari'] > 1)? 1:0)/10 +  (row.count['Tezis']?1:0)/5 + (row.count['Maqolalar']?1:0)/5)*100: 
-               ((row.count['Metodologik kurs dasturi']?1:0)/15 + ((row.count['Metodologik kurs dasturi'] && row.count['Metodologik kurs dasturi'] > 1)? 1:0)/15 + ((row.count['Metodologik kurs dasturi'] && row.count['Metodologik kurs dasturi'] > 2)? 1:0)/15 + (row.count['Shaxsiy yillik reja']?1:0)/15 + ((row.count['Shaxsiy yillik reja'] && row.count['Shaxsiy yillik reja'] > 1)? 1:0)/15 + ((row.count['Shaxsiy yillik reja'] && row.count['Shaxsiy yillik reja'] > 2)? 1:0)/15 + (row.count['Nazorat daftari']?1:0)/15 + ((row.count['Nazorat daftari'] && row.count['Nazorat daftari'] > 1)? 1:0)/15 + ((row.count['Nazorat daftari'] && row.count['Nazorat daftari'] > 2)? 1:0)/15 + (row.count['Tezis']?1:0)/5 + (row.count['Maqolalar']?1:0)/10 + ((row.count['Maqolalar'] && row.count['Maqolalar'] > 1)? 1:0)/10) *100)) }
+            <Progress
+              percent={Math.round((
+                row.kurs == '1-kurs' ? (((row.count['Metodologik kurs dasturi'] ? 1 : 0) / 3) + ((row.count['Nazorat daftari'] ? 1 : 0) / 3) + ((row.count['Shaxsiy yillik reja'] ? 1 : 0) / 3)) * 100 : row.kurs == '2-kurs' ? ((row.count['Metodologik kurs dasturi'] ? 1 : 0) / 10 + ((row.count['Metodologik kurs dasturi'] && row.count['Metodologik kurs dasturi'] > 1) ? 1 : 0) / 10 + (row.count['Shaxsiy yillik reja'] ? 1 : 0) / 10 + ((row.count['Shaxsiy yillik reja'] && row.count['Shaxsiy yillik reja'] > 1) ? 1 : 0) / 10 + (row.count['Nazorat daftari'] ? 1 : 0) / 10 + ((row.count['Nazorat daftari'] && row.count['Nazorat daftari'] > 1) ? 1 : 0) / 10 + (row.count['Tezis'] ? 1 : 0) / 5 + (row.count['Maqolalar'] ? 1 : 0) / 5) * 100 :
+                  ((row.count['Metodologik kurs dasturi'] ? 1 : 0) / 15 + ((row.count['Metodologik kurs dasturi'] && row.count['Metodologik kurs dasturi'] > 1) ? 1 : 0) / 15 + ((row.count['Metodologik kurs dasturi'] && row.count['Metodologik kurs dasturi'] > 2) ? 1 : 0) / 15 + (row.count['Shaxsiy yillik reja'] ? 1 : 0) / 15 + ((row.count['Shaxsiy yillik reja'] && row.count['Shaxsiy yillik reja'] > 1) ? 1 : 0) / 15 + ((row.count['Shaxsiy yillik reja'] && row.count['Shaxsiy yillik reja'] > 2) ? 1 : 0) / 15 + (row.count['Nazorat daftari'] ? 1 : 0) / 15 + ((row.count['Nazorat daftari'] && row.count['Nazorat daftari'] > 1) ? 1 : 0) / 15 + ((row.count['Nazorat daftari'] && row.count['Nazorat daftari'] > 2) ? 1 : 0) / 15 + (row.count['Tezis'] ? 1 : 0) / 5 + (row.count['Maqolalar'] ? 1 : 0) / 10 + ((row.count['Maqolalar'] && row.count['Maqolalar'] > 1) ? 1 : 0) / 10) * 100))}
               steps={4}
               strokeColor={[red[7], red[4], green[4], green[7]]}
             />
@@ -251,17 +252,17 @@ const Doctorant = () => {
   const cerateUser = () => {
     if (count !== "") {
       setChekIn(true)
-    axiosConfig.post(`/auth/generate-student`, { count }).then(res => {
-      console.log(res.data);
-      exportToCSV(res.data)
-      getAllStudenData()
-      window.location.reload()
-      // setChekIn(false)
-    }).catch(err => {
-      console.log(err);
-    })
+      axiosConfig.post(`/auth/generate-student`, { count }).then(res => {
+        console.log(res.data);
+        exportToCSV(res.data)
+        getAllStudenData()
+        window.location.reload()
+        // setChekIn(false)
+      }).catch(err => {
+        console.log(err);
+      })
     }
-    else{
+    else {
       message.error("Foydalanuvchi yaratish uchun kerakli sonni kiriting")
     }
   }
@@ -273,7 +274,7 @@ const Doctorant = () => {
           {
             chekin ? <div style={{ padding: "10px" }}><h6>Foydalanuvchilar tayyorlanmoqda..</h6></div> : <input onChange={(e) => setCountUser(e.target.value)} className='form-control shadow-none' type="text" placeholder='Foydalanuvchilarni yaratish uchun kerakli raqamni kiriting' />
           }
-          <button style={{marginLeft:"5%"}} className='btn btn-primary text-white' onClick={cerateUser}>Yaratish</button>
+          <button style={{ marginLeft: "5%" }} className='btn btn-primary text-white' onClick={cerateUser}>Yaratish</button>
         </div>
         {/* <div>
           <button onClick={exportToCSV} className='btn btn-secondary text-white'>

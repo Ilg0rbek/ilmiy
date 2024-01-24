@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import { SearchOutlined } from '@ant-design/icons';
 import "./profile.css";
 import Highlighter from 'react-highlight-words';
-import { Button,  Form, Space, Table, message, Select, Upload } from 'antd';
+import { Button, Form, Space, Table, message, Select, Upload } from 'antd';
 import { UploadOutlined, MessageOutlined } from "@ant-design/icons";
 import axiosConfig from "../../../redux/baseUrl";
 import DeleteModal from '../../../admin/doctoront/AddModal';
@@ -16,7 +16,6 @@ const StudentProlie = () => {
     kurs: "",
     adress: "",
     yunalish: "",
-    shifr: ""
   });
 
 
@@ -32,22 +31,22 @@ const StudentProlie = () => {
   let userId = sessionStorage.getItem("userId")
 
   const hendleUpdate = () => {
-    axiosConfig.put(`/auth/user/${userId}`,userProfileData).then(res=>{
-      console.log("yangi",res);
+    axiosConfig.put(`/auth/user/${userId}`, {...userProfileData, shifr:shifrValue}).then(res => {
+      console.log("yangi", res);
       getMydata()
-    }).catch(err=>{
+    }).catch(err => {
       console.log(err);
     })
   }
-  
+
   let id = sessionStorage.getItem("userId")
   const [oldPassword, setOldPassword] = useState()
   const [password, setPassword] = useState()
   const [confirmPassword, setConfirmPassword] = useState()
-  
+
   const hendleUpdatePassword = () => {
-    axiosConfig.post(`/auth/update-password`, {oldPassword, password, confirmPassword, id}).then(res=>{
-      console.log("parol",res.data);
+    axiosConfig.post(`/auth/update-password`, { oldPassword, password, confirmPassword, id }).then(res => {
+      console.log("parol", res.data);
       if (res.data.msg == "parol Eski parol xato kiritildi") {
         message.success("Parolingiz muvaffaqiyatli yangilandi")
         setOldPassword("")
@@ -55,11 +54,11 @@ const StudentProlie = () => {
         setConfirmPassword("")
         getMydata()
       }
-      else{
+      else {
         message.error(res.data)
       }
-    }).catch(err=>{
-      console.log("parol",err);
+    }).catch(err => {
+      console.log("parol", err);
     })
   }
 
@@ -69,13 +68,14 @@ const StudentProlie = () => {
 
   const [plan, setPlan] = useState("")
   const [selectData, setSelectData] = useState([])
-
+  const [mydata, setMyData] = useState()
   const addAllFile = () => {
-    console.log("plan",plan);
-    console.log("label",selectData);
+    console.log("plan", plan);
+    console.log("label", selectData);
     formData.append("document", plan)
     formData.append("title", selectData.label)
     formData.append("owner", userId)
+    formData.append("kurs", mydata.kurs)
     // console.log(formData.get("document"));
     if (plan == "") {
       message.error("Kerakli fayilni yuklash uchun maydonlarni to'liq to'ldiring")
@@ -83,7 +83,7 @@ const StudentProlie = () => {
     else if (selectData == []) {
       message.error("Kerakli fayilni yuklash uchun maydonlarni to'liq to'ldiring")
     }
-    else{
+    else {
       axiosConfig.post(`/documents`, formData).then(res => {
         console.log(res.status);
         if (res.status == 201) {
@@ -101,7 +101,7 @@ const StudentProlie = () => {
 
   const getAllDocument = () => {
     axiosConfig.get(`/documents/${userId}`).then(res => {
-      // console.log(res.data);
+      console.log(res.data);
       setAllDocument(res.data)
     }).catch(err => {
       console.log(err);
@@ -112,7 +112,7 @@ const StudentProlie = () => {
     getAllDocument()
   }, [])
 
-  const [mydata, setMyData] = useState()
+
   const getMydata = () => {
     axiosConfig.get(`/auth/user/${userId}`).then(res => {
       setMyData(res.data)
@@ -159,7 +159,7 @@ const StudentProlie = () => {
         }}
         onKeyDown={(e) => e.stopPropagation()}
       >
-        <input  className="form-control shadow-none"
+        <input className="form-control shadow-none"
           ref={searchInput}
           placeholder={`Search ${dataIndex}`}
           value={selectedKeys[0]}
@@ -273,6 +273,11 @@ const StudentProlie = () => {
       key: 'title',
       width: '30%',
       ...getColumnSearchProps('title'),
+      render: (text, row) => (
+        <div>
+        {row.title+" "}  {"- "+row.kurs}
+        </div>
+      ),
     },
     {
       title: "Fayl",
@@ -303,9 +308,9 @@ const StudentProlie = () => {
       width: '20%',
       render: (text, row) => (
 
-          // deleteFile ? "O'chirilmoqda" 
-          // : 
-          <a
+        // deleteFile ? "O'chirilmoqda" 
+        // : 
+        <a
           style={{ color: 'red' }}
           onClick={() => {
             deleteStudent(row._id)
@@ -320,6 +325,24 @@ const StudentProlie = () => {
     setIsModalOpen(true);
   };
 
+  const [yunalish, setYunalish] = useState([])
+  const getYunalish = () => {
+    axiosConfig.get('/auth/yunalishlar').then(res => {
+      setYunalish(res.data)
+    }).catch(err => {
+      console.log(err);
+    })
+  }
+
+  useEffect(() => {
+    getYunalish()
+  }, [])
+
+  const [shifrValue, setShifrValue] = useState('')
+  const filterYunalishShifr = (e) => {
+   let shifr = yunalish.filter(value => value.title == e.target.value)
+    setShifrValue(shifr[0].shifr)
+  }
 
   return (
     <div>
@@ -372,9 +395,9 @@ const StudentProlie = () => {
                     </div>
                     <div className="col-sm-9 text-secondary">
                       {edit ? (
-                        <input  className="form-control shadow-none" disabled value={mydata?.fullName} placeholder="Full name" />
+                        <input className="form-control shadow-none" disabled value={mydata?.fullName} placeholder="Full name" />
                       ) : (
-                        <input  className="form-control shadow-none" name="fullName" defaultValue={mydata?.fullName} onChange={handleChange} placeholder="Full name" />
+                        <input className="form-control shadow-none" name="fullName" defaultValue={mydata?.fullName} onChange={handleChange} placeholder="Full name" />
                       )}
                     </div>
                   </div>
@@ -385,7 +408,7 @@ const StudentProlie = () => {
                     </div>
                     <div className="col-sm-9 text-secondary">
                       {edit ? (
-                        <input  className="form-control shadow-none" disabled value={mydata?.kurs} type="text" placeholder="kursi" />
+                        <input className="form-control shadow-none" disabled value={mydata?.kurs} type="text" placeholder="kursi" />
                       ) : (
                         // <input  className="form-control shadow-none" name="kurs" onChange={handleChange} type="text" placeholder="Kursi" />
                         <select name='kurs' onChange={handleChange} style={{ boxShadow: "none" }} className='form-control'>
@@ -403,7 +426,7 @@ const StudentProlie = () => {
                       <h6 className="mb-0">Tel nomer</h6>
                     </div>
                     <div className="col-sm-9 text-secondary">
-                      {edit ? <input  className="form-control shadow-none" disabled value={mydata?.firstNumber} placeholder="+998 " /> : <input  className="form-control shadow-none" defaultValue={mydata?.firstNumber} name="firstNumber" onChange={handleChange} placeholder="+998 " />}
+                      {edit ? <input className="form-control shadow-none" disabled value={mydata?.firstNumber} placeholder="+998 " /> : <input className="form-control shadow-none" defaultValue={mydata?.firstNumber} name="firstNumber" onChange={handleChange} placeholder="+998 " />}
                     </div>
                   </div>
                   <hr />
@@ -412,7 +435,17 @@ const StudentProlie = () => {
                       <h6 className="mb-0">Yon'alishi</h6>
                     </div>
                     <div className="col-sm-9 text-secondary">
-                      {edit ? <input  className="form-control shadow-none" disabled value={mydata?.yunalish} placeholder="Yo'nalish" /> : <input  className="form-control shadow-none" name="yunalish" defaultValue={mydata?.yunalish} onChange={handleChange} placeholder="Yo'nalisi" />}
+                      {edit ? <input className="form-control shadow-none" disabled value={mydata?.yunalish} placeholder="Yo'nalish" /> :
+                        <select name='yunalish' onChange={(e)=>{ handleChange(e); filterYunalishShifr(e) }} style={{ boxShadow: "none" }} className='form-select'>
+                          <option selected disabled>Tanlang</option>
+                          {
+                            yunalish?.map((item, index) => (
+                              <option className='form-select shadow-none outline-none' key={index} value={item.title}>{item.title}</option>
+                            ))
+                          }
+                        </select>
+                        // <input  className="form-control shadow-none" name="yunalish" defaultValue={mydata?.yunalish}  placeholder="Yo'nalisi" />
+                      }
                     </div>
                   </div>
                   <hr />
@@ -422,9 +455,9 @@ const StudentProlie = () => {
                     </div>
                     <div className="col-sm-9 text-secondary">
                       {edit ? (
-                        <input  className="form-control shadow-none" disabled value={mydata?.shifr} placeholder="Shifr " />
+                        <input className="form-control shadow-none" disabled value={mydata?.shifr} placeholder="Shifr " />
                       ) : (
-                        <input  className="form-control shadow-none" name="shifr" defaultValue={mydata?.shifr} onChange={handleChange} placeholder="Shifri " />
+                        <input className="form-control shadow-none" disabled name="shifr" value={shifrValue}  placeholder="Shifri " />
                       )}
                     </div>
                   </div>
@@ -435,9 +468,9 @@ const StudentProlie = () => {
                     </div>
                     <div className="col-sm-9 text-secondary">
                       {edit ? (
-                        <input  className="form-control shadow-none" disabled value={mydata?.adress} placeholder="Manzil " />
+                        <input className="form-control shadow-none" disabled value={mydata?.adress} placeholder="Manzil " />
                       ) : (
-                        <input  className="form-control shadow-none" name="adress" defaultValue={mydata?.adress} onChange={handleChange} placeholder="Manzil " />
+                        <input className="form-control shadow-none" name="adress" defaultValue={mydata?.adress} onChange={handleChange} placeholder="Manzil " />
                       )}
                     </div>
                   </div>
@@ -448,9 +481,9 @@ const StudentProlie = () => {
                     </div>
                     <div className="col-sm-9 text-secondary">
                       {edit ? (
-                        <input  className="form-control shadow-none" disabled value={mydata?.username} placeholder="Manzil " />
+                        <input className="form-control shadow-none" disabled value={mydata?.username} placeholder="Manzil " />
                       ) : (
-                        <input  className="form-control shadow-none" name="adress" disabled value={mydata?.username}  placeholder="Manzil " />
+                        <input className="form-control shadow-none" name="adress" disabled value={mydata?.username} placeholder="Manzil " />
                       )}
                     </div>
                   </div>
@@ -461,9 +494,9 @@ const StudentProlie = () => {
                     </div>
                     <div className="col-sm-9 text-secondary">
                       {edit ? (
-                        <input  className="form-control shadow-none" disabled value={mydata?.password} placeholder="Manzil " />
+                        <input className="form-control shadow-none" disabled value={mydata?.password} placeholder="Manzil " />
                       ) : (
-                        <input  className="form-control shadow-none" name="adress" disabled value={mydata?.password}  placeholder="Manzil " />
+                        <input className="form-control shadow-none" name="adress" disabled value={mydata?.password} placeholder="Manzil " />
                       )}
                     </div>
                   </div>
@@ -474,8 +507,8 @@ const StudentProlie = () => {
                         {edit ? "Ma'lumotlarni yangilsh" : "Bekor qilish"}
                       </Button>
                       {!edit && (
-                        <Button onClick={()=>{hendleUpdate(); setEdit(!edit)}} type="primary" danger ghost className="ms-3" >
-                          Saqlash 
+                        <Button onClick={() => { hendleUpdate(); setEdit(!edit) }} type="primary" danger ghost className="ms-3" >
+                          Saqlash
                         </Button>
                       )}
                     </div>
@@ -496,7 +529,7 @@ const StudentProlie = () => {
                             />
                           </Tooltip> */}
                         </h6>
-                        
+
                         <Select
 
                           showSearch
@@ -556,13 +589,13 @@ const StudentProlie = () => {
                         </h6>
                         <Form>
                           <Form.Item>
-                            <input value={oldPassword} onChange={(e)=>setOldPassword(e.target.value)} className="form-control shadow-none" placeholder="Eski parolni kiriting" />
+                            <input value={oldPassword} onChange={(e) => setOldPassword(e.target.value)} className="form-control shadow-none" placeholder="Eski parolni kiriting" />
                           </Form.Item>
                           <Form.Item>
-                            <input value={password} onChange={(e)=>setPassword(e.target.value)} className="form-control shadow-none" placeholder="Yangi parolni kiriting" />
+                            <input value={password} onChange={(e) => setPassword(e.target.value)} className="form-control shadow-none" placeholder="Yangi parolni kiriting" />
                           </Form.Item>
                           <Form.Item>
-                            <input value={confirmPassword} onChange={(e)=>setConfirmPassword(e.target.value)} className="form-control shadow-none" placeholder="Yangi parolni qayta kiriting" />
+                            <input value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} className="form-control shadow-none" placeholder="Yangi parolni qayta kiriting" />
                           </Form.Item>
                           <Button type="primary" onClick={hendleUpdatePassword} ghost>Yangilash</Button>
                         </Form>

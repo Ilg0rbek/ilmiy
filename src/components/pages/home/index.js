@@ -17,7 +17,10 @@ const Home = () => {
 
   return(
     <div className="home">
-    <Carousel autoplay>
+      <div style={{width:"100%"}}>
+        <img style={{width:"100%",height:"80vh"}} className="img-fluid" src="https://nsp.gov.uz/static/img/carousel/5.jpg" alt="" />
+      </div>
+    {/* <Carousel autoplay>
       {
         coruselNews && coruselNews.map((item,index)=>(
           <div>
@@ -38,7 +41,7 @@ const Home = () => {
               <br />
               {item.desc.slice(0,250)}{item.desc.length > 50 ? '...':''}
               <br />
-              {/* <div className="btn btn-primary mt-5 ">Ko'proq bilish</div> */}
+              <div className="btn btn-primary mt-5 ">Ko'proq bilish</div>
             </div>
           </div>
         </div>
@@ -46,7 +49,7 @@ const Home = () => {
      
         ))
       }
-    </Carousel>
+    </Carousel> */}
   </div>
   )
 };
