@@ -3,9 +3,10 @@ import { SearchOutlined } from '@ant-design/icons';
 import "./profile.css";
 import Highlighter from 'react-highlight-words';
 import { Button, Form, Space, Table, message, Select, Upload } from 'antd';
-import { UploadOutlined, MessageOutlined } from "@ant-design/icons";
+import { UploadOutlined, MessageOutlined,LogoutOutlined } from "@ant-design/icons";
 import axiosConfig from "../../../redux/baseUrl";
 import DeleteModal from '../../../admin/doctoront/AddModal';
+import { useNavigate } from 'react-router-dom';
 
 const StudentProlie = () => {
 
@@ -343,6 +344,12 @@ const StudentProlie = () => {
    let shifr = yunalish.filter(value => value.title == e.target.value)
     setShifrValue(shifr[0].shifr)
   }
+  const navigate = useNavigate()
+
+  const logOut = () =>{
+    navigate("/")
+    sessionStorage.clear()
+  }
 
   return (
     <div>
@@ -368,8 +375,7 @@ const StudentProlie = () => {
                       <p className="text-muted font-size-sm">
                         {mydata?.adress}
                       </p>
-                      {/* <button className="btn btn-">Follow</button>
-                      <button className="btn btn-outline- ms-1">Message</button> */}
+                      <button className="btn btn-danger text-white" onClick={logOut} style={{fontSize:"16px"}}><LogoutOutlined /> Chiqish </button>
                     </div>
                   </div>
                 </div>

@@ -9,10 +9,11 @@ import {
   FormOutlined,
   SnippetsOutlined,
   CreditCardOutlined,
-  PaperClipOutlined
+  PaperClipOutlined,
+  LogoutOutlined
 } from "@ant-design/icons";
 import { Layout, Menu, Button, theme } from "antd";
-import { Link, NavLink, Route, Routes } from "react-router-dom";
+import { Link, NavLink, Route, Routes, useNavigate } from "react-router-dom";
 import Season from "../season";
 import Students from "../students";
 import News from "../news";
@@ -35,6 +36,12 @@ const Admin = () => {
   const {
     token: { colorBgContainer },
   } = theme.useToken();
+
+  // const navigate = useNavigate()
+  // const logOut = () =>{
+  //   navigate("/")
+  //   sessionStorage.clear()
+  // }
 
   const data = [
     {
@@ -72,6 +79,12 @@ const Admin = () => {
       icon:<PaperClipOutlined /> ,
       label: "patentlar",
       path: "/admin/guvohnoma",
+    },
+    {
+      key: "9",
+      icon:<LogoutOutlined /> ,
+      label: "Chiqish",
+      path: "/",
     },
     // {
     //   key: "5",
