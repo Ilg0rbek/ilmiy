@@ -18,6 +18,7 @@ import GuvohnomaUserList from "./components/pages/Guvohnomalar/GuvohnomaUserList
 import FanTogarakUser from "./components/pages/FantogarakUser/FanTogarakUser";
 import FanTogarakKafedraUser from "./components/pages/FantogarakUser/FanTogarakKafedraUser";
 import FanTogarakDetailUser from "./components/pages/FantogarakUser/FanTogarakDetailUser";
+import TavarlarKimyosi from "./components/pages/IlmiyDarajaBeruvchiKengash/TavarlarKimyosi";
 
 
 function App() {
@@ -30,7 +31,9 @@ function App() {
       <Route exact path="/patents/user-list" element={<Layout ><PatentUserlist/></Layout>}/>
       <Route exact path="/stipendiants/*" element={<Layout><Stipendiants /></Layout>}/>
       <Route  path={`/stipendiants/students`} element={<Layout><PresidentStipendiant/></Layout>} />
-      <Route path={`/stipendiants/students/detail/:id`} element={<Layout><StipendiantDeatail/></Layout>} />
+      <Route exact path="/guvohnoma" element={<Layout ><Patents/></Layout>}/>
+      <Route path={`/tavarlar kimyosi va halq tabobati`} element={<Layout><TavarlarKimyosi/></Layout>} />
+
 
       <Route exact path="/cources" element={<Layout><FanTogarakUser /></Layout>}/>
       <Route exact path="/cources/kafedra" element={<Layout><FanTogarakKafedraUser /></Layout>}/>

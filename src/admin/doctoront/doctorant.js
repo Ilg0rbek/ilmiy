@@ -154,9 +154,7 @@ const Doctorant = () => {
   }
 
   const navigate = useNavigate()
-  let documentCount = 0
 
-  console.log(documentCount);
 
   const columns = [
     {
@@ -247,12 +245,13 @@ const Doctorant = () => {
 
 
   const [count, setCountUser] = useState("")
+  const [user, setUser] = useState("")
   const [chekin, setChekIn] = useState(false)
 
   const cerateUser = () => {
-    if (count !== "") {
+    if (count !== "" && user !== "") {
       setChekIn(true)
-      axiosConfig.post(`/auth/generate-student`, { count }).then(res => {
+      axiosConfig.post(`/auth/generate-student`, { count, user }).then(res => {
         console.log(res.data);
         exportToCSV(res.data)
         getAllStudenData()
@@ -272,7 +271,18 @@ const Doctorant = () => {
       <div style={{ display: "flex", width: "100%", justifyContent: "space-between" }} className='mb-3'>
         <div style={{ display: "flex", width: "50%" }}>
           {
-            chekin ? <div style={{ padding: "10px" }}><h6>Foydalanuvchilar tayyorlanmoqda..</h6></div> : <input onChange={(e) => setCountUser(e.target.value)} className='form-control shadow-none' type="text" placeholder='Foydalanuvchilarni yaratish uchun kerakli raqamni kiriting' />
+            chekin ? <div style={{ padding: "10px" }}><h6>Foydalanuvchilar tayyorlanmoqda..</h6></div> : 
+            <div style={{ display: "flex", width: "100%",justifyContent:"space-between " }}>
+              <select onChange={(e)=>setUser(e.target.value)} style={{width:"21%"}} className='form-select shadow-none' name="" id="">
+                <option disabled selected style={{fontSize:"14px"}}>Tanlang</option>
+                <option value="DSC">DSC</option>
+                <option value="PHD">PHD</option>
+                <option value="ST">ST</option>
+                <option value="M-DSC">M-DSC</option>
+                <option value="M-PHD">M-PHD</option>
+              </select>
+              <input style={{width:"78%"}} onChange={(e) => setCountUser(e.target.value)} className='form-control shadow-none' type="text" placeholder='Foydalanuvchilarni yaratish uchun kerakli raqamni kiriting' />
+            </div>
           }
           <button style={{ marginLeft: "5%" }} className='btn btn-primary text-white' onClick={cerateUser}>Yaratish</button>
         </div>

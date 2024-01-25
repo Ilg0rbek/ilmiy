@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import Kvota from "../../assets/kvota.pdf";
 import Doktarant from "../../assets/doktarantura.pdf";
 import Texnik from "../../assets/kengash.pdf";
+import Nizom from "../../assets/Nizom.pdf";
 
 function Header() {
   const [active, setActive] = useState("navbar");
@@ -107,9 +108,9 @@ function Header() {
               </a>
               <ul className="dropdown-menu dropdown-submenu">
                 <li>
-                  <a className="dropdown-item" href="#">
+                  <Link className="dropdown-item" to={"/tavarlar kimyosi va halq tabobati"}>
                     "Tovarlar kimyosi" va "Xalq tabobati"
-                  </a>
+                  </Link>
                 </li>
                 <li>
                   <a className="dropdown-item" href="#">
@@ -149,7 +150,7 @@ function Header() {
               </a>
               <ul className="dropdown-menu dropdown-submenu">
                 <li>
-                  <a className="dropdown-item" href="#">
+                  <a className="dropdown-item" href={Nizom} target="_blank">
                     Ilmiy texnik kengash nizomi
                   </a>
                 </li>
@@ -198,8 +199,8 @@ function Header() {
           </a>
           <ul className="dropdown-menu">
             <Link className="dropdown-item" to={"/patents"}>
-              <li>      
-                  Patentlar
+              <li>
+                Patentlar
               </li>
             </Link>
             <li>
@@ -221,28 +222,28 @@ function Header() {
           </a>
           <ul className="dropdown-menu">
             <li>
-              <a className="dropdown-item" href="#">
-                Fizika-matematika tadqiqotlari
-              </a>
-            </li>
-            <li>
-              <a className="dropdown-item" href="#">
+              <a className="dropdown-item" href="https://www.ajhuman.uz/" target="_blank">
                 Gumanitar tadqiqotlar
               </a>
             </li>
             <li>
-              <a className="dropdown-item" href="#">
+              <a className="dropdown-item" href="https://www.ajpedagogical.uz/" target="_blank">
                 Pedagogik tadqiqotlar.
               </a>
             </li>
             <li>
-              <a className="dropdown-item" href="#">
+              <a className="dropdown-item" href="https://www.ajchemical.uz/" target="_blank">
                 Kimyo tadqiqotlari.
               </a>
             </li>
             <li>
-              <a className="dropdown-item" href="#">
+              <a className="dropdown-item" href="https://www.ajbiological.uz/" target="_blank">
                 Biologik tadqiqotlar.
+              </a>
+            </li>
+            <li>
+              <a className="dropdown-item" href="#">
+                Fizika-matematika tadqiqotlari
               </a>
             </li>
           </ul>

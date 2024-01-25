@@ -11,8 +11,8 @@ const initialState = {
 
 export const getAllStudenData = createAsyncThunk("/student", async () => {
   try {
-    const res = await axiosConfig.get("/auth/users");
-    console.log(res.data);
+    const res = await axiosConfig.post("/auth/users",{user:"",kurs:""});
+    // console.log(res.data);
     return res.data;
   } catch (error) {
     console.log(error.message);
@@ -61,7 +61,6 @@ export const profileSlice = createSlice({
       .addCase(getAllStudenData.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isError = false;
-        console.log("salom saqlandai");
         state.getStudentdata = action.payload;
       })
       .addCase(getAllStudenData.rejected, (state, action) => {
