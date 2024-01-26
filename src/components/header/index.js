@@ -128,9 +128,9 @@ function Header() {
                   </Link>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#">
+                  <Link className="dropdown-item" to={"/Ozbek adabiyoti"}>
                     O'zbek adabiyoti
-                  </a>
+                  </Link>
                 </li>
                 <li>
                   <a className="dropdown-item" href="#">

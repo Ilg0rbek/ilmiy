@@ -3,7 +3,7 @@ import React from "react";
 const OzbekAdabiyoti = () => {
     return (
         <div className="container overflow-auto" style={{ marginTop: "200px" }}>
-            <h3 className="text-center mb-5">"TOVARLAR KIMYOSI" VA "XALQ TABOBATI"</h3>
+            <h3 className="text-center mb-5">O'zbek adabiyoti</h3>
             <table className=" table-bordered">
                 <thead>
                     <tr className="text-center">
@@ -16,11 +16,11 @@ const OzbekAdabiyoti = () => {
                 </thead>
                 <tbody>
                     <tr className="text-center">
-                        <td>Аndijon davlat universiteti xuzuridagi kimyo va texnika fanlari boʼyicha ilmiy darajalar beruvchi DSc.03/29.10.2021.K/T.60.05 raqamli ilmiy kengash</td>
-                        <td>2021 y. 30-oktyabrь 510-son</td>
-                        <td>02.00.09 - "Tovarlar kimyosi" va 14.00.41 - "Xalq tabobati"</td>
-                        <td>Isakov Xayatullo, Texnika fanlari doktori, dotsent.+998994330940</td>
-                        <td>Isakov Xayatullo, Texnika fanlari doktori, dotsent. Moʼminjonov Mirjalol Muqimjon oʼgʼli +99899-917-07-86</td>
+                        <td>Аndijon davlat universiteti xuzuridagi filologiya fanlari boʼyicha ilmiy darajalar beruvchi DSc.03/05.05.2023.Fil.60.07 rakamli ilmiy kengash</td>
+                        <td>2023 й. 5-may 337/2-son</td>
+                        <td>10.00.02 - «O'zbek adabiyoti»</td>
+                        <td>Kuronov Dilmurod Xaydaralievich, filologiya fanlari doktori, professor, +998 91 160 20 43</td>
+                        <td>Аzizov Nurmuxdmmad Nematillaevich</td>
                     </tr>
                 </tbody>
             </table>

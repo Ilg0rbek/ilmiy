@@ -22,6 +22,7 @@ import TavarlarKimyosi from "./components/pages/IlmiyDarajaBeruvchiKengash/Tavar
 import OzbekistosnTarihi from "./components/pages/IlmiyDarajaBeruvchiKengash/OzbekistosnTarihi";
 import Menejment from "./components/pages/IlmiyDarajaBeruvchiKengash/Menejment";
 import OzbekTili from "./components/pages/IlmiyDarajaBeruvchiKengash/OzbekTili";
+import OzbekAdabiyoti from "./components/pages/IlmiyDarajaBeruvchiKengash/OzbekAdabiyoti";
 
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
       <Route path={`/Ozbekiston tarixi`} element={<Layout><OzbekistosnTarihi/></Layout>} />
       <Route path={`/Menejment`} element={<Layout><Menejment/></Layout>} />
       <Route path={`/Ozbek tili`} element={<Layout><OzbekTili/></Layout>} />
+      <Route path={`/Ozbek adabiyoti`} element={<Layout><OzbekAdabiyoti/></Layout>} />
 
 
       <Route exact path="/cources" element={<Layout><FanTogarakUser /></Layout>}/>
