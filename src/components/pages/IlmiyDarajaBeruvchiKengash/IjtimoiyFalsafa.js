@@ -3,7 +3,7 @@ import React from "react";
 const IjtimoiyFalsafa = () => {
     return (
         <div className="container overflow-auto" style={{ marginTop: "200px" }}>
-            <h3 className="text-center mb-5">"TOVARLAR KIMYOSI" VA "XALQ TABOBATI"</h3>
+            <h3 className="text-center mb-5">Ijtimoiy falsafa</h3>
             <table className=" table-bordered">
                 <thead>
                     <tr className="text-center">
@@ -16,11 +16,11 @@ const IjtimoiyFalsafa = () => {
                 </thead>
                 <tbody>
                     <tr className="text-center">
-                        <td>Аndijon davlat universiteti xuzuridagi kimyo va texnika fanlari boʼyicha ilmiy darajalar beruvchi DSc.03/29.10.2021.K/T.60.05 raqamli ilmiy kengash</td>
-                        <td>2021 y. 30-oktyabrь 510-son</td>
-                        <td>02.00.09 - "Tovarlar kimyosi" va 14.00.41 - "Xalq tabobati"</td>
-                        <td>Isakov Xayatullo, Texnika fanlari doktori, dotsent.+998994330940</td>
-                        <td>Isakov Xayatullo, Texnika fanlari doktori, dotsent. Moʼminjonov Mirjalol Muqimjon oʼgʼli +99899-917-07-86</td>
+                        <td>Аndijon davlat universiteti huzuridagi falsafa fanlari boʼyicha falsafa doktori (PhD) ilmiy darajasini beruvchi PhD.03.30.06.2020.Fal.60.04 raqamli Ilmiy kengash</td>
+                        <td>2020 y. 30-iyun 281/2-son</td>
+                        <td>Falsafa fanlari boʼyicha 09.00.04 - «Ijtimoiy falsafa» 2. Pedagogika fanlari boʼyicha 13.00.02 - «Taʼlim va tarbiya nazariyasi va metodikasi» (falsafa)</td>
+                        <td>Yuldasheva Farida Xoʼjamqulovna falsafa fanlari doktori Аndijon davlat universiteti falsafa kafedrasi +998934188642</td>
+                        <td>Egamberdiev Аzizbek Аbdumalikovich +99894-945-05-00</td>
                     </tr>
                 </tbody>
             </table>

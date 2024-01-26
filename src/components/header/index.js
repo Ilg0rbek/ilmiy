@@ -133,11 +133,12 @@ function Header() {
                   </Link>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#">
+                  <Link className="dropdown-item" to={"/Ijtimoiy falsafa"}>
                     Ijtimoiy falsafa
-                  </a>
+                  </Link>
                 </li>
                 <li>
+
                   <a className="dropdown-item" href="#">
                     Biologiya fanlari bo'yicha
                   </a>
