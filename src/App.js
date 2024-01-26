@@ -19,6 +19,9 @@ import FanTogarakUser from "./components/pages/FantogarakUser/FanTogarakUser";
 import FanTogarakKafedraUser from "./components/pages/FantogarakUser/FanTogarakKafedraUser";
 import FanTogarakDetailUser from "./components/pages/FantogarakUser/FanTogarakDetailUser";
 import TavarlarKimyosi from "./components/pages/IlmiyDarajaBeruvchiKengash/TavarlarKimyosi";
+import OzbekistosnTarihi from "./components/pages/IlmiyDarajaBeruvchiKengash/OzbekistosnTarihi";
+import Menejment from "./components/pages/IlmiyDarajaBeruvchiKengash/Menejment";
+import OzbekTili from "./components/pages/IlmiyDarajaBeruvchiKengash/OzbekTili";
 
 
 function App() {
@@ -33,6 +36,9 @@ function App() {
       <Route  path={`/stipendiants/students`} element={<Layout><PresidentStipendiant/></Layout>} />
       <Route exact path="/guvohnoma" element={<Layout ><Patents/></Layout>}/>
       <Route path={`/tavarlar kimyosi va halq tabobati`} element={<Layout><TavarlarKimyosi/></Layout>} />
+      <Route path={`/Ozbekiston tarixi`} element={<Layout><OzbekistosnTarihi/></Layout>} />
+      <Route path={`/Menejment`} element={<Layout><Menejment/></Layout>} />
+      <Route path={`/Ozbek tili`} element={<Layout><OzbekTili/></Layout>} />
 
 
       <Route exact path="/cources" element={<Layout><FanTogarakUser /></Layout>}/>

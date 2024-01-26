@@ -1,9 +1,9 @@
 import React from "react";
 
-const OzbekTili = () => {
+const BialogiyaFanlarBoyicha = () => {
     return (
         <div className="container overflow-auto" style={{ marginTop: "200px" }}>
-            <h3 className="text-center mb-5">O'zbek tili</h3>
+            <h3 className="text-center mb-5">"TOVARLAR KIMYOSI" VA "XALQ TABOBATI"</h3>
             <table className=" table-bordered">
                 <thead>
                     <tr className="text-center">
@@ -16,11 +16,11 @@ const OzbekTili = () => {
                 </thead>
                 <tbody>
                     <tr className="text-center">
-                        <td>Аndijon davlat universiteti xuzuridagi filologiya fanlari boʼyicha ilmiy darajalar beruvchi DSc.03/05.05.2023.Fil.60.02 raqamli ilmiy kengash</td>
-                        <td>2023 й. 5-may 337/2-son</td>
-                        <td>10.00.01-Oʼzbek tili</td>
-                        <td>Sobirov Аbdulxay Shukurovich, filologiya fanlari doktori, professor, +998914789801</td>
-                        <td>Usmanov Farxad Faxriddinovich +99893-419-35-29</td>
+                        <td>Аndijon davlat universiteti xuzuridagi kimyo va texnika fanlari boʼyicha ilmiy darajalar beruvchi DSc.03/29.10.2021.K/T.60.05 raqamli ilmiy kengash</td>
+                        <td>2021 y. 30-oktyabrь 510-son</td>
+                        <td>02.00.09 - "Tovarlar kimyosi" va 14.00.41 - "Xalq tabobati"</td>
+                        <td>Isakov Xayatullo, Texnika fanlari doktori, dotsent.+998994330940</td>
+                        <td>Isakov Xayatullo, Texnika fanlari doktori, dotsent. Moʼminjonov Mirjalol Muqimjon oʼgʼli +99899-917-07-86</td>
                     </tr>
                 </tbody>
             </table>
@@ -28,4 +28,4 @@ const OzbekTili = () => {
     )
 }
 
-export default OzbekTili
+export default BialogiyaFanlarBoyicha
