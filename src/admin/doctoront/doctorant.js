@@ -12,12 +12,24 @@ import FileSaver from "file-saver"
 import { useNavigate } from 'react-router-dom';
 const Doctorant = () => {
 
-  const data = useSelector((state) => state.profile.getStudentdata)
+  const [data, setData] = useState([])
+  const [userSearch, setUserSearch] = useState("")
+  const [kursSearch, setKursSearch] = useState("")
   const [isModalOpen, setIsModalOpen] = useState(false);
   const dispatch = useDispatch()
 
+
   const fileType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8";
   const fileExtension = ".xlsx";
+
+  const getUserDoctorant = () =>{
+    axiosConfig.post("/auth/users",{user:userSearch, kurs:kursSearch}).then(res=>{
+      console.log(res.data);
+      setData(res.data)
+    }).catch(err=>{
+      console.log(err);
+    })
+  }
 
   const exportToCSV = (data) => {
     const ws = XLSX.utils.json_to_sheet(data);
@@ -28,11 +40,11 @@ const Doctorant = () => {
   };
 
   useEffect(() => {
-    dispatch(getAllStudenData())
-  }, [isModalOpen])
+    getUserDoctorant()
+  }, [isModalOpen, userSearch, kursSearch])
 
   useEffect(() => {
-    dispatch(getAllStudenData())
+    getUserDoctorant()
   }, [])
 
   const [searchText, setSearchText] = useState('');
@@ -146,10 +158,14 @@ const Doctorant = () => {
       ),
   });
 
-  const deleteStudent = (data) => {
-    dispatch(deleteProfile(data))
-    message.success("Talaba o'chirildi")
-    dispatch(getAllStudenData())
+  const deleteStudent = (id) => {
+    axiosConfig.delete(`/auth/delete/${id}`).then(res=>{
+      getUserDoctorant()
+      message.success("Talaba o'chirildi")
+    }).catch(err=>{
+      console.log(err);
+    })
+    // dispatch(deleteProfile(data))
     // window.location.reload()
   }
 
@@ -271,18 +287,18 @@ const Doctorant = () => {
       <div style={{ display: "flex", width: "100%", justifyContent: "space-between" }} className='mb-3'>
         <div style={{ display: "flex", width: "50%" }}>
           {
-            chekin ? <div style={{ padding: "10px" }}><h6>Foydalanuvchilar tayyorlanmoqda..</h6></div> : 
-            <div style={{ display: "flex", width: "100%",justifyContent:"space-between " }}>
-              <select onChange={(e)=>setUser(e.target.value)} style={{width:"21%"}} className='form-select shadow-none' name="" id="">
-                <option disabled selected style={{fontSize:"14px"}}>Tanlang</option>
-                <option value="DSC">DSC</option>
-                <option value="PHD">PHD</option>
-                <option value="ST">ST</option>
-                <option value="M-DSC">M-DSC</option>
-                <option value="M-PHD">M-PHD</option>
-              </select>
-              <input style={{width:"78%"}} onChange={(e) => setCountUser(e.target.value)} className='form-control shadow-none' type="text" placeholder='Foydalanuvchilarni yaratish uchun kerakli raqamni kiriting' />
-            </div>
+            chekin ? <div style={{ padding: "10px" }}><h6>Foydalanuvchilar tayyorlanmoqda..</h6></div> :
+              <div style={{ display: "flex", width: "100%", justifyContent: "space-between " }}>
+                <select onChange={(e) => setUser(e.target.value)} style={{ width: "21%" }} className='form-select shadow-none' name="" id="">
+                  <option disabled selected style={{ fontSize: "14px" }}>Tanlang</option>
+                  <option value="DSC">DSC</option>
+                  <option value="PHD">PHD</option>
+                  <option value="ST">ST</option>
+                  <option value="M-DSC">M-DSC</option>
+                  <option value="M-PHD">M-PHD</option>
+                </select>
+                <input style={{ width: "78%" }} onChange={(e) => setCountUser(e.target.value)} className='form-control shadow-none' type="text" placeholder='Foydalanuvchilarni yaratish uchun kerakli raqamni kiriting' />
+              </div>
           }
           <button style={{ marginLeft: "5%" }} className='btn btn-primary text-white' onClick={cerateUser}>Yaratish</button>
         </div>
@@ -297,6 +313,31 @@ const Doctorant = () => {
       </div>
       <DeleteModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
       <div style={{ padding: "0 0 30px 0" }} className='table mb-5'>
+        <div style={{ width: "100%", display: "flex", justifyContent:"end"}}>
+          <div style={{width:"50%", display:"flex",justifyContent:"space-between"}}>
+            <div style={{ width: "40%" }}>
+              <select onChange={(e)=>setKursSearch(e.target.value)} className='form-select shadow-none' name="" id="">
+                <option disabled selected>Kursi boyicha filterlash</option>
+                <option value="">Umumiy qidirish</option>
+                <option value="1-kurs">1-kurs</option>
+                <option value="2-kurs">2-kurs</option>
+                <option value="3-kurs">3-kurs</option>
+              </select>
+            </div>
+            <div style={{ width: "40%" }}>
+              <select onChange={(e)=>setUserSearch(e.target.value)} className='form-select shadow-none' name="" id="">
+                <option disabled selected>Ta'lim turi bo'yicha fileterlash</option>
+                <option value="">Umumiy qidirish</option>
+                <option value="DSC">DSC</option>
+                <option value="PHD">PHD</option>
+                <option value="ST">ST</option>
+                <option value="M-DSC">M-DSC</option>
+                <option value="M-PHD">M-PHD</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <hr />
         <Table rowKey={(record) => record._id} columns={columns} dataSource={data} />
       </div>
     </div>
