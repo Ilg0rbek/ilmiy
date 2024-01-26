@@ -268,7 +268,7 @@ const Doctorant = () => {
     if (count !== "" && user !== "") {
       setChekIn(true)
       axiosConfig.post(`/auth/generate-student`, { count, user }).then(res => {
-        console.log(res.data);
+        // console.log(res.data);
         exportToCSV(res.data)
         getAllStudenData()
         window.location.reload()
