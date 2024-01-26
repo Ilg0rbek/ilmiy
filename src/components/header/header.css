@@ -39,7 +39,7 @@ header {
 }
 .logo h2 {
   padding: 0 5px;
-  text-transform: capitalize;
+  /* text-transform: capitalize; */
   font-size: 25px;
 }
 

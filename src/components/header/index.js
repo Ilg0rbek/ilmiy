@@ -22,7 +22,7 @@ function Header() {
         <div className="logo">
           <div className="img_div"></div>
           <h2>
-            andijon davlat <br /> universiteti
+            Andijon davlat <br /> universiteti
           </h2>
         </div>
         <div className="btn_menu" onClick={navToggle}>
@@ -138,10 +138,9 @@ function Header() {
                   </Link>
                 </li>
                 <li>
-
-                  <a className="dropdown-item" href="#">
+                  <Link className="dropdown-item" to={"/Bialogiya fanlari boyicha"}>
                     Biologiya fanlari bo'yicha
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </li>

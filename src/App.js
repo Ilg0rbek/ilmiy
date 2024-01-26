@@ -24,6 +24,7 @@ import Menejment from "./components/pages/IlmiyDarajaBeruvchiKengash/Menejment";
 import OzbekTili from "./components/pages/IlmiyDarajaBeruvchiKengash/OzbekTili";
 import OzbekAdabiyoti from "./components/pages/IlmiyDarajaBeruvchiKengash/OzbekAdabiyoti";
 import IjtimoiyFalsafa from "./components/pages/IlmiyDarajaBeruvchiKengash/IjtimoiyFalsafa";
+import BialogiyaFanlarBoyicha from "./components/pages/IlmiyDarajaBeruvchiKengash/BialogiyaFanlarBoyicha";
 
 
 function App() {
@@ -43,6 +44,7 @@ function App() {
       <Route path={`/Ozbek tili`} element={<Layout><OzbekTili/></Layout>} />
       <Route path={`/Ozbek adabiyoti`} element={<Layout><OzbekAdabiyoti/></Layout>} />
       <Route path={`/Ijtimoiy falsafa`} element={<Layout><IjtimoiyFalsafa/></Layout>} />
+      <Route path={`/Bialogiya fanlari boyicha`} element={<Layout><BialogiyaFanlarBoyicha/></Layout>} />
 
 
       <Route exact path="/cources" element={<Layout><FanTogarakUser /></Layout>}/>
