@@ -176,14 +176,15 @@ function Header() {
           </a>
           <ul className="dropdown-menu ">
             <li>
-              <a className="dropdown-item" href="#">
+              <Link className="dropdown-item" to={"/Davlat granti"}>
                 Davlat granti
-              </a>
+              </Link>
+
             </li>
             <li>
-              <a className="dropdown-item" href="#">
+              <Link className="dropdown-item" to={"/Universitet granti"}>
                 Univesitet granti
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

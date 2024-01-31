@@ -24,11 +24,11 @@ const StipendiantDeatail = () => {
 
     return (
         <div style={{ marginTop: "200px" }} className=" container mb-4">
-            <div style={{ padding: "0 30px", width: "100%", height: "100px", display: "flex", justifyContent: "center", fontSize: "30px", fontWeight: "600" }}>Stipendiant haqida to'liq ma'lumot</div>
+            <div style={{ padding: "0 30px", width: "100%", height: "100px", display: "flex", justifyContent: "center", fontSize: "30px", fontWeight: "600" }}>Stipendiat haqida to'liq ma'lumot</div>
             <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
             <div style={{ border: "none",padding:"0 20px 20px 20px" }} className="card shadow">
                 <div className="mt-3" style={{display:"flex",justifyContent:"center"}}>
-                <img className="img-fluid" style={{width:"400px",height:"400px",borderRadius:"50%"}} src={`https://ilmiyapi.adu.uz/${detailData && detailData.image}`} alt="" />
+                <img className="img-fluid" style={{width:"400px",height:"400px"}} src={`https://ilmiyapi.adu.uz/${detailData && detailData.image}`} alt="" />
                 </div>
                 <div className="card-body" style={{padding:"0 15px"}}>
                     <h4 className="text-center mt-3">{detailData && detailData.fullname}</h4>
@@ -42,7 +42,7 @@ const StipendiantDeatail = () => {
             detailData?.child?.map((item, index)=>(
         <div className="row mt-5">
             <div style={{display:"flex",justifyContent:"center"}} className="col-12">
-                <img src={`https://ilmiyapi.adu.uz/${item.image}`} alt="" />
+                <img className="img-fluid" src={`https://ilmiyapi.adu.uz/${item.image}`} alt="" />
             </div>
             <div className="col-12">
                 {item.title}

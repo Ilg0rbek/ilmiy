@@ -29,14 +29,14 @@ const Stipendiants = () => {
 
   return (
     <div style={{marginTop:"200px"}} className="container">
-    <div style={{padding:"0 30px",width:"100%",height:"100px",display:"flex",justifyContent:"center",fontSize:"30px",fontWeight:"600"}}>Stipendiantlar ro'yxati</div>
+    <div style={{padding:"0 30px",width:"100%",height:"100px",display:"flex",justifyContent:"center",fontSize:"30px",fontWeight:"600"}}>Stipendiatlar ro'yxati</div>
    <Accordion defaultActiveKey="0">
     {
       yearData?.map((item,index)=>(
         <Accordion.Item onClick={()=>sessionStorage.setItem("yearId", item._id)} eventKey={index}>
       <Accordion.Header>
         <div style={{width:"100%",display:"flex",justifyContent:"space-between",padding:"0 20px 0 0"}}>
-          <div>{item.start + "/" + item.end + " yilgi stipendiantlar"}</div>
+          <div>{item.start + "/" + item.end + " yilgi stipendiatlar"}</div>
         </div>
         </Accordion.Header>
       <Accordion.Body>

@@ -25,6 +25,8 @@ import OzbekTili from "./components/pages/IlmiyDarajaBeruvchiKengash/OzbekTili";
 import OzbekAdabiyoti from "./components/pages/IlmiyDarajaBeruvchiKengash/OzbekAdabiyoti";
 import IjtimoiyFalsafa from "./components/pages/IlmiyDarajaBeruvchiKengash/IjtimoiyFalsafa";
 import BialogiyaFanlarBoyicha from "./components/pages/IlmiyDarajaBeruvchiKengash/BialogiyaFanlarBoyicha";
+import UniversitetGranti from "./components/pages/IlmiyLoyihalar/UniversitetGranti";
+import DavlatGranti from "./components/pages/IlmiyLoyihalar/DavlatGranti";
 
 
 function App() {
@@ -37,6 +39,7 @@ function App() {
       <Route exact path="/patents/user-list" element={<Layout ><PatentUserlist/></Layout>}/>
       <Route exact path="/stipendiants/*" element={<Layout><Stipendiants /></Layout>}/>
       <Route  path={`/stipendiants/students`} element={<Layout><PresidentStipendiant/></Layout>} />
+      <Route  path={`/stipendiants/students/detail/:id`} element={<Layout><StipendiantDeatail/></Layout>} />
       <Route exact path="/guvohnoma" element={<Layout ><Patents/></Layout>}/>
       <Route path={`/tavarlar kimyosi va halq tabobati`} element={<Layout><TavarlarKimyosi/></Layout>} />
       <Route path={`/Ozbekiston tarixi`} element={<Layout><OzbekistosnTarihi/></Layout>} />
@@ -45,6 +48,8 @@ function App() {
       <Route path={`/Ozbek adabiyoti`} element={<Layout><OzbekAdabiyoti/></Layout>} />
       <Route path={`/Ijtimoiy falsafa`} element={<Layout><IjtimoiyFalsafa/></Layout>} />
       <Route path={`/Bialogiya fanlari boyicha`} element={<Layout><BialogiyaFanlarBoyicha/></Layout>} />
+      <Route path={`/Davlat granti`} element={<Layout><DavlatGranti/></Layout>} />
+      <Route path={`/Universitet granti`} element={<Layout><UniversitetGranti/></Layout>} />
 
 
       <Route exact path="/cources" element={<Layout><FanTogarakUser /></Layout>}/>
