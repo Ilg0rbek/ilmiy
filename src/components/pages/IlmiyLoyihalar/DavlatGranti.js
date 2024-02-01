@@ -12,9 +12,10 @@
                     <tr className="text-center">
                         <th scope="col">Loyiha muddati</th>
                         <th scope="col">Loyiha nomi</th>
-                        <th scope="col">Loyiha muddati	Loyiha nomi	Moliyalashtirish xajmi(mln.soʻm)</th>
+                        <th scope="col">Moliyalashtirish xajmi(mln.soʻm)</th>
                         <th scope="col">Loyiha turi</th>
                         <th scope="col">Loyiha holati</th>
+                        <th scope="col">Loyiha rahbari</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -36,6 +37,7 @@
                             qurilma ishlab chiqish yo’lga qo’yilgan. Xususan energiya olish samaradorligi eng maqbul hamda arzon
                             bo’lgan turidan foydalanishni yo’lga qo’ymoqdamiz.
                         </td>
+                        <td>Zaynabudinnov.S </td>
                     </tr>
                     <tr className="text-center">
                         <td>01.06.2022  30.05.2026</td>
@@ -57,6 +59,7 @@
                             chiqiladi va qayta tiklanuvchi energiya manbaalari sohalariga tavsiya etiladi.
 
                         </td>
+                        <td>Aliyev.R</td>
                     </tr>
                 </tbody>
             </table>

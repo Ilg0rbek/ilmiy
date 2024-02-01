@@ -183,7 +183,7 @@ function Header() {
             </li>
             <li>
               <Link className="dropdown-item" to={"/Universitet granti"}>
-                Univesitet granti
+                Xorijiy granti
               </Link>
             </li>
           </ul>
