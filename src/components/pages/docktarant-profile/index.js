@@ -17,6 +17,8 @@ const StudentProlie = () => {
     kurs: "",
     adress: "",
     yunalish: "",
+    ilmiyrahbar:"",
+    ilmiyrahbarunvoni:""
   });
 
 
@@ -457,13 +459,26 @@ const StudentProlie = () => {
                   <hr />
                   <div className="row">
                     <div className="col-sm-3">
-                      <h6 className="mb-0">Shifr</h6>
+                      <h6 className="mb-0">Ilmmiy rahbari</h6>
                     </div>
                     <div className="col-sm-9 text-secondary">
                       {edit ? (
-                        <input className="form-control shadow-none" disabled value={mydata?.shifr} placeholder="Shifr " />
+                        <input className="form-control shadow-none" disabled value={mydata?.ilmiyrahbar} placeholder="Ilmmiy rahbari " />
                       ) : (
-                        <input className="form-control shadow-none" disabled name="shifr" value={shifrValue}  placeholder="Shifri " />
+                        <input className="form-control shadow-none"  name="ilmiyrahbar" defaultValue={mydata.ilmiyrahbar}  placeholder="Ilmmiy rahbari" />
+                      )}
+                    </div>
+                  </div>
+                  <hr />
+                  <div className="row">
+                    <div className="col-sm-3">
+                      <h6 className="mb-0">Ilmmiy rahbari unvoni</h6>
+                    </div>
+                    <div className="col-sm-9 text-secondary">
+                      {edit ? (
+                        <input className="form-control shadow-none" disabled value={mydata?.ilmiyrahbarunvoni} placeholder="Ilmmiy rahbari unvoni" />
+                      ) : (
+                        <input className="form-control shadow-none"  name="ilmiyrahbarunvoni" defaultValue={mydata.ilmiyrahbarunvoni}  placeholder="Ilmmiy rahbari unvoni" />
                       )}
                     </div>
                   </div>
@@ -480,6 +495,21 @@ const StudentProlie = () => {
                       )}
                     </div>
                   </div>
+                  <hr />
+                  <div className="row">
+                    <div className="col-sm-3">
+                      <h6 className="mb-0">Shifr</h6>
+                    </div>
+                    <div className="col-sm-9 text-secondary">
+                      {edit ? (
+                        <input className="form-control shadow-none" disabled value={mydata?.shifr} placeholder="Shifr " />
+                      ) : (
+                        <input className="form-control shadow-none" disabled name="shifr" value={shifrValue}  placeholder="Shifri " />
+                      )}
+                    </div>
+                  </div>
+                  
+                
                   <hr />
                   <div className="row">
                     <div className="col-sm-3">

@@ -155,17 +155,30 @@ const PatentsList = () => {
 
     const columns = [
         {
+            title: '№',
+            dataIndex: '',
+            key: '',
+            width: '5%',
+            render: (text, row, index) => (
+                <>
+                    {index + 1 }
+                </>
+            ),
+        },
+        {
             title: 'FIO',
             dataIndex: 'fullname',
             key: 'fullname',
             width: '30%',
             ...getColumnSearchProps('fullname'),
-            render: (text, row) => (
+            render: (text, row,index) => (
+               <>
                 <a href={`https://ilmiyapi.adu.uz/${row.dgulink}`} target='_blank' 
                     style={{ color: 'blue' }}
                 >
                    {row.fullname}
                 </a>
+               </>
             ),
         },
         {

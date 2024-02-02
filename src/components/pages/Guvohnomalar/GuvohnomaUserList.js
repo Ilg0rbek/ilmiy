@@ -16,8 +16,8 @@ const GuvohnomaUserList = () => {
 
     let year = sessionStorage.getItem("patentId")
     const getAllPatents = () => {
-        axiosConfig.post("/patents/all", {year}).then(res => {
-            console.log("bu res",res.data);
+        axiosConfig.post("/patents/all", { year }).then(res => {
+            console.log("bu res", res.data);
             // console.log("bu year",year);
             setData(res.data)
         }).catch(err => {
@@ -143,10 +143,10 @@ const GuvohnomaUserList = () => {
 
     const deleteStudent = (data) => {
         console.log(data);
-        axiosConfig.delete(`patents/${data}`).then(res=>{
+        axiosConfig.delete(`patents/${data}`).then(res => {
             console.log(res);
             getAllPatents()
-        }).catch(err=>{
+        }).catch(err => {
             console.log(err);
         })
         // message.success("Talaba o'chirildi")
@@ -155,17 +155,31 @@ const GuvohnomaUserList = () => {
 
     const columns = [
         {
+            title: '№',
+            dataIndex: '',
+            key: '',
+            width: '5%',
+            render: (text, row, index) => (
+                <>
+                    {index + 1 }
+                </>
+            ),
+        },
+        {
             title: 'FIO',
             dataIndex: 'fullname',
             key: 'fullname',
             width: '30%',
             ...getColumnSearchProps('fullname'),
-            render: (text, row) => (
-                <a href={`https://ilmiyapi.adu.uz/${row.dgulink}`} target='_blank' 
-                    style={{ color: 'blue' }}
-                >
-                   {row.fullname}
-                </a>
+            render: (text, row, index) => (
+                <>
+                   
+                    <a href={`https://ilmiyapi.adu.uz/${row.dgulink}`} target='_blank'
+                        style={{ color: 'blue' }}
+                    >
+                        {row.fullname}
+                    </a>
+                </>
             ),
         },
         {
@@ -197,10 +211,10 @@ const GuvohnomaUserList = () => {
     };
 
     return (
-        <div className="container" style={{marginTop:"200px"}}>
-            <h4><Link style={{textDecoration:"none"}} to="/guvohnoma">{year} - yilgi guvohnomalar</Link></h4>
+        <div className="container" style={{ marginTop: "200px" }}>
+            <h4><Link style={{ textDecoration: "none" }} to="/guvohnoma">{year} - yilgi guvohnomalar</Link></h4>
             <hr />
-            <Table rowKey={(record) => record._id} columns={columns} dataSource={data} />
+            <Table className='mb-3' rowKey={(record) => record._id} columns={columns} pagination={false} dataSource={data} />
         </div>
     );
 }

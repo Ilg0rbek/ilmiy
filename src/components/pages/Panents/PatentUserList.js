@@ -155,17 +155,30 @@ const PatentUserlist = () => {
 
     const columns = [
         {
+            title: '№',
+            dataIndex: '',
+            key: '',
+            width: '5%',
+            render: (text, row, index) => (
+                <>
+                    {index + 1 }
+                </>
+            ),
+        },
+        {
             title: 'FIO',
             dataIndex: 'fullname',
             key: 'fullname',
             width: '30%',
             ...getColumnSearchProps('fullname'),
-            render: (text, row) => (
+            render: (text, row,index) => (
+                <>
                 <a href={`https://ilmiyapi.adu.uz/${row.guvohnoma}`} target='_blank' 
                     style={{ color: 'blue' }}
                 >
                    {row.fullname}
                 </a>
+                </>
             ),
         },
         {
@@ -200,7 +213,7 @@ const PatentUserlist = () => {
         <div className="container" style={{marginTop:"200px"}}>
             <h4><Link style={{textDecoration:"none"}} to="/patents">{year} - yilgi patentlar</Link></h4>
             <hr />
-            <Table rowKey={(record) => record._id} columns={columns} dataSource={data} />
+            <Table className='mb-3' rowKey={(record) => record._id} columns={columns} pagination={false} dataSource={data} />
         </div>
     );
 }

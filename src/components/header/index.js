@@ -61,7 +61,7 @@ function Header() {
                 href="https://phd.mininnovation.uz/required-docs"
                 target="_blank"
               >
-                kerakli ro'yxatlar hujjati
+                kerakli hujjatlar ro'yxati
               </a>
             </li>
             <li>
