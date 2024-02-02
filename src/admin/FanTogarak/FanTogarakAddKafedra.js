@@ -24,7 +24,7 @@ const FanTogarakAddKafedra = ({ isModalOpen, setIsModalOpen, yearId }) => {
     // console.log("e.title");
     setStipendiaName(e.title)
     // console.log(stipendiaName);
-    axiosConfig.post(`/faculty`,{title:e.title, science_id:`yearId1`, faculty_id:FacultyId, child:[]}).then(res=>{
+    axiosConfig.post(`/faculty`,{title:e.title, year_id:yearId1, faculty_id:FacultyId, child:[]}).then(res=>{
       // console.log({title:e.title});
       console.log(res);
       setIsModalOpen(false);
