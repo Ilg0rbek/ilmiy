@@ -6,15 +6,27 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteProfile, getAllStudenData } from '../../redux/reducers/profile.store';
 import axiosConfig from '../../redux/baseUrl';
+import * as XLSX from 'xlsx';
+import FileSaver from "file-saver"
 
 const PatentsList = () => {
 
     const [data, setData] = useState()
     const [isModalOpen, setIsModalOpen] = useState(false);
     const dispatch = useDispatch()
-
-
     let year = sessionStorage.getItem("patentId")
+    const fileType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8";
+    const fileExtension = ".xlsx";
+    const exportToCSV = () => {
+        const ws = XLSX.utils.json_to_sheet(data);
+        const wb = { Sheets: { data: ws }, SheetNames: ["data"] };
+        const excelBuffer = XLSX.write(wb, { bookType: "xlsx", type: "array" });
+        const datas = new Blob([excelBuffer], { type: fileType });
+        FileSaver.saveAs(datas, `${year} - Yilgi guvohnomalar` + fileExtension);
+      };
+
+
+    
     const getAllPatents = () => {
         axiosConfig.post("/patents/all", {year}).then(res => {
             // console.log("bu res",res.data);
@@ -28,6 +40,7 @@ const PatentsList = () => {
     useEffect(() => {
         getAllPatents()
     }, [])
+
 
 
     const [searchText, setSearchText] = useState('');
@@ -227,7 +240,8 @@ const PatentsList = () => {
 
     return (
         <div>
-            <h4>{year}-chi yilgi guvohnomalar</h4>
+           
+            <div style={{width:"100%",display:"flex", justifyContent:"space-between"}}> <h4>{year}-chi yilgi guvohnomalar</h4><button onClick={()=>exportToCSV()} className='btn btn-primary text-white'>excel</button></div>
             <hr />
             <Table rowKey={(record) => record._id} columns={columns} dataSource={data} />
         </div>

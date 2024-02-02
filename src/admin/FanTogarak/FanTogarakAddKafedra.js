@@ -21,7 +21,7 @@ const FanTogarakAddKafedra = ({ isModalOpen, setIsModalOpen, yearId }) => {
   let yearId1 = sessionStorage.getItem("yearId")
 
   const handleSubmit = (e) => {
-    // console.log("e.title");
+    console.log("e.title",{title:e.title, year_id:yearId1, faculty_id:FacultyId, child:[]});
     setStipendiaName(e.title)
     // console.log(stipendiaName);
     axiosConfig.post(`/faculty`,{title:e.title, year_id:yearId1, faculty_id:FacultyId, child:[]}).then(res=>{
