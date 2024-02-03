@@ -7,11 +7,11 @@ const FanTogarakDetailUser = () =>{
     const {id} = useParams()
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [detailData, setDetailData] = useState()
-    let science_id = sessionStorage.getItem("togarakId")
+    let science_id = sessionStorage.getItem("FacultyId")
 
   const getDeteil = () =>{
     axiosConfig.get(`/sciences/${science_id}`).then(res=>{
-        console.log(res.data);
+        console.log("detail",res.data);
         setDetailData(res.data)
     }).catch(err=>{
         console.log(err);
@@ -31,10 +31,10 @@ const FanTogarakDetailUser = () =>{
         <div style={{marginTop:"200px"}} className="container mb-4">
         {
             detailData?.map((item, index)=>(
-        <div className="row mt-5">
+        <div key={index} className="row mt-5">
              <h4 className="text-center">{sessionStorage.getItem("togarakName")} to'garagi</h4>
             <div  style={{display:"flex",justifyContent:"center"}} className="col-12 mt-3">
-                <img className="img-fluid" src={`https://ilmiyapi.adu.uz/${item.image}`} alt="" />
+                <img className="img-fluid" src={`https://ilmiyapi.adu.uz/${item.image}`} alt="To'garak rasmida hatolik" />
             </div>
             <div style={{marginTop:"15px"}} className="col-12">
                 <h4 style={{marginTop:"15px"}} className="text-center">{item.title}</h4>

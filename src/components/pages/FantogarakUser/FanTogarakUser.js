@@ -55,55 +55,64 @@ const FanTogarakUser = () => {
   useEffect(() => {
     getAllSeasen()
   }, [isModalOpen, isModalOpen2])
+  // <h6>{item.child?.map((item, index) => (
+  //   <div key={index} style={{ cursor: "pointer" }} onClick={() => { sessionStorage.setItem("FacultyId", item.id); navigate("/cources/kafedra") }}>{index + 1}.{" " + item.title} <hr /></div>
+  // ))}</h6>
 
+  const [tableData, setTableData] = useState()
+
+  const getTableTogarak = (id) =>(
+    axiosConfig.get(`/science/user/${id}`).then(res=>{
+      // console.log(res.data);
+      setTableData(res.data)
+    }).catch(err=>{
+      console.log(err);
+    })
+  )
 
   return (
     <div className="container" style={{ marginTop: "200px" }}>
       <div style={{ padding: "0 30px", width: "100%", height: "100px", display: "flex", justifyContent: "center", fontSize: "30px", fontWeight: "600" }}>Fan to'garak fakultetlarini ro'yxati</div>
-      {/* <div className="container overflow-auto">
-        {
-          yearData?.map((item, index) => (
-            <div>
-              <h3 className="mb-2">{item.start + "/" + item.end + " yilgi fan to'garaklar"}</h3>
-              <table className="table table-bordered">
-                <thead>
-                  <tr className="text-center">
-                    <th scope="col">Togarak nomi</th>
-                    <th scope="col">Kafedra</th>
-                    <th scope="col">Fakulteti</th>
-                  </tr>
-                </thead>
-                <tbody>
 
-                  {
-                    item.child?.map((it, ind) => (
-                      <tr className="text-center">
-                        <td>{it.title}</td>
-                        <td>2020 y. 30-iyun 281/2-son</td>
-                        <td></td>
-                      </tr>
-                    ))
-                  }
-                </tbody>
-              </table>
-            </div>
-          ))
-        }
-      </div> */}
       <Accordion defaultActiveKey="0">
         {
           yearData != "" ?
             yearData?.map((item, index) => (
-              <Accordion.Item onClick={() => sessionStorage.setItem("yearId", item._id)} eventKey={index}>
+              <Accordion.Item onClick={() => {sessionStorage.setItem("yearId", item._id);getTableTogarak(item._id)}} eventKey={index}>
                 <Accordion.Header>
                   <div style={{ width: "100%", display: "flex", justifyContent: "space-between", padding: "0 20px 0 0" }}>
                     <div>{item.start + "/" + item.end + " yilgi fan to'garaklar"}</div>
                   </div>
                 </Accordion.Header>
                 <Accordion.Body>
-                  <h6>{item.child?.map((item, index) => (
-                    <div key={index} style={{ cursor: "pointer" }} onClick={() => { sessionStorage.setItem("FacultyId", item.id); navigate("/cources/kafedra") }}>{index + 1}.{" " + item.title} <hr /></div>
-                  ))}</h6>
+                  <div className="container overflow-auto">
+                   
+                        <div>
+                          {/* <h3 className="mb-2">{item.start + "/" + item.end + " yilgi fan to'garaklar"}</h3> */}
+                          <table style={{width:"100%"}} className="table-bordered">
+                            <thead>
+                              <tr className="text-center">
+                                <th scope="col" >Togarak nomi</th>
+                                <th scope="col">Kafedra</th>
+                                <th scope="col">Fakulteti</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+
+                              {
+                                tableData?.map((it, ind) => (
+                                  <tr key={ind} className="text-center">
+                                    {/* {console.log(it)} */}
+                                    <td style={{color:"blue",cursor:"pointer"}} onClick={() => { sessionStorage.setItem("FacultyId", it.fakultet_id); sessionStorage.setItem("togarakName",it.tugarak); navigate(`/cources/kafedra/detail/${it.fakultet_id}`) ;}}>{it.tugarak}</td>
+                                    <td>{it.kafedra}</td>
+                                    <td>{it.fakultet}</td>
+                                  </tr>
+                                ))
+                              }
+                            </tbody>
+                          </table>
+                        </div>
+                  </div>
                 </Accordion.Body>
               </Accordion.Item>
             ))
