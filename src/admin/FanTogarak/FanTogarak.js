@@ -40,7 +40,7 @@ const FanTogarak = () =>{
   
     const getAllSeasen = () => {
       axiosConfig.get(`/science`).then(res => {
-        console.log("year",res.data);
+        // console.log("year",res.data);
         setYearData(res.data)
       }).catch(err => {
         console.log(err);
@@ -71,7 +71,7 @@ const FanTogarak = () =>{
         <Accordion defaultActiveKey="0">
         {
           yearData?.map((item,index)=>(
-            <Accordion.Item onClick={()=>sessionStorage.setItem("yearId", item._id)} eventKey={index}>
+            <Accordion.Item onClick={()=>sessionStorage.setItem("yearId", item._id)}key={index} eventKey={index}>
           <Accordion.Header>
             <div style={{width:"100%",display:"flex",justifyContent:"space-between",padding:"0 20px 0 0"}}>
               <div>{item.start + "/" + item.end + " yilgi fan to'garaklar"}</div>
