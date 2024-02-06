@@ -77,11 +77,7 @@ const AddAdminGuvohnomaYear = ({ isModalOpen, setIsModalOpen }) => {
                             </div>
                             <div>
                                 <Form.Item name="date" label="Berilgan sana">
-                                    <DatePicker style={{ width: "100%", }}
-                                        size="large"
-                                        picker="year"
-                                        onChange={(a, b) => handleChange2(b)}
-                                    />
+                                <DatePicker style={{ width: "100%", }} onChange={(a, b) => handleChange2(b)} renderExtraFooter={() => 'extra footer'} />
                                 </Form.Item>
                             </div>
                             <div>

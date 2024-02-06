@@ -463,9 +463,9 @@ const StudentProlie = () => {
                     </div>
                     <div className="col-sm-9 text-secondary">
                       {edit ? (
-                        <input className="form-control shadow-none" disabled value={mydata?.ilmiyrahbar} placeholder="Ilmmiy rahbari " />
+                        <input className="form-control shadow-none" disabled value={mydata?.ilmiyrahbar} placeholder="Ilmiy rahbari F.I.O" />
                       ) : (
-                        <input className="form-control shadow-none"  name="ilmiyrahbar" defaultValue={mydata.ilmiyrahbar} onChange={handleChange} placeholder="Ilmmiy rahbari" />
+                        <input className="form-control shadow-none"  name="ilmiyrahbar" defaultValue={mydata.ilmiyrahbar} onChange={handleChange} placeholder="Ilmiy rahbari F.I.O" />
                       )}
                     </div>
                   </div>
@@ -476,9 +476,9 @@ const StudentProlie = () => {
                     </div>
                     <div className="col-sm-9 text-secondary">
                       {edit ? (
-                        <input className="form-control shadow-none" disabled value={mydata?.ilmiyrahbarunvoni} placeholder="Ilmmiy rahbari unvoni" />
+                        <input className="form-control shadow-none" disabled value={mydata?.ilmiyrahbarunvoni} placeholder="Ilmiy rahbari darajasi va unvoni" />
                       ) : (
-                        <input className="form-control shadow-none"  name="ilmiyrahbarunvoni" defaultValue={mydata.ilmiyrahbarunvoni} onChange={handleChange} placeholder="Ilmmiy rahbari unvoni" />
+                        <input className="form-control shadow-none"  name="ilmiyrahbarunvoni" defaultValue={mydata.ilmiyrahbarunvoni} onChange={handleChange} placeholder="Ilmiy rahbari darajasi va unvoni" />
                       )}
                     </div>
                   </div>

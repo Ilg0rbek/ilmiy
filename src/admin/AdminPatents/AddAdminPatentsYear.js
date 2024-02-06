@@ -1,4 +1,4 @@
-import { Modal, Form, DatePicker, Row, Col, Input,Upload,Button } from "antd";
+import { Modal, Form, DatePicker, Row, Col, Input, Upload, Button } from "antd";
 import React, { useState } from "react";
 import axiosConfig from "../../redux/baseUrl";
 import { UploadOutlined } from "@ant-design/icons";
@@ -26,12 +26,12 @@ const AddAdminPatentsYear = ({ isModalOpen, setIsModalOpen }) => {
     let formData = new FormData();
 
     const handleSubmit = (e, b) => {
-        formData.append("fullname",e.fullname)
-        formData.append("library",e.library)
-        formData.append("dgu",e.dgu)
-        formData.append("year",year)
-        formData.append("dgulink",image)
-        formData.append("date",date)
+        formData.append("fullname", e.fullname)
+        formData.append("library", e.library)
+        formData.append("dgu", e.dgu)
+        formData.append("year", year)
+        formData.append("dgulink", image)
+        formData.append("date", date)
         // console.log( formData.get("fullname"));
         axiosConfig.post("/patents", formData).then(res => {
             console.log("res", res);
@@ -77,11 +77,7 @@ const AddAdminPatentsYear = ({ isModalOpen, setIsModalOpen }) => {
                             </div>
                             <div>
                                 <Form.Item name="date" label="Berilgan sana">
-                                    <DatePicker style={{ width: "100%", }}
-                                        size="large"
-                                        picker="year"
-                                        onChange={(a, b) => handleChange2(b)}
-                                    />
+                                    <DatePicker style={{ width: "100%", }} onChange={(a, b) => handleChange2(b)} renderExtraFooter={() => 'extra footer'} />
                                 </Form.Item>
                             </div>
                             <div>
@@ -90,19 +86,19 @@ const AddAdminPatentsYear = ({ isModalOpen, setIsModalOpen }) => {
                                 </Form.Item>
                             </div>
                             <Form.Item name="image" label="Guvohnomani kiriting" rules={[{ required: true, message: "Talaba rasmini yuklang", },]}>
-                            <div>
-                                <Upload maxCount={1} accept=".pdf, .docx, .doc" showUploadList={true}
-                                    beforeUpload={(file) => {
-                                        setImage(file);
-                                        return false;
-                                    }}>
-                                    <Button
-                                        icon={<UploadOutlined />}>
-                                        Rasm yuklash
-                                    </Button>
-                                </Upload>
-                            </div>
-                        </Form.Item>
+                                <div>
+                                    <Upload maxCount={1} accept=".pdf, .docx, .doc" showUploadList={true}
+                                        beforeUpload={(file) => {
+                                            setImage(file);
+                                            return false;
+                                        }}>
+                                        <Button
+                                            icon={<UploadOutlined />}>
+                                            Rasm yuklash
+                                        </Button>
+                                    </Upload>
+                                </div>
+                            </Form.Item>
                         </Col>
                     </Row>
                 </Form>
