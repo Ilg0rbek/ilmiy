@@ -137,6 +137,8 @@ const StudentProlie = () => {
     { value: 6, label: "Yillik xisobot" },
     { value: 7, label: "Metodologik kurs dasturi" },
     { value: 9, label: "Nazorat daftari" },
+    { value: 10, label: "Dissertatsiya" },
+    { value: 11, label: "Avtoreferat" },
   ])
 
   const selectChange = (e, b) => {
