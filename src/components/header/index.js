@@ -109,7 +109,7 @@ function Header() {
               <ul className="dropdown-menu dropdown-submenu">
                 <li>
                   <Link className="dropdown-item" to={"/tavarlar kimyosi va halq tabobati"}>
-                    "Tovarlar kimyosi" va "Xalq tabobati"
+                    Tovarlar kimyosi va Xalq tabobati
                   </Link>
                 </li>
                 <li>

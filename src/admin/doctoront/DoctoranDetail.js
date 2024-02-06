@@ -249,6 +249,25 @@ const DoctorantDetail = () => {
                             <hr />
                             <div className="row">
                                 <div className="col-sm-3">
+                                    <h6 className="mb-0">Ilmmiy rahbari</h6>
+                                </div>
+                                <div className="col-sm-9 text-secondary">
+                                    <input className="form-control shadow-none" disabled value={mydata?.ilmiyrahbar} placeholder="Yo'nalish to'ldirilmagan" />
+                                </div>
+                            </div>
+                            <hr />
+                            <div className="row">
+                                <div className="col-sm-3">
+                                    <h6 className="mb-0">Ilmmiy rahbari unvoni</h6>
+                                </div>
+                                <div className="col-sm-9 text-secondary">
+                                    <input className="form-control shadow-none" disabled value={mydata?.ilmiyrahbarunvoni} placeholder="Yo'nalish to'ldirilmagan" />
+                                </div>
+                            </div>
+                            <hr />
+                            
+                            <div className="row">
+                                <div className="col-sm-3">
                                     <h6 className="mb-0">Shifr</h6>
                                 </div>
                                 <div className="col-sm-9 text-secondary">
