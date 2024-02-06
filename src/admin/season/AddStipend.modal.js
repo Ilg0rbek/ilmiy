@@ -44,7 +44,7 @@ const AddStipend = ({ isModalOpen, setIsModalOpen }) =>{
     return(
         <div>
              <Modal
-        title="O'quv yilini qo'shish"
+        title="Stipendiat qo'shish"
         open={isModalOpen}
         onOk={form.submit}
         okText={"Saqlash"}

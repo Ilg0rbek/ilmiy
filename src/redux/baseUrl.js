@@ -6,8 +6,8 @@ const axiosConfig = axios.create({
     'Authorization': `Bearer ${token}`
   },
   // baseURL: "http://10.1.1.32:8080/api"
-  // baseURL: "http://localhost:8080/api"
-  baseURL: "https://ilmiyapi.adu.uz/api"
+  baseURL: "http://localhost:8080/api"
+  // baseURL: "https://ilmiyapi.adu.uz/api"
 });
 
 

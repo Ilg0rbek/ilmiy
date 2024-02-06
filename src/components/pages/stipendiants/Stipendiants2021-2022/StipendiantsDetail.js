@@ -21,6 +21,7 @@ const StipendiantDeatail = () => {
     useEffect(() => {
         getDeteil()
     }, [])
+    let stipendiaNomi = sessionStorage.getItem("stipendiaNomi")
 
     return (
         <div style={{ marginTop: "200px" }} className=" container mb-4">
@@ -31,7 +32,8 @@ const StipendiantDeatail = () => {
                 <img className="img-fluid" style={{width:"400px",height:"400px"}} src={`https://ilmiyapi.adu.uz/${detailData && detailData.image}`} alt="" />
                 </div>
                 <div className="card-body" style={{padding:"0 15px"}}>
-                    <h4 className="text-center mt-3">{detailData && detailData.fullname}</h4>
+                    <h4 className="text-center mt-3">{stipendiaNomi}</h4>
+                    <h5 className="text-center mt-3">{detailData && detailData.fullname}</h5>
                 </div>
                 <div>
                <b > {detailData && detailData.desc}</b>

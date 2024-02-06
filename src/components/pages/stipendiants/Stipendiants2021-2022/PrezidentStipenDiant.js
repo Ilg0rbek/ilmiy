@@ -10,8 +10,8 @@ const PresidentStipendiant = () => {
     let season = sessionStorage.getItem("yearId")
     let stipend = sessionStorage.getItem("stipendNameId")
     const getAllStipend = () => {
-        axiosConfig.post("/students", { season, stipend }).then(res => {
-            // console.log("mana res", res.data);
+        axiosConfig.post("/students/user", {season}).then(res => {
+            console.log("mana res", res.data);
             setData(res.data)
         }).catch(err => {
             console.log(err);
@@ -30,9 +30,9 @@ const PresidentStipendiant = () => {
                 {
                     data?.map((item, index) => (
                         <div key={index} className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 col-xxl-3 mt-3 mb-3">
-                            <Link style={{
+                            <Link onClick={()=>sessionStorage.setItem("stipendiaNomi",item.stipend)} style={{
                                 width: 240,
-                            }} className="shadow" to={`/stipendiants/students/detail/${item._id}`}>
+                            }} className="shadow" to={`/stipendiants/students/detail/${item.id}`}>
                                 <Card
                                     hoverable
                                     style={{
@@ -40,7 +40,8 @@ const PresidentStipendiant = () => {
                                     }}
                                     cover={<img alt="example" src={`https://ilmiyapi.adu.uz/${item.image}`} />}
                                 >
-                                    <Meta style={{ textDecoration: "none" }} title={item.fullname} />
+                                    <Meta style={{ textDecoration: "none" }} title={item.stipend} />
+                                    <Meta className="mt-2" style={{ textDecoration: "none" }} title={item.fullname} />
                                 </Card>
                             </Link>
                         </div>
