@@ -231,13 +231,15 @@ const Doctorant = () => {
                  1 : 0) / 5 + (row.count['Tezis'] ? 1 : 0) / 5 + (row.count['Maqolalar'] ? 1 : 0) / 5)) * 100 : row.kurs == '2-kurs' ? ((row.count['Metodologik kurs dasturi'] ? 1 : 0) / 10 + ((row.count['Metodologik kurs dasturi']
                   && row.count['Metodologik kurs dasturi'] > 1) ? 1 : 0) / 10 + (row.count['Shaxsiy yillik reja'] ? 1 : 0) / 10 + ((row.count['Shaxsiy yillik reja'] 
                   && row.count['Shaxsiy yillik reja'] > 1) ? 1 : 0) / 10 + (row.count['Nazorat daftari'] ? 1 : 0) / 10 + ((row.count['Nazorat daftari'] &&
-                   row.count['Nazorat daftari'] > 1) ? 1 : 0) / 10 + (row.count['Tezis'] ? 1 : 0) / 5 + (row.count['Maqolalar'] ? 1 : 0) / 5) * 100 :
-                  ((row.count['Metodologik kurs dasturi'] ? 1 : 0) / 15 + ((row.count['Metodologik kurs dasturi'] && row.count['Metodologik kurs dasturi'] > 1) ? 1 : 0) / 15 + 
-                  ((row.count['Metodologik kurs dasturi'] && row.count['Metodologik kurs dasturi'] > 2) ? 1 : 0) / 15 + (row.count['Shaxsiy yillik reja'] ? 1 : 0) / 15 + 
-                  ((row.count['Shaxsiy yillik reja'] && row.count['Shaxsiy yillik reja'] > 1) ? 1 : 0) / 15 + ((row.count['Shaxsiy yillik reja'] && 
-                  row.count['Shaxsiy yillik reja'] > 2) ? 1 : 0) / 15 + (row.count['Nazorat daftari'] ? 1 : 0) / 15 + ((row.count['Nazorat daftari'] &&
-                   row.count['Nazorat daftari'] > 1) ? 1 : 0) / 15 + ((row.count['Nazorat daftari'] && row.count['Nazorat daftari'] > 2) ? 1 : 0) / 15 + 
-                   (row.count['Tezis'] ? 1 : 0) / 5 + (row.count['Maqolalar'] ? 1 : 0) / 10 + ((row.count['Maqolalar'] && row.count['Maqolalar'] > 1) ? 1 : 0) / 10) * 100))}
+                   row.count['Nazorat daftari'] > 1) ? 1 : 0) / 10 + (row.count['Tezis'] ? 1 : 0) / 10 + (row.count['Tezis'] && (row.count['Tezis'] >1) ? 1 : 0) / 10 + 
+                   (row.count['Maqolalar'] ? 1 : 0) / 15 + (row.count['Maqolalar'] && (row.count['Maqolalar'] > 1) ? 1 : 0) / 15 + (row.count['Maqolalar'] && (row.count['Maqolalar'] > 2) ? 1 : 0) / 15 ) * 100 :
+                  ((row.count['Metodologik kurs dasturi'] ? 1 : 0)  * 4 / 75 + ((row.count['Metodologik kurs dasturi'] && row.count['Metodologik kurs dasturi'] > 1) ? 1 : 0)  * 4 / 75 + 
+                  ((row.count['Metodologik kurs dasturi'] && row.count['Metodologik kurs dasturi'] > 2) ? 1 : 0)  * 4 / 75 + (row.count['Shaxsiy yillik reja'] ? 1 : 0)  * 4 / 75 + 
+                  ((row.count['Shaxsiy yillik reja'] && row.count['Shaxsiy yillik reja'] > 1) ? 1 : 0)  * 4 / 75 + ((row.count['Shaxsiy yillik reja'] && 
+                  row.count['Shaxsiy yillik reja'] > 2) ? 1 : 0)  * 4 / 75 + (row.count['Nazorat daftari'] ? 1 : 0)  * 4 / 75 + ((row.count['Nazorat daftari'] &&
+                   row.count['Nazorat daftari'] > 1) ? 1 : 0)  * 4 / 75 + ((row.count['Nazorat daftari'] && row.count['Nazorat daftari'] > 2) ? 1 : 0) * 4 / 75 + 
+                   (row.count['Tezis'] ? 1 : 0)* 4 / 25 + (row.count['Maqolalar'] ? 1 : 0) * 2 / 25 + ((row.count['Maqolalar'] && row.count['Maqolalar'] > 1) ? 1 : 0) * 2 / 25 + 
+                   (row.count['Dissertatsiya'] ? 1 : 0) / 10 + (row.count['Avtoreferat'] ? 1 : 0) / 10) * 100))}
               steps={4}
               strokeColor={[red[7], red[4], green[4], green[7]]}
             />
