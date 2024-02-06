@@ -39,11 +39,11 @@ const Stipendiants = () => {
           <div>{item.start + "/" + item.end + " yilgi stipendiatlar"}</div>
         </div>
         </Accordion.Header>
-      <Accordion.Body>
+      {/* <Accordion.Body>
       <h6>{item.child?.map((item,index)=>(
         <div key={index} style={{cursor:"pointer"}} onClick={()=>{sessionStorage.setItem("stipendNameId",item.id);navigate("/stipendiants/students")}}>{index+1}.{" "+item.title} <hr /></div>
         ))}</h6>
-      </Accordion.Body>
+      </Accordion.Body> */}
     </Accordion.Item>
       ))
     }
