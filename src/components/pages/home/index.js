@@ -3,6 +3,7 @@ import "./home.css";
 import { Carousel } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllNews } from "../../../redux/reducers/news.store";
+import homeImg from "../../../assets/homeImg.jpg"
 
 const Home = () => {
 
@@ -18,7 +19,7 @@ const Home = () => {
   return(
     <div className="home">
       <div style={{width:"100%"}}>
-        <img style={{width:"100%",height:"80vh"}} className="img-fluid" src="https://nsp.gov.uz/static/img/carousel/5.jpg" alt="" />
+        <img style={{width:"100%",height:"80vh"}} className="img-fluid" src={homeImg} alt="rasmda xatolik" />
       </div>
     {/* <Carousel autoplay>
       {
