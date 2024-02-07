@@ -7,6 +7,7 @@ import Kvota from "../../assets/kvota.pdf";
 import Doktarant from "../../assets/doktarantura.pdf";
 import Texnik from "../../assets/kengash.pdf";
 import Nizom from "../../assets/Nizom.pdf";
+import translateText from "../../tranlate";
 
 function Header() {
   const [active, setActive] = useState("navbar");
@@ -16,14 +17,46 @@ function Header() {
       ? setActive("navbar  navbar_active")
       : setActive("navbar");
   };
+
+  const [inputText, setInputText] = useState('');
+  const [targetLanguage, setTargetLanguage] = useState('es'); // Default: Spanish
+
+  const handleTranslate = async () => {
+    if (inputText) {
+      const translatedText = await translateText(inputText, targetLanguage);
+      // Do something with the translatedText, e.g., display it on the page.
+    }
+  };
+
+
+
   return (
     <main>
       <header>
-        <div className="logo">
-          <div className="img_div"></div>
-          <h2>
-            Andijon davlat <br /> universiteti
-          </h2>
+        <div style={{ width: "100%", display: "flex", justifyContent: "space-between" }}>
+          <div className="logo">
+            <div className="img_div"></div>
+            <h2>
+              Andijon davlat <br /> universiteti
+            </h2>
+          </div>
+          <div className="translate">
+            <div>
+              {/* <input
+                type="text"
+                value={inputText}
+                onChange={(e) => setInputText(e.target.value)}
+              /> */}
+              {/* <select
+                value={targetLanguage}
+                onChange={(e) => setTargetLanguage(e.target.value)}
+              >
+                <option value="es">Spanish</option>
+                <option value="fr">French</option>
+              </select>
+              <button onClick={handleTranslate}>Translate</button> */}
+            </div>
+          </div>
         </div>
         <div className="btn_menu" onClick={navToggle}>
           {active === "navbar" ? <FaAlignJustify /> : <BsXLg />}
