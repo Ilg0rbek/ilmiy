@@ -7,14 +7,14 @@ import homeImg from "../../../assets/homeImg.jpg"
 
 const Home = () => {
 
-  const coruselNews = useSelector((state)=>state.news.getData)
-  const dispatch = useDispatch()
+  // const coruselNews = useSelector((state)=>state.news.getData)
+  // const dispatch = useDispatch()
 
-  useEffect(()=>{
-    dispatch(getAllNews())
-  },[])
+  // useEffect(()=>{
+  //   dispatch(getAllNews())
+  // },[])
 
-  console.log(coruselNews);
+  // console.log(coruselNews);
 
   return(
     <div className="home">

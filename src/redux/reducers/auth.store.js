@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axiosConfig from "../baseUrl";
+import axiosConfig, { setAuthToken } from "../baseUrl";
 
 
 
@@ -14,7 +14,8 @@ export const login = createAsyncThunk('login', async (values)=>{
     sessionStorage.setItem("user", res.data.data.role)
     sessionStorage.setItem("userId", res.data.data._id)
     sessionStorage.setItem("token",res.data.token)
-    console.log(res);
+    setAuthToken(sessionStorage.getItem("token"))
+    // console.log(res);
     return res.data
 
   } catch (error) {

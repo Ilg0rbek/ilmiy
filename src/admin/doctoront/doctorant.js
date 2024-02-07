@@ -6,7 +6,7 @@ import { red, green } from '@ant-design/colors';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteProfile, getAllStudenData } from '../../redux/reducers/profile.store';
 import DeleteModal from './AddModal';
-import axiosConfig from '../../redux/baseUrl';
+import axiosConfig, { setAuthToken } from '../../redux/baseUrl';
 import * as XLSX from 'xlsx';
 import FileSaver from "file-saver"
 import { useNavigate } from 'react-router-dom';
@@ -24,6 +24,7 @@ const Doctorant = () => {
 
   const getUserDoctorant = () =>{
     axiosConfig.post("/auth/users",{user:userSearch, kurs:kursSearch}).then(res=>{
+      setAuthToken(sessionStorage.getItem("token"))
       console.log(res.data);
       setData(res.data)
     }).catch(err=>{
@@ -337,7 +338,7 @@ const Doctorant = () => {
             </div>
             <div style={{ width: "40%" }}>
               <select onChange={(e)=>setUserSearch(e.target.value)} className='form-select shadow-none' name="" id="">
-                <option disabled selected>Ta'lim turi bo'yicha fileterlash</option>
+                <option disabled selected>Ta'lim turi bo'yicha filterlash</option>
                 <option value="">Umumiy qidirish</option>
                 <option value="DSC">DSC</option>
                 <option value="PHD">PHD</option>

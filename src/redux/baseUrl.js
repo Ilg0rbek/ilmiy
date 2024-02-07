@@ -1,14 +1,21 @@
 import axios from "axios";
 
-let token = sessionStorage.getItem("token") 
 const axiosConfig = axios.create({
-  headers: {
-    'Authorization': `Bearer ${token}`
-  },
   // baseURL: "http://10.1.1.32:8080/api"
-  // baseURL: "http://localhost:8080/api"
-  baseURL: "https://ilmiyapi.adu.uz/api"
+  //   // baseURL: "http://localhost:8080/api"
+  baseURL: "https://ilmiyapi.adu.uz/api",
 });
+
+export const setAuthToken = (token) => {
+  console.log("mana shu", token);
+  if (token) {
+    axiosConfig.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+  } else {
+    delete axiosConfig.defaults.headers.common['Authorization'];
+  }
+};
+
+
 
 
 export default axiosConfig

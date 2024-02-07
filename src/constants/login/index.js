@@ -1,30 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
 import "./login.css";
 import { Button, Form, Input } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
 import { login } from "../../redux/reducers/auth.store";
 import { useEffect } from "react";
+import axiosConfig, { setAuthToken } from "../../redux/baseUrl";
 
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { data } = useSelector((state) => state.auth.data);
-
-
+  const [data, setData] = useState()
+  
+  const token =  sessionStorage.getItem("token")
+ 
   const onFinish = (values) => {
-    dispatch(login(values)); 
-   
+    axiosConfig.post("/auth/login", values).then(res => {
+      // console.log();
+      setData(res.data.data)
+      sessionStorage.setItem("user", res.data.data.role)
+      sessionStorage.setItem("userId", res.data.data._id)
+      sessionStorage.setItem("token", res.data.token)
+    }).catch(err => {
+      console.log(err);
+    })
+
   };
 
+ 
+
   useEffect(() => {
-    if(data?.role == "admin") {
-      navigate(`/admin`);
-    }
-    else if(data?.role == "student"){
-      navigate("/doktarants/profile")
-    }
-  }, [data]);
+    // if (data?.role == "admin") {
+    //   navigate(`/admin`);
+    // }
+    // else if (data?.role == "student") {
+    //   navigate("/doktarants/profile")
+    // }
+    setAuthToken(sessionStorage.getItem("token"))
+  }, [token]);
 
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);

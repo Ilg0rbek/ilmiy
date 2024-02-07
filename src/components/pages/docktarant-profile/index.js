@@ -651,7 +651,7 @@ const StudentProlie = () => {
           <div className="col-12">
             <DeleteModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
             <h2 className="text-center">Yuklangan fayillar</h2>
-            <Table rowKey={(record) => record._id} columns={columns} dataSource={allDocument} />
+            <Table rowKey={(record) => record._id} columns={columns} pagination={false} dataSource={allDocument} />
           </div>
         </div>
       </div>
