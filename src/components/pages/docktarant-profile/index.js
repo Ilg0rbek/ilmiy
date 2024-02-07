@@ -461,7 +461,7 @@ const StudentProlie = () => {
                   <hr />
                   <div className="row">
                     <div className="col-sm-3">
-                      <h6 className="mb-0">Ilmmiy rahbari</h6>
+                      <h6 className="mb-0">Ilmiy rahbari</h6>
                     </div>
                     <div className="col-sm-9 text-secondary">
                       {edit ? (
@@ -474,7 +474,7 @@ const StudentProlie = () => {
                   <hr />
                   <div className="row">
                     <div className="col-sm-3">
-                      <h6 className="mb-0">Ilmmiy rahbari unvoni</h6>
+                      <h6 className="mb-0">Ilmiy rahbari unvoni</h6>
                     </div>
                     <div className="col-sm-9 text-secondary">
                       {edit ? (
