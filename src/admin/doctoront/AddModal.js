@@ -13,15 +13,15 @@ const DeleteModal = ({ isModalOpen, setIsModalOpen, statePut, showId }) => {
 
   const messagee = useSelector((state)=>state.profile.getText)
 
-  useEffect(() => {
-    if (showData !== undefined) {
-      dispatch(showData());
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (showData !== undefined) {
+  //     dispatch(showData());
+  //   }
+  // }, []);
 
-  useEffect(() => {
-    dispatch(showData());
-  }, []);
+  // useEffect(() => {
+  //   dispatch(showData());
+  // }, []);
 
   const [form] = Form.useForm();
 

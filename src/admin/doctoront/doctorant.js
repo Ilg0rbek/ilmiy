@@ -24,7 +24,7 @@ const Doctorant = () => {
 
   const getUserDoctorant = () =>{
     axiosConfig.post("/auth/users",{user:userSearch, kurs:kursSearch}).then(res=>{
-      setAuthToken(sessionStorage.getItem("token"))
+      // setAuthToken(sessionStorage.getItem("token"))
       console.log(res.data);
       setData(res.data)
     }).catch(err=>{

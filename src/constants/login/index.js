@@ -16,7 +16,7 @@ const Login = () => {
  
   const onFinish = (values) => {
     axiosConfig.post("/auth/login", values).then(res => {
-      // console.log();
+      console.log(res.data);
       setData(res.data.data)
       sessionStorage.setItem("user", res.data.data.role)
       sessionStorage.setItem("userId", res.data.data._id)
@@ -30,13 +30,13 @@ const Login = () => {
  
 
   useEffect(() => {
-    // if (data?.role == "admin") {
-    //   navigate(`/admin`);
-    // }
-    // else if (data?.role == "student") {
-    //   navigate("/doktarants/profile")
-    // }
-    setAuthToken(sessionStorage.getItem("token"))
+    if (data?.role == "admin") {
+      navigate(`/admin`);
+    }
+    else if (data?.role == "student") {
+      navigate("/doktarants/profile")
+    }
+    // setAuthToken(sessionStorage.getItem("token"))
   }, [token]);
 
   const onFinishFailed = (errorInfo) => {
