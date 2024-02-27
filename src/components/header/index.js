@@ -42,19 +42,19 @@ function Header() {
           </div>
           <div className="translate">
             <div>
-              {/* <input
+              <input
                 type="text"
                 value={inputText}
                 onChange={(e) => setInputText(e.target.value)}
-              /> */}
-              {/* <select
+              />
+              <select
                 value={targetLanguage}
                 onChange={(e) => setTargetLanguage(e.target.value)}
               >
                 <option value="es">Spanish</option>
                 <option value="fr">French</option>
               </select>
-              <button onClick={handleTranslate}>Translate</button> */}
+              <button onClick={handleTranslate}>Translate</button>
             </div>
           </div>
         </div>

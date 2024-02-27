@@ -183,7 +183,7 @@ const GuvohnomaUserList = () => {
             ),
         },
         {
-            title: "Foydalanilgan material",
+            title: "Guvohnoma nomi",
             dataIndex: 'library',
             key: 'library',
             width: '20%',

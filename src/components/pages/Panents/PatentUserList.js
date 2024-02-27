@@ -182,7 +182,7 @@ const PatentUserlist = () => {
             ),
         },
         {
-            title: "Foydalanilgan material",
+            title: "Patent nomi",
             dataIndex: 'library',
             key: 'library',
             width: '20%',
