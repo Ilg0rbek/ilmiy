@@ -7,11 +7,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { deleteProfile, getAllStudenData } from '../../redux/reducers/profile.store';
 import DeleteModal from './AddModal';
 import axiosConfig, { setAuthToken } from '../../redux/baseUrl';
+import { Oval } from 'react-loader-spinner'
 import * as XLSX from 'xlsx';
 import FileSaver from "file-saver"
 import { useNavigate } from 'react-router-dom';
 const Doctorant = () => {
 
+  const [loading, setLoading] = useState(false)
   const [data, setData] = useState([])
   const [userSearch, setUserSearch] = useState("")
   const [kursSearch, setKursSearch] = useState("")
@@ -23,10 +25,12 @@ const Doctorant = () => {
   const fileExtension = ".xlsx";
 
   const getUserDoctorant = () =>{
+    setLoading(true)
     axiosConfig.post("/auth/users",{user:userSearch, kurs:kursSearch}).then(res=>{
       // setAuthToken(sessionStorage.getItem("token"))
       console.log(res.data);
       setData(res.data)
+      setLoading(false)
     }).catch(err=>{
       console.log(err);
     })
@@ -281,6 +285,7 @@ const Doctorant = () => {
       setChekIn(true)
       axiosConfig.post(`/auth/generate-student`, { count, user }).then(res => {
         // console.log(res.data);
+        setLoading(true)
         exportToCSV(res.data)
         getAllStudenData()
         window.location.reload()
@@ -350,7 +355,24 @@ const Doctorant = () => {
           </div>
         </div>
         <hr />
-        <Table rowKey={(record) => record._id} columns={columns} dataSource={data} />
+        {
+          loading ?  <div className="for_loader">
+          <Oval
+              height={80}
+              width={80}
+              color="#4fa94d"
+              wrapperStyle={{}}
+              wrapperClass=""
+              visible={true}
+              ariaLabel='oval-loading'
+              secondaryColor="#4fa94d"
+              strokeWidth={2}
+              strokeWidthSecondary={2}
+
+          />
+      </div> :
+        <Table rowKey={(record) => record._id} columns={columns} pagination={false} dataSource={data} />
+        }
       </div>
     </div>
   );
