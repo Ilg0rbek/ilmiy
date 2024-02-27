@@ -179,6 +179,17 @@ const Doctorant = () => {
 
   const columns = [
     {
+      title: '№',
+      dataIndex: '',
+      key: '',
+      width: '5%',
+      render: (text, row, index) => (
+          <>
+              {index + 1 }
+          </>
+      ),
+  },
+    {
       title: 'FIO',
       dataIndex: 'fullName',
       key: 'fullName',
