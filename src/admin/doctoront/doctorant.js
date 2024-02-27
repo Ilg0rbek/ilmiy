@@ -32,7 +32,11 @@ const Doctorant = () => {
       setData(res.data)
       setLoading(false)
     }).catch(err=>{
-      console.log(err);
+      console.log(err.response.data.statusCode);
+      if (err.response.data.statusCode === 401) {
+        setLoading(false)
+        message.error("Sahifani qayta yangilang")
+      }
     })
   }
 
