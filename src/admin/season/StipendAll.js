@@ -147,9 +147,15 @@ const StipendAll = () => {
   });
 
   const deleteStudent = (data) =>{
-    dispatch(deleteProfile(data))
-    message.success("Talaba o'chirildi")
-    dispatch(getAllStudenData())
+    axiosConfig.delete(`/students/delete/${data}`).then(res=>{
+      // console.log(res);
+      getAllStipend()
+    }).catch(err=>{
+      console.log(err);
+    })
+    // dispatch(deleteProfile(data))
+    // message.success("Talaba o'chirildi")
+    
   }
 
 //   {
