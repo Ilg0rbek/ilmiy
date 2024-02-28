@@ -11,6 +11,7 @@ import { Oval } from 'react-loader-spinner'
 import * as XLSX from 'xlsx';
 import FileSaver from "file-saver"
 import { useNavigate } from 'react-router-dom';
+import moment from 'moment/moment';
 const Doctorant = () => {
 
   const [loading, setLoading] = useState(false)
@@ -19,6 +20,9 @@ const Doctorant = () => {
   const [kursSearch, setKursSearch] = useState("")
   const [isModalOpen, setIsModalOpen] = useState(false);
   const dispatch = useDispatch()
+  const now = moment()
+  let momentYear = now.format("Y-MM-DD")
+  let momentHour = now.format("hh:mm:ss")
 
 
   const fileType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8";
@@ -39,13 +43,22 @@ const Doctorant = () => {
       }
     })
   }
+  console.log(now.format("hh:mm:ss"));
+  // console.log(now.format("Y-MM-DD"));
 
   const exportToCSV = (data) => {
     const ws = XLSX.utils.json_to_sheet(data);
     const wb = { Sheets: { data: ws }, SheetNames: ["data"] };
     const excelBuffer = XLSX.write(wb, { bookType: "xlsx", type: "array" });
     const datas = new Blob([excelBuffer], { type: fileType });
-    FileSaver.saveAs(datas, Date.now() + fileExtension);
+    FileSaver.saveAs(datas, `${momentYear} - ${momentHour} - "Sanada yaratilgan doktorantlar"` + fileExtension);
+  };
+  const exportToCSV2 = () => {
+    const ws = XLSX.utils.json_to_sheet(data);
+    const wb = { Sheets: { data: ws }, SheetNames: ["data"] };
+    const excelBuffer = XLSX.write(wb, { bookType: "xlsx", type: "array" });
+    const datas = new Blob([excelBuffer], { type: fileType });
+    FileSaver.saveAs(datas, "Barcha doktorantlar" + fileExtension);
   };
 
   useEffect(() => {
@@ -334,11 +347,11 @@ const Doctorant = () => {
           }
           <button style={{ marginLeft: "5%" }} className='btn btn-primary text-white' onClick={cerateUser}>Yaratish</button>
         </div>
-        {/* <div>
-          <button onClick={exportToCSV} className='btn btn-secondary text-white'>
+        <div>
+          <button onClick={exportToCSV2} className='btn btn-secondary text-white'>
           excel
           </button>
-        </div> */}
+        </div>
       </div>
       <div className="addNewYear" onClick={showModal}>
         Doktorantlarni qo'shish <PlusOutlined />
