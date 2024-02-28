@@ -40,7 +40,7 @@ function Header() {
               Andijon davlat <br /> universiteti
             </h2>
           </div>
-          <div className="translate">
+          {/* <div className="translate">
             <div>
               <input
                 type="text"
@@ -56,7 +56,7 @@ function Header() {
               </select>
               <button onClick={handleTranslate}>Translate</button>
             </div>
-          </div>
+          </div> */}
         </div>
         <div className="btn_menu" onClick={navToggle}>
           {active === "navbar" ? <FaAlignJustify /> : <BsXLg />}
