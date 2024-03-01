@@ -362,7 +362,7 @@ const Doctorant = () => {
           <div style={{width:"50%", display:"flex",justifyContent:"space-between"}}>
             <div style={{ width: "40%" }}>
               <select onChange={(e)=>setKursSearch(e.target.value)} className='form-select shadow-none' name="" id="">
-                <option disabled selected>Kursi boyicha filterlash</option>
+                <option disabled selected>Kursi bo'yicha filtrlash</option>
                 <option value="">Umumiy qidirish</option>
                 <option value="1-kurs">1-kurs</option>
                 <option value="2-kurs">2-kurs</option>
@@ -371,7 +371,7 @@ const Doctorant = () => {
             </div>
             <div style={{ width: "40%" }}>
               <select onChange={(e)=>setUserSearch(e.target.value)} className='form-select shadow-none' name="" id="">
-                <option disabled selected>Ta'lim turi bo'yicha filterlash</option>
+                <option disabled selected>Ta'lim turi bo'yicha filtrlash</option>
                 <option value="">Umumiy qidirish</option>
                 <option value="DSC">DSC</option>
                 <option value="PHD">PHD</option>

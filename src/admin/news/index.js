@@ -12,12 +12,12 @@ const News = () => {
   const dispatch = useDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalOpen1, setIsModalOpen1] = useState(false);
-  const stateNews = useSelector((state) => state.news.getData);
+  const stateNews = useSelector((state) => state?.news?.getData);
   const statePut = useSelector((state) => state?.news?.showStateData?.data);
 
   const [deleteId, setDeleteId] = useState();
   const [showId, setShowId] = useState();
-  console.log(stateNews);
+  console.log("stateNews",stateNews);
 
   useEffect(() => {
     dispatch(getAllNews());

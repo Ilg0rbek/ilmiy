@@ -77,7 +77,7 @@ const Admin = () => {
     {
       key: "8",
       icon:<PaperClipOutlined /> ,
-      label: "patentlar",
+      label: "Patentlar",
       path: "/admin/guvohnoma",
     },
     {
