@@ -19,7 +19,7 @@ const Login = () => {
   const onFinish = (values) => {
     setLoading(true)
     axiosConfig.post("/auth/login", values).then(res => {
-      console.log(res.data.data);
+      // console.log(res.data.data);
       setData(res.data.data)
       sessionStorage.setItem("user", res.data.data.role)
       sessionStorage.setItem("userId", res.data.data._id)
@@ -46,7 +46,7 @@ const Login = () => {
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
-  console.log("state", data);
+  // console.log("state", data);
   return (
     loading ? <div className="for_loader2">
       <Oval

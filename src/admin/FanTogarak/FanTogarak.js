@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import SeasonModal from "../modal/season.modal";
 import {DeleteOutlined,OrderedListOutlined, PlusOutlined,} from "@ant-design/icons";
