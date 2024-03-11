@@ -27,7 +27,7 @@ const PresidentStipendiant = () => {
 
     return (
         <div style={{ marginTop: "200px" }} className="container">
-            <h3 style={{ textAlign: "center" }}>Iqtidorli talabalar ro'yxati</h3>
+            <h3 style={{ textAlign: "center" }}>Stipendiatlar ro'yxati</h3>
             <div className="row">
                 {
                     data?.map((item, index) => (
