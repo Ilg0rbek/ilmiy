@@ -1,3 +1,5 @@
+/* eslint-disable eqeqeq */
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import { DeleteOutlined, OrderedListOutlined, PlusOutlined, } from "@ant-design/icons";
 import { Link, useNavigate } from "react-router-dom";
