@@ -72,19 +72,24 @@ const StudentProlie = () => {
   const [plan, setPlan] = useState("")
   const [selectData, setSelectData] = useState([])
   const [mydata, setMyData] = useState()
+  // console.log('maydata',mydata?.fullName);
   const addAllFile = () => {
-    console.log("plan", plan);
-    console.log("label", selectData);
+    // console.log(mydata);
+    // console.log("label", selectData);
     formData.append("document", plan)
     formData.append("title", selectData.label)
     formData.append("owner", userId)
     formData.append("kurs", mydata.kurs)
+    formData.append("fullname", mydata?.fullName)
     // console.log(formData.get("document"));
     if (plan == "") {
       message.error("Kerakli fayilni yuklash uchun maydonlarni to'liq to'ldiring")
     }
     else if (selectData == []) {
       message.error("Kerakli fayilni yuklash uchun maydonlarni to'liq to'ldiring")
+    }
+    else if (!mydata?.fullName) {
+      message.error("Shaxsiy ma'lumotlaringizni to'liq to'ldiring")
     }
     else {
       axiosConfig.post(`/documents`, formData).then(res => {
