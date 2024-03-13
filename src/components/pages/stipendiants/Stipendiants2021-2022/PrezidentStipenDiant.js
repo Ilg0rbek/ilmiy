@@ -42,8 +42,10 @@ const PresidentStipendiant = () => {
                                     }}
                                     cover={<img alt="example" src={`https://ilmiyapi.adu.uz/${item.image}`} />}
                                 >
-                                    <Meta className="mb-2" style={{ textDecoration: "none" }} title={item.fullname} />
-                                    <Meta style={{ textDecoration: "none" }} title={item.stipend} />
+                                    <h5 className="mb-2" style={{textAligin:"center", textDecoration:"none"}}>{item.fullname} </h5>
+                                    <h6  style={{textAligin:"center", textDecoration:"none"}}>{item.stipend} </h6>
+                                    {/* <Meta className="mb-2" style={{ textDecoration: "none" }} /> */}
+                                    {/* <Meta style={{ textDecoration: "none" }} title={item.stipend} /> */}
                                 </Card>
                             </Link>
                         </div>

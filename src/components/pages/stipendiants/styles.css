@@ -11,6 +11,9 @@
 .containers::-webkit-scrollbar {
   display: none;
 }
+a{
+  text-decoration: none !important;
+}
 .yeartitle {
   margin: 20px;
   width: 100%;
