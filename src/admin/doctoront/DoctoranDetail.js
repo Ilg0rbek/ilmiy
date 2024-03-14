@@ -167,7 +167,7 @@ const DoctorantDetail = () => {
           width: '20%',
           ...getColumnSearchProps('document'),
           render: (text, row) => (
-            <a href={`https://ilmiyapi.adu.uz/api${row.document}`} target='_blank'
+            <a href={`https://ilmiyapi.adu.uz/${row.document}`} target='_blank'
               style={{ color: 'blue' }}
             >
               Faylni yuklash
