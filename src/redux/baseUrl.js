@@ -6,7 +6,7 @@ let axiosConfig  = axios.create();
 
 const onRequest = (config) => {
     config.headers.Authorization = `Bearer ${sessionStorage.getItem('token')}`;
-    config.baseURL = "https://ilmiy.adu.uz/api";
+    config.baseURL = "https://ilmiyapi.adu.uz/api";
 
     return config;
 }

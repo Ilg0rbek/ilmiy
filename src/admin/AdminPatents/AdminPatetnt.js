@@ -33,7 +33,7 @@ const AdminPatent = () => {
 
     const getAllSeasen = () => {
         axiosConfig.get("/patents").then(res => {
-            console.log("year", res.data);
+            console.log("guvohnoma", res.data);
             setYearData(res.data)
         }).catch(err => {
             console.log(err);

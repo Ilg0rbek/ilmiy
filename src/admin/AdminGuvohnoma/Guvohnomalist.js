@@ -155,11 +155,11 @@ const Guvohnomalist = () => {
 
     const deleteStudent = (data) => {
         console.log(data);
-        axiosConfig.delete(`guvohnoma/${data}`).then(res=>{
+        axiosConfig.delete(`/guvohnoma/${data}`).then(res=>{
             console.log(res);
             getAllPatents()
         }).catch(err=>{
-            console.log(err);
+            console.log(err);   
         })
         // message.success("Talaba o'chirildi")
         // dispatch(getAllStudenData())
