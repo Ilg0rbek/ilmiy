@@ -31,7 +31,7 @@ const Doctorant = () => {
   const fileExtension = ".xlsx";
 
   const getAllDocuments = () => {
-     message.success("Doktarantlarga tegishli hujjatlar yuklab olindi")
+    message.success("Doktarantlarga tegishli hujjatlar yuklab olindi")
   };
 
   const getUserDoctorant = () => {
@@ -58,7 +58,7 @@ const Doctorant = () => {
     FileSaver.saveAs(
       datas,
       `${momentYear} - ${momentHour} - "Sanada yaratilgan doktorantlar"` +
-        fileExtension
+      fileExtension
     );
   };
   const exportToCSV2 = () => {
@@ -265,90 +265,90 @@ const Doctorant = () => {
               percent={Math.round(
                 row.kurs == "1-kurs"
                   ? ((row.count["Metodologik kurs dasturi"] ? 1 : 0) / 5 +
-                      (row.count["Nazorat daftari"] ? 1 : 0) / 5 +
-                      ((row.count["Shaxsiy yillik reja"] ? 1 : 0) / 5 +
-                        (row.count["Tezis"] ? 1 : 0) / 5 +
-                        (row.count["Maqolalar"] ? 1 : 0) / 5)) *
-                      100
+                    (row.count["Nazorat daftari"] ? 1 : 0) / 5 +
+                    ((row.count["Shaxsiy yillik reja"] ? 1 : 0) / 5 +
+                      (row.count["Tezis"] ? 1 : 0) / 5 +
+                      (row.count["Maqolalar"] ? 1 : 0) / 5)) *
+                  100
                   : row.kurs == "2-kurs"
-                  ? ((row.count["Metodologik kurs dasturi"] ? 1 : 0) / 10 +
+                    ? ((row.count["Metodologik kurs dasturi"] ? 1 : 0) / 10 +
                       (row.count["Metodologik kurs dasturi"] &&
-                      row.count["Metodologik kurs dasturi"] > 1
+                        row.count["Metodologik kurs dasturi"] > 1
                         ? 1
                         : 0) /
-                        10 +
+                      10 +
                       (row.count["Shaxsiy yillik reja"] ? 1 : 0) / 10 +
                       (row.count["Shaxsiy yillik reja"] &&
-                      row.count["Shaxsiy yillik reja"] > 1
+                        row.count["Shaxsiy yillik reja"] > 1
                         ? 1
                         : 0) /
-                        10 +
+                      10 +
                       (row.count["Nazorat daftari"] ? 1 : 0) / 10 +
                       (row.count["Nazorat daftari"] &&
-                      row.count["Nazorat daftari"] > 1
+                        row.count["Nazorat daftari"] > 1
                         ? 1
                         : 0) /
-                        10 +
+                      10 +
                       (row.count["Tezis"] ? 1 : 0) / 10 +
                       (row.count["Tezis"] && row.count["Tezis"] > 1 ? 1 : 0) /
-                        10 +
+                      10 +
                       (row.count["Maqolalar"] ? 1 : 0) / 15 +
                       (row.count["Maqolalar"] && row.count["Maqolalar"] > 1
                         ? 1
                         : 0) /
-                        15 +
+                      15 +
                       (row.count["Maqolalar"] && row.count["Maqolalar"] > 2
                         ? 1
                         : 0) /
-                        15) *
+                      15) *
                     100
-                  : (((row.count["Metodologik kurs dasturi"] ? 1 : 0) * 4) /
+                    : (((row.count["Metodologik kurs dasturi"] ? 1 : 0) * 4) /
                       75 +
                       ((row.count["Metodologik kurs dasturi"] &&
-                      row.count["Metodologik kurs dasturi"] > 1
+                        row.count["Metodologik kurs dasturi"] > 1
                         ? 1
                         : 0) *
                         4) /
-                        75 +
+                      75 +
                       ((row.count["Metodologik kurs dasturi"] &&
-                      row.count["Metodologik kurs dasturi"] > 2
+                        row.count["Metodologik kurs dasturi"] > 2
                         ? 1
                         : 0) *
                         4) /
-                        75 +
+                      75 +
                       ((row.count["Shaxsiy yillik reja"] ? 1 : 0) * 4) / 75 +
                       ((row.count["Shaxsiy yillik reja"] &&
-                      row.count["Shaxsiy yillik reja"] > 1
+                        row.count["Shaxsiy yillik reja"] > 1
                         ? 1
                         : 0) *
                         4) /
-                        75 +
+                      75 +
                       ((row.count["Shaxsiy yillik reja"] &&
-                      row.count["Shaxsiy yillik reja"] > 2
+                        row.count["Shaxsiy yillik reja"] > 2
                         ? 1
                         : 0) *
                         4) /
-                        75 +
+                      75 +
                       ((row.count["Nazorat daftari"] ? 1 : 0) * 4) / 75 +
                       ((row.count["Nazorat daftari"] &&
-                      row.count["Nazorat daftari"] > 1
+                        row.count["Nazorat daftari"] > 1
                         ? 1
                         : 0) *
                         4) /
-                        75 +
+                      75 +
                       ((row.count["Nazorat daftari"] &&
-                      row.count["Nazorat daftari"] > 2
+                        row.count["Nazorat daftari"] > 2
                         ? 1
                         : 0) *
                         4) /
-                        75 +
+                      75 +
                       ((row.count["Tezis"] ? 1 : 0) * 4) / 25 +
                       ((row.count["Maqolalar"] ? 1 : 0) * 2) / 25 +
                       ((row.count["Maqolalar"] && row.count["Maqolalar"] > 1
                         ? 1
                         : 0) *
                         2) /
-                        25 +
+                      25 +
                       (row.count["Dissertatsiya"] ? 1 : 0) / 10 +
                       (row.count["Avtoreferat"] ? 1 : 0) / 10) *
                     100
