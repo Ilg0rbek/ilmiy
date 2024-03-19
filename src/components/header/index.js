@@ -3,11 +3,6 @@ import "./header.css";
 import { FaAlignJustify } from "react-icons/fa";
 import { BsXLg } from "react-icons/bs";
 import { Link } from "react-router-dom";
-import Kvota from "../../assets/kvota.pdf";
-import Doktarant from "../../assets/doktarantura.pdf";
-import Texnik from "../../assets/kengash.pdf";
-import Nizom from "../../assets/Nizom.pdf";
-import translateText from "../../tranlate";
 
 function Header() {
   const [active, setActive] = useState("navbar");
@@ -18,45 +13,23 @@ function Header() {
       : setActive("navbar");
   };
 
-  const [inputText, setInputText] = useState('');
-  const [targetLanguage, setTargetLanguage] = useState('es'); // Default: Spanish
-
-  const handleTranslate = async () => {
-    if (inputText) {
-      const translatedText = await translateText(inputText, targetLanguage);
-      // Do something with the translatedText, e.g., display it on the page.
-    }
-  };
-
-
 
   return (
     <main>
       <header>
-        <div style={{ width: "100%", display: "flex", justifyContent: "space-between" }}>
+        <div
+          style={{
+            width: "100%",
+            display: "flex",
+            justifyContent: "space-between",
+          }}
+        >
           <div className="logo">
             <div className="img_div"></div>
             <h2>
               Andijon davlat <br /> universiteti
             </h2>
           </div>
-          {/* <div className="translate">
-            <div>
-              <input
-                type="text"
-                value={inputText}
-                onChange={(e) => setInputText(e.target.value)}
-              />
-              <select
-                value={targetLanguage}
-                onChange={(e) => setTargetLanguage(e.target.value)}
-              >
-                <option value="es">Spanish</option>
-                <option value="fr">French</option>
-              </select>
-              <button onClick={handleTranslate}>Translate</button>
-            </div>
-          </div> */}
         </div>
         <div className="btn_menu" onClick={navToggle}>
           {active === "navbar" ? <FaAlignJustify /> : <BsXLg />}
@@ -98,12 +71,20 @@ function Header() {
               </a>
             </li>
             <li>
-              <a className="dropdown-item" href={Kvota} target="_blank">
+              <a
+                className="dropdown-item"
+                href="https://res.cloudinary.com/dax5cx2sv/image/upload/v1710820443/kvota.pdf"
+                target="_blank"
+              >
                 Kvota 2024
               </a>
             </li>
             <li>
-              <a className="dropdown-item" href={Doktarant} target="_blank">
+              <a
+                className="dropdown-item"
+                href="https://res.cloudinary.com/dax5cx2sv/image/upload/v1710820371/doktarantura.pdf"
+                target="_blank"
+              >
                 Doktorantura yo'nalishlari
               </a>
             </li>
@@ -141,7 +122,10 @@ function Header() {
               </a>
               <ul className="dropdown-menu dropdown-submenu">
                 <li>
-                  <Link className="dropdown-item" to={"/tavarlar kimyosi va halq tabobati"}>
+                  <Link
+                    className="dropdown-item"
+                    to={"/tavarlar kimyosi va halq tabobati"}
+                  >
                     Tovarlar kimyosi va Xalq tabobati
                   </Link>
                 </li>
@@ -171,7 +155,10 @@ function Header() {
                   </Link>
                 </li>
                 <li>
-                  <Link className="dropdown-item" to={"/Bialogiya fanlari boyicha"}>
+                  <Link
+                    className="dropdown-item"
+                    to={"/Bialogiya fanlari boyicha"}
+                  >
                     Biologiya fanlari bo'yicha
                   </Link>
                 </li>
@@ -183,12 +170,20 @@ function Header() {
               </a>
               <ul className="dropdown-menu dropdown-submenu">
                 <li>
-                  <a className="dropdown-item" href={Nizom} target="_blank">
+                  <a
+                    className="dropdown-item"
+                    href="https://res.cloudinary.com/dax5cx2sv/image/upload/v1710820460/Nizom_buw2by.pdf"
+                    target="_blank"
+                  >
                     Ilmiy texnik kengash nizomi
                   </a>
                 </li>
                 <li>
-                  <a className="dropdown-item" href={Texnik} target="_blank">
+                  <a
+                    className="dropdown-item"
+                    href="https://res.cloudinary.com/dax5cx2sv/image/upload/v1710820420/kengash_nqovdd.pdf"
+                    target="_blank"
+                  >
                     Ilmiy texnik kengash tarkibi
                   </a>
                 </li>
@@ -212,7 +207,6 @@ function Header() {
               <Link className="dropdown-item" to={"/Davlat granti"}>
                 Davlat granti
               </Link>
-
             </li>
             <li>
               <Link className="dropdown-item" to={"/Universitet granti"}>
@@ -233,9 +227,7 @@ function Header() {
           </a>
           <ul className="dropdown-menu">
             <Link className="dropdown-item" to={"/patents"}>
-              <li>
-                Patentlar
-              </li>
+              <li>Patentlar</li>
             </Link>
             <li>
               <Link className="dropdown-item" to="/guvohnoma">
@@ -256,22 +248,38 @@ function Header() {
           </a>
           <ul className="dropdown-menu">
             <li>
-              <a className="dropdown-item" href="https://www.ajhuman.uz/" target="_blank">
+              <a
+                className="dropdown-item"
+                href="https://www.ajhuman.uz/"
+                target="_blank"
+              >
                 Gumanitar tadqiqotlar
               </a>
             </li>
             <li>
-              <a className="dropdown-item" href="https://www.ajpedagogical.uz/" target="_blank">
+              <a
+                className="dropdown-item"
+                href="https://www.ajpedagogical.uz/"
+                target="_blank"
+              >
                 Pedagogik tadqiqotlar.
               </a>
             </li>
             <li>
-              <a className="dropdown-item" href="https://www.ajchemical.uz/" target="_blank">
+              <a
+                className="dropdown-item"
+                href="https://www.ajchemical.uz/"
+                target="_blank"
+              >
                 Kimyo tadqiqotlari.
               </a>
             </li>
             <li>
-              <a className="dropdown-item" href="https://www.ajbiological.uz/" target="_blank">
+              <a
+                className="dropdown-item"
+                href="https://www.ajbiological.uz/"
+                target="_blank"
+              >
                 Biologik tadqiqotlar.
               </a>
             </li>

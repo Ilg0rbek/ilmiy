@@ -18,7 +18,7 @@ const Home = () => {
   return(
     <div className="home">
       <div style={{width:"100%"}}>
-        <img style={{width:"100%",height:"80vh"}} className="img-fluid" src="https://nsp.gov.uz/static/img/carousel/5.jpg" alt="" />
+        <img style={{width:"100%",height:"80vh"}} className="img-fluid" src={require("../../../assets/5.jpg")} alt="" />
       </div>
     {/* <Carousel autoplay>
       {
