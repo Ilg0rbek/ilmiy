@@ -7,7 +7,6 @@ import { login } from "../../redux/reducers/auth.store";
 import { useEffect } from "react";
 import axiosConfig, { setAuthToken } from "../../redux/baseUrl";
 import { Oval } from 'react-loader-spinner'
-import imgLogin from "../../assets/ilmiy.png"
 
 
 
@@ -69,7 +68,7 @@ const Login = () => {
         <div className="login-box">
           <div className="illustration-wrapper">
             <img
-              src={imgLogin}
+              src="https://res.cloudinary.com/dax5cx2sv/image/upload/v1710829193/ilmiy_z6lwrg.png"
               alt="Login"
             />
           </div>
