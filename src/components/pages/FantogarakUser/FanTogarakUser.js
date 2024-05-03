@@ -94,7 +94,8 @@ const FanTogarakUser = () => {
                           <table style={{width:"100%"}} className="table-bordered">
                             <thead>
                               <tr className="text-center">
-                                <th scope="col" >Togarak nomi</th>
+                                <th scope="col" >№</th>
+                                <th scope="col" >To'garak nomi</th>
                                 <th scope="col">Kafedra</th>
                                 <th scope="col">Fakulteti</th>
                               </tr>
@@ -104,6 +105,7 @@ const FanTogarakUser = () => {
                               {
                                 tableData?.map((it, ind) => (
                                   <tr key={ind} className="text-center">
+                                    <td>{ind+1}</td>
                                     {/* {console.log(it)} */}
                                     <td style={{color:"blue",cursor:"pointer"}} onClick={() => { sessionStorage.setItem("FacultyId", it.fakultet_id); sessionStorage.setItem("togarakName",it.tugarak); navigate(`/cources/kafedra/detail/${it.fakultet_id}`) ;}}>{it.tugarak}</td>
                                     <td>{it.kafedra}</td>
