@@ -37,7 +37,7 @@ const FanTogarakDetailUser = () =>{
                 <img className="img-fluid" src={`https://ilmiyapi.adu.uz/${item.image}`} alt="To'garak rasmida hatolik" />
             </div>
             <div style={{marginTop:"15px"}} className="col-12">
-                <h4 style={{marginTop:"15px"}} className="text-center">{item.title ? item.title : ""}</h4>
+                <h4 style={{marginTop:"15px"}} className="text-center">{item.title == "undefined" ? "" : item.title}</h4>
             </div>
             <div className="col-12">
                <b style={{marginTop:"15px"}}>{item.desc ? item.desc : ""}</b>
