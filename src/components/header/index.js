@@ -3,9 +3,11 @@ import "./header.css";
 import { FaAlignJustify } from "react-icons/fa";
 import { BsXLg } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import ReactFlagsSelect from "react-flags-select";
 
-function Header() {
+function Header({ changeLang }) {
   const [active, setActive] = useState("navbar");
+  const [selected, setSelected] = useState("RU");
 
   const navToggle = () => {
     active === "navbar"
@@ -13,24 +15,31 @@ function Header() {
       : setActive("navbar");
   };
 
+  const changeLangHandler = (e) => {
+    console.log(e);
+    changeLang(e)
+    setSelected(e)
+  }
+
 
   return (
     <main>
       <header>
-        <div
-          style={{
-            width: "100%",
-            display: "flex",
-            justifyContent: "space-between",
-          }}
-        >
+        <div style={{ width: "100%", display: "flex", justifyContent: "space-between", }} >
           <div className="logo">
             <div className="img_div"></div>
             <h2>
-              Andijon davlat <br /> universiteti
+              Andijon davlats <br /> universiteti
             </h2>
           </div>
+          <ReactFlagsSelect
+            className="for-language"
+            selected={selected}
+            countries={["RU", "UZ", "US"]}
+            onSelect={(code) => changeLangHandler(code)}
+          />
         </div>
+
         <div className="btn_menu" onClick={navToggle}>
           {active === "navbar" ? <FaAlignJustify /> : <BsXLg />}
         </div>

@@ -8,6 +8,8 @@ import StudentProlie from "./components/pages/docktarant-profile";
 import "./app.css";
 import Layout from "./layouts/Layout";
 import React from "react";
+import i18next from 'i18next';
+import { initReactI18next, useTranslation } from 'react-i18next';
 import PrivateRoute from "./layouts/PrivateRoute";
 import StipendiantDeatail from "./components/pages/stipendiants/Stipendiants2021-2022/StipendiantsDetail";
 import Patents from "./components/pages/Panents/PatentsUser";
@@ -29,7 +31,22 @@ import UniversitetGranti from "./components/pages/IlmiyLoyihalar/UniversitetGran
 import DavlatGranti from "./components/pages/IlmiyLoyihalar/DavlatGranti";
 
 
+i18next.use(initReactI18next).init({
+  resources: {
+    RU: { translation: "" },
+    UZ: { translation: "" },
+    US: { translation: "" }
+  },
+  lng: "RU",
+  fallbackLng: "RU"
+})
+
 function App() {
+
+  const changeLang = (val) => {
+    i18next.changeLanguage(val)
+  }
+
   return (
     <Routes>
       <Route exact path="/" element={<Layout> <Home /> </Layout>} />
