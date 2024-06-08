@@ -34,20 +34,23 @@ function Header() {
       : setActive("navbar");
   };
 
-
-  const changeLang = (val) => {
-    i18next.changeLanguage(val)
-    setSelected(val)
+  const changeLangHandler = (e) => {
+    console.log(e);
+    changeLang(e)
+    setSelected(e)
   }
-
-
-
 
 
   return (
     <main>
       <header>
-        <div style={{ width: "100%", display: "flex", justifyContent: "space-between", }} >
+        <div
+          style={{
+            width: "100%",
+            display: "flex",
+            justifyContent: "space-between",
+          }}
+        >
           <div className="logo">
             <div className="img_div"></div>
             <h2>
@@ -344,6 +347,11 @@ function Header() {
             </li>
           </ul>
         </div>
+        <ul className="menu_ul nav_item">
+          <li>
+            <Link to="/faculty">BMI va MD</Link>
+          </li>
+        </ul>
       </nav>
     </main>
   );

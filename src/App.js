@@ -29,7 +29,7 @@ import IjtimoiyFalsafa from "./components/pages/IlmiyDarajaBeruvchiKengash/Ijtim
 import BialogiyaFanlarBoyicha from "./components/pages/IlmiyDarajaBeruvchiKengash/BialogiyaFanlarBoyicha";
 import UniversitetGranti from "./components/pages/IlmiyLoyihalar/UniversitetGranti";
 import DavlatGranti from "./components/pages/IlmiyLoyihalar/DavlatGranti";
-
+import Faculty from "./components/pages/MDI/faculty/Faculty";
 
 
 
@@ -40,6 +40,7 @@ function App() {
   return (
     <Routes>
       <Route exact path="/" element={<Layout> <Home /> </Layout>} />
+      <Route exact path="/faculty" element={<Layout><Faculty/></Layout>}/>
       <Route exact path="/guvohnoma" element={<Layout ><Patents/></Layout>}/>
       <Route exact path="/patents" element={<Layout ><Guvohnoma/></Layout>}/>
       <Route exact path="/guvohnoma/user-list" element={<Layout ><GuvohnomaUserList/></Layout>}/>
