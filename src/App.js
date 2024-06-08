@@ -31,21 +31,11 @@ import UniversitetGranti from "./components/pages/IlmiyLoyihalar/UniversitetGran
 import DavlatGranti from "./components/pages/IlmiyLoyihalar/DavlatGranti";
 
 
-i18next.use(initReactI18next).init({
-  resources: {
-    RU: { translation: "" },
-    UZ: { translation: "" },
-    US: { translation: "" }
-  },
-  lng: "RU",
-  fallbackLng: "RU"
-})
+
 
 function App() {
 
-  const changeLang = (val) => {
-    i18next.changeLanguage(val)
-  }
+
 
   return (
     <Routes>

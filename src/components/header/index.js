@@ -4,10 +4,29 @@ import { FaAlignJustify } from "react-icons/fa";
 import { BsXLg } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import ReactFlagsSelect from "react-flags-select";
+import i18next from 'i18next';
+import { initReactI18next, useTranslation } from 'react-i18next';
+import translationRU from "../../locale/translationRU";
+import translationUZ from "../../locale/translationUz";
+import translationEN from "../../locale/translationEn";
 
-function Header({ changeLang }) {
+
+i18next.use(initReactI18next).init({
+  resources: {
+    RU: { translation: translationRU },
+    UZ: { translation: translationUZ },
+    US: { translation: translationEN }
+  },
+  lng: "RU",
+  fallbackLng: "RU"
+})
+
+
+function Header() {
+
   const [active, setActive] = useState("navbar");
   const [selected, setSelected] = useState("RU");
+  const { t } = useTranslation()
 
   const navToggle = () => {
     active === "navbar"
@@ -15,11 +34,14 @@ function Header({ changeLang }) {
       : setActive("navbar");
   };
 
-  const changeLangHandler = (e) => {
-    console.log(e);
-    changeLang(e)
-    setSelected(e)
+
+  const changeLang = (val) => {
+    i18next.changeLanguage(val)
+    setSelected(val)
   }
+
+
+
 
 
   return (
@@ -36,7 +58,7 @@ function Header({ changeLang }) {
             className="for-language"
             selected={selected}
             countries={["RU", "UZ", "US"]}
-            onSelect={(code) => changeLangHandler(code)}
+            onSelect={(code) => changeLang(code)}
           />
         </div>
 
@@ -47,7 +69,7 @@ function Header({ changeLang }) {
       <nav className={`navbar-expand-lg ${active}`}>
         <ul className="menu_ul nav_item">
           <li>
-            <Link to="/">bosh sahifa </Link>
+            <Link to="/">{t("MainPage")}</Link>
           </li>
         </ul>
         <div className="dropdown nav_item">

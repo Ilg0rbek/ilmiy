@@ -82,7 +82,7 @@ header {
 
 .menu_ul li a {
   text-decoration: none;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   color: #ffff;
   font-size: 16px;
   font-weight: 500;
