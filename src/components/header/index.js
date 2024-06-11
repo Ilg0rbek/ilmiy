@@ -61,7 +61,7 @@ function Header() {
             className="for-language"
             selected={selected}
             countries={["RU", "UZ", "US"]}
-            onSelect={(code) => changeLang(code)}
+            onSelect={(code) => changeLangHandler(code)}
           />
         </div>
 
