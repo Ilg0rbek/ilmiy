@@ -35,8 +35,7 @@ function Header() {
   };
 
   const changeLangHandler = (e) => {
-    console.log(e);
-    changeLang(e)
+    i18next.changeLanguage(e)
     setSelected(e)
   }
 
