@@ -82,7 +82,7 @@ function Header() {
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            doktorantura
+            {t("Doctorate")}
           </a>
           <ul className="dropdown-menu">
             <li>
@@ -91,7 +91,7 @@ function Header() {
                 href="https://phd.mininnovation.uz/regulation"
                 target="_blank"
               >
-                Meyoriy huhuqiy hujjat
+               {t("Regulation")}
               </a>
             </li>
             <li>
@@ -100,7 +100,7 @@ function Header() {
                 href="https://phd.mininnovation.uz/required-docs"
                 target="_blank"
               >
-                kerakli hujjatlar ro'yxati
+                {t("ListofRequiredDocuments")}
               </a>
             </li>
             <li>
@@ -109,7 +109,7 @@ function Header() {
                 href="https://res.cloudinary.com/dax5cx2sv/image/upload/v1710820443/kvota.pdf"
                 target="_blank"
               >
-                Kvota 2024
+                {t("Quota")}
               </a>
             </li>
             <li>
@@ -118,12 +118,12 @@ function Header() {
                 href="https://res.cloudinary.com/dax5cx2sv/image/upload/v1710820371/doktarantura.pdf"
                 target="_blank"
               >
-                Doktorantura yo'nalishlari
+                {t("SpecialtiesOfDoctorate")}
               </a>
             </li>
             <li>
               <Link className="dropdown-item" to={"/login"}>
-                Doktorantlar
+              {t("Doctorates")}
               </Link>
             </li>
             <li>
@@ -132,7 +132,7 @@ function Header() {
                 href="http://minimum.adu.uz/"
                 target="_blank"
               >
-                Malakaviy imtihonlar
+                {t("QualificationExams")}
               </a>
             </li>
           </ul>
@@ -146,12 +146,12 @@ function Header() {
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            Ilmiy kengashlar
+            {t("ScientificCouncil")}
           </a>
           <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <li>
               <a className="dropdown-item" href="#">
-                Ilmiy daraja beruvchi kengash &raquo;
+              {t("ScientificAdvice")}
               </a>
               <ul className="dropdown-menu dropdown-submenu">
                 <li>
@@ -199,7 +199,7 @@ function Header() {
             </li>
             <li>
               <a className="dropdown-item" href="#">
-                Ilmiy texnik kengash &raquo;
+                Ilmiy texnik kengash 
               </a>
               <ul className="dropdown-menu dropdown-submenu">
                 <li>
@@ -233,7 +233,7 @@ function Header() {
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            ilmiy loyihalar
+            {t("ScientificProjects")}
           </a>
           <ul className="dropdown-menu ">
             <li>
@@ -256,15 +256,15 @@ function Header() {
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            intellektual mulk obyektlari
+             {t("ObjectsOfIntellectualProperty")}
           </a>
           <ul className="dropdown-menu">
             <Link className="dropdown-item" to={"/patents"}>
-              <li>Patentlar</li>
+              <li> {t("Patents")}</li>
             </Link>
             <li>
               <Link className="dropdown-item" to="/guvohnoma">
-                Guvohnomalar
+              {t("Certificates")}
               </Link>
             </li>
           </ul>
@@ -277,7 +277,7 @@ function Header() {
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            jurnallar
+            {t("Journals")}
           </a>
           <ul className="dropdown-menu">
             <li>
@@ -286,7 +286,7 @@ function Header() {
                 href="https://www.ajhuman.uz/"
                 target="_blank"
               >
-                Gumanitar tadqiqotlar
+                {t("HumanitarianResearch")}
               </a>
             </li>
             <li>
@@ -295,7 +295,7 @@ function Header() {
                 href="https://www.ajpedagogical.uz/"
                 target="_blank"
               >
-                Pedagogik tadqiqotlar.
+                {t("pedagogicalResearch")}
               </a>
             </li>
             <li>
@@ -304,7 +304,7 @@ function Header() {
                 href="https://www.ajchemical.uz/"
                 target="_blank"
               >
-                Kimyo tadqiqotlari.
+                {t("ChemicalResearch")}
               </a>
             </li>
             <li>
@@ -313,12 +313,12 @@ function Header() {
                 href="https://www.ajbiological.uz/"
                 target="_blank"
               >
-                Biologik tadqiqotlar.
+                {t("BiologicalResearch")}
               </a>
             </li>
             <li>
               <a className="dropdown-item" href="#">
-                Fizika-matematika tadqiqotlari
+              {t("PhysicsAndMathematics")}
               </a>
             </li>
           </ul>
@@ -331,17 +331,17 @@ function Header() {
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            iqtidorli talaba
+            {t("TalentedStudents")}
           </a>
           <ul className="dropdown-menu">
             <li>
               <Link className="dropdown-item" to="/cources">
-                fan to'garaklari
+              {t("ScientificCircles")}
               </Link>
             </li>
             <li>
               <Link className="dropdown-item" to={"/stipendiants"}>
-                stipendiatlar
+              {t("ScholarshipByTheGovernments")}
               </Link>
             </li>
           </ul>
