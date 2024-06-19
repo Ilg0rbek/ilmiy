@@ -1,6 +1,6 @@
 const translationEN = {
     AndijonDavlatsUniversiteti:"Andijan state",
-    univer:"University",
+    univer:"university",
 
     MainPage :"Main Page",
     Doctorate:"Doctorate",
