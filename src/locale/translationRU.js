@@ -37,6 +37,10 @@ const translationRU = {
 
     StateGrant:"Государственный грант",
     ForeignGrant:"Иностранный грант",
+
+    ScientificAndTechnicalCouncil:"Научно-технический совет",
+    StatuteOfTHeScientificAndTechnicalCouncil:"Положение о Научно-техническом совете",
+    CompositionOfTHeScientificAndTechnicalCouncil:"Состав Научно-технического совета",
 } 
 
 export default translationRU;

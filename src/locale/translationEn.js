@@ -37,6 +37,10 @@ const translationEN = {
 
     StateGrant:"State grant",
     ForeignGrant:"Foreign grant",
+
+    ScientificAndTechnicalCouncil:"Scientific and technical council",
+    StatuteOfTHeScientificAndTechnicalCouncil:"Statute of the Scientific and Technical Council",
+    CompositionOfTHeScientificAndTechnicalCouncil:"Composition of the Scientific and Technical Council",
 } 
 
 export default translationEN;

@@ -37,6 +37,12 @@ const translationUZ = {
 
     StateGrant:"Davlat granti",
     ForeignGrant:"Xorijiy granti",
+
+    ScientificAndTechnicalCouncil:"Ilmiy texnik kengash",
+    StatuteOfTHeScientificAndTechnicalCouncil:"Ilmiy texnik kengash nizomi",
+    CompositionOfTHeScientificAndTechnicalCouncil:"Ilmiy texnik kengash tarkibi",
+
+
 } 
 
 export default translationUZ;

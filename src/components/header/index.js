@@ -199,7 +199,7 @@ function Header() {
             </li>
             <li>
               <a className="dropdown-item" href="#">
-                Ilmiy texnik kengash 
+              {t("ScientificAndTechnicalCouncil")}
               </a>
               <ul className="dropdown-menu dropdown-submenu">
                 <li>
@@ -208,7 +208,7 @@ function Header() {
                     href="https://res.cloudinary.com/dax5cx2sv/image/upload/v1710820460/Nizom_buw2by.pdf"
                     target="_blank"
                   >
-                    Ilmiy texnik kengash nizomi
+                     {t("StatuteOfTHeScientificAndTechnicalCouncil")}
                   </a>
                 </li>
                 <li>
@@ -217,7 +217,7 @@ function Header() {
                     href="https://res.cloudinary.com/dax5cx2sv/image/upload/v1710820420/kengash_nqovdd.pdf"
                     target="_blank"
                   >
-                    Ilmiy texnik kengash tarkibi
+                    I {t("CompositionOfTHeScientificAndTechnicalCouncil")}
                   </a>
                 </li>
               </ul>
