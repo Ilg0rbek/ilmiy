@@ -1,5 +1,5 @@
 const translationRU = {
-    MainPage :"Главный страница ",
+    MainPage :"ГЛАВНЫЙ СТРАНИЦА",
     Doctorate:"Докторантура",
     Regulation:"Устав",
     ListofRequiredDocuments:"Список необходимых документов",
@@ -26,6 +26,14 @@ const translationRU = {
     ScientificCircles:"Научные кружки",
     ScholarshipByTheGovernments:"Стипендиат ",
     ScientificConferences:"Научные конференции",
+
+    CommodityCHemistryAndFolkMedicine:"Товарная химия и народная медицина",
+    HistoryOfUzbekistan:"История Узбекистана",
+    Management:"Управление",
+    UzbekLanguage:"Узбекский язык",
+    UzbekLiterature:"Узбекская литература",
+    SocialPhilosophy:"Социальная философия",
+    inBiologicalSciencesv:"в биологических науках"
 } 
 
 export default translationRU;

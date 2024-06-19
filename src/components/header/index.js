@@ -13,19 +13,19 @@ import translationEN from "../../locale/translationEn";
 
 i18next.use(initReactI18next).init({
   resources: {
-    RU: { translation: translationRU },
     UZ: { translation: translationUZ },
-    US: { translation: translationEN }
+    US: { translation: translationEN },
+    RU: { translation: translationRU },
   },
-  lng: "RU",
-  fallbackLng: "RU"
+  lng: "UZ",
+  fallbackLng: "UZ"
 })
 
 
 function Header() {
 
   const [active, setActive] = useState("navbar");
-  const [selected, setSelected] = useState("RU");
+  const [selected, setSelected] = useState("UZ");
   const { t } = useTranslation()
 
   const navToggle = () => {
@@ -59,7 +59,7 @@ function Header() {
           <ReactFlagsSelect
             className="for-language"
             selected={selected}
-            countries={["RU", "UZ", "US"]}
+            countries={[ "UZ", "US", "RU", ]}
             onSelect={(code) => changeLangHandler(code)}
           />
         </div>
@@ -159,32 +159,32 @@ function Header() {
                     className="dropdown-item"
                     to={"/tavarlar kimyosi va halq tabobati"}
                   >
-                    Tovarlar kimyosi va Xalq tabobati
+                    {t("CommodityCHemistryAndFolkMedicine")}
                   </Link>
                 </li>
                 <li>
                   <Link className="dropdown-item" to={"/Ozbekiston tarixi"}>
-                    O'zbekiston tarixi
+                  {t("HistoryOfUzbekistan")}
                   </Link>
                 </li>
                 <li>
                   <Link className="dropdown-item" to={"/Menejment"}>
-                    Menejment
+                  {t("Management")}
                   </Link>
                 </li>
                 <li>
                   <Link className="dropdown-item" to={"/Ozbek tili"}>
-                    O'zbek tili
+                  {t("UzbekLanguage")}
                   </Link>
                 </li>
                 <li>
                   <Link className="dropdown-item" to={"/Ozbek adabiyoti"}>
-                    O'zbek adabiyoti
+                  {t("UzbekLiterature")}
                   </Link>
                 </li>
                 <li>
                   <Link className="dropdown-item" to={"/Ijtimoiy falsafa"}>
-                    Ijtimoiy falsafa
+                  {t("SocialPhilosophy")}
                   </Link>
                 </li>
                 <li>
@@ -192,7 +192,7 @@ function Header() {
                     className="dropdown-item"
                     to={"/Bialogiya fanlari boyicha"}
                   >
-                    Biologiya fanlari bo'yicha
+                    {t("inBiologicalSciencesv")}
                   </Link>
                 </li>
               </ul>

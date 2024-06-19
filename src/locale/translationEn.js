@@ -25,7 +25,15 @@ const translationEN = {
     TalentedStudents:"Talented students",
     ScientificCircles:"Scientific circles",
     ScholarshipByTheGovernments:"Scholarship by the Government's",
-    ScientificConferences:"Scientific conferences"
+    ScientificConferences:"Scientific conferences",
+
+    CommodityCHemistryAndFolkMedicine:"Commodity chemistry and folk medicine",
+    HistoryOfUzbekistan:"History of Uzbekistan",
+    Management:"Management",
+    UzbekLanguage:"Uzbek language",
+    UzbekLiterature:"Uzbek literature",
+    SocialPhilosophy:"Social philosophy",
+    inBiologicalSciencesv:"in biological sciencesv"
 } 
 
 export default translationEN;

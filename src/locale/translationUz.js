@@ -26,6 +26,14 @@ const translationUZ = {
     ScientificCircles:"FAN TO’GARAKLARI",
     ScholarshipByTheGovernments:"STIPENDIATLAR ",
     ScientificConferences:"ILMIY KONFERENSIYALAR",
+
+    CommodityCHemistryAndFolkMedicine:"Tovarlar kimyosi va Xalq tabobati",
+    HistoryOfUzbekistan:"O'zbekiston tarixi",
+    Management:"Menejment",
+    UzbekLanguage:"O'zbek tili",
+    UzbekLiterature:"O'zbek adabiyoti",
+    SocialPhilosophy:"Ijtimoiy falsafa",
+    inBiologicalSciencesv:"Biologiya fanlari bo'yicha"
 } 
 
 export default translationUZ;
