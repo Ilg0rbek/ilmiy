@@ -33,7 +33,10 @@ const translationUZ = {
     UzbekLanguage:"O'zbek tili",
     UzbekLiterature:"O'zbek adabiyoti",
     SocialPhilosophy:"Ijtimoiy falsafa",
-    inBiologicalSciencesv:"Biologiya fanlari bo'yicha"
+    inBiologicalSciencesv:"Biologiya fanlari bo'yicha",
+
+    StateGrant:"Davlat granti",
+    ForeignGrant:"Xorijiy granti",
 } 
 
 export default translationUZ;

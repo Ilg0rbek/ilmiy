@@ -238,12 +238,12 @@ function Header() {
           <ul className="dropdown-menu ">
             <li>
               <Link className="dropdown-item" to={"/Davlat granti"}>
-                Davlat granti
+              {t("StateGrant")}
               </Link>
             </li>
             <li>
               <Link className="dropdown-item" to={"/Universitet granti"}>
-                Xorijiy granti
+              {t("ForeignGrant")}
               </Link>
             </li>
           </ul>

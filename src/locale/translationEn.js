@@ -33,7 +33,10 @@ const translationEN = {
     UzbekLanguage:"Uzbek language",
     UzbekLiterature:"Uzbek literature",
     SocialPhilosophy:"Social philosophy",
-    inBiologicalSciencesv:"in biological sciencesv"
+    inBiologicalSciencesv:"in biological sciencesv",
+
+    StateGrant:"State grant",
+    ForeignGrant:"Foreign grant",
 } 
 
 export default translationEN;
