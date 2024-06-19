@@ -1,4 +1,7 @@
 const translationUZ = {
+    AndijonDavlatsUniversiteti:"Andijon davlat",
+    univer:"universiteti",
+
     MainPage :"BOSH SAHIFA",
     Doctorate:"DOKTORANTURA",
     Regulation:"MEYORIY HUQUQIY HUJJAT",

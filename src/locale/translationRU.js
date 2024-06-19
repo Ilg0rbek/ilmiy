@@ -1,4 +1,7 @@
 const translationRU = {
+    AndijonDavlatsUniversiteti:"Андижанский государственный",
+    univer:"Университет",
+
     MainPage :"ГЛАВНЫЙ СТРАНИЦА",
     Doctorate:"Докторантура",
     Regulation:"Устав",

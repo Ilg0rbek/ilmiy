@@ -53,15 +53,17 @@ function Header() {
           <div className="logo">
             <div className="img_div"></div>
             <h2>
-              Andijon davlats <br /> universiteti
+            {t("AndijonDavlatsUniversiteti")} <br /> {t("univer")}
             </h2>
           </div>
-          <ReactFlagsSelect
-            className="for-language"
-            selected={selected}
-            countries={[ "UZ", "US", "RU", ]}
-            onSelect={(code) => changeLangHandler(code)}
-          />
+          <div style={{display:"flex", alignItems:"center"}}>
+            <ReactFlagsSelect
+              className="for-language"
+              selected={selected}
+              countries={["UZ", "US", "RU",]}
+              onSelect={(code) => changeLangHandler(code)}
+            />
+          </div>
         </div>
 
         <div className="btn_menu" onClick={navToggle}>
@@ -91,7 +93,7 @@ function Header() {
                 href="https://phd.mininnovation.uz/regulation"
                 target="_blank"
               >
-               {t("Regulation")}
+                {t("Regulation")}
               </a>
             </li>
             <li>
@@ -123,7 +125,7 @@ function Header() {
             </li>
             <li>
               <Link className="dropdown-item" to={"/login"}>
-              {t("Doctorates")}
+                {t("Doctorates")}
               </Link>
             </li>
             <li>
@@ -151,7 +153,7 @@ function Header() {
           <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <li>
               <a className="dropdown-item" href="#">
-              {t("ScientificAdvice")}
+                {t("ScientificAdvice")}
               </a>
               <ul className="dropdown-menu dropdown-submenu">
                 <li>
@@ -164,27 +166,27 @@ function Header() {
                 </li>
                 <li>
                   <Link className="dropdown-item" to={"/Ozbekiston tarixi"}>
-                  {t("HistoryOfUzbekistan")}
+                    {t("HistoryOfUzbekistan")}
                   </Link>
                 </li>
                 <li>
                   <Link className="dropdown-item" to={"/Menejment"}>
-                  {t("Management")}
+                    {t("Management")}
                   </Link>
                 </li>
                 <li>
                   <Link className="dropdown-item" to={"/Ozbek tili"}>
-                  {t("UzbekLanguage")}
+                    {t("UzbekLanguage")}
                   </Link>
                 </li>
                 <li>
                   <Link className="dropdown-item" to={"/Ozbek adabiyoti"}>
-                  {t("UzbekLiterature")}
+                    {t("UzbekLiterature")}
                   </Link>
                 </li>
                 <li>
                   <Link className="dropdown-item" to={"/Ijtimoiy falsafa"}>
-                  {t("SocialPhilosophy")}
+                    {t("SocialPhilosophy")}
                   </Link>
                 </li>
                 <li>
@@ -199,7 +201,7 @@ function Header() {
             </li>
             <li>
               <a className="dropdown-item" href="#">
-              {t("ScientificAndTechnicalCouncil")}
+                {t("ScientificAndTechnicalCouncil")}
               </a>
               <ul className="dropdown-menu dropdown-submenu">
                 <li>
@@ -208,7 +210,7 @@ function Header() {
                     href="https://res.cloudinary.com/dax5cx2sv/image/upload/v1710820460/Nizom_buw2by.pdf"
                     target="_blank"
                   >
-                     {t("StatuteOfTHeScientificAndTechnicalCouncil")}
+                    {t("StatuteOfTHeScientificAndTechnicalCouncil")}
                   </a>
                 </li>
                 <li>
@@ -238,12 +240,12 @@ function Header() {
           <ul className="dropdown-menu ">
             <li>
               <Link className="dropdown-item" to={"/Davlat granti"}>
-              {t("StateGrant")}
+                {t("StateGrant")}
               </Link>
             </li>
             <li>
               <Link className="dropdown-item" to={"/Universitet granti"}>
-              {t("ForeignGrant")}
+                {t("ForeignGrant")}
               </Link>
             </li>
           </ul>
@@ -256,7 +258,7 @@ function Header() {
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-             {t("ObjectsOfIntellectualProperty")}
+            {t("ObjectsOfIntellectualProperty")}
           </a>
           <ul className="dropdown-menu">
             <Link className="dropdown-item" to={"/patents"}>
@@ -264,7 +266,7 @@ function Header() {
             </Link>
             <li>
               <Link className="dropdown-item" to="/guvohnoma">
-              {t("Certificates")}
+                {t("Certificates")}
               </Link>
             </li>
           </ul>
@@ -318,7 +320,7 @@ function Header() {
             </li>
             <li>
               <a className="dropdown-item" href="#">
-              {t("PhysicsAndMathematics")}
+                {t("PhysicsAndMathematics")}
               </a>
             </li>
           </ul>
@@ -336,12 +338,12 @@ function Header() {
           <ul className="dropdown-menu">
             <li>
               <Link className="dropdown-item" to="/cources">
-              {t("ScientificCircles")}
+                {t("ScientificCircles")}
               </Link>
             </li>
             <li>
               <Link className="dropdown-item" to={"/stipendiants"}>
-              {t("ScholarshipByTheGovernments")}
+                {t("ScholarshipByTheGovernments")}
               </Link>
             </li>
           </ul>
