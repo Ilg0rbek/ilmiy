@@ -15,6 +15,9 @@
 .dropdown-menu > li:hover > .dropdown-submenu {
   display: block;
 }
+.ReactFlagsSelect-module_selectFlag__2q5gC{
+  display: none !important;
+}
 main {
   position: fixed;
   width: 100%;

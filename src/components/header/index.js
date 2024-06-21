@@ -61,6 +61,7 @@ function Header() {
               className="for-language"
               selected={selected}
               countries={["UZ", "US", "RU",]}
+              customLabels={{"UZ": "UZB", "US": "ENG", "RU": "RUS"}} 
               onSelect={(code) => changeLangHandler(code)}
             />
           </div>
