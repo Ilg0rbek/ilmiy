@@ -61,7 +61,7 @@ function Header() {
               className="for-language"
               selected={selected}
               countries={["UZ", "US", "RU",]}
-              customLabels={{"UZ": "UZB", "US": "ENG", "RU": "RUS"}} 
+              customLabels={{"UZ": "UZ", "US": "ENG", "RU": "RUS"}} 
               onSelect={(code) => changeLangHandler(code)}
             />
           </div>
@@ -72,7 +72,7 @@ function Header() {
         </div>
       </header>
       <nav className={`navbar-expand-lg ${active}`}>
-        <ul className="menu_ul nav_item">
+      <ul className="menu_ul nav_item">
           <li>
             <Link to="/">{t("MainPage")}</Link>
           </li>

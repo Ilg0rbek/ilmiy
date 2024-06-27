@@ -15,9 +15,7 @@
 .dropdown-menu > li:hover > .dropdown-submenu {
   display: block;
 }
-.ReactFlagsSelect-module_selectFlag__2q5gC{
-  display: none !important;
-}
+
 main {
   position: fixed;
   width: 100%;
@@ -71,11 +69,14 @@ header {
   align-items: center;
   background-color: #1f3c88;
   padding: 10px 250px !important;
-  width: 100%;
+  width: 105%;
   justify-content: space-between !important;
 }
+.nav_item{
+  margin: 0 5px
+}
 .menu_ul {
-  margin: 0;
+  margin: 0 ;
   padding: 0;
 }
 .menu_ul li {
