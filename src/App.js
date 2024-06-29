@@ -30,6 +30,7 @@ import BialogiyaFanlarBoyicha from "./components/pages/IlmiyDarajaBeruvchiKengas
 import UniversitetGranti from "./components/pages/IlmiyLoyihalar/UniversitetGranti";
 import DavlatGranti from "./components/pages/IlmiyLoyihalar/DavlatGranti";
 import Faculty from "./components/pages/MDI/faculty/Faculty";
+import Department from "./components/pages/MDI/department/Department";
 
 
 
@@ -41,6 +42,7 @@ function App() {
     <Routes>
       <Route exact path="/" element={<Layout> <Home /> </Layout>} />
       <Route exact path="/faculty" element={<Layout><Faculty/></Layout>}/>
+      <Route exact path="/faculty/:id" element={<Layout><Department/></Layout>} />
       <Route exact path="/guvohnoma" element={<Layout ><Patents/></Layout>}/>
       <Route exact path="/patents" element={<Layout ><Guvohnoma/></Layout>}/>
       <Route exact path="/guvohnoma/user-list" element={<Layout ><GuvohnomaUserList/></Layout>}/>
