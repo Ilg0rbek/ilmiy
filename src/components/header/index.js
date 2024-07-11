@@ -354,6 +354,11 @@ function Header() {
             <Link to="/faculty">BMI va MD</Link>
           </li>
         </ul>
+        <ul className="menu_ul nav_item">
+          <li>
+            <Link to="/faculty">BMI va MD</Link>
+          </li>
+        </ul>
       </nav>
     </main>
   );

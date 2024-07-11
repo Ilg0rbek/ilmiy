@@ -2,7 +2,7 @@ const translationRU = {
     AndijonDavlatsUniversiteti:"Андижанский государственный",
     univer:"университет",
 
-    MainPage :"ГЛАВНЫЙ СТРАНИЦА",
+    MainPage :"Главная страница",
     Doctorate:"Докторантура",
     Regulation:"Устав",
     ListofRequiredDocuments:"Список необходимых документов",
@@ -44,6 +44,7 @@ const translationRU = {
     ScientificAndTechnicalCouncil:"Научно-технический совет",
     StatuteOfTHeScientificAndTechnicalCouncil:"Положение о Научно-техническом совете",
     CompositionOfTHeScientificAndTechnicalCouncil:"Состав Научно-технического совета",
+    ScientificConferences:"Scientific conferences",
 } 
 
 export default translationRU;
