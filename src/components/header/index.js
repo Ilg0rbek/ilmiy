@@ -351,7 +351,7 @@ function Header() {
         </div>
         <ul className="menu_ul nav_item">
           <li>
-            <Link to="/faculty">BMI va MD</Link>
+            <Link to="#">{t('ScientificConferences')}</Link>
           </li>
         </ul>
         <ul className="menu_ul nav_item">
@@ -359,6 +359,7 @@ function Header() {
             <Link to="/faculty">BMI va MD</Link>
           </li>
         </ul>
+        
       </nav>
     </main>
   );
