@@ -44,7 +44,7 @@ const translationRU = {
     ScientificAndTechnicalCouncil:"Научно-технический совет",
     StatuteOfTHeScientificAndTechnicalCouncil:"Положение о Научно-техническом совете",
     CompositionOfTHeScientificAndTechnicalCouncil:"Состав Научно-технического совета",
-    ScientificConferences:"Scientific conferences",
+    ScientificConferences:"Научные конференции",
 } 
 
 export default translationRU;

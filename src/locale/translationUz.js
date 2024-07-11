@@ -44,7 +44,7 @@ const translationUZ = {
     ScientificAndTechnicalCouncil:"Ilmiy texnik kengash",
     StatuteOfTHeScientificAndTechnicalCouncil:"Ilmiy texnik kengash nizomi",
     CompositionOfTHeScientificAndTechnicalCouncil:"Ilmiy texnik kengash tarkibi",
-    ScientificConferences:"Scientific conferences",
+    ScientificConferences:"ILMIY KONFERENSIYALAR",
 
 
 } 
