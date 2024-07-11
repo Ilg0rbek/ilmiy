@@ -1,0 +1,55 @@
+.department {
+  margin-top: 12%;
+  text-align: center;
+}
+
+.departmentTitle {
+  color: #1F3C88;
+}
+
+.container {
+  display: grid;
+  margin: 70px 200px;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-row-gap: 50px;
+  grid-column-gap: 50px;
+}
+
+.departmentWrapper {
+  border: 1px solid #1F3C88;
+  border-radius: 6px;
+  padding: 20px;
+}
+
+.departmentWrapper:hover {
+  transform: scale(1.05);
+  transition: 1s;
+}
+
+.departmentName {
+  color: #1F3C88;
+  font-size: 17px;
+  font-weight: 500;
+}
+
+@media (max-width: 992px) {
+  .department {
+    margin-top: 16%;
+  }
+  .container {
+    display: grid;
+    margin: 70px 100px;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 576px) {
+  .department {
+    margin-top: 30%;
+  }
+  .container {
+    display: grid;
+    margin: 70px 70px;
+    grid-template-columns: 1fr;
+  }
+}
