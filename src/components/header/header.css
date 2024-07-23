@@ -68,12 +68,13 @@ header {
   display: flex;
   align-items: center;
   background-color: #1f3c88;
-  padding: 10px 250px !important;
+  padding: 10px 170px 10px 100px!important;
   width: 105%;
   justify-content: space-between !important;
 }
 .nav_item{
-  margin: 0 5px
+  margin: 0 5px;
+  text-transform: uppercase;
 }
 .menu_ul {
   margin: 0 ;

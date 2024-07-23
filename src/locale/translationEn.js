@@ -44,6 +44,7 @@ const translationEN = {
     ScientificAndTechnicalCouncil:"Scientific and technical council",
     StatuteOfTHeScientificAndTechnicalCouncil:"Statute of the Scientific and Technical Council",
     CompositionOfTHeScientificAndTechnicalCouncil:"Composition of the Scientific and Technical Council",
+    ScientificConferences:"Scientific conferences",
 } 
 
 export default translationEN;
