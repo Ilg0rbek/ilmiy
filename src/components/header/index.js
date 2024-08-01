@@ -356,7 +356,7 @@ function Header() {
         </ul>
         <ul className="menu_ul nav_item">
           <li>
-            <Link to="/faculty">BMI va MD</Link>
+            <Link to="/faculty">MD MAVZULARI</Link>
           </li>
         </ul>
         

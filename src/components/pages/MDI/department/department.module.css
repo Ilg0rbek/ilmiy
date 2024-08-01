@@ -1,23 +1,10 @@
-.faculty {
+.department {
   margin-top: 12%;
   text-align: center;
 }
 
-.facultyHeader {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-}
-
-.facultyYear {
-  border: none;
-  color: #1F3C88;
-  font-weight: 600;
-  font-size: 20px;
-}
-
-.facultyTitle {
-  color: #1F3C88;
+.departmentTitle {
+  color: #1f3c88;
 }
 
 .container {
@@ -28,25 +15,25 @@
   grid-column-gap: 50px;
 }
 
-.facultyWrapper {
-  border: 1px solid #1F3C88;
+.departmentWrapper {
+  border: 1px solid #1f3c88;
   border-radius: 6px;
   padding: 16px;
 }
 
-.facultyWrapper:hover {
+.departmentWrapper:hover {
   transform: scale(1.05);
   transition: 1s;
 }
 
-.facultyName {
-  color: #1F3C88;
+.departmentName {
+  color: #1f3c88;
   font-size: 20px;
   font-weight: 500;
 }
 
 @media (max-width: 992px) {
-  .faculty {
+  .department {
     margin-top: 16%;
   }
   .container {
@@ -57,7 +44,7 @@
 }
 
 @media (max-width: 576px) {
-  .faculty {
+  .department {
     margin-top: 30%;
   }
   .container {
