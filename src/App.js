@@ -29,9 +29,10 @@ import IjtimoiyFalsafa from "./components/pages/IlmiyDarajaBeruvchiKengash/Ijtim
 import BialogiyaFanlarBoyicha from "./components/pages/IlmiyDarajaBeruvchiKengash/BialogiyaFanlarBoyicha";
 import UniversitetGranti from "./components/pages/IlmiyLoyihalar/UniversitetGranti";
 import DavlatGranti from "./components/pages/IlmiyLoyihalar/DavlatGranti";
-import Faculty from "./components/pages/MDI/faculty/Faculty";
-import Department from "./components/pages/MDI/department/Department";
-import Theme from "./components/pages/MDI/theme/Theme";
+const Faculty = React.lazy(() =>import("./components/pages/MDI/faculty/Faculty"));
+const Department = React.lazy(() =>import("./components/pages/MDI/department/Department"));
+const Theme = React.lazy(() =>import("./components/pages/MDI/theme/Theme"));
+const TeacherForm = React.lazy(() =>import("./components/pages/MDI/teacherForm/TeacherForm"));
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
       <Route exact path="/faculty" element={<Layout><Faculty/></Layout>}/>
       <Route exact path="/faculty/:id" element={<Layout><Department/></Layout>}></Route>
       <Route exact path="/department/:id" element={<Layout><Theme/></Layout>}></Route>
+      <Route exact path="/teacher-form/:id" element={<Layout hideFooter={false} hideHeader={false}><TeacherForm/></Layout>}></Route>
       <Route exact path="/guvohnoma" element={<Layout ><Patents/></Layout>}/>
       <Route exact path="/patents" element={<Layout ><Guvohnoma/></Layout>}/>
       <Route exact path="/guvohnoma/user-list" element={<Layout ><GuvohnomaUserList/></Layout>}/>

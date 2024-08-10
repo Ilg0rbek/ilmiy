@@ -5,6 +5,7 @@ import axios from "axios";
 import Modal from "react-modal";
 
 function Theme() {
+  // theme
   const { id } = useParams();
   const [themeList, setThemeList] = useState([]);
 
@@ -13,7 +14,6 @@ function Theme() {
       axios
         .get(`https://ilmiyapi.adu.uz/api/graduation/kafedra?kafedra=${id}`)
         .then((response) => {
-          console.log("response - ", response.data);
           setThemeList(response.data);
         })
         .catch((error) => {
@@ -23,15 +23,52 @@ function Theme() {
   }, []);
 
   // modal
-
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  // const [selectedData, setSelectedData] = useState([]);
 
-  const openModal = () => {
+  const openModal = (item) => {
+    // setSelectedData(item);
+    formData.id = item._id
+    formData.teacher = item.teacher;
+    formData.teacher_phone = "+998995343767";
     setModalIsOpen(true);
   };
 
   const closeModal = () => {
     setModalIsOpen(false);
+  };
+
+  // console.log("selectedData - ", selectedData);
+
+  // sms
+  const [formData, setFormData] = useState({
+    student: "",
+    student_phone: "",
+    // teacher: selectedData?.teacher,
+    // teacher_phone: selectedData?.phone,
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  console.log("formData ", formData);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(
+        "https://ilmiyapi.adu.uz/api/graduation/sms",
+        formData
+      );
+      console.log("Success:", response);
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
 
   return (
@@ -58,7 +95,7 @@ function Theme() {
                 <td
                   data-label="Band qilish"
                   style={{ color: "#1f3c88", cursor: "pointer" }}
-                  onClick={openModal}
+                  onClick={() => openModal(item)}
                 >
                   Ochiq
                 </td>
@@ -69,6 +106,7 @@ function Theme() {
         <Modal
           isOpen={modalIsOpen}
           onRequestClose={closeModal}
+          ariaHideApp={false}
           contentLabel="Example Modal"
           style={{
             content: {
@@ -81,30 +119,41 @@ function Theme() {
             },
           }}
         >
-          <div className={styles.modal}>
+          <form className={styles.modal} onSubmit={handleSubmit}>
             <h3 className={styles.modalTitle}>
               Quydagi ma'lumotlarni kiriting:
             </h3>
             <input
+              name="student"
               type="text"
               placeholder="F.I.SH kiriting"
               className={styles.modalInput}
+              defaultValue={formData.student}
+              onChange={handleChange}
             />
             <input
-              type="text"
-              placeholder="Yo'nalishingizni kiriting"
-              className={styles.modalInput}
-            />
-            <input
+              name="student_phone"
               type="number"
               placeholder="Telefon raqamingizni kiriting"
               className={styles.modalInput}
+              defaultValue={formData.student_phone}
+              onChange={handleChange}
             />
             <div className={styles.modalButton}>
-              <button style={{background: "green", color: "#fff"}}>Tasdiqlash</button>
-              <button style={{background: "red", color: "#fff"}} onClick={closeModal}>Bekor qilish</button>
+              <button
+                type="submit"
+                style={{ background: "green", color: "#fff" }}
+              >
+                Tasdiqlash
+              </button>
+              <button
+                style={{ background: "red", color: "#fff" }}
+                onClick={closeModal}
+              >
+                Bekor qilish
+              </button>
             </div>
-          </div>
+          </form>
         </Modal>
       </div>
     </div>
