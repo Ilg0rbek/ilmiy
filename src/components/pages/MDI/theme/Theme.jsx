@@ -3,6 +3,8 @@ import styles from "./theme.module.css";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import Modal from "react-modal";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Theme() {
   // theme
@@ -15,6 +17,7 @@ function Theme() {
         .get(`https://ilmiyapi.adu.uz/api/graduation/kafedra?kafedra=${id}`)
         .then((response) => {
           setThemeList(response.data);
+          console.log(response.data);
         })
         .catch((error) => {
           console.error("Error fetching data:", error);
@@ -24,19 +27,21 @@ function Theme() {
 
   // modal
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  // const [selectedData, setSelectedData] = useState([]);
+  const [selectedData, setSelectedData] = useState([]);
 
   const openModal = (item) => {
     // setSelectedData(item);
     formData.id = item._id
     formData.teacher = item.teacher;
-    formData.teacher_phone = "+998995343767";
+    formData.teacher_phone = item.phone;
     setModalIsOpen(true);
   };
 
   const closeModal = () => {
     setModalIsOpen(false);
   };
+
+  // console.log("shuuu ", selectedData);
 
   // console.log("selectedData - ", selectedData);
 
@@ -56,7 +61,7 @@ function Theme() {
     });
   };
 
-  console.log("formData ", formData);
+  // console.log("formData ", formData);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -65,6 +70,7 @@ function Theme() {
         "https://ilmiyapi.adu.uz/api/graduation/sms",
         formData
       );
+      toast("Ma'lumotlar muvaffaqiyatli yuborildi!")
       console.log("Success:", response);
     } catch (error) {
       console.error("Error:", error);
@@ -92,6 +98,8 @@ function Theme() {
                   {item.degree ? item.degree : "Unvonsiz"}
                 </td>
                 <td data-label="Mavzu">{item.theme}</td>
+                {
+                  item.isBron == true ? <td>{item.studentName}</td> : 
                 <td
                   data-label="Band qilish"
                   style={{ color: "#1f3c88", cursor: "pointer" }}
@@ -99,6 +107,7 @@ function Theme() {
                 >
                   Ochiq
                 </td>
+                }
               </tr>
             ))}
           </tbody>
@@ -130,6 +139,7 @@ function Theme() {
               className={styles.modalInput}
               defaultValue={formData.student}
               onChange={handleChange}
+              required
             />
             <input
               name="student_phone"
@@ -138,6 +148,7 @@ function Theme() {
               className={styles.modalInput}
               defaultValue={formData.student_phone}
               onChange={handleChange}
+              required
             />
             <div className={styles.modalButton}>
               <button
@@ -156,8 +167,10 @@ function Theme() {
           </form>
         </Modal>
       </div>
+      <ToastContainer />
     </div>
   );
 }
 
 export default Theme;
+
