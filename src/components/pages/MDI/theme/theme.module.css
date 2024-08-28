@@ -93,20 +93,20 @@
 
 /* modal style */
 
-.modal {
-  padding: 10px;
-}
-
 .modalTitle {
   color: #092158;
   margin-bottom: 20px;
 }
 
-.modalInput {
+.InputField {
+  margin-top: 10px;
+}
+
+.InputField input {
   width: 100%;
-  padding: 6px;
-  border-radius: 4px;
-  margin-top: 20px;
+  padding: 5px;
+  border-radius: 6px;
+  border: 1px solid #5b5e64;
 }
 
 .modalButton {
@@ -120,4 +120,3 @@
   padding: 5px 10px;
   border-radius: 4px;
 }
-

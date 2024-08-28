@@ -10,7 +10,8 @@ import {
   SnippetsOutlined,
   CreditCardOutlined,
   PaperClipOutlined,
-  LogoutOutlined
+  LogoutOutlined,
+  ContainerOutlined
 } from "@ant-design/icons";
 import { Layout, Menu, Button, theme } from "antd";
 import { Link, NavLink, Route, Routes, useNavigate } from "react-router-dom";
@@ -28,6 +29,7 @@ import PatentsList from "../AdminPatents/PatentsList";
 import AdminGuvohnama from "../AdminGuvohnoma/AdminGuvohnama";
 import Guvohnomalist from "../AdminGuvohnoma/Guvohnomalist";
 import DoctorantDetail from "../doctoront/DoctoranDetail";
+import MDI from "../MDI/MDI";
 
 const { Header, Sider, Content } = Layout;
 
@@ -82,6 +84,12 @@ const Admin = () => {
     },
     {
       key: "9",
+      icon:<ContainerOutlined /> ,
+      label: "MD mavzular",
+      path: "/admin/mdi",
+    },
+    {
+      key: "10",
       icon:<LogoutOutlined /> ,
       label: "Chiqish",
       path: "/",
@@ -204,6 +212,7 @@ const Admin = () => {
             <Route path="/patents-admin/list" element={<PatentsList />} />
             <Route path="/guvohnoma" element={<AdminGuvohnama />} />
             <Route path="/guvohnoma/list" element={<Guvohnomalist />} />
+            <Route path="/mdi" element={<MDI/>} />
           </Routes>  
         </Content>
       </Layout>

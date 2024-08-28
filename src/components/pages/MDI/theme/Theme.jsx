@@ -3,10 +3,10 @@ import styles from "./theme.module.css";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import Modal from "react-modal";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-function Theme() {
+function Theme() {           
   // theme
   const { id } = useParams();
   const [themeList, setThemeList] = useState([]);
@@ -18,8 +18,8 @@ function Theme() {
         .then((response) => {
           setThemeList(response.data);
           console.log(response.data);
-        })
-        .catch((error) => {
+        })    
+        .catch((error) => { 
           console.error("Error fetching data:", error);
         });
     }
@@ -27,13 +27,12 @@ function Theme() {
 
   // modal
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [selectedData, setSelectedData] = useState([]);
 
   const openModal = (item) => {
-    // setSelectedData(item);
-    formData.id = item._id
+    formData.id = item._id;
+    // formData.teacher_phone = item.phone;
+    formData.teacher_phone = "+998995343767";
     formData.teacher = item.teacher;
-    formData.teacher_phone = item.phone;
     setModalIsOpen(true);
   };
 
@@ -41,16 +40,20 @@ function Theme() {
     setModalIsOpen(false);
   };
 
-  // console.log("shuuu ", selectedData);
-
-  // console.log("selectedData - ", selectedData);
+  // id: string;
+  // teacher_phone: string;
+  // student_phone: string;
+  // hemis_id: number
+  // teacher: string;
+  // student: string;
+  // yunalish: string
 
   // sms
   const [formData, setFormData] = useState({
     student: "",
     student_phone: "",
-    // teacher: selectedData?.teacher,
-    // teacher_phone: selectedData?.phone,
+    yunalish: "",
+    hemis_id: "",
   });
 
   const handleChange = (e) => {
@@ -61,17 +64,17 @@ function Theme() {
     });
   };
 
-  // console.log("formData ", formData);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
+      const { data } = await axios.post(
         "https://ilmiyapi.adu.uz/api/graduation/sms",
         formData
       );
-      toast("Ma'lumotlar muvaffaqiyatli yuborildi!")
-      console.log("Success:", response);
+      if ((data.msg = "Ok")) {
+        toast("Ma'lumotlar muvaffaqiyatli yuborildi!");
+      }
+      console.log("Success:", data);
     } catch (error) {
       console.error("Error:", error);
     }
@@ -95,19 +98,22 @@ function Theme() {
               <tr key={item._id}>
                 <td data-label="Professor o'qituvchi">{item.teacher}</td>
                 <td data-label="Ilmiy daraja va unvon">
-                  {item.degree ? item.degree : "Unvonsiz"}
+                  {item.degree
+                    ? item.degree
+                    : "Fizika va Matematika fanlari doktori, professor"}
                 </td>
                 <td data-label="Mavzu">{item.theme}</td>
-                {
-                  item.isBron == true ? <td>{item.studentName}</td> : 
-                <td
-                  data-label="Band qilish"
-                  style={{ color: "#1f3c88", cursor: "pointer" }}
-                  onClick={() => openModal(item)}
-                >
-                  Ochiq
-                </td>
-                }
+                {item.isBron == true ? (
+                  <td>{item.studentName + " " + item.studentNumber}</td>
+                ) : (
+                  <td
+                    data-label="Band qilish"
+                    style={{ color: "#1f3c88", cursor: "pointer" }}
+                    onClick={() => openModal(item)}
+                  >
+                    Ochiq
+                  </td>
+                )}
               </tr>
             ))}
           </tbody>
@@ -132,24 +138,46 @@ function Theme() {
             <h3 className={styles.modalTitle}>
               Quydagi ma'lumotlarni kiriting:
             </h3>
-            <input
-              name="student"
-              type="text"
-              placeholder="F.I.SH kiriting"
-              className={styles.modalInput}
-              defaultValue={formData.student}
-              onChange={handleChange}
-              required
-            />
-            <input
-              name="student_phone"
-              type="number"
-              placeholder="Telefon raqamingizni kiriting"
-              className={styles.modalInput}
-              defaultValue={formData.student_phone}
-              onChange={handleChange}
-              required
-            />
+            <div className={styles.InputField}>
+              <input
+                type="text"
+                name="student"
+                placeholder="F.I.SH kiriting"
+                defaultValue={formData.student}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className={styles.InputField}>
+              <input
+                type="text"
+                name="yunalish"
+                placeholder="Ta'lim yo'nalishingizni kiriting"
+                defaultValue={formData.yunalish}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className={styles.InputField}>
+              <input
+                type="text"
+                name="student_phone"
+                placeholder="Telefon raqamingizni kiriting"
+                defaultValue={formData.student_phone}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className={styles.InputField}>
+              <input
+                type="number"
+                name="hemis_id"
+                placeholder="Hemis id kiriting"
+                defaultValue={formData.hemis_id}
+                onChange={handleChange}
+                required
+              />
+            </div>
             <div className={styles.modalButton}>
               <button
                 type="submit"
@@ -173,4 +201,3 @@ function Theme() {
 }
 
 export default Theme;
-

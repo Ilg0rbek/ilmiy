@@ -1,61 +1,80 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./teacherForm.module.css";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function TeacherForm() {
-  // const notify = () => toast("Wow so easy!");
-  // const notify1 = () => toast("Mavzu muvaffaqiyatli band qilindi!");
-  // const notify2 = () => toast("Mavzu band qilib bo'lingan!");
-  const { id } = useParams();
+  const { teacherId, id } = useParams();
+  const [studentName, setStudentName] = useState("");
 
   const [formData, setFormData] = useState({
-    id: id,
-    studentName: "",
-    studentNumber: ""
+    student_id: id,
+    teacher_id: teacherId,
   });
-
-  // console.log("formData ", formData);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: value
+      [name]: value,
     });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     try {
-      const response = await axios.post("https://ilmiyapi.adu.uz/api/graduation/check", formData, {
-        headers: {
-          'Content-Type': 'application/json'
+      const response = await axios.post(
+        "https://ilmiyapi.adu.uz/api/graduation/check",
+        formData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
         }
-      });
-      alert("sadsadas")
+      );
       toast("Mavzu muvaffaqiyatli band qilindi!");
-      console.log('Success:', response.data);
+      console.log("Success:", response);
     } catch (error) {
-      alert("sadsadas")
       toast("Mavzu band qilib bo'lingan!");
-      console.error('Error:', error);
+      console.error("Error:", error);
     }
   };
+
+  // get student data
+  useEffect(() => {
+    const postData = async () => {
+      try {
+        const { data } = await axios.post(
+          "https://ilmiyapi.adu.uz/api/graduation/student",
+          { id }
+        );
+        setStudentName(data.name)
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    postData();
+  }, []);
 
   return (
     <div className={styles.teacher}>
       <form className={styles.teacherForm} onSubmit={handleSubmit}>
-        <h3 className={styles.teacherTitle}>Tasdiqlash Formasi</h3>        
-          <input name="studentName" type="text" defaultValue={formData.studentName} onChange={handleChange} placeholder="Talaba To'liq Ismi Kiriting" required />
-          <ToastContainer />  
-          <input name="studentNumber" type="text" defaultValue={formData.studentNumber} onChange={handleChange} placeholder="Talaba Telefon Raqami Kiriting" required />
-          <br />
-          <button>Tasdiqlash</button>
+        <h3 className={styles.teacherTitle}>Tasdiqlash Oynasi</h3>
+        <input
+          name="studentName"
+          type="text"
+          value={studentName}
+          onChange={handleChange}
+          placeholder="Talaba To'liq Ismi Kiriting"
+          readOnly
+        />
+        <br />
+        <button>Tasdiqlash</button>
       </form>
+      <ToastContainer />
     </div>
   );
 }

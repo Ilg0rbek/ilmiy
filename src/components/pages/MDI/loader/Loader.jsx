@@ -1,9 +1,12 @@
-import React from 'react'
+import styles from "./loader.module.css";
+import { PropagateLoader } from "react-spinners";
 
 function Loader() {
   return (
-    <div>Loader</div>
-  )
+    <div className={styles.loader}>
+      <PropagateLoader color="#1F3C88" size={20} />
+    </div>
+  );
 }
 
-export default Loader
+export default Loader;
