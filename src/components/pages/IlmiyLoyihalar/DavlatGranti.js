@@ -37,7 +37,7 @@
                             qurilma ishlab chiqish yo’lga qo’yilgan. Xususan energiya olish samaradorligi eng maqbul hamda arzon
                             bo’lgan turidan foydalanishni yo’lga qo’ymoqdamiz.
                         </td>
-                        <td>Zaynabudinnov.S Professor </td>
+                        <td> Professor <br/> Aliyev.R</td>
                     </tr>
                     <tr className="text-center">
                         <td>01.06.2022  30.05.2026</td>
@@ -59,7 +59,7 @@
                             chiqiladi va qayta tiklanuvchi energiya manbaalari sohalariga tavsiya etiladi.
 
                         </td>
-                        <td>Aliyev.R Akademik</td>
+                        <td style={{padding:"10px"}}> Akademik <br/> Zaynabudinnov.S</td>
                     </tr>
                 </tbody>
             </table>
