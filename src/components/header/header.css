@@ -76,6 +76,11 @@ header {
   margin: 0 5px;
   text-transform: uppercase;
 }
+.nav_item2{
+  margin: 0 0;
+  text-transform: uppercase;
+}
+
 .menu_ul {
   margin: 0 ;
   padding: 0;

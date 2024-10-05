@@ -53,15 +53,15 @@ function Header() {
           <div className="logo">
             <div className="img_div"></div>
             <h2>
-            {t("AndijonDavlatsUniversiteti")} <br /> {t("univer")}
+              {t("AndijonDavlatsUniversiteti")} <br /> {t("univer")}
             </h2>
           </div>
-          <div style={{display:"flex", alignItems:"center"}}>
+          <div style={{ display: "flex", alignItems: "center" }}>
             <ReactFlagsSelect
               className="for-language"
               selected={selected}
               countries={["UZ", "US", "RU",]}
-              customLabels={{"UZ": "UZ", "US": "ENG", "RU": "RUS"}} 
+              customLabels={{ "UZ": "UZ", "US": "ENG", "RU": "RUS" }}
               onSelect={(code) => changeLangHandler(code)}
             />
           </div>
@@ -72,11 +72,12 @@ function Header() {
         </div>
       </header>
       <nav className={`navbar-expand-lg ${active}`}>
-      <ul className="menu_ul nav_item">
+        <ul className="menu_ul nav_item">
           <li>
             <Link to="/">{t("MainPage")}</Link>
           </li>
         </ul>
+        <div style={{ border: "1px solid white", minHeight: "3vh", margin: "0 5px" }} />
         <div className="dropdown nav_item">
           <a
             className="  dropdown-toggle"
@@ -140,7 +141,7 @@ function Header() {
             </li>
           </ul>
         </div>
-
+        <div style={{ border: "1px solid white", minHeight: "3vh", margin: "0 5px" }} />
         <div className="dropdown">
           <a
             className="  dropdown-toggle"
@@ -227,30 +228,7 @@ function Header() {
             </li>
           </ul>
         </div>
-
-        <div className="dropdown nav_item">
-          <a
-            className="  dropdown-toggle"
-            href="#"
-            role="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            {t("ScientificProjects")}
-          </a>
-          <ul className="dropdown-menu ">
-            <li>
-              <Link className="dropdown-item" to={"/Davlat granti"}>
-                {t("StateGrant")}
-              </Link>
-            </li>
-            <li>
-              <Link className="dropdown-item" to={"/Universitet granti"}>
-                {t("ForeignGrant")}
-              </Link>
-            </li>
-          </ul>
-        </div>
+        <div style={{ border: "1px solid white", minHeight: "3vh", margin: "0 5px" }} />
         <div className="dropdown nav_item">
           <a
             className="dropdown-toggle"
@@ -272,6 +250,7 @@ function Header() {
             </li>
           </ul>
         </div>
+        <div style={{ border: "1px solid white", minHeight: "3vh", margin: "0 5px" }} />
         <div className="dropdown nav_item">
           <a
             className="  dropdown-toggle"
@@ -326,6 +305,7 @@ function Header() {
             </li>
           </ul>
         </div>
+        <div style={{ border: "1px solid white", minHeight: "3vh", margin: "0 5px" }} />
         <div className="dropdown nav_item">
           <a
             className="  dropdown-toggle"
@@ -349,17 +329,19 @@ function Header() {
             </li>
           </ul>
         </div>
+        <div style={{ border: "1px solid white", minHeight: "3vh", margin: "0 5px" }} />
         <ul className="menu_ul nav_item">
           <li>
             <Link to="#">{t('ScientificConferences')}</Link>
           </li>
         </ul>
+        <div style={{ border: "1px solid white", minHeight: "3vh", margin: "0 5px" }} />
         <ul className="menu_ul nav_item">
           <li>
             <Link to="/education-year">MD MAVZULARI</Link>
           </li>
         </ul>
-        
+
       </nav>
     </main>
   );
