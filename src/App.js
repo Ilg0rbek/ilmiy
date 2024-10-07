@@ -29,21 +29,27 @@ import IjtimoiyFalsafa from "./components/pages/IlmiyDarajaBeruvchiKengash/Ijtim
 import BialogiyaFanlarBoyicha from "./components/pages/IlmiyDarajaBeruvchiKengash/BialogiyaFanlarBoyicha";
 import UniversitetGranti from "./components/pages/IlmiyLoyihalar/UniversitetGranti";
 import DavlatGranti from "./components/pages/IlmiyLoyihalar/DavlatGranti";
-const EducationYear = React.lazy(() => import("./components/pages/MDI/educationYear/EducationYear"));
-const Faculty = React.lazy(() => import("./components/pages/MDI/faculty/Faculty"));
-const Department = React.lazy(() => import("./components/pages/MDI/department/Department"));
-const Theme = React.lazy(() => import("./components/pages/MDI/theme/Theme"));
-const TeacherForm = React.lazy(() =>import("./components/pages/MDI/teacherForm/TeacherForm"));
+// const EducationYear = React.lazy(() => import("./components/pages/MDI/educationYear/EducationYear"));
+// const Faculty = React.lazy(() => import("./components/pages/MDI/faculty/Faculty"));
+// const Department = React.lazy(() => import("./components/pages/MDI/department/Department"));
+// const Theme = React.lazy(() => import("./components/pages/MDI/theme/Theme"));
+// const TeacherForm = React.lazy(() =>import("./components/pages/MDI/teacherForm/TeacherForm"));
+const AcademicYears = React.lazy(() => import("./components/pages/md-themes/academicYears/AcademicYears"));
+const Faculty = React.lazy(() => import("./components/pages/md-themes/faculty/Faculty"));
+const Department = React.lazy(() => import("./components/pages/md-themes/department/Department"));
 
 function App() {
   return (
     <Routes>
       <Route exact path="/" element={<Layout> <Home /> </Layout>} />
-      <Route exact path="/education-year" element={<Layout><EducationYear/></Layout>} />
-      <Route exact path="/faculty/:id" element={<Layout><Faculty/></Layout>}/>
+      <Route exact path="/academic-years" element={<Layout><AcademicYears/></Layout>} />
+      <Route exact path="/faculties/:academic_year_id" element={<Layout><Faculty/></Layout>} />
+      <Route exact path="/departments/:academic_year_id/:faculty_id" element={<Layout><Department/></Layout>} />
+      {/* <Route exact path="/education-year" element={<Layout><EducationYear/></Layout>} />
+      <Route exact path="/faculty/:date" element={<Layout><Faculty/></Layout>}/>
       <Route exact path="/department/:id" element={<Layout><Department/></Layout>}/>
       <Route exact path="/theme/:id" element={<Layout><Theme/></Layout>}/>
-      <Route exact path="/teacher-form/:teacherId/:id" element={<Layout hideFooter={false} hideHeader={false}><TeacherForm/></Layout>}></Route>
+      <Route exact path="/teacher-form/:teacherId/:id" element={<Layout hideFooter={false} hideHeader={false}><TeacherForm/></Layout>}></Route> */}
       <Route exact path="/guvohnoma" element={<Layout ><Patents/></Layout>}/>
       <Route exact path="/patents" element={<Layout ><Guvohnoma/></Layout>}/>
       <Route exact path="/guvohnoma/user-list" element={<Layout ><GuvohnomaUserList/></Layout>}/>

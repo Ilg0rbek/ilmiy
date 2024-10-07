@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./index.css"
+import "./index.css";
 import {
   MenuFoldOutlined,
   UsergroupAddOutlined,
@@ -11,7 +11,7 @@ import {
   CreditCardOutlined,
   PaperClipOutlined,
   LogoutOutlined,
-  ContainerOutlined
+  ContainerOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu, Button, theme } from "antd";
 import { Link, NavLink, Route, Routes, useNavigate } from "react-router-dom";
@@ -29,7 +29,11 @@ import PatentsList from "../AdminPatents/PatentsList";
 import AdminGuvohnama from "../AdminGuvohnoma/AdminGuvohnama";
 import Guvohnomalist from "../AdminGuvohnoma/Guvohnomalist";
 import DoctorantDetail from "../doctoront/DoctoranDetail";
-import MDI from "../MDI/MDI";
+const AcademicYears = React.lazy(() => import("../MDI/academicYears/AcademicYears"));
+const Faculty = React.lazy(() => import("../MDI/faculty/Faculty"));
+const Department = React.lazy(() => import("../MDI/department/Department"));
+const Professors = React.lazy(() => import("../MDI/professors/Professors"));
+const Themes = React.lazy(() => import("../MDI/themes/Themes"));
 
 const { Header, Sider, Content } = Layout;
 
@@ -66,31 +70,31 @@ const Admin = () => {
     },
     {
       key: "3",
-      icon:<UsergroupAddOutlined />,
+      icon: <UsergroupAddOutlined />,
       label: "Doktorantlar",
       path: "/admin/doctorantlist",
     },
     {
       key: "4",
-      icon:<CreditCardOutlined />,
+      icon: <CreditCardOutlined />,
       label: "Guvohnomalar",
       path: "/admin/patents-admin",
     },
     {
       key: "8",
-      icon:<PaperClipOutlined /> ,
+      icon: <PaperClipOutlined />,
       label: "Patentlar",
       path: "/admin/guvohnoma",
     },
     {
       key: "9",
-      icon:<ContainerOutlined /> ,
+      icon: <ContainerOutlined />,
       label: "MD mavzular",
-      path: "/admin/mdi",
+      path: "/admin/academic-years",
     },
     {
       key: "10",
-      icon:<LogoutOutlined /> ,
+      icon: <LogoutOutlined />,
       label: "Chiqish",
       path: "/",
     },
@@ -100,7 +104,7 @@ const Admin = () => {
     //   label: "Sozlanmalar",
     //   path: "/admin/settings",
     // },
-   
+
     // {
     //   key: "6",
     //   icon: <UserOutlined />,
@@ -113,11 +117,10 @@ const Admin = () => {
     //   label: "Doktorantlar",
     //   path: "/admin/profile",
     // },
-   
   ];
 
   return (
-    <Layout  style={{ width: "100%" }}>
+    <Layout style={{ width: "100%" }}>
       <Sider trigger={null} collapsible collapsed={collapsed} width={"20%"}>
         <div
           className="demo-logo-vertical"
@@ -127,16 +130,14 @@ const Admin = () => {
             fontWeight: "bold",
             fontFamily: "Croissant One",
             fontSize: "24px",
-
           }}
         >
           <NavLink
             style={{
               textDecoration: "none",
               color: "white",
-              width:"100%",
-              }} 
-             
+              width: "100%",
+            }}
             to={"/admin"}
           >
             {!collapsed ? " Ilmiy admin panel" : "ADU"}
@@ -187,7 +188,7 @@ const Admin = () => {
           />
         </Header>
         <Content
-        // mode={"vertical"}
+          // mode={"vertical"}
           style={{
             margin: "84px 16px",
             padding: 24,
@@ -195,25 +196,42 @@ const Admin = () => {
             background: colorBgContainer,
             width: `${!collapsed ? "78%" : "92%"}`,
             // overflow:"initial"
-          }} >
+          }}
+        >
           <Routes>
             <Route path="/settings" element={"Hello settings"} />
             <Route path="/stipendiants" element={<Season />} />
             <Route path="/cources" element={<FanTogarak />} />
-            <Route path="/doctorantlist" element={<Doctorant/>} />
-            <Route path="/doctorantlist/detail/:id" element={<DoctorantDetail/>} />
+            <Route path="/doctorantlist" element={<Doctorant />} />
+            <Route
+              path="/doctorantlist/detail/:id"
+              element={<DoctorantDetail />}
+            />
             <Route path="/stipendiants/user-list" element={<Students />} />
             <Route path="/news" element={<News />} />
-            <Route path="/stipendiants/all-stipends" element={<StipendAll/>} />
-            <Route path="/stipendiants/all-stipends/:id" element={<StipendDetail/>} />
-            <Route path="/cources/kafedra" element={<FanTogarakKafedra/>} />
-            <Route path="/cources/kafedra/togarak" element={<TogarakDetail/>} />
+            <Route path="/stipendiants/all-stipends" element={<StipendAll />} />
+            <Route
+              path="/stipendiants/all-stipends/:id"
+              element={<StipendDetail />}
+            />
+            <Route path="/cources/kafedra" element={<FanTogarakKafedra />} />
+            <Route
+              path="/cources/kafedra/togarak"
+              element={<TogarakDetail />}
+            />
             <Route path="/patents-admin" element={<AdminPatent />} />
             <Route path="/patents-admin/list" element={<PatentsList />} />
             <Route path="/guvohnoma" element={<AdminGuvohnama />} />
             <Route path="/guvohnoma/list" element={<Guvohnomalist />} />
-            <Route path="/mdi" element={<MDI/>} />
-          </Routes>  
+            <Route path="/academic-years" element={<AcademicYears />} />
+            <Route path="/faculties/:academic_year_id" element={<Faculty />} />
+            <Route path="/departments/:academic_year_id/:faculty_id" element={<Department />} />
+            <Route path="/professors/:academic_year_id/:faculty_id/:kafedra_id" element={<Professors />} />
+            <Route path="/themes/:academic_year_id/:faculty_id/:kafedra_id/:professor_id" element={<Themes />} />
+
+            {/* <Route path="/faculty" element={<Faculty />} />
+            <Route path="/theme/:id" element={<Theme/>} /> */}
+          </Routes>
         </Content>
       </Layout>
     </Layout>

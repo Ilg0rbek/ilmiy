@@ -1,0 +1,55 @@
+.academicYears {
+  margin-top: 12%;
+  text-align: center;
+}
+
+.academicYearsTitle {
+  color: #1f3c88;
+}
+
+.container {
+  display: grid;
+  margin: 70px 200px;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-row-gap: 50px;
+  grid-column-gap: 50px;
+}
+
+.academicYearsWrapper {
+  border: 1px solid #1f3c88;
+  border-radius: 6px;
+  padding: 16px;
+}
+
+.academicYearsWrapper:hover {
+  transform: scale(1.05);
+  transition: 1s;
+}
+
+.academicYearsName {
+  color: #1f3c88;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+@media (max-width: 992px) {
+  .academicYears {
+    margin-top: 16%;
+  }
+  .container {
+    display: grid;
+    margin: 70px 100px;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 576px) {
+  .academicYears {
+    margin-top: 30%;
+  }
+  .container {
+    display: grid;
+    margin: 70px 70px;
+    grid-template-columns: 1fr;
+  }
+}
