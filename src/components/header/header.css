@@ -45,12 +45,12 @@ header {
 }
 
 .img_div {
-  width: 100px;
+  width: 88px;
   height: 80px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url("https://www.adu.uz/s/files/images/logoadu_wide.png");
+  background-image: url("https://adu.uz/s/files/images/logoadu24.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

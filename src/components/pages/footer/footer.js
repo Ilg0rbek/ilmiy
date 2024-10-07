@@ -22,7 +22,7 @@ function Footer() {
             <div className="footer_logo_text_main">
               <div className="footer_logo">
                 <img
-                  src="https://adu.uz/s/files/images/logoadu.png"
+                  src="https://adu.uz/s/files/images/logoadu24.png"
                   alt="footer_logo"
                 />
               </div>

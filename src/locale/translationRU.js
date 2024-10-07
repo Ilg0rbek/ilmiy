@@ -39,7 +39,7 @@ const translationRU = {
     inBiologicalSciencesv:"в биологических науках",
 
     StateGrant:"Государственный грант",
-    ForeignGrant:"Иностранный грант",
+    ForeignGrant:"Зарубежные проекты ",
 
     ScientificAndTechnicalCouncil:"Научно-технический совет",
     StatuteOfTHeScientificAndTechnicalCouncil:"Положение о Научно-техническом совете",

@@ -38,8 +38,8 @@ const translationEN = {
     SocialPhilosophy:"Social philosophy",
     inBiologicalSciencesv:"in biological sciencesv",
 
-    StateGrant:"State grant",
-    ForeignGrant:"Foreign grant",
+    StateGrant:"Government project",
+    ForeignGrant:"International projects",
 
     ScientificAndTechnicalCouncil:"Scientific and technical council",
     StatuteOfTHeScientificAndTechnicalCouncil:"Statute of the Scientific and Technical Council",

@@ -38,8 +38,8 @@ const translationUZ = {
     SocialPhilosophy:"Ijtimoiy falsafa",
     inBiologicalSciencesv:"Biologiya fanlari bo'yicha",
 
-    StateGrant:"Davlat granti",
-    ForeignGrant:"Xorijiy granti",
+    StateGrant:"Davlat loyihalar",
+    ForeignGrant:"Xorijiy loyihalar",
 
     ScientificAndTechnicalCouncil:"Ilmiy texnik kengash",
     StatuteOfTHeScientificAndTechnicalCouncil:"Ilmiy texnik kengash nizomi",

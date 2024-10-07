@@ -221,10 +221,34 @@ function Header() {
                     href="https://res.cloudinary.com/dax5cx2sv/image/upload/v1710820420/kengash_nqovdd.pdf"
                     target="_blank"
                   >
-                    I {t("CompositionOfTHeScientificAndTechnicalCouncil")}
+                     {t("CompositionOfTHeScientificAndTechnicalCouncil")}
                   </a>
                 </li>
               </ul>
+            </li>
+          </ul>
+        </div>
+        <div style={{ border: "1px solid white", minHeight: "3vh", margin: "0 5px" }} />
+        <div className="dropdown nav_item">
+          <a
+            className="  dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            {t("ScientificProjects")}
+          </a>
+          <ul className="dropdown-menu ">
+            <li>
+              <Link className="dropdown-item" to={"/Davlat granti"}>
+                {t("StateGrant")}
+              </Link>
+            </li>
+            <li>
+              <Link className="dropdown-item" to={"/Universitet granti"}>
+                {t("ForeignGrant")}
+              </Link>
             </li>
           </ul>
         </div>
