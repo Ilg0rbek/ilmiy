@@ -362,7 +362,7 @@ function Header() {
         <div style={{ border: "1px solid white", minHeight: "3vh", margin: "0 5px" }} />
         <ul className="menu_ul nav_item">
           <li>
-            <Link to="/education-year">MD MAVZULARI</Link>
+            <Link to="/academic-years">MD MAVZULARI</Link>
           </li>
         </ul>
 
