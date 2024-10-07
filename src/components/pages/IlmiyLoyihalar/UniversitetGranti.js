@@ -2,7 +2,7 @@ import React from "react";
 
 const UniversitetGranti = () => {
     return (
-        <div className="container overflow-auto" style={{ marginTop: "200px" }}>
+        <div className="container overflow-auto" style={{ marginTop: "200px", marginBottom:"50px" }}>
             <h3 className="text-center mb-5">Andijon davlat universitetida bajarilayotgan xorijiy loyihalar toʻgʻrisida
                 <br />
                 MAʼLUMOT

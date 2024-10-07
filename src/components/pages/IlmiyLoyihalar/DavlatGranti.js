@@ -2,7 +2,7 @@
 
     const DavlatGranti = () => {
         return (
-            <div className="container overflow-auto" style={{ marginTop: "200px" }}>
+            <div className="container overflow-auto" style={{ marginTop: "200px", marginBottom:"50px" }}>
             <h3 className="text-center mb-5">Andijon davlat universitetida davlat granti doirasida bajarilayotgan loyihalar toʻgʻrisida
                 <br />
                 MAʼLUMOT
