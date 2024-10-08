@@ -7,6 +7,8 @@ import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import { Modal } from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Department() {
   const { academic_year_id, faculty_id } = useParams();
@@ -28,13 +30,13 @@ function Department() {
     getAcademicYears();
   }, []);
 
-   // POST MODAL:
-   const [open, setOpen] = useState(false);
+  // POST MODAL:
+  const [open, setOpen] = useState(false);
 
-   const onOpenModal = () => setOpen(true);
-   const onCloseModal = () => setOpen(false);
+  const onOpenModal = () => setOpen(true);
+  const onCloseModal = () => setOpen(false);
 
-   // POST DATA:
+  // POST DATA:
   const [postDepartment, setPostDepartment] = useState({
     academic_year_id: academic_year_id,
     faculty_id: faculty_id,
@@ -56,12 +58,13 @@ function Department() {
         "https://md-themes-api.adu.uz/api/kafedralar",
         postDepartment
       );
+      toast.success(response.data.message);
       console.log("Response:", response.data.message);
     } catch (error) {
       console.error(error);
     }
   };
-  
+
   return (
     <>
       <div className={styles.adminYears} onClick={onOpenModal}>
@@ -122,7 +125,9 @@ function Department() {
                   </Modal> */}
                 </td>
                 <td data-label="Qo'shish">
-                  <Link to={`/admin/professors/${academic_year_id}/${faculty_id}/${item.id}`}>
+                  <Link
+                    to={`/admin/professors/${academic_year_id}/${faculty_id}/${item.id}`}
+                  >
                     <BiShow style={{ cursor: "pointer", fontSize: "20px" }} />
                   </Link>
                 </td>
@@ -152,6 +157,7 @@ function Department() {
               Yaratish
             </button>
             <button
+              type="button"
               style={{ background: "red", color: "#fff" }}
               onClick={onCloseModal}
             >
@@ -160,6 +166,7 @@ function Department() {
           </div>
         </form>
       </Modal>
+      <ToastContainer />
     </>
   );
 }

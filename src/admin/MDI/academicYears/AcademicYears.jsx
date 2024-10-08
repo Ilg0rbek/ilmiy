@@ -7,6 +7,8 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { Modal } from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function AcademicYears() {
   // GET DATA:
@@ -30,12 +32,18 @@ function AcademicYears() {
   const [open, setOpen] = useState(false);
 
   const onOpenModal = () => setOpen(true);
-  const onCloseModal = () => setOpen(false);
+
+  const onCloseModal = () => {
+    setOpen(false);
+  };
 
   // POST DATA:
   const [postAcademicYears, setPostAcademicYears] = useState({
     name: "",
   });
+
+  const [isEditing, setIsEditing] = useState(false);
+  const [selectedId, setSelectedId] = useState(null);
 
   const handleChange = (e) => {
     setPostAcademicYears({
@@ -44,19 +52,56 @@ function AcademicYears() {
     });
   };
 
+  
+  // Handle click event
+  const handleClick = (id) => {
+    setSelectedId(id);
+    console.log("Selected Item ID:", id);
+  };
+  
+  console.log("isEditing", isEditing);
+  console.log("selectedId ", selectedId);
+  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    
     try {
-      const response = await axios.post(
-        "https://md-themes-api.adu.uz/api/academic-years",
-        postAcademicYears
-      );
-      console.log("Response:", response.data.message);
+      if (isEditing) {
+        // PUT request to update an existing entry
+        const response = await axios.put(
+          `https://md-themes-api.adu.uz/api/academic-years/edit/${selectedId}`, postAcademicYears
+          
+        );
+        console.log("Update Response:", response.data);
+      } else {
+        // POST request to create a new entry
+        const response = await axios.post(
+          "https://md-themes-api.adu.uz/api/academic-years",
+          postAcademicYears
+        );
+        toast.success(response.data.message);
+        console.log("Response:", response.data.message);
+      }
     } catch (error) {
-      console.error(error);
+      console.error("Error submitting form:", error);
     }
   };
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+
+  //   try {
+  //     const response = await axios.post(
+  //       "https://md-themes-api.adu.uz/api/academic-years",
+  //       postAcademicYears
+  //     );
+  //     toast.success(response.data.message);
+  //     console.log("Response:", response.data.message);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
 
   // EDIT MODAL:
   const [open2, setOpen2] = useState(false);
@@ -93,9 +138,9 @@ function AcademicYears() {
               <tr key={item.id}>
                 <td data-label="Id">{item.id}</td>
                 <td data-label="Ta'lim yili">{item.name}</td>
-                <td data-label="Qo'shish" onClick={onOpenModal2}>
-                  <Link to="#">
-                    <FaEdit style={{ cursor: "pointer", fontSize: "20px" }} />
+                <td data-label="Qo'Tahrirlash" onClick={onOpenModal2}>
+                  <Link to="#" onClick={() => setIsEditing(!isEditing)}>
+                    <FaEdit style={{ cursor: "pointer", fontSize: "20px" }} onClick={() => handleClick(item.id)} />
                   </Link>
                   <Modal open={open2} onClose={onCloseModal2} center>
                     <form className={styles.modal}>
@@ -160,6 +205,7 @@ function AcademicYears() {
               Yaratish
             </button>
             <button
+              type="button"
               style={{ background: "red", color: "#fff" }}
               onClick={onCloseModal}
             >
@@ -168,6 +214,7 @@ function AcademicYears() {
           </div>
         </form>
       </Modal>
+      <ToastContainer />
     </>
   );
 }

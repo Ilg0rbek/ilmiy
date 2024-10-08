@@ -7,6 +7,8 @@ import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import { Modal } from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Faculty() {
   const { academic_year_id } = useParams();
@@ -40,8 +42,6 @@ function Faculty() {
     name: "",
   });
 
-  console.log("postFaculty ", postFaculty);
-
   const handleChange = (e) => {
     setPostFaculty({
       ...postFaculty,
@@ -57,6 +57,7 @@ function Faculty() {
         "https://md-themes-api.adu.uz/api/faculties",
         postFaculty
       );
+      toast.success(response.data.message);
       console.log("Response:", response.data.message);
     } catch (error) {
       console.error(error);
@@ -135,7 +136,9 @@ function Faculty() {
                   </Modal>
                 </td>
                 <td data-label="Qo'shish">
-                  <Link to={`/admin/departments/${academic_year_id}/${item.id}`}>
+                  <Link
+                    to={`/admin/departments/${academic_year_id}/${item.id}`}
+                  >
                     <BiShow style={{ cursor: "pointer", fontSize: "20px" }} />
                   </Link>
                 </td>
@@ -165,6 +168,7 @@ function Faculty() {
               Yaratish
             </button>
             <button
+              type="button"
               style={{ background: "red", color: "#fff" }}
               onClick={onCloseModal}
             >
@@ -173,6 +177,7 @@ function Faculty() {
           </div>
         </form>
       </Modal>
+      <ToastContainer />
     </>
   );
 }

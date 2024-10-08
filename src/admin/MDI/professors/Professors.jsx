@@ -7,6 +7,8 @@ import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import { Modal } from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Professors() {
   const { academic_year_id, faculty_id, kafedra_id } = useParams();
@@ -57,6 +59,7 @@ function Professors() {
         "https://md-themes-api.adu.uz/api/professors",
         postProfessor
       );
+      toast.success(response.data.message);
       console.log("Response:", response.data.message);
     } catch (error) {
       console.error(error);
@@ -179,6 +182,7 @@ function Professors() {
               Yaratish
             </button>
             <button
+              type="button"
               style={{ background: "red", color: "#fff" }}
               onClick={onCloseModal}
             >
@@ -187,6 +191,7 @@ function Professors() {
           </div>
         </form>
       </Modal>
+      <ToastContainer />
     </>
   );
 }

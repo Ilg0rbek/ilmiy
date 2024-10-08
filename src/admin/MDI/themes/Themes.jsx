@@ -7,6 +7,8 @@ import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import { Modal } from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Themes() {
   const { academic_year_id, faculty_id, kafedra_id, professor_id } =
@@ -58,6 +60,7 @@ function Themes() {
         "https://md-themes-api.adu.uz/api/topics",
         postTheme
       );
+      toast.success(response.data.message);
       console.log("Response:", response.data.message);
     } catch (error) {
       console.error(error);
@@ -161,6 +164,7 @@ function Themes() {
               Yaratish
             </button>
             <button
+              type="button"
               style={{ background: "red", color: "#fff" }}
               onClick={onCloseModal}
             >
@@ -169,6 +173,7 @@ function Themes() {
           </div>
         </form>
       </Modal>
+      <ToastContainer />
     </>
   );
 }
