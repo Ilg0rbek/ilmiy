@@ -29,7 +29,7 @@ function Department() {
           <Link
             key={item.id}
             className={styles.academicYearsWrapper}
-            to={`/departments/${academic_year_id}/${item.id}`}
+            to={`/themes/${academic_year_id}/${faculty_id}/${item.id}`}
           >
             <p className={styles.academicYearsName}>{item.name}</p>
           </Link>

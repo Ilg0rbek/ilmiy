@@ -1,4 +1,4 @@
-import styles from "./faculty.module.css";
+import styles from "./mdi.module.css";
 import { useEffect, useState } from "react";
 import { FaPlus } from "react-icons/fa6";
 import { FaEdit } from "react-icons/fa";
@@ -10,19 +10,19 @@ import "react-responsive-modal/styles.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-function Faculty() {
-  const { academic_year_id } = useParams();
+function Department() {
+  const { academic_year_id, faculty_id } = useParams();
 
   // GET DATA:
-  const [faculty, setFaculty] = useState([]);
+  const [department, setDepartment] = useState([]);
 
   useEffect(() => {
     const getAcademicYears = async () => {
       try {
         const { data } = await axios.get(
-          `https://md-themes-api.adu.uz/api/faculties?academic_year_id=${academic_year_id}`
+          `https://md-themes-api.adu.uz/api/kafedralar?faculty_id=${faculty_id}`
         );
-        setFaculty(data.faculties);
+        setDepartment(data.kafedralar);
       } catch (error) {
         console.error(error);
       }
@@ -31,55 +31,129 @@ function Faculty() {
   }, []);
 
   // POST MODAL:
-  const [open, setOpen] = useState(false);
+  const [postModal, setPostModal] = useState(false);
 
-  const onOpenModal = () => setOpen(true);
-  const onCloseModal = () => setOpen(false);
+  const postOpenModal = () => setPostModal(true);
+
+  const postCloseModal = () => {
+    setPostModal(false);
+  };
+
+  // EDIT MODAL:
+  const [putModal, setPutModal] = useState(false);
+
+  const putOpenModal = () => {
+    setPutModal(true);
+  };
+
+  const putCloseModal = () => {
+    setPutModal(false);
+    window.location.reload();
+  };
 
   // POST DATA:
-  const [postFaculty, setPostFaculty] = useState({
+  const [postData, setPostData] = useState({
     academic_year_id: academic_year_id,
+    faculty_id: faculty_id,
     name: "",
   });
 
-  const handleChange = (e) => {
-    setPostFaculty({
-      ...postFaculty,
+  const handlePostChange = (e) => {
+    setPostData({
+      ...postData,
       [e.target.name]: e.target.value,
     });
   };
 
-  const handleSubmit = async (e) => {
+  const handlePostSubmit = async (e) => {
     e.preventDefault();
 
     try {
       const response = await axios.post(
-        "https://md-themes-api.adu.uz/api/faculties",
-        postFaculty
+        "https://md-themes-api.adu.uz/api/kafedralar",
+        postData
       );
       toast.success(response.data.message);
-      console.log("Response:", response.data.message);
     } catch (error) {
       console.error(error);
     }
   };
 
-  // EDIT MODAL:
-  const [open2, setOpen2] = useState(false);
+  // EDIT DATA:
+  const [putData, setPutData] = useState({
+    academic_year_id: academic_year_id,
+    faculty_id: faculty_id,
+    name: "",
+    active: false,
+  });
 
-  const onOpenModal2 = () => {
-    setOpen2(true);
+  const [selectedId, setSelectedId] = useState(null);
+
+  const handlePutClick = (id) => {
+    setSelectedId(id);
   };
 
-  const onCloseModal2 = () => {
-    setOpen2(false);
-    window.location.reload();
+  const handlePutChange = (e) => {
+    setPutData({
+      ...putData,
+      [e.target.name]: e.target.value,
+    });
   };
+
+  const handlePutSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.put(
+        `https://md-themes-api.adu.uz/api/kafedralar/edit/${selectedId}`,
+        putData
+      );
+      console.log(response.data.message);
+      window.location.reload();
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  // POST MODAL:
+  // const [open, setOpen] = useState(false);
+
+  // const onOpenModal = () => setOpen(true);
+  // const onCloseModal = () => setOpen(false);
+
+  // POST DATA:
+  // const [postDepartment, setPostDepartment] = useState({
+  //   academic_year_id: academic_year_id,
+  //   faculty_id: faculty_id,
+  //   name: "",
+  // });
+
+  // const handleChange = (e) => {
+  //   setPostDepartment({
+  //     ...postDepartment,
+  //     [e.target.name]: e.target.value,
+  //   });
+  // };
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+
+  //   try {
+  //     const response = await axios.post(
+  //       "https://md-themes-api.adu.uz/api/kafedralar",
+  //       postDepartment
+  //     );
+  //     toast.success(response.data.message);
+  //     console.log("Response:", response.data.message);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
 
   return (
     <>
-      <div className={styles.adminYears} onClick={onOpenModal}>
-        Fakultet yaratish{" "}
+      <div className={styles.adminYears} onClick={postOpenModal}>
+        Kafedra yaratish{" "}
         <span style={{ marginLeft: "85%" }}>
           <FaPlus />
         </span>
@@ -89,22 +163,22 @@ function Faculty() {
           <thead>
             <tr>
               <th scope="col">Id</th>
-              <th scope="col">Fakultet</th>
+              <th scope="col">Kafedra</th>
               <th scope="col">Tahrirlash</th>
               <th scope="col">Qo'shish</th>
             </tr>
           </thead>
           <tbody>
-            {faculty.map((item) => (
+            {department.map((item) => (
               <tr key={item.id}>
                 <td data-label="Id">{item.id}</td>
-                <td data-label="Fakultet">{item.name}</td>
-                <td data-label="Qo'shish" onClick={onOpenModal2}>
-                  <Link to="#">
+                <td data-label="Kafedra">{item.name}</td>
+                <td data-label="Tahrirlash" onClick={putOpenModal}>
+                  <Link to="#" onClick={() => handlePutClick(item.id)}>
                     <FaEdit style={{ cursor: "pointer", fontSize: "20px" }} />
                   </Link>
-                  <Modal open={open2} onClose={onCloseModal2} center>
-                    <form className={styles.modal}>
+                  <Modal open={putModal} onClose={putCloseModal} center>
+                    <form className={styles.modal} onSubmit={handlePutSubmit}>
                       <h3 className={styles.modalTitle}>
                         Quydagi ma'lumotlarni kiriting:
                       </h3>
@@ -113,8 +187,8 @@ function Faculty() {
                           type="text"
                           name="name"
                           placeholder="Ta'lim yilini kiriting"
-                          defaultValue={postFaculty.name}
-                          onChange={handleChange}
+                          defaultValue={putData.name}
+                          onChange={handlePutChange}
                           required
                         />
                       </div>
@@ -127,7 +201,7 @@ function Faculty() {
                         </button>
                         <button
                           style={{ background: "red", color: "#fff" }}
-                          onClick={onCloseModal2}
+                          onClick={putCloseModal}
                         >
                           Bekor qilish
                         </button>
@@ -137,7 +211,7 @@ function Faculty() {
                 </td>
                 <td data-label="Qo'shish">
                   <Link
-                    to={`/admin/departments/${academic_year_id}/${item.id}`}
+                    to={`/admin/professors/${academic_year_id}/${faculty_id}/${item.id}`}
                   >
                     <BiShow style={{ cursor: "pointer", fontSize: "20px" }} />
                   </Link>
@@ -147,16 +221,16 @@ function Faculty() {
           </tbody>
         </table>
       </div>
-      <Modal open={open} onClose={onCloseModal} center>
-        <form className={styles.modal} onSubmit={handleSubmit}>
+      <Modal open={postModal} onClose={postCloseModal} center>
+        <form className={styles.modal} onSubmit={handlePostSubmit}>
           <h3 className={styles.modalTitle}>Quydagi ma'lumotlarni kiriting:</h3>
           <div className={styles.InputField}>
             <input
               type="text"
               name="name"
-              placeholder="Fakultet kiriting"
-              defaultValue={postFaculty.name}
-              onChange={handleChange}
+              placeholder="Kafedra kiriting"
+              defaultValue={postData.name}
+              onChange={handlePostChange}
               required
             />
           </div>
@@ -170,7 +244,7 @@ function Faculty() {
             <button
               type="button"
               style={{ background: "red", color: "#fff" }}
-              onClick={onCloseModal}
+              onClick={postCloseModal}
             >
               Bekor qilish
             </button>
@@ -182,4 +256,4 @@ function Faculty() {
   );
 }
 
-export default Faculty;
+export default Department;

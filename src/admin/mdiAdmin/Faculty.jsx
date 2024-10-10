@@ -1,26 +1,28 @@
-import styles from "./academicYears.module.css";
+import styles from "./mdi.module.css";
 import { useEffect, useState } from "react";
 import { FaPlus } from "react-icons/fa6";
 import { FaEdit } from "react-icons/fa";
 import { BiShow } from "react-icons/bi";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Modal } from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-function AcademicYears() {
+function Faculty() {
+  const { academic_year_id } = useParams();
+
   // GET DATA:
-  const [academicYears, setAcademicYears] = useState([]);
+  const [faculty, setFaculty] = useState([]);
 
   useEffect(() => {
     const getAcademicYears = async () => {
       try {
         const { data } = await axios.get(
-          "https://md-themes-api.adu.uz/api/academic-years"
+          `https://md-themes-api.adu.uz/api/faculties?academic_year_id=${academic_year_id}`
         );
-        setAcademicYears(data.academic_years);
+        setFaculty(data.faculties);
       } catch (error) {
         console.error(error);
       }
@@ -29,72 +31,114 @@ function AcademicYears() {
   }, []);
 
   // POST MODAL:
-  const [open, setOpen] = useState(false);
+  const [postModal, setPostModal] = useState(false);
 
-  const onOpenModal = () => setOpen(true);
+  const postOpenModal = () => setPostModal(true);
 
-  const onCloseModal = () => {
-    setOpen(false);
+  const postCloseModal = () => {
+    setPostModal(false);
+  };
+
+  // EDIT MODAL:
+  const [putModal, setPutModal] = useState(false);
+
+  const putOpenModal = () => {
+    setPutModal(true);
+  };
+
+  const putCloseModal = () => {
+    setPutModal(false);
+    window.location.reload();
   };
 
   // POST DATA:
-  const [postAcademicYears, setPostAcademicYears] = useState({
+  const [postData, setPostData] = useState({
+    academic_year_id: academic_year_id,
     name: "",
   });
 
-  const [isEditing, setIsEditing] = useState(false);
-  const [selectedId, setSelectedId] = useState(null);
-
-  const handleChange = (e) => {
-    setPostAcademicYears({
-      ...postAcademicYears,
+  const handlePostChange = (e) => {
+    setPostData({
+      ...postData,
       [e.target.name]: e.target.value,
     });
   };
 
-  
-  // Handle click event
-  const handleClick = (id) => {
-    setSelectedId(id);
-    console.log("Selected Item ID:", id);
-  };
-  
-  console.log("isEditing", isEditing);
-  console.log("selectedId ", selectedId);
-  
-
-  const handleSubmit = async (e) => {
+  const handlePostSubmit = async (e) => {
     e.preventDefault();
-    
+
     try {
-      if (isEditing) {
-        // PUT request to update an existing entry
-        const response = await axios.put(
-          `https://md-themes-api.adu.uz/api/academic-years/edit/${selectedId}`, postAcademicYears
-          
-        );
-        console.log("Update Response:", response.data);
-      } else {
-        // POST request to create a new entry
-        const response = await axios.post(
-          "https://md-themes-api.adu.uz/api/academic-years",
-          postAcademicYears
-        );
-        toast.success(response.data.message);
-        console.log("Response:", response.data.message);
-      }
+      const response = await axios.post(
+        "https://md-themes-api.adu.uz/api/faculties",
+        postData
+      );
+      toast.success(response.data.message);
     } catch (error) {
-      console.error("Error submitting form:", error);
+      console.error(error);
     }
   };
+
+  // EDIT DATA:
+  const [putData, setPutData] = useState({
+    academic_year_id: academic_year_id,
+    name: "",
+    active: false,
+  });
+
+  const [selectedId, setSelectedId] = useState(null);
+
+  const handlePutClick = (id) => {
+    setSelectedId(id);
+  };
+
+  const handlePutChange = (e) => {
+    setPutData({
+      ...putData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handlePutSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.put(
+        `https://md-themes-api.adu.uz/api/faculties/edit/${selectedId}`,
+        putData
+      );
+      console.log(response.data.message);
+      window.location.reload();
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  // // POST MODAL:
+  // const [open, setOpen] = useState(false);
+
+  // const onOpenModal = () => setOpen(true);
+  // const onCloseModal = () => setOpen(false);
+
+  // POST DATA:
+  // const [postFaculty, setPostFaculty] = useState({
+  //   academic_year_id: academic_year_id,
+  //   name: "",
+  // });
+
+  // const handleChange = (e) => {
+  //   setPostFaculty({
+  //     ...postFaculty,
+  //     [e.target.name]: e.target.value,
+  //   });
+  // };
 
   // const handleSubmit = async (e) => {
   //   e.preventDefault();
 
   //   try {
   //     const response = await axios.post(
-  //       "https://md-themes-api.adu.uz/api/academic-years",
-  //       postAcademicYears
+  //       "https://md-themes-api.adu.uz/api/faculties",
+  //       postFaculty
   //     );
   //     toast.success(response.data.message);
   //     console.log("Response:", response.data.message);
@@ -104,21 +148,21 @@ function AcademicYears() {
   // };
 
   // EDIT MODAL:
-  const [open2, setOpen2] = useState(false);
+  // const [open2, setOpen2] = useState(false);
 
-  const onOpenModal2 = () => {
-    setOpen2(true);
-  };
+  // const onOpenModal2 = () => {
+  //   setOpen2(true);
+  // };
 
-  const onCloseModal2 = () => {
-    setOpen2(false);
-    window.location.reload();
-  };
+  // const onCloseModal2 = () => {
+  //   setOpen2(false);
+  //   window.location.reload();
+  // };
 
   return (
     <>
-      <div className={styles.adminYears} onClick={onOpenModal}>
-        Ta'lim yili yaratish{" "}
+      <div className={styles.adminYears} onClick={postOpenModal}>
+        Fakultet yaratish{" "}
         <span style={{ marginLeft: "85%" }}>
           <FaPlus />
         </span>
@@ -128,22 +172,22 @@ function AcademicYears() {
           <thead>
             <tr>
               <th scope="col">Id</th>
-              <th scope="col">Ta'lim yili</th>
+              <th scope="col">Fakultet</th>
               <th scope="col">Tahrirlash</th>
               <th scope="col">Qo'shish</th>
             </tr>
           </thead>
           <tbody>
-            {academicYears.map((item) => (
+            {faculty.map((item) => (
               <tr key={item.id}>
                 <td data-label="Id">{item.id}</td>
-                <td data-label="Ta'lim yili">{item.name}</td>
-                <td data-label="Qo'Tahrirlash" onClick={onOpenModal2}>
-                  <Link to="#" onClick={() => setIsEditing(!isEditing)}>
-                    <FaEdit style={{ cursor: "pointer", fontSize: "20px" }} onClick={() => handleClick(item.id)} />
+                <td data-label="Fakultet">{item.name}</td>
+                <td data-label="Tahrirlash" onClick={putOpenModal}>
+                  <Link to="#" onClick={() => handlePutClick(item.id)}>
+                    <FaEdit style={{ cursor: "pointer", fontSize: "20px" }} />
                   </Link>
-                  <Modal open={open2} onClose={onCloseModal2} center>
-                    <form className={styles.modal}>
+                  <Modal open={putModal} onClose={putCloseModal} center>
+                    <form className={styles.modal} onSubmit={handlePutSubmit}>
                       <h3 className={styles.modalTitle}>
                         Quydagi ma'lumotlarni kiriting:
                       </h3>
@@ -152,8 +196,8 @@ function AcademicYears() {
                           type="text"
                           name="name"
                           placeholder="Ta'lim yilini kiriting"
-                          defaultValue={postAcademicYears.name}
-                          onChange={handleChange}
+                          defaultValue={putData.name}
+                          onChange={handlePutChange}
                           required
                         />
                       </div>
@@ -166,7 +210,7 @@ function AcademicYears() {
                         </button>
                         <button
                           style={{ background: "red", color: "#fff" }}
-                          onClick={onCloseModal2}
+                          onClick={putCloseModal}
                         >
                           Bekor qilish
                         </button>
@@ -175,7 +219,9 @@ function AcademicYears() {
                   </Modal>
                 </td>
                 <td data-label="Qo'shish">
-                  <Link to={`/admin/faculties/${item.id}`}>
+                  <Link
+                    to={`/admin/departments/${academic_year_id}/${item.id}`}
+                  >
                     <BiShow style={{ cursor: "pointer", fontSize: "20px" }} />
                   </Link>
                 </td>
@@ -184,16 +230,16 @@ function AcademicYears() {
           </tbody>
         </table>
       </div>
-      <Modal open={open} onClose={onCloseModal} center>
-        <form className={styles.modal} onSubmit={handleSubmit}>
+      <Modal open={postModal} onClose={postCloseModal} center>
+        <form className={styles.modal} onSubmit={handlePostSubmit}>
           <h3 className={styles.modalTitle}>Quydagi ma'lumotlarni kiriting:</h3>
           <div className={styles.InputField}>
             <input
               type="text"
               name="name"
-              placeholder="Ta'lim yilini kiriting"
-              defaultValue={postAcademicYears.name}
-              onChange={handleChange}
+              placeholder="Fakultet kiriting"
+              defaultValue={postData.name}
+              onChange={handlePostChange}
               required
             />
           </div>
@@ -207,7 +253,7 @@ function AcademicYears() {
             <button
               type="button"
               style={{ background: "red", color: "#fff" }}
-              onClick={onCloseModal}
+              onClick={postCloseModal}
             >
               Bekor qilish
             </button>
@@ -219,4 +265,4 @@ function AcademicYears() {
   );
 }
 
-export default AcademicYears;
+export default Faculty;
