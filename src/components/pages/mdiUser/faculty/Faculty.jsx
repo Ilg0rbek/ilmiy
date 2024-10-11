@@ -7,8 +7,6 @@ function Faculty() {
   const { academic_year_id } = useParams();
   const [faculty, setFaculty] = useState([]);
 
-  console.log("academic_year_id ", academic_year_id);
-
   useEffect(() => {
     const getAcademicYears = async () => {
       try {

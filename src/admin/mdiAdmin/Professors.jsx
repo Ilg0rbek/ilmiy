@@ -117,42 +117,6 @@ function Professors() {
     }
   };
 
-  // POST MODAL:
-  // const [open, setOpen] = useState(false);
-
-  // const onOpenModal = () => setOpen(true);
-  // const onCloseModal = () => setOpen(false);
-
-  // POST DATA:
-  // const [postProfessor, setPostProfessor] = useState({
-  //   kafedra_id: kafedra_id,
-  //   fullname: "",
-  //   position: "",
-  //   phone: "",
-  // });
-
-  // const handleChange = (e) => {
-  //   setPostProfessor({
-  //     ...postProfessor,
-  //     [e.target.name]: e.target.value,
-  //   });
-  // };
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-
-  //   try {
-  //     const response = await axios.post(
-  //       "https://md-themes-api.adu.uz/api/professors",
-  //       postProfessor
-  //     );
-  //     toast.success(response.data.message);
-  //     console.log("Response:", response.data.message);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
-
   return (
     <>
       <div className={styles.adminYears} onClick={postOpenModal}>

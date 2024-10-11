@@ -115,41 +115,6 @@ function Department() {
     }
   };
 
-  // POST MODAL:
-  // const [open, setOpen] = useState(false);
-
-  // const onOpenModal = () => setOpen(true);
-  // const onCloseModal = () => setOpen(false);
-
-  // POST DATA:
-  // const [postDepartment, setPostDepartment] = useState({
-  //   academic_year_id: academic_year_id,
-  //   faculty_id: faculty_id,
-  //   name: "",
-  // });
-
-  // const handleChange = (e) => {
-  //   setPostDepartment({
-  //     ...postDepartment,
-  //     [e.target.name]: e.target.value,
-  //   });
-  // };
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-
-  //   try {
-  //     const response = await axios.post(
-  //       "https://md-themes-api.adu.uz/api/kafedralar",
-  //       postDepartment
-  //     );
-  //     toast.success(response.data.message);
-  //     console.log("Response:", response.data.message);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
-
   return (
     <>
       <div className={styles.adminYears} onClick={postOpenModal}>

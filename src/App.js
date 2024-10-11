@@ -35,16 +35,16 @@ import DavlatGranti from "./components/pages/IlmiyLoyihalar/DavlatGranti";
 // const Theme = React.lazy(() => import("./components/pages/MDI/theme/Theme"));
 // const TeacherForm = React.lazy(() =>import("./components/pages/MDI/teacherForm/TeacherForm"));
 const AcademicYears = lazy(() =>
-  import("./components/pages/md-themes/academicYears/AcademicYears")
+  import("./components/pages/mdiUser/academicYears/AcademicYears")
 );
 const Faculty = lazy(() =>
-  import("./components/pages/md-themes/faculty/Faculty")
+  import("./components/pages/mdiUser/faculty/Faculty")
 );
 const Department = lazy(() =>
-  import("./components/pages/md-themes/department/Department")
+  import("./components/pages/mdiUser/department/Department")
 );
 
-const Themes = lazy(() => import("./components/pages/md-themes/themes/Themes"));
+const Themes = lazy(() => import("./components/pages/mdiUser/themes/Themes"));
 
 function App() {
   return (

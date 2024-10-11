@@ -118,42 +118,6 @@ function Themes() {
     }
   };
 
-  // POST MODAL:
-  // const [open, setOpen] = useState(false);
-
-  // const onOpenModal = () => setOpen(true);
-  // const onCloseModal = () => setOpen(false);
-
-  // POST DATA:
-  // const [postTheme, setPostTheme] = useState({
-  //   academic_year_id: academic_year_id,
-  //   kafedra_id: kafedra_id,
-  //   professor_id: professor_id,
-  //   name: "",
-  // });
-
-  // const handleChange = (e) => {
-  //   setPostTheme({
-  //     ...postTheme,
-  //     [e.target.name]: e.target.value,
-  //   });
-  // };
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-
-  //   try {
-  //     const response = await axios.post(
-  //       "https://md-themes-api.adu.uz/api/topics",
-  //       postTheme
-  //     );
-  //     toast.success(response.data.message);
-  //     console.log("Response:", response.data.message);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
-
   return (
     <>
       <div className={styles.adminYears} onClick={postOpenModal}>

@@ -113,52 +113,6 @@ function Faculty() {
     }
   };
 
-  // // POST MODAL:
-  // const [open, setOpen] = useState(false);
-
-  // const onOpenModal = () => setOpen(true);
-  // const onCloseModal = () => setOpen(false);
-
-  // POST DATA:
-  // const [postFaculty, setPostFaculty] = useState({
-  //   academic_year_id: academic_year_id,
-  //   name: "",
-  // });
-
-  // const handleChange = (e) => {
-  //   setPostFaculty({
-  //     ...postFaculty,
-  //     [e.target.name]: e.target.value,
-  //   });
-  // };
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-
-  //   try {
-  //     const response = await axios.post(
-  //       "https://md-themes-api.adu.uz/api/faculties",
-  //       postFaculty
-  //     );
-  //     toast.success(response.data.message);
-  //     console.log("Response:", response.data.message);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
-
-  // EDIT MODAL:
-  // const [open2, setOpen2] = useState(false);
-
-  // const onOpenModal2 = () => {
-  //   setOpen2(true);
-  // };
-
-  // const onCloseModal2 = () => {
-  //   setOpen2(false);
-  //   window.location.reload();
-  // };
-
   return (
     <>
       <div className={styles.adminYears} onClick={postOpenModal}>
