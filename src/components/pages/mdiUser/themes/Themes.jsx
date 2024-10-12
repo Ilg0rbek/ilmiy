@@ -46,7 +46,7 @@ function Themes() {
                   {item.professor.position}
                 </td>
                 <td data-label="Mavzu">{item.name}</td>
-                {item.active === 1 ? (
+                {item.student_id === null ? (
                   <td>Band qilish</td>
                 ) : (
                   <td>Student full name</td>

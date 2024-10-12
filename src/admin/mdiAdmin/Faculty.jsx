@@ -73,6 +73,9 @@ function Faculty() {
         postData
       );
       toast.success(response.data.message);
+      setTimeout(() => {
+        window.location.reload();
+      }, [2000]);
     } catch (error) {
       console.error(error);
     }
