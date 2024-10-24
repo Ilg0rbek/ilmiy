@@ -108,18 +108,38 @@ function Header() {
               </a>
             </li>
             <li>
-              <a
-                className="dropdown-item"
-                href="https://res.cloudinary.com/dax5cx2sv/image/upload/v1710820443/kvota.pdf"
-                target="_blank"
-              >
+              <div>
+              </div>
+              <div className="dropdown-item hoverDropItem">
                 {t("Quota")}
-              </a>
+                <div className="quotasubmenu">
+                  <ul style={{ listStyle: "none" }}>
+                    <li>
+                      <a
+                        className="dropdown-item"
+                        target="_blank"
+                        href="https://res.cloudinary.com/dax5cx2sv/image/upload/v1710820443/kvota.pdf"
+                      >
+                        {t("Quota2024")}
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        className="dropdown-item"
+                        target="_blank"
+                        href="https://res.cloudinary.com/dax5cx2sv/image/upload/v1729760154/kvota_j06paw.pdf"
+                      >
+                        {t("Quota2025")}
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </li>
             <li>
               <a
                 className="dropdown-item"
-                href="https://res.cloudinary.com/dax5cx2sv/image/upload/v1710820371/doktarantura.pdf"
+                href="https://res.cloudinary.com/dax5cx2sv/image/upload/v1729760162/yonalishlar_n3oglm.pdf"
                 target="_blank"
               >
                 {t("SpecialtiesOfDoctorate")}
@@ -141,10 +161,11 @@ function Header() {
             </li>
           </ul>
         </div>
+
         <div style={{ border: "1px solid white", minHeight: "3vh", margin: "0 5px" }} />
         <div className="dropdown">
           <a
-            className="  dropdown-toggle"
+            className="dropdown-toggle"
             href="#"
             role="button"
             data-bs-toggle="dropdown"
@@ -221,7 +242,7 @@ function Header() {
                     href="https://res.cloudinary.com/dax5cx2sv/image/upload/v1710820420/kengash_nqovdd.pdf"
                     target="_blank"
                   >
-                     {t("CompositionOfTHeScientificAndTechnicalCouncil")}
+                    {t("CompositionOfTHeScientificAndTechnicalCouncil")}
                   </a>
                 </li>
               </ul>
