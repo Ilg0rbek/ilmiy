@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, lazy } from "react";
 import "./index.css";
 import {
   MenuFoldOutlined,
@@ -29,11 +29,11 @@ import PatentsList from "../AdminPatents/PatentsList";
 import AdminGuvohnama from "../AdminGuvohnoma/AdminGuvohnama";
 import Guvohnomalist from "../AdminGuvohnoma/Guvohnomalist";
 import DoctorantDetail from "../doctoront/DoctoranDetail";
-const AcademicYears = React.lazy(() => import("../MDI/academicYears/AcademicYears"));
-const Faculty = React.lazy(() => import("../MDI/faculty/Faculty"));
-const Department = React.lazy(() => import("../MDI/department/Department"));
-const Professors = React.lazy(() => import("../MDI/professors/Professors"));
-const Themes = React.lazy(() => import("../MDI/themes/Themes"));
+const AcademicYears = lazy(() => import("../mdiAdmin/AcademicYears"));
+const Faculty = lazy(() => import("../mdiAdmin/Faculty"));
+const Department = lazy(() => import("../mdiAdmin/Department"));
+const Professors = lazy(() => import("../mdiAdmin/Professors"));
+const Themes = lazy(() => import("../mdiAdmin/Themes"));
 
 const { Header, Sider, Content } = Layout;
 
@@ -225,12 +225,18 @@ const Admin = () => {
             <Route path="/guvohnoma/list" element={<Guvohnomalist />} />
             <Route path="/academic-years" element={<AcademicYears />} />
             <Route path="/faculties/:academic_year_id" element={<Faculty />} />
-            <Route path="/departments/:academic_year_id/:faculty_id" element={<Department />} />
-            <Route path="/professors/:academic_year_id/:faculty_id/:kafedra_id" element={<Professors />} />
-            <Route path="/themes/:academic_year_id/:faculty_id/:kafedra_id/:professor_id" element={<Themes />} />
-
-            {/* <Route path="/faculty" element={<Faculty />} />
-            <Route path="/theme/:id" element={<Theme/>} /> */}
+            <Route
+              path="/departments/:academic_year_id/:faculty_id"
+              element={<Department />}
+            />
+            <Route
+              path="/professors/:academic_year_id/:faculty_id/:kafedra_id"
+              element={<Professors />}
+            />
+            <Route
+              path="/themes/:academic_year_id/:faculty_id/:kafedra_id/:professor_id"
+              element={<Themes />}
+            />
           </Routes>
         </Content>
       </Layout>

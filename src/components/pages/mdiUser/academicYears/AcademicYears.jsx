@@ -25,7 +25,11 @@ function AcademicYears() {
       <h3 className={styles.academicYearsTitle}>Ta'lim yilini tanlang</h3>
       <div className={styles.container}>
         {academicYears.map((item) => (
-          <Link key={item.id} className={styles.academicYearsWrapper} to={`/faculties/${item.id}`}>
+          <Link
+            key={item.id}
+            className={styles.academicYearsWrapper}
+            to={`/faculties/${item.id}`}
+          >
             <p className={styles.academicYearsName}>{item.name}</p>
           </Link>
         ))}
