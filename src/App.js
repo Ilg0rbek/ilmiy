@@ -43,6 +43,9 @@ const Faculty = lazy(() =>
 const Department = lazy(() =>
   import("./components/pages/mdiUser/department/Department")
 );
+const TeacherForm = React.lazy(() =>
+  import("./components/pages/mdiUser/teacherForm/TeacherForm")
+);
 
 const Themes = lazy(() => import("./components/pages/mdiUser/themes/Themes"));
 
@@ -92,6 +95,15 @@ function App() {
         element={
           <Layout>
             <Themes />
+          </Layout>
+        }
+      />
+      <Route
+        exact
+        path="/teacher-form/:id"
+        element={
+          <Layout hideFooter={false} hideHeader={false}>
+            <TeacherForm />
           </Layout>
         }
       />
